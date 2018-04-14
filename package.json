@@ -1,0 +1,19 @@
+{
+  "name": "zedit-patchus-maximus",
+  "productName": "Patchus Maximus",
+  "description": "Patcher for Perkus Maximus.",
+  "version": "1.0",
+  "author": "Breems",
+  "copyright": "© 2019, Breems",
+  "repository": "https://github.com/matortheeternal/zedit-patchus-maximus",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "angular": "^1.6.6"
+  }
+}
