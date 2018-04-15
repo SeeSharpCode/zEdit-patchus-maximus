@@ -1,4 +1,8 @@
 /* global ngapp, xelib */
+let patchers = [];
+
+//=require patchers/*.js
+
 registerPatcher({
     info: info,
     gameModes: [xelib.gmTES5, xelib.gmSSE],
@@ -13,31 +17,10 @@ registerPatcher({
         }
     },
     requiredFiles: [],
-    getFilesToPatch: function(filenames) {
+    getFilesToPatch: function (filenames) {
         return filenames;
     },
     execute: {
-        process: [{
-            load: function(plugin, helpers, settings, locals) {
-                return {
-                    signature: 'WEAP',
-                    filter: function(record) {
-                        var isMace = xelib.HasKeyword(record, 'WeapTypeMace');
-                        helpers.logMessage(xelib.FullName(record) + ": " + isMace);
-                        return isMace;
-                    }
-                }
-                // return {
-                //     signature: 'CELL',
-                //     filter: function(record) {
-                //         return xelib.HasElement(record, 'FULL') && xelib.HasElement(record, 'XEZN') && xelib.GetFlag(record, 'DATA', 'Is Interior Cell');
-                //     }
-                // }
-            },
-            patch: function(record, helpers, settings, locals) {
-                let name = xelib.FullName(record);
-                helpers.logMessage(name);
-            }
-        }]
+        process: patchers
     }
 });
