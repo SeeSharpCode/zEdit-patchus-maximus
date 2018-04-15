@@ -1,6 +1,52 @@
 /* global ngapp, xelib */
 let patchers = [];
 
+let staffRecipeExclusions = ['ACX', 'Unenchanted'];
+
+function getWorkBenchEditorID(record) {
+    return xelib.EditorID(xelib.GetLinksTo(record, 'BNAM'));
+}
+
+function isStaffEnchanter(editorID) {
+    return editorID === 'DLC2StaffEnchanter';
+}
+
+function isSharpeningWheel(editorID) {
+    return editorID === 'CraftingSmithingSharpeningWheel';
+}
+
+patchers.push({
+    load: function (plugin, helpers, settings, locals) {
+        return {
+            signature: 'COBJ',
+            filter: function (record) {
+                let workBenchEditorID = getWorkBenchEditorID(record);
+                return isStaffEnchanter(workBenchEditorID) || isSharpeningWheel(workBenchEditorID);
+            }
+        }
+    },
+    patch: function (record, helpers, settings, locals) {
+        let editorID = xelib.EditorID(record);
+        // helpers.logMessage(`Patching ${editorID}!`);
+
+        let workBenchEditorID = getWorkBenchEditorID(record);
+        if (isStaffEnchanter(workBenchEditorID)) {
+            let craftingOutputEditorID = xelib.EditorID(xelib.GetLinksTo(record, 'CNAM'));
+            helpers.logMessage(`Crafting output: ${craftingOutputEditorID}`);
+            let shouldDisable = false;
+            staffRecipeExclusions.forEach(exclusion => {
+                if (craftingOutputEditorID.includes(exclusion)) {
+                    shouldDisable = true;
+                }
+            });
+
+            if (shouldDisable) {
+                helpers.logMessage(`Disabling ${editorID}`);
+                //xelib.Set
+            }
+        }
+    }
+});
 const gameSettings = {
     fArmorScalingFactor: .1,
     fMaxArmorRating: 90.0,
@@ -10,6 +56,7 @@ const gameSettings = {
 
 let gameSettingsKeys = Object.keys(gameSettings);
 
+// TODO: if useWarrior
 patchers.push({
     load: function (plugin, helpers, settings, locals) {
         return {

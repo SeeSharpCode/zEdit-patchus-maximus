@@ -7,6 +7,7 @@ const gameSettings = {
 
 let gameSettingsKeys = Object.keys(gameSettings);
 
+// TODO: if useWarrior
 patchers.push({
     load: function (plugin, helpers, settings, locals) {
         return {
