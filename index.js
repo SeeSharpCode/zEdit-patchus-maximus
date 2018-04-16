@@ -21,6 +21,11 @@ registerPatcher({
         return filenames;
     },
     execute: {
+        initialize: function(patch, helpers, settings, locals) {
+            locals.gameSettings = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/game-settings.json`);
+            locals.enchantingConfig = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/enchanting.json`);
+            locals.weapons = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/weapons.json`);
+        },
         process: patchers
     }
 });
