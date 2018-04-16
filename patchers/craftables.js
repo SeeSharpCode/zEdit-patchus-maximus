@@ -10,6 +10,43 @@ function isSharpeningWheel(editorID) {
     return editorID === 'CraftingSmithingSharpeningWheel';
 }
 
+function diableStaffRecipes(record, locals, craftingOutputEditorID) {
+    let shouldDisable = false;
+    locals.enchantingConfig.staffCraftingDisableExclusions.forEach(exclusion => {
+        if (craftingOutputEditorID.includes(exclusion)) {
+            shouldDisable = true;
+        }
+    });
+
+    if (shouldDisable) {
+        helpers.logMessage(`Disabling ${editorID}`);
+        // TODO: verify this works
+        xelib.SetUIntValue(record, 'BNAM', 0x013794);
+    }
+}
+
+function getTemperingMaterial() {
+    
+}
+
+function changeTemperingPerkRequirement(locals, craftingOutputRecord) {
+    let outputWeaponName = xelib.Name(craftingOutputRecord);
+    let matchLength = 0;
+    let matchingWeaponMaterialTemper = "";
+    locals.weapons.forEach(weapon => {
+        weapon.matchingNameParts.forEach(namePart => {
+            if (outputWeaponName.includes(namePart) && namePart.length > matchLength) {
+                matchingWeaponMaterialTemper = weapon.material.temper;
+                matchLength = namePart.length;
+            }
+        });
+    });
+    if (matchingWeaponMaterialTemper) {
+        helpers.logMessage(`Found temper material ${matchingWeaponMaterialTemper} for ${outputWeaponName}`)
+
+    }
+}
+
 patchers.push({
     load: function (plugin, helpers, settings, locals) {
         return {
@@ -27,35 +64,9 @@ patchers.push({
         let workBenchEditorID = getWorkBenchEditorID(record);
 
         if (isStaffEnchanter(workBenchEditorID)) {
-            let shouldDisable = false;
-            locals.enchantingConfig.staffCraftingDisableExclusions.forEach(exclusion => {
-                if (craftingOutputEditorID.includes(exclusion)) {
-                    shouldDisable = true;
-                }
-            });
-
-            if (shouldDisable) {
-                helpers.logMessage(`Disabling ${editorID}`);
-                // TODO: verify this works
-                xelib.SetUIntValue(record, 'BNAM', 0x013794);
-            }
-        }
-
-        if (isSharpeningWheel(workBenchEditorID)) {
-            let outputWeaponName = xelib.Name(craftingOutputRecord);
-            let matchLength = 0;
-            let matchingWeaponMaterialTemper = "";
-            locals.weapons.forEach(weapon => {
-                weapon.matchingNameParts.forEach(namePart => {
-                    if (outputWeaponName.includes(namePart) && namePart.length > matchLength) {
-                        matchingWeaponMaterialTemper = weapon.material.temper;
-                        matchLength = namePart.length;
-                    }
-                });
-            });
-            if (matchingWeaponMaterialTemper) {
-                helpers.logMessage(`Matched ${outputWeaponName} to ${matchingWeaponMaterialTemper}`)
-            }
+            disableStaffRecipes(record, locals, craftingOutputEditorID);
+        } else if (isSharpeningWheel(workBenchEditorID)) {
+            changeTemperingPerkRequirement(locals, craftingOutputRecord);
         }
     }
 });
