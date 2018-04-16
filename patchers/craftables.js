@@ -1,5 +1,3 @@
-let staffRecipeExclusions = ['ACX', 'Unenchanted'];
-
 function getWorkBenchEditorID(record) {
     return xelib.EditorID(xelib.GetLinksTo(record, 'BNAM'));
 }
@@ -24,14 +22,13 @@ patchers.push({
     },
     patch: function (record, helpers, settings, locals) {
         let editorID = xelib.EditorID(record);
-        let craftingOutputEditorID = xelib.EditorID(xelib.GetLinksTo(record, 'CNAM'));
+        let craftingOutputRecord = xelib.GetLinksTo(record, 'CNAM');
+        let craftingOutputEditorID = xelib.EditorID(craftingOutputRecord);
         let workBenchEditorID = getWorkBenchEditorID(record);
-        // helpers.logMessage(`Patching ${editorID}!`);
 
         if (isStaffEnchanter(workBenchEditorID)) {
-            helpers.logMessage(`Crafting output: ${craftingOutputEditorID}`);
             let shouldDisable = false;
-            staffRecipeExclusions.forEach(exclusion => {
+            locals.enchantingConfig.staffCraftingDisableExclusions.forEach(exclusion => {
                 if (craftingOutputEditorID.includes(exclusion)) {
                     shouldDisable = true;
                 }
@@ -39,12 +36,26 @@ patchers.push({
 
             if (shouldDisable) {
                 helpers.logMessage(`Disabling ${editorID}`);
-                //xelib.Set
+                // TODO: verify this works
+                xelib.SetUIntValue(record, 'BNAM', 0x013794);
             }
         }
 
         if (isSharpeningWheel(workBenchEditorID)) {
-            
+            let outputWeaponName = xelib.Name(craftingOutputRecord);
+            let matchLength = 0;
+            let matchingWeaponMaterialTemper = "";
+            locals.weapons.forEach(weapon => {
+                weapon.matchingNameParts.forEach(namePart => {
+                    if (outputWeaponName.includes(namePart) && namePart.length > matchLength) {
+                        matchingWeaponMaterialTemper = weapon.material.temper;
+                        matchLength = namePart.length;
+                    }
+                });
+            });
+            if (matchingWeaponMaterialTemper) {
+                helpers.logMessage(`Matched ${outputWeaponName} to ${matchingWeaponMaterialTemper}`)
+            }
         }
     }
 });
