@@ -11,7 +11,9 @@
     "build": "gulp build"
   },
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-include": "^2.3.1"
   },
   "devDependencies": {
     "angular": "^1.6.6"
