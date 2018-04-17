@@ -10,9 +10,9 @@ function isSharpeningWheel(editorID) {
     return editorID === 'CraftingSmithingSharpeningWheel';
 }
 
-function diableStaffRecipes(record, locals, craftingOutputEditorID) {
+function disableStaffRecipes(record, enchantingConfig, craftingOutputEditorID) {
     let shouldDisable = false;
-    locals.enchantingConfig.staffCraftingDisableExclusions.forEach(exclusion => {
+    enchantingConfig.staffCraftingDisableExclusions.forEach(exclusion => {
         if (craftingOutputEditorID.includes(exclusion)) {
             shouldDisable = true;
         }
@@ -25,25 +25,25 @@ function diableStaffRecipes(record, locals, craftingOutputEditorID) {
     }
 }
 
-function getTemperingMaterial() {
-    
-}
-
-function changeTemperingPerkRequirement(locals, craftingOutputRecord) {
-    let outputWeaponName = xelib.Name(craftingOutputRecord);
+function getTemperingMaterial(weaponMaterials, outputWeaponName) {
     let matchLength = 0;
-    let matchingWeaponMaterialTemper = "";
-    locals.weapons.forEach(weapon => {
-        weapon.matchingNameParts.forEach(namePart => {
+    let temperingMaterial = "";
+    weaponMaterials.forEach(weaponMaterial => {
+        weaponMaterial.matchingNameParts.forEach(namePart => {
             if (outputWeaponName.includes(namePart) && namePart.length > matchLength) {
-                matchingWeaponMaterialTemper = weapon.material.temper;
+                temperingMaterial = weaponMaterial.temper;
                 matchLength = namePart.length;
             }
         });
     });
-    if (matchingWeaponMaterialTemper) {
-        helpers.logMessage(`Found temper material ${matchingWeaponMaterialTemper} for ${outputWeaponName}`)
+    return temperingMaterial;    
+}
 
+function changeTemperingPerkRequirement(weaponMaterials, craftingOutputRecord, helpers) {
+    let outputWeaponName = xelib.Name(craftingOutputRecord);
+    let matchingMaterialTemper = getTemperingMaterial(weaponMaterials, outputWeaponName);
+    if (matchingMaterialTemper) {
+        helpers.logMessage(`Found temper material ${matchingMaterialTemper} for ${outputWeaponName}`);
     }
 }
 
@@ -64,9 +64,9 @@ patchers.push({
         let workBenchEditorID = getWorkBenchEditorID(record);
 
         if (isStaffEnchanter(workBenchEditorID)) {
-            disableStaffRecipes(record, locals, craftingOutputEditorID);
+            disableStaffRecipes(record, locals.enchantingConfig, craftingOutputEditorID);
         } else if (isSharpeningWheel(workBenchEditorID)) {
-            changeTemperingPerkRequirement(locals, craftingOutputRecord);
+            changeTemperingPerkRequirement(locals.weaponMaterials, craftingOutputRecord, helpers);
         }
     }
 });
