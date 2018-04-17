@@ -25,25 +25,32 @@ function disableStaffRecipes(record, enchantingConfig, craftingOutputEditorID) {
     }
 }
 
-function getTemperingMaterial(weaponMaterials, outputWeaponName) {
+function getTemperingPerkFormID(weaponMaterials, outputWeaponName) {
     let matchLength = 0;
-    let temperingMaterial = "";
+    let temperingPerkFormID = "";
     weaponMaterials.forEach(weaponMaterial => {
         weaponMaterial.matchingNameParts.forEach(namePart => {
             if (outputWeaponName.includes(namePart) && namePart.length > matchLength) {
-                temperingMaterial = weaponMaterial.temper;
+                temperingPerkFormID = weaponMaterial.temperingPerkFormID;
                 matchLength = namePart.length;
             }
         });
     });
-    return temperingMaterial;    
+    return temperingPerkFormID;    
 }
 
-function changeTemperingPerkRequirement(weaponMaterials, craftingOutputRecord, helpers) {
+function changeRecipeConditions(record, weaponMaterials, craftingOutputRecord, helpers) {
+    // TODO: should conditions only be removed if a tempering perk is found?
+    // TODO: first check if we have the element
+    helpers.logMessage(`Removing conditions for ${xelib.EditorID(record)}`);
+    xelib.RemoveElement(record, "Conditions");
+
     let outputWeaponName = xelib.Name(craftingOutputRecord);
-    let matchingMaterialTemper = getTemperingMaterial(weaponMaterials, outputWeaponName);
-    if (matchingMaterialTemper) {
-        helpers.logMessage(`Found temper material ${matchingMaterialTemper} for ${outputWeaponName}`);
+    let temperingPerkFormID = getTemperingPerkFormID(weaponMaterials, outputWeaponName);
+    if (temperingPerkFormID) {    
+        xelib.AddElement(record, "Conditions"); 
+        helpers.logMessage(`Adding condition to ${xelib.EditorID(record)}: ${temperingPerkFormID}`);
+        xelib.AddCondition(record, "HasPerk", "10000000", "1", temperingPerkFormID);
     }
 }
 
@@ -66,7 +73,7 @@ patchers.push({
         if (isStaffEnchanter(workBenchEditorID)) {
             disableStaffRecipes(record, locals.enchantingConfig, craftingOutputEditorID);
         } else if (isSharpeningWheel(workBenchEditorID)) {
-            changeTemperingPerkRequirement(locals.weaponMaterials, craftingOutputRecord, helpers);
+            changeRecipeConditions(record, locals.weaponMaterials, craftingOutputRecord, helpers);
         }
     }
 });

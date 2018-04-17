@@ -6,7 +6,7 @@
         "temper": "EBONY",
         "reachModifier": 0.01,
         "speedModifier": -0.05,
-        "requiredSmithingPerkFormID": "0x0cb412",
+        "temperingPerkFormID": "0cb412",
         "matchingNameParts": [
             "Ebony",
             "Shrouded",
