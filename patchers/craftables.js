@@ -1,3 +1,27 @@
+patchers.push({
+    load: function (plugin, helpers, settings, locals) {
+        return {
+            signature: 'COBJ',
+            filter: function (record) {
+                let workBenchEditorID = getWorkBenchEditorID(record);
+                return isStaffEnchanter(workBenchEditorID) || isSharpeningWheel(workBenchEditorID);
+            }
+        }
+    },
+    patch: function (record, helpers, settings, locals) {
+        let editorID = xelib.EditorID(record);
+        let craftingOutputRecord = xelib.GetLinksTo(record, 'CNAM');
+        let craftingOutputEditorID = xelib.EditorID(craftingOutputRecord);
+        let workBenchEditorID = getWorkBenchEditorID(record);
+
+        if (isStaffEnchanter(workBenchEditorID)) {
+            disableStaffRecipes(record, locals.enchantingConfig, craftingOutputEditorID);
+        } else if (isSharpeningWheel(workBenchEditorID)) {
+            changeRecipeConditions(record, locals.weaponMaterials, craftingOutputRecord, helpers);
+        }
+    }
+});
+
 function getWorkBenchEditorID(record) {
     return xelib.EditorID(xelib.GetLinksTo(record, 'BNAM'));
 }
@@ -25,20 +49,6 @@ function disableStaffRecipes(record, enchantingConfig, craftingOutputEditorID) {
     }
 }
 
-function getTemperingPerkFormID(weaponMaterials, outputWeaponName) {
-    let matchLength = 0;
-    let temperingPerkFormID = "";
-    weaponMaterials.forEach(weaponMaterial => {
-        weaponMaterial.nameSubstrings.forEach(substring => {
-            if (outputWeaponName.includes(substring) && substring.length > matchLength) {
-                temperingPerkFormID = weaponMaterial.temperingPerkFormID;
-                matchLength = substring.length;
-            }
-        });
-    });
-    return temperingPerkFormID;    
-}
-
 function changeRecipeConditions(record, weaponMaterials, craftingOutputRecord, helpers) {
     // TODO: should conditions only be removed if a tempering perk is found?
     // TODO: first check if we have the element
@@ -54,26 +64,16 @@ function changeRecipeConditions(record, weaponMaterials, craftingOutputRecord, h
     }
 }
 
-patchers.push({
-    load: function (plugin, helpers, settings, locals) {
-        return {
-            signature: 'COBJ',
-            filter: function (record) {
-                let workBenchEditorID = getWorkBenchEditorID(record);
-                return isStaffEnchanter(workBenchEditorID) || isSharpeningWheel(workBenchEditorID);
+function getTemperingPerkFormID(weaponMaterials, outputWeaponName) {
+    let matchLength = 0;
+    let temperingPerkFormID = "";
+    weaponMaterials.forEach(weaponMaterial => {
+        weaponMaterial.nameSubstrings.forEach(substring => {
+            if (outputWeaponName.includes(substring) && substring.length > matchLength) {
+                temperingPerkFormID = weaponMaterial.temperingPerkFormID;
+                matchLength = substring.length;
             }
-        }
-    },
-    patch: function (record, helpers, settings, locals) {
-        let editorID = xelib.EditorID(record);
-        let craftingOutputRecord = xelib.GetLinksTo(record, 'CNAM');
-        let craftingOutputEditorID = xelib.EditorID(craftingOutputRecord);
-        let workBenchEditorID = getWorkBenchEditorID(record);
-
-        if (isStaffEnchanter(workBenchEditorID)) {
-            disableStaffRecipes(record, locals.enchantingConfig, craftingOutputEditorID);
-        } else if (isSharpeningWheel(workBenchEditorID)) {
-            changeRecipeConditions(record, locals.weaponMaterials, craftingOutputRecord, helpers);
-        }
-    }
-});
+        });
+    });
+    return temperingPerkFormID;    
+}

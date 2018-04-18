@@ -1,9 +1,8 @@
 [  
    {  
       "name":"AdvancedLow",
+      "material":"ADVANCED",
       "damageModifier":1.2,
-      "materialMeltdown":"ADVANCED",
-      "materialTemper":"ADVANCED",
       "reachModifier":0.01,
       "speedModifier":-0.04,
       "nameSubstrings":[  
@@ -12,9 +11,8 @@
    },
    {  
       "name":"Advanced",
+      "material":"ADVANCED",
       "damageModifier":1.25,
-      "materialMeltdown":"ADVANCED",
-      "materialTemper":"ADVANCED",
       "reachModifier":0.01,
       "speedModifier":-0.04,
       "nameSubstrings":[  
@@ -28,9 +26,8 @@
    },
    {  
       "name":"AdvancedHigh",
+      "material":"ADVANCED",
       "damageModifier":1.3,
-      "materialMeltdown":"ADVANCED",
-      "materialTemper":"ADVANCED",
       "reachModifier":0.01,
       "speedModifier":-0.04,
       "nameSubstrings":[  
@@ -42,9 +39,8 @@
    },
    {  
       "name":"Bone",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":0.9,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -53,9 +49,8 @@
    },
    {  
       "name":"BoneHigh",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":0.95,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -64,9 +59,8 @@
    },
    {  
       "name":"Mammoth Bone",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":1.2,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.01,
       "speedModifier":-0.02,
       "nameSubstrings":[  
@@ -75,9 +69,8 @@
    },
    {  
       "name":"Mammoth BoneHigh",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":1.5,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.01,
       "speedModifier":-0.02,
       "nameSubstrings":[  
@@ -89,9 +82,8 @@
    },
    {  
       "name":"Bonemold",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":1.05,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -100,9 +92,8 @@
    },
    {  
       "name":"BonemoldHigh",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":1.1,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -111,9 +102,8 @@
    },
    {  
       "name":"BoundLow",
+      "material":"NONE",
       "damageModifier":1.284,
-      "materialMeltdown":"NONE",
-      "materialTemper":"NONE",
       "reachModifier":0.0,
       "speedModifier":0.05,
       "nameSubstrings":[  
@@ -124,9 +114,8 @@
    },
    {  
       "name":"Bound",
+      "material":"NONE",
       "damageModifier":1.334,
-      "materialMeltdown":"NONE",
-      "materialTemper":"NONE",
       "reachModifier":0.0,
       "speedModifier":0.05,
       "nameSubstrings":[  
@@ -135,9 +124,8 @@
    },
    {  
       "name":"BoundHigh",
+      "material":"NONE",
       "damageModifier":1.384,
-      "materialMeltdown":"NONE",
-      "materialTemper":"NONE",
       "reachModifier":0.0,
       "speedModifier":0.05,
       "nameSubstrings":[  
@@ -146,9 +134,8 @@
    },
    {  
       "name":"ChitinLow",
+      "material":"CHITIN",
       "damageModifier":1.2,
-      "materialMeltdown":"CHITIN",
-      "materialTemper":"CHITIN",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -157,9 +144,8 @@
    },
    {  
       "name":"Chitin",
+      "material":"CHITIN",
       "damageModifier":1.25,
-      "materialMeltdown":"CHITIN",
-      "materialTemper":"CHITIN",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -168,9 +154,8 @@
    },
    {  
       "name":"ChitinHigh",
+      "material":"CHITIN",
       "damageModifier":1.3,
-      "materialMeltdown":"CHITIN",
-      "materialTemper":"CHITIN",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -179,9 +164,8 @@
    },
    {  
       "name":"DaedricLow",
+      "material":"DAEDRIC",
       "damageModifier":1.95,
-      "materialMeltdown":"DAEDRIC",
-      "materialTemper":"DAEDRIC",
       "reachModifier":0.03,
       "speedModifier":-0.06,
       "nameSubstrings":[  
@@ -190,9 +174,8 @@
    },
    {  
       "name":"Daedric",
+      "material":"DAEDRIC",
       "damageModifier":2.0,
-      "materialMeltdown":"DAEDRIC",
-      "materialTemper":"DAEDRIC",
       "reachModifier":0.03,
       "speedModifier":-0.06,
       "nameSubstrings":[  
@@ -273,9 +256,8 @@
    },
    {  
       "name":"DaedricHigh",
+      "material":"DAEDRIC",
       "damageModifier":2.05,
-      "materialMeltdown":"DAEDRIC",
-      "materialTemper":"DAEDRIC",
       "reachModifier":0.03,
       "speedModifier":-0.06,
       "nameSubstrings":[  
@@ -305,9 +287,8 @@
    },
    {  
       "name":"Dragonscale",
+      "material":"DRAGONSCALE",
       "damageModifier":1.7,
-      "materialMeltdown":"DRAGONSCALE",
-      "materialTemper":"DRAGONSCALE",
       "reachModifier":0.04,
       "speedModifier":0.05,
       "nameSubstrings":[  
@@ -320,9 +301,8 @@
    },
    {  
       "name":"DragonscaleHigh",
+      "material":"DRAGONSCALE",
       "damageModifier":1.75,
-      "materialMeltdown":"DRAGONSCALE",
-      "materialTemper":"DRAGONSCALE",
       "reachModifier":0.04,
       "speedModifier":0.05,
       "nameSubstrings":[  
@@ -331,9 +311,8 @@
    },
    {  
       "name":"Dragonplate",
+      "material":"DRAGONPLATE",
       "damageModifier":1.9,
-      "materialMeltdown":"DRAGONPLATE",
-      "materialTemper":"DRAGONPLATE",
       "reachModifier":0.04,
       "speedModifier":-0.05,
       "nameSubstrings":[  
@@ -350,9 +329,8 @@
    },
    {  
       "name":"DragonplateHigh",
+      "material":"DRAGONPLATE",
       "damageModifier":1.95,
-      "materialMeltdown":"DRAGONPLATE",
-      "materialTemper":"DRAGONPLATE",
       "reachModifier":0.04,
       "speedModifier":-0.05,
       "nameSubstrings":[  
@@ -361,9 +339,8 @@
    },
    {  
       "name":"Draugr",
+      "material":"DRAUGR",
       "damageModifier":1.3,
-      "materialMeltdown":"DRAUGR",
-      "materialTemper":"DRAUGR",
       "reachModifier":-0.1,
       "speedModifier":-0.05,
       "nameSubstrings":[  
@@ -408,9 +385,8 @@
    },
    {  
       "name":"DraugrHigh",
+      "material":"DRAUGR",
       "damageModifier":1.35,
-      "materialMeltdown":"DRAUGR",
-      "materialTemper":"DRAUGR",
       "reachModifier":-0.1,
       "speedModifier":-0.05,
       "nameSubstrings":[  
@@ -423,9 +399,8 @@
    },
    {  
       "name":"Draugr Honed",
+      "material":"DRAUGR",
       "damageModifier":1.4,
-      "materialMeltdown":"DRAUGR",
-      "materialTemper":"DRAUGR",
       "reachModifier":-0.1,
       "speedModifier":-0.05,
       "nameSubstrings":[  
@@ -448,9 +423,8 @@
    },
    {  
       "name":"Draugr HonedHigh",
+      "material":"DRAUGR",
       "damageModifier":1.45,
-      "materialMeltdown":"DRAUGR",
-      "materialTemper":"DRAUGR",
       "reachModifier":-0.1,
       "speedModifier":-0.05,
       "nameSubstrings":[  
@@ -462,9 +436,8 @@
    },
    {  
       "name":"DwarvenLow",
+      "material":"DWARVEN",
       "damageModifier":1.05,
-      "materialMeltdown":"DWARVEN",
-      "materialTemper":"DWARVEN",
       "reachModifier":0.0,
       "speedModifier":-0.03,
       "nameSubstrings":[  
@@ -473,9 +446,8 @@
    },
    {  
       "name":"Dwarven",
+      "material":"DWARVEN",
       "damageModifier":1.1,
-      "materialMeltdown":"DWARVEN",
-      "materialTemper":"DWARVEN",
       "reachModifier":0.0,
       "speedModifier":-0.03,
       "nameSubstrings":[  
@@ -532,9 +504,8 @@
    },
    {  
       "name":"DwarvenHigh",
+      "material":"DWARVEN",
       "damageModifier":1.15,
-      "materialMeltdown":"DWARVEN",
-      "materialTemper":"DWARVEN",
       "reachModifier":0.0,
       "speedModifier":-0.03,
       "nameSubstrings":[  
@@ -551,9 +522,8 @@
    },
    {  
       "name":"EbonyLow",
+      "material":"EBONY",
       "damageModifier":1.65,
-      "materialMeltdown":"EBONY",
-      "materialTemper":"EBONY",
       "reachModifier":0.01,
       "speedModifier":-0.05,
       "nameSubstrings":[  
@@ -562,9 +532,8 @@
    },
    {  
       "name":"Ebony",
+      "material":"EBONY",
       "damageModifier":1.7,
-      "materialMeltdown":"EBONY",
-      "materialTemper":"EBONY",
       "reachModifier":0.01,
       "speedModifier":-0.05,
       "nameSubstrings":[  
@@ -658,9 +627,8 @@
    },
    {  
       "name":"EbonyHigh",
+      "material":"EBONY",
       "damageModifier":1.75,
-      "materialMeltdown":"EBONY",
-      "materialTemper":"EBONY",
       "reachModifier":0.01,
       "speedModifier":-0.05,
       "nameSubstrings":[  
@@ -709,9 +677,8 @@
    },
    {  
       "name":"ElvenLow",
+      "material":"ELVEN",
       "damageModifier":1.15,
-      "materialMeltdown":"ELVEN",
-      "materialTemper":"ELVEN",
       "reachModifier":0.0,
       "speedModifier":0.03,
       "nameSubstrings":[  
@@ -720,9 +687,8 @@
    },
    {  
       "name":"Elven",
+      "material":"ELVEN",
       "damageModifier":1.2,
-      "materialMeltdown":"ELVEN",
-      "materialTemper":"ELVEN",
       "reachModifier":0.0,
       "speedModifier":0.03,
       "nameSubstrings":[  
@@ -787,9 +753,8 @@
    },
    {  
       "name":"ElvenHigh",
+      "material":"ELVEN",
       "damageModifier":1.25,
-      "materialMeltdown":"ELVEN",
-      "materialTemper":"ELVEN",
       "reachModifier":0.0,
       "speedModifier":0.03,
       "nameSubstrings":[  
@@ -810,9 +775,8 @@
    },
    {  
       "name":"Stormcloak",
+      "material":"STEEL",
       "damageModifier":1.1,
-      "materialMeltdown":"STEEL",
-      "materialTemper":"STEEL",
       "reachModifier":0.0,
       "speedModifier":-0.02,
       "nameSubstrings":[  
@@ -821,9 +785,8 @@
    },
    {  
       "name":"Imperial",
+      "material":"STEEL",
       "damageModifier":1.1,
-      "materialMeltdown":"STEEL",
-      "materialTemper":"STEEL",
       "reachModifier":0.01,
       "speedModifier":0.01,
       "nameSubstrings":[  
@@ -835,9 +798,8 @@
    },
    {  
       "name":"Dawnguard",
+      "material":"STEEL",
       "damageModifier":1.25,
-      "materialMeltdown":"STEEL",
-      "materialTemper":"STEEL",
       "reachModifier":0.0,
       "speedModifier":-0.03,
       "nameSubstrings":[  
@@ -846,9 +808,8 @@
    },
    {  
       "name":"Dawnguard Rune",
+      "material":"STEEL",
       "damageModifier":1.25,
-      "materialMeltdown":"STEEL",
-      "materialTemper":"STEEL",
       "reachModifier":0.0,
       "speedModifier":-0.03,
       "nameSubstrings":[  
@@ -857,9 +818,8 @@
    },
    {  
       "name":"Blades",
+      "material":"ADVANCED",
       "damageModifier":1.4,
-      "materialMeltdown":"ADVANCED",
-      "materialTemper":"ADVANCED",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -868,9 +828,8 @@
    },
    {  
       "name":"Skyforge",
+      "material":"STEEL",
       "damageModifier":1.4,
-      "materialMeltdown":"STEEL",
-      "materialTemper":"STEEL",
       "reachModifier":0.0,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -888,9 +847,8 @@
    },
    {  
       "name":"Nightingale",
+      "material":"DAEDRIC",
       "damageModifier":1.9,
-      "materialMeltdown":"DAEDRIC",
-      "materialTemper":"DAEDRIC",
       "reachModifier":0.03,
       "speedModifier":0.05,
       "nameSubstrings":[  
@@ -899,9 +857,8 @@
    },
    {  
       "name":"Falmer",
+      "material":"FALMER",
       "damageModifier":1.2,
-      "materialMeltdown":"FALMER",
-      "materialTemper":"FALMER",
       "reachModifier":-0.08,
       "speedModifier":-0.03,
       "nameSubstrings":[  
@@ -910,9 +867,8 @@
    },
    {  
       "name":"FalmerHigh",
+      "material":"FALMER",
       "damageModifier":1.25,
-      "materialMeltdown":"FALMER",
-      "materialTemper":"FALMER",
       "reachModifier":-0.08,
       "speedModifier":0.0,
       "nameSubstrings":[  
@@ -922,9 +878,8 @@
    },
    {  
       "name":"Ancient Falmer",
+      "material":"ELVEN",
       "damageModifier":1.6,
-      "materialMeltdown":"ELVEN",
-      "materialTemper":"ELVEN",
       "reachModifier":0.0,
       "speedModifier":-0.03,
       "nameSubstrings":[  
@@ -933,9 +888,8 @@
    },
    {  
       "name":"Forsworn",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":1.1,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.0,
       "speedModifier":-0.03,
       "nameSubstrings":[  
@@ -946,9 +900,8 @@
    },
    {  
       "name":"ForswornHigh",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":1.15,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.0,
       "speedModifier":-0.03,
       "nameSubstrings":[  
@@ -958,9 +911,8 @@
    },
    {  
       "name":"GlassLow",
+      "material":"GLASS",
       "damageModifier":1.45,
-      "materialMeltdown":"GLASS",
-      "materialTemper":"GLASS",
       "reachModifier":0.01,
       "speedModifier":0.03,
       "nameSubstrings":[  
@@ -969,9 +921,8 @@
    },
    {  
       "name":"Glass",
+      "material":"GLASS",
       "damageModifier":1.5,
-      "materialMeltdown":"GLASS",
-      "materialTemper":"GLASS",
       "reachModifier":0.01,
       "speedModifier":0.03,
       "nameSubstrings":[  
@@ -1008,9 +959,8 @@
    },
    {  
       "name":"GlassHigh",
+      "material":"GLASS",
       "damageModifier":1.55,
-      "materialMeltdown":"GLASS",
-      "materialTemper":"GLASS",
       "reachModifier":0.05,
       "speedModifier":0.03,
       "nameSubstrings":[  
@@ -1025,9 +975,8 @@
    },
    {  
       "name":"Gold",
+      "material":"GOLD",
       "damageModifier":1.0,
-      "materialMeltdown":"GOLD",
-      "materialTemper":"GOLD",
       "reachModifier":0.03,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1037,9 +986,8 @@
    },
    {  
       "name":"GoldHigh",
+      "material":"GOLD",
       "damageModifier":1.05,
-      "materialMeltdown":"GOLD",
-      "materialTemper":"GOLD",
       "reachModifier":0.03,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1048,9 +996,8 @@
    },
    {  
       "name":"HorkerL",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":0.95,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.02,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -1059,9 +1006,8 @@
    },
    {  
       "name":"HorkerH",
+      "material":"BONEMOLD_HEAVY",
       "damageModifier":1.0,
-      "materialMeltdown":"BONEMOLD_HEAVY",
-      "materialTemper":"BONEMOLD_HEAVY",
       "reachModifier":0.02,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -1070,9 +1016,8 @@
    },
    {  
       "name":"IronClutter",
+      "material":"IRON",
       "damageModifier":0.2,
-      "materialMeltdown":"IRON",
-      "materialTemper":"IRON",
       "reachModifier":0.0,
       "speedModifier":0.0,
       "nameSubstrings":[  
@@ -1089,9 +1034,8 @@
    },
    {  
       "name":"IronLow",
+      "material":"IRON",
       "damageModifier":0.85,
-      "materialMeltdown":"IRON",
-      "materialTemper":"IRON",
       "reachModifier":0.0,
       "speedModifier":-0.01,
       "nameSubstrings":[  
@@ -1104,9 +1048,8 @@
    },
    {  
       "name":"Iron",
+      "material":"IRON",
       "damageModifier":0.9,
-      "materialMeltdown":"IRON",
-      "materialTemper":"IRON",
       "reachModifier":0.0,
       "speedModifier":-0.01,
       "nameSubstrings":[  
@@ -1150,9 +1093,8 @@
    },
    {  
       "name":"IronHigh",
+      "material":"IRON",
       "damageModifier":0.95,
-      "materialMeltdown":"IRON",
-      "materialTemper":"IRON",
       "reachModifier":0.0,
       "speedModifier":-0.01,
       "nameSubstrings":[  
@@ -1165,9 +1107,8 @@
    },
    {  
       "name":"OrcishLow",
+      "material":"ORCISH",
       "damageModifier":1.25,
-      "materialMeltdown":"ORCISH",
-      "materialTemper":"ORCISH",
       "reachModifier":-0.03,
       "speedModifier":-0.04,
       "nameSubstrings":[  
@@ -1176,9 +1117,8 @@
    },
    {  
       "name":"Orcish",
+      "material":"ORCISH",
       "damageModifier":1.3,
-      "materialMeltdown":"ORCISH",
-      "materialTemper":"ORCISH",
       "reachModifier":-0.03,
       "speedModifier":-0.04,
       "nameSubstrings":[  
@@ -1204,9 +1144,8 @@
    },
    {  
       "name":"OrcishHigh",
+      "material":"ORCISH",
       "damageModifier":1.35,
-      "materialMeltdown":"ORCISH",
-      "materialTemper":"ORCISH",
       "reachModifier":-0.03,
       "speedModifier":-0.04,
       "nameSubstrings":[  
@@ -1215,9 +1154,8 @@
    },
    {  
       "name":"None",
+      "material":"NONE",
       "damageModifier":0.5,
-      "materialMeltdown":"NONE",
-      "materialTemper":"NONE",
       "reachModifier":0.0,
       "speedModifier":0.05,
       "nameSubstrings":[  
@@ -1239,9 +1177,8 @@
    },
    {  
       "name":"NoneHigh",
+      "material":"NONE",
       "damageModifier":0.55,
-      "materialMeltdown":"NONE",
-      "materialTemper":"NONE",
       "reachModifier":0.0,
       "speedModifier":0.05,
       "nameSubstrings":[  
@@ -1250,9 +1187,8 @@
    },
    {  
       "name":"Death",
+      "material":"NONE",
       "damageModifier":2.0,
-      "materialMeltdown":"NONE",
-      "materialTemper":"NONE",
       "reachModifier":0.0,
       "speedModifier":0.0,
       "nameSubstrings":[  
@@ -1272,9 +1208,8 @@
    },
    {  
       "name":"NordLow",
+      "material":"ADVANCED",
       "damageModifier":1.25,
-      "materialMeltdown":"ADVANCED",
-      "materialTemper":"ADVANCED",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -1283,9 +1218,8 @@
    },
    {  
       "name":"Nord",
+      "material":"ADVANCED",
       "damageModifier":1.3,
-      "materialMeltdown":"ADVANCED",
-      "materialTemper":"ADVANCED",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -1297,9 +1231,8 @@
    },
    {  
       "name":"NordHigh",
+      "material":"ADVANCED",
       "damageModifier":1.35,
-      "materialMeltdown":"ADVANCED",
-      "materialTemper":"ADVANCED",
       "reachModifier":0.01,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -1313,9 +1246,8 @@
    },
    {  
       "name":"Silver",
+      "material":"SILVER",
       "damageModifier":1.0,
-      "materialMeltdown":"SILVER",
-      "materialTemper":"SILVER",
       "reachModifier":0.03,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1328,9 +1260,8 @@
    },
    {  
       "name":"SilverHigh",
+      "material":"SILVER",
       "damageModifier":1.05,
-      "materialMeltdown":"SILVER",
-      "materialTemper":"SILVER",
       "reachModifier":0.03,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1351,9 +1282,8 @@
    },
    {  
       "name":"RSilver",
+      "material":"REFINED_SILVER",
       "damageModifier":1.0,
-      "materialMeltdown":"REFINED_SILVER",
-      "materialTemper":"REFINED_SILVER",
       "reachModifier":0.03,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1366,9 +1296,8 @@
    },
    {  
       "name":"RSilverHigh",
+      "material":"REFINED_SILVER",
       "damageModifier":1.05,
-      "materialMeltdown":"REFINED_SILVER",
-      "materialTemper":"REFINED_SILVER",
       "reachModifier":0.03,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1387,9 +1316,8 @@
    },
    {  
       "name":"StalhrimLow",
+      "material":"STALHRIM",
       "damageModifier":1.75,
-      "materialMeltdown":"STALHRIM",
-      "materialTemper":"STALHRIM",
       "reachModifier":0.02,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1398,9 +1326,8 @@
    },
    {  
       "name":"Stalhrim",
+      "material":"STALHRIM",
       "damageModifier":1.8,
-      "materialMeltdown":"STALHRIM",
-      "materialTemper":"STALHRIM",
       "reachModifier":0.02,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1416,9 +1343,8 @@
    },
    {  
       "name":"StalhrimHigh",
+      "material":"STALHRIM",
       "damageModifier":1.85,
-      "materialMeltdown":"STALHRIM",
-      "materialTemper":"STALHRIM",
       "reachModifier":0.02,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1430,9 +1356,8 @@
    },
    {  
       "name":"SteelLow",
+      "material":"STEEL",
       "damageModifier":0.95,
-      "materialMeltdown":"STEEL",
-      "materialTemper":"STEEL",
       "reachModifier":0.0,
       "speedModifier":-0.02,
       "nameSubstrings":[  
@@ -1441,9 +1366,8 @@
    },
    {  
       "name":"Steel",
+      "material":"STEEL",
       "damageModifier":1.0,
-      "materialMeltdown":"STEEL",
-      "materialTemper":"STEEL",
       "reachModifier":0.0,
       "speedModifier":-0.02,
       "nameSubstrings":[  
@@ -1616,9 +1540,8 @@
    },
    {  
       "name":"SteelHigh",
+      "material":"STEEL",
       "damageModifier":1.05,
-      "materialMeltdown":"STEEL",
-      "materialTemper":"STEEL",
       "reachModifier":0.0,
       "speedModifier":-0.02,
       "nameSubstrings":[  
@@ -1652,9 +1575,8 @@
    },
    {  
       "name":"Wood",
+      "material":"WOOD",
       "damageModifier":0.8,
-      "materialMeltdown":"WOOD",
-      "materialTemper":"WOOD",
       "reachModifier":0.0,
       "speedModifier":0.01,
       "nameSubstrings":[  
@@ -1677,9 +1599,8 @@
    },
    {  
       "name":"WoodHigh",
+      "material":"WOOD",
       "damageModifier":0.85,
-      "materialMeltdown":"WOOD",
-      "materialTemper":"WOOD",
       "reachModifier":0.0,
       "speedModifier":0.01,
       "nameSubstrings":[  
@@ -1692,9 +1613,8 @@
    },
    {  
       "name":"Oakwood",
+      "material":"WOOD",
       "damageModifier":1.0,
-      "materialMeltdown":"WOOD",
-      "materialTemper":"WOOD",
       "reachModifier":0.0,
       "speedModifier":0.02,
       "nameSubstrings":[  
@@ -1707,9 +1627,8 @@
    },
    {  
       "name":"Ashwood",
+      "material":"WOOD",
       "damageModifier":1.1,
-      "materialMeltdown":"WOOD",
-      "materialTemper":"WOOD",
       "reachModifier":0.0,
       "speedModifier":0.04,
       "nameSubstrings":[  
@@ -1725,9 +1644,8 @@
    },
    {  
       "name":"Steelwood",
+      "material":"STEEL",
       "damageModifier":1.1,
-      "materialMeltdown":"STEEL",
-      "materialTemper":"STEEL",
       "reachModifier":0.0,
       "speedModifier":0.03,
       "nameSubstrings":[  
@@ -1737,9 +1655,8 @@
    },
    {  
       "name":"Strongwood",
+      "material":"WOOD",
       "damageModifier":1.2,
-      "materialMeltdown":"WOOD",
-      "materialTemper":"WOOD",
       "reachModifier":0.0,
       "speedModifier":0.04,
       "nameSubstrings":[  
