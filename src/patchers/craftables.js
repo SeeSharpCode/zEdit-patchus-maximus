@@ -29,12 +29,16 @@ function getWorkBenchEditorID(record) {
     return xelib.EditorID(xelib.GetLinksTo(record, 'BNAM'));
 }
 
-function isStaffEnchanter(editorID) {
-    return editorID === 'DLC2StaffEnchanter';
+function isStaffEnchanter(workBenchEditorID) {
+    return workBenchEditorID === 'DLC2StaffEnchanter';
 }
 
-function isSharpeningWheel(editorID) {
-    return editorID === 'CraftingSmithingSharpeningWheel';
+function isSharpeningWheel(workBenchEditorID) {
+    return workBenchEditorID === 'CraftingSmithingSharpeningWheel';
+}
+
+function isWorkBench(workBenchEditorID) {
+    return workBenchEditorID === ''; // TODO: get editor ID for workbench
 }
 
 function shouldDisableStaffRecipe(staffCraftingDisableExclusions, craftingOutputEditorID) {
@@ -69,6 +73,7 @@ function changeRecipeConditions(record, weaponMaterials, outputWeaponName, helpe
 
     helpers.logMessage(`Adding required perk ${smithingPerkFormID} to ${recipeEditorID}`);
     xelib.AddElement(record, "Conditions");
+    // TODO: is RunOnType (e.g. Subject) needed?
     xelib.AddCondition(record, "HasPerk", "10000000", "1", smithingPerkFormID);
 }
 
