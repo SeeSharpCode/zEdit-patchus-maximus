@@ -1,7 +1,7 @@
 /* global ngapp, xelib */
 let patchers = [];
 
-//=require patchers/*.js
+//=require src/**/*.js
 
 registerPatcher({
     info: info,
