@@ -29,10 +29,10 @@ function getTemperingPerkFormID(weaponMaterials, outputWeaponName) {
     let matchLength = 0;
     let temperingPerkFormID = "";
     weaponMaterials.forEach(weaponMaterial => {
-        weaponMaterial.matchingNameParts.forEach(namePart => {
-            if (outputWeaponName.includes(namePart) && namePart.length > matchLength) {
+        weaponMaterial.nameSubstrings.forEach(substring => {
+            if (outputWeaponName.includes(substring) && substring.length > matchLength) {
                 temperingPerkFormID = weaponMaterial.temperingPerkFormID;
-                matchLength = namePart.length;
+                matchLength = substring.length;
             }
         });
     });
