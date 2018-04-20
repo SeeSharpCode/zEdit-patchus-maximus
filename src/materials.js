@@ -1,4 +1,5 @@
 const SMITHING_PERK_FORMIDS = {
+    LEATHER: "1d8be6",
     STEEL: "cb40d",
     DWARVEN: "cb40e",
     ORCISH: "cb410",
@@ -8,8 +9,8 @@ const SMITHING_PERK_FORMIDS = {
     ADVANCED: "cb414",
     GLASS: "cb411",
     DRAGON: "52190",
-    SILVER: "a82a6",
-    REFINED_SILVER: "54ff5"
+    SILVER: "a82a6", // TODO: PerMa form ID
+    REFINED_SILVER: "54ff5" // TODO: PerMa form ID
 };
 
 const INGOT_FORMIDS = {
@@ -28,11 +29,13 @@ const INGOT_FORMIDS = {
     DRAGONBONE: "3ada4",
     STALHRIM: "2b06b",
     CHARCOAL: "33760",
-    FIREWOOD: "6f993"
+    FIREWOOD: "6f993",
+    LEATHER_STRIPS: "800e4"
 };
 
 const CRAFTING_STATION_FORMIDS = {
-    SMELTER: "a5cce"
+    SMELTER: "a5cce",
+    TANNING_RACK: "7866a"
 };
 
 const MATERIALS = [
@@ -186,8 +189,57 @@ const MATERIALS = [
     {
         name: "FUR",
         smithingPerkFormID: null,
-        meltdownProductFormID: INGOT_FORMIDS.STEEL,
+        meltdownProductFormID: INGOT_FORMIDS.LEATHER_STRIPS,
+        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        temperingInputFormID: INGOT_FORMIDS.LEATHER_STRIPS
+    },
+    {
+        name: "HIDE",
+        smithingPerkFormID: null,
+        meltdownProductFormID: INGOT_FORMIDS.LEATHER_STRIPS,
+        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        temperingInputFormID: INGOT_FORMIDS.LEATHER_STRIPS
+    },
+    {
+        name: "LEATHER",
+        smithingPerkFormID: SMITHING_PERK_FORMIDS.LEATHER,
+        meltdownProductFormID: INGOT_FORMIDS.LEATHER_STRIPS,
+        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        temperingInputFormID: INGOT_FORMIDS.LEATHER_STRIPS
+    },
+    {
+        name: "SCALED",
+        smithingPerkFormID: SMITHING_PERK_FORMIDS.ADVANCED,
+        meltdownProductFormID: INGOT_FORMIDS.CORONDUM,
+        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        temperingInputFormID: INGOT_FORMIDS.CORONDUM
+    },
+    {
+        name: "SCALED",
+        smithingPerkFormID: SMITHING_PERK_FORMIDS.ADVANCED,
+        meltdownProductFormID: INGOT_FORMIDS.CORONDUM,
+        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        temperingInputFormID: INGOT_FORMIDS.CORONDUM
+    },
+    {
+        name: "STALHRIM_HEAVY",
+        smithingPerkFormID: SMITHING_PERK_FORMIDS.EBONY,
+        meltdownProductFormID: INGOT_FORMIDS.STALHRIM,
         meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.SMELTER,
-        temperingInputFormID: INGOT_FORMIDS.STEEL
-    }
+        temperingInputFormID: INGOT_FORMIDS.STALHRIM
+    },
+    {
+        name: "STALHRIM_LIGHT",
+        smithingPerkFormID: SMITHING_PERK_FORMIDS.EBONY,
+        meltdownProductFormID: INGOT_FORMIDS.STALHRIM,
+        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.SMELTER,
+        temperingInputFormID: INGOT_FORMIDS.STALHRIM
+    },
+    {
+        name: "NORDIC_HEAVY",
+        smithingPerkFormID: SMITHING_PERK_FORMIDS.ADVANCED,
+        meltdownProductFormID: INGOT_FORMIDS.CORONDUM,
+        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.SMELTER,
+        temperingInputFormID: INGOT_FORMIDS.CORONDUM
+    },
 ];
