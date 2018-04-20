@@ -1,3 +1,8 @@
+const STAFF_ENCHANTER_EDITORID = 'DLC2StaffEnchanter';
+const SHARPENING_WHEEL_EDITORID = 'CraftingSmithingSharpeningWheel';
+const ARMOR_WORKBENCH_EDITORID = 'CraftingSmithingArmorTable';
+const PATCHABLE_CRAFTING_STATIONS = [STAFF_ENCHANTER_EDITORID, SHARPENING_WHEEL_EDITORID, ARMOR_WORKBENCH_EDITORID];
+
 patchers.push({
     load: function (plugin, helpers, settings, locals) {
         return {
@@ -32,15 +37,11 @@ patchers.push({
         } else {
             // TODO: if useWarrior
             let materials = (workBenchEditorID === SHARPENING_WHEEL_EDITORID) ? locals.weaponMaterials : locals.armorMaterials;
+
             changeRecipeConditions(record, materials, outputName, helpers);
         }
     }
 });
-
-const STAFF_ENCHANTER_EDITORID = 'DLC2StaffEnchanter';
-const SHARPENING_WHEEL_EDITORID = 'CraftingSmithingSharpeningWheel';
-const ARMOR_WORKBENCH_EDITORID = 'CraftingSmithingArmorTable';
-const PATCHABLE_CRAFTING_STATIONS = [STAFF_ENCHANTER_EDITORID, SHARPENING_WHEEL_EDITORID, ARMOR_WORKBENCH_EDITORID];
 
 function getWorkBenchEditorID(record) {
     return xelib.EditorID(xelib.GetLinksTo(record, 'BNAM'));
@@ -59,7 +60,10 @@ function shouldDisableStaffRecipe(staffCraftingDisableExclusions, craftingOutput
 function changeRecipeConditions(record, materials, outputName, helpers) {
     let recipeEditorID = xelib.EditorID(record);
 
-    let materialName = getMaterialName(outputName, materials);
+    helpers.logMessage(`Removing conditions for ${recipeEditorID}`);
+    xelib.RemoveElement(record, 'Conditions');
+
+    let materialName = getMaterialName(outputName, materials, helpers);
     if (!materialName) {
         helpers.logMessage(`WARNING: No material name found for ${outputName}. ${recipeEditorID} recipe will not be patched.`);
         return;
@@ -73,19 +77,20 @@ function changeRecipeConditions(record, materials, outputName, helpers) {
 
     let smithingPerkFormID = material.smithingPerkFormID;
 
-    helpers.logMessage(`Removing conditions for ${recipeEditorID}`);
-    xelib.RemoveElement(record, "Conditions");
+    if (!smithingPerkFormID) {
+        return;
+    }
 
-    xelib.AddElement(record, "Conditions");
-    // TODO: is RunOnType (e.g. Subject) needed?
-    xelib.SetValue(record, "Conditions\\[0]\\CTDA\\Function", "HaskPerk");
-    xelib.AddCondition(newElement, "HasPerk", "10000000", "1", smithingPerkFormID);
-    helpers.logMessage(`Adding required perk ${smithingPerkFormID} to ${recipeEditorID}`);
+    xelib.AddElement(record, 'Conditions');
+    let condition = xelib.AddCondition(record, 'HasPerk', '10000000', '1');
+    xelib.SetValue(condition, 'CTDA\\Parameter #1', smithingPerkFormID);
+    xelib.RemoveCondition(record, 'GetWantBlocking');
 }
 
-function getMaterialName(outputName, materials) {
+function getMaterialName(outputName, materials, helpers) {
     let matchLength = 0;
     let materialName = null;
+
     materials.forEach(m => {
         m.nameSubstrings.forEach(substring => {
             if (outputName.includes(substring) && substring.length > matchLength) {
@@ -94,5 +99,6 @@ function getMaterialName(outputName, materials) {
             }
         });
     });
+
     return materialName;
 }
