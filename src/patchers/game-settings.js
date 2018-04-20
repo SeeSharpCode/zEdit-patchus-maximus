@@ -5,7 +5,7 @@ patchers.push({
             signature: 'GMST',
             filter: function (record) {
                 let editorID = xelib.EditorID(record);
-                return Object.keys(locals.gameSettings).indexOf(editorID) > -1;
+                return Object.keys(locals.gameSettings).includes(editorID);
             }
         }
     },
