@@ -1,4 +1,4 @@
-# zedit-patchus-maximus
+# zEdit-patchus-maximus
 A zEdit UPF port of the Perkus Maximus SkyProc patcher.
 
 ## building

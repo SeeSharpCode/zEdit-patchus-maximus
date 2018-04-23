@@ -1,20 +1,34 @@
-const PATCHABLE_WORKBENCHES = [
-    CRAFTING_STATIONS.STAFF_ENCHANTER_EDITOR_ID, 
-    CRAFTING_STATIONS.SHARPENING_WHEEL_EDITOR_ID, 
-    CRAFTING_STATIONS.ARMOR_TABLE_EDITOR_ID
-];
-
 class Recipe {
     constructor(record, helpers) {
         this.record = record;
         this.editorID = xelib.EditorID(record);
         this.workbenchEditorID = xelib.EditorID(xelib.GetLinksTo(record, 'BNAM'));
         this.outputRecord = xelib.GetLinksTo(record, 'CNAM');
-        this.outputRecordEditorID = xelib.EditorID(this.outputRecord);
+        if (this.outputRecord) {
+            this.outputRecordEditorID = xelib.EditorID(this.outputRecord);
+            this.outputRecordName = xelib.Name(this.outputRecord);
+        }
+        this.helpers = helpers;
     }
 
     get isStaffRecipe() {
         return this.workbenchEditorID === CRAFTING_STATIONS.STAFF_ENCHANTER_EDITOR_ID;
+    }
+
+    get isWeaponRecipe() {
+        return this.workbenchEditorID === CRAFTING_STATIONS.SHARPENING_WHEEL_EDITOR_ID;
+    }
+
+    get isArmorRecipe() {
+        return this.workbenchEditorID === CRAFTING_STATIONS.ARMOR_TABLE_EDITOR_ID;
+    }
+
+    get hasOutput() {
+        if (!this.outputRecord) {
+            helpers.logMessage(`WARNING: No output record for ${this.editorID}. Recipe will not be patched.`);
+            return false;
+        }
+        return true;
     }
 }
 
@@ -23,15 +37,8 @@ patchers.push({
         return {
             signature: 'COBJ',
             filter: function (record) {
-                let recipe = new Recipe(record);
-                if (!PATCHABLE_WORKBENCHES.includes(recipe.workbenchEditorID)) {
-                    return false;
-                }
-                if (!recipe.outputRecord) {
-                    helpers.logMessage(`WARNING: No output record for ${recipe.editorID}. Recipe will not be patched.`);
-                    return false;
-                }
-                return true;
+                let recipe = new Recipe(record, helpers);
+                return (recipe.isStaffRecipe || recipe.isWeaponRecipe || recipe.isArmorRecipe) && recipe.hasOutput;
             }
         }
     },
@@ -40,38 +47,35 @@ patchers.push({
 
         // TODO: if useMage
         if (recipe.isStaffRecipe()) {
-            // TODO: reevaluate this logic, seems funky
             if (shouldDisableStaffRecipe(locals.enchantingConfig.staffCraftingDisableExclusions, recipe.outputRecordEditorID)) {
-                helpers.logMessage(`Disabling staff recipe: ${xelib.EditorID(record)}`);
+                helpers.logMessage(`Disabling staff recipe: ${recipe.editorID}`);
                 // TODO: verify this works, probably doesn't
                 xelib.SetUIntValue(record, 'BNAM', 0x00013794);
             }
         } else {
             // TODO: if useWarrior
-            let outputName = xelib.Name(craftingOutputRecord);
-            let materials = (workbenchEditorID === SHARPENING_WHEEL_EDITORID) ? locals.weaponMaterials : locals.armorMaterials;
-            changeRecipeConditions(record, materials, outputName, helpers);
+            let materials = (recipe.workbenchEditorID === CRAFTING_STATIONS.SHARPENING_WHEEL_EDITOR_ID) ? locals.weaponMaterials : locals.armorMaterials;
+            changeRecipeConditions(recipe, materials);
         }
     }
 });
 
-function shouldDisableStaffRecipe(staffCraftingDisableExclusions, craftingOutputEditorID) {
+function shouldDisableStaffRecipe(staffCraftingDisableExclusions, outputRecordEditorID) {
+    // TODO: reevaluate this logic, seems funky
     let shouldDisable = false;
     staffCraftingDisableExclusions.forEach(exclusion => {
-        if (craftingOutputEditorID.includes(exclusion)) {
+        if (outputRecordEditorID.includes(exclusion)) {
             return true;
         }
     });
     return false;
 }
 
-function changeRecipeConditions(record, materials) {
-    let recipeEditorID = 
-    helpers.logMessage(`Removing conditions for ${xelib.EditorID(record)}`);
-    xelib.RemoveElement(record, 'Conditions');
+function changeRecipeConditions(recipe, materials) {
+    helpers.logMessage(`Removing conditions for ${recipe.editorID}`);
+    xelib.RemoveElement(recipe.record, 'Conditions');
 
-    let materials = (getWorkBenchEditorID(record) === SHARPENING_WHEEL_EDITORID) ? locals.weaponMaterials : locals.armorMaterials;
-    let smithingPerkFormID = getSmithingPerkFormID(record, outputName, helpers);
+    let smithingPerkFormID = getSmithingPerkFormID(recipe.record, outputName, helpers);
     if (smithingPerkFormID) {
         xelib.AddElement(record, 'Conditions');
         let condition = xelib.AddCondition(record, 'HasPerk', '10000000', '1');
