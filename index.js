@@ -1,6 +1,4 @@
 /* global ngapp, xelib */
-let patchers = [];
-
 //=require src/**/*.js
 
 registerPatcher({
@@ -27,6 +25,6 @@ registerPatcher({
             locals.weaponMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/weapon-materials.json`);
             locals.armorMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/armor-materials.json`);
         },
-        process: patchers
+        process: [gameSettingsPatcher()]
     }
 });
