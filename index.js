@@ -28,6 +28,7 @@ registerPatcher({
         process: [
             gameSettingsPatcher(), 
             cobjPatcher(), 
+            mgefPatcher()
             //globPatcher()
         ]
     }
