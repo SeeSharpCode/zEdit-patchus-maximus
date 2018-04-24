@@ -15,7 +15,7 @@ registerPatcher({
         }
     },
     requiredFiles: [],
-    getFilesToPatch: function (filenames) {
+    getFilesToPatch: function(filenames) {
         return filenames;
     },
     execute: {
@@ -25,6 +25,6 @@ registerPatcher({
             locals.weaponMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/weapon-materials.json`);
             locals.armorMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/armor-materials.json`);
         },
-        process: [gameSettingsPatcher()]
+        process: [gameSettingsPatcher(), cobjPatcher()]
     }
 });

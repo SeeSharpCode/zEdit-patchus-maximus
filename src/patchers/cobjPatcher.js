@@ -1,4 +1,4 @@
-let cobjPatcher = function () {
+let cobjPatcher = function() {
     // code
     class Recipe {
         constructor(record) {
@@ -25,7 +25,7 @@ let cobjPatcher = function () {
         }
     }
 
-    let shouldDisableStaffRecipe = function (staffCraftingDisableExclusions, outputRecordEditorID) {
+    let shouldDisableStaffRecipe = function(staffCraftingDisableExclusions, outputRecordEditorID) {
         // TODO: reevaluate this logic, seems funky
         let shouldDisable = false;
         staffCraftingDisableExclusions.forEach(exclusion => {
@@ -36,7 +36,7 @@ let cobjPatcher = function () {
         return false;
     };
 
-    let changeRecipeConditions = function (recipe, materials, helpers) {
+    let changeRecipeConditions = function(recipe, materials, helpers) {
         helpers.logMessage(`Removing conditions for ${recipe.editorID}`);
         xelib.RemoveElement(recipe.record, 'Conditions');
 
@@ -50,7 +50,7 @@ let cobjPatcher = function () {
         xelib.RemoveCondition(recipe.record, 'GetWantBlocking');
     }
 
-    let getSmithingPerkFormID = function (recipe, helpers) {
+    let getSmithingPerkFormID = function(recipe, helpers) {
         let materialName = getMaterialName(recipe.outputRecordName, materials, helpers);
         if (!materialName) {
             helpers.logMessage(`WARNING: No material found for ${recipe.outputRecordName}. ${recipe.EditorID} recipe will not be patched.`);
@@ -66,7 +66,7 @@ let cobjPatcher = function () {
         return material.smithingPerkFormID;
     }
 
-    let getMaterialName = function (outputName, materials, helpers) {
+    let getMaterialName = function(outputName, materials, helpers) {
         let matchLength = 0;
         let materialName = null;
 
@@ -83,10 +83,10 @@ let cobjPatcher = function () {
     }
 
     return {
-        load: function (plugin, helpers, settings, locals) {
+        load: function(plugin, helpers, settings, locals) {
             return {
                 signature: 'COBJ',
-                filter: function (record) {
+                filter: function(record) {
                     let recipe = new Recipe(record);
                     if (!recipe.isStaffRecipe && !recipe.isWeaponRecipe && !recipe.isArmorRecipe) {
                         return false;
@@ -99,7 +99,7 @@ let cobjPatcher = function () {
                 }
             }
         },
-        patch: function (record, helpers, settings, locals) {
+        patch: function(record, helpers, settings, locals) {
             let recipe = new Recipe(record);
 
             // TODO: if useMage
