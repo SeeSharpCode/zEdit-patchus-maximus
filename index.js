@@ -1,5 +1,5 @@
 /* global ngapp, xelib */
-//=require src/**/*.js
+//=require src/patchers/*.js
 
 registerPatcher({
     info: info,
