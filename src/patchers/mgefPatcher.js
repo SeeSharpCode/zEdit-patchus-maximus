@@ -3,10 +3,11 @@ let mgefPatcher = function() {
         constructor(record) {
             this.record = record;
             this.name = xelib.Name(record);
+            this.archtype = xelib.GetValue(this.record, "Magic Effect Data\\DATA\\Archtype");
         }
 
         get isDisarm() {
-            return xelib.GetValue(this.record, "DATA\\EffectType") === "9";
+            return xelib.GetValue(this.record, "Magic Effect Data\\DATA\\Archtype") === "Disarm";
         }
     }
 
@@ -16,7 +17,7 @@ let mgefPatcher = function() {
                 signature: 'MGEF',
                 filter: function(record) {
                     let magicEffect = new MagicEffect(record);
-                    helpers.logMessage(`${magicEffect.name} is disarm!`);
+                    helpers.logMessage(`${magicEffect.archtype} is disarm!`);
                     return false;
                 }
             }

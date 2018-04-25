@@ -25,11 +25,6 @@ registerPatcher({
             locals.weaponMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/weapon-materials.json`);
             locals.armorMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/armor-materials.json`);
         },
-        process: [
-            gameSettingsPatcher(), 
-            cobjPatcher(), 
-            mgefPatcher()
-            //globPatcher()
-        ]
+        process: [gameSettingsPatcher(), mgefPatcher()]
     }
 });

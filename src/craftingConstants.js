@@ -193,35 +193,35 @@ const MATERIALS = [
         name: "FUR",
         smithingPerkFormID: null,
         meltdownProductFormID: INGOT_FORM_IDS.LEATHER_STRIPS,
-        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        meltdownCraftingStationFormID: CRAFTING_STATIONS.TANNING_RACK_FORM_ID,
         temperingInputFormID: INGOT_FORM_IDS.LEATHER_STRIPS
     },
     {
         name: "HIDE",
         smithingPerkFormID: null,
         meltdownProductFormID: INGOT_FORM_IDS.LEATHER_STRIPS,
-        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        meltdownCraftingStationFormID: CRAFTING_STATIONS.TANNING_RACK_FORM_ID,
         temperingInputFormID: INGOT_FORM_IDS.LEATHER_STRIPS
     },
     {
         name: "LEATHER",
         smithingPerkFormID: SMITHING_PERK_FORM_IDS.LEATHER,
         meltdownProductFormID: INGOT_FORM_IDS.LEATHER_STRIPS,
-        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        meltdownCraftingStationFormID: CRAFTING_STATIONS.TANNING_RACK_FORM_ID,
         temperingInputFormID: INGOT_FORM_IDS.LEATHER_STRIPS
     },
     {
         name: "SCALED",
         smithingPerkFormID: SMITHING_PERK_FORM_IDS.ADVANCED,
         meltdownProductFormID: INGOT_FORM_IDS.CORONDUM,
-        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        meltdownCraftingStationFormID: CRAFTING_STATIONS.TANNING_RACK_FORM_ID,
         temperingInputFormID: INGOT_FORM_IDS.CORONDUM
     },
     {
         name: "SCALED",
         smithingPerkFormID: SMITHING_PERK_FORM_IDS.ADVANCED,
         meltdownProductFormID: INGOT_FORM_IDS.CORONDUM,
-        meltdownCraftingStationFormID: CRAFTING_STATION_FORMIDS.TANNING_RACK,
+        meltdownCraftingStationFormID: CRAFTING_STATIONS.TANNING_RACK_FORM_ID,
         temperingInputFormID: INGOT_FORM_IDS.CORONDUM
     },
     {
