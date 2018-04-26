@@ -24,9 +24,11 @@ let cobjPatcher = function() {
 
         // TODO: hacky workaround to add condition until xelib is fixed
         xelib.AddElement(recipe.record, 'Conditions');
+        // TODO: is this Type correct? looks like Not Equal To
         let condition = xelib.AddCondition(recipe.record, 'HasPerk', '10000000', '1');
         xelib.SetValue(condition, 'CTDA\\Parameter #1', smithingPerkFormID);
         xelib.RemoveCondition(recipe.record, 'GetWantBlocking');
+        herlpers.logMessage(`Added HasPerk (${smithingPerkFormID} condition to ${recipe.editorID})`);
     }
 
     let getSmithingPerkFormID = function(recipe, helpers) {
