@@ -13,14 +13,14 @@ class Recipe {
     }
 
     get isStaffRecipe() {
-        return this.workbenchEditorID === CRAFTING_STATIONS.STAFF_ENCHANTER_EDITOR_ID;
+        return this.workbenchEditorID === CraftingConstants.CRAFTING_STATIONS.STAFF_ENCHANTER_EDITOR_ID;
     }
 
     get isWeaponRecipe() {
-        return this.workbenchEditorID === CRAFTING_STATIONS.SHARPENING_WHEEL_EDITOR_ID;
+        return this.workbenchEditorID === CraftingConstants.CRAFTING_STATIONS.SHARPENING_WHEEL_EDITOR_ID;
     }
 
     get isArmorRecipe() {
-        return this.workbenchEditorID === CRAFTING_STATIONS.ARMOR_TABLE_EDITOR_ID;
+        return this.workbenchEditorID === CraftingConstants.CRAFTING_STATIONS.ARMOR_TABLE_EDITOR_ID;
     }
 }

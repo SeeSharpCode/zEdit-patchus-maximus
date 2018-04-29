@@ -38,7 +38,7 @@ let cobjPatcher = function() {
             return null;
         }
 
-        let material = MATERIALS.find(m => m.name === materialName);
+        let material = CraftingConstants.MATERIALS.find(m => m.name === materialName);
         if (!material) {
             helpers.logMessage(`WARNING: No material found with name ${materialName}. ${recipe.EditorID} recipe will not be patched.`);
             return null;
