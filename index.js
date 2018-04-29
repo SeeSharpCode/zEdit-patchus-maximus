@@ -24,10 +24,13 @@ registerPatcher({
             locals.enchantingConfig = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/enchanting.json`);
             locals.weaponMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/weapon-materials.json`);
             locals.armorMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/armor-materials.json`);
+
+            let file = xelib.FileByName('PerkusMaximus_Master.esp');
+            locals.perMaMasterOrdinal = xelib.GetFileLoadOrder(file).toString(16);
         },
         process: [
-            gameSettingsPatcher(), 
-            cobjPatcher()
+            gameSettingsPatcher()//, 
+            //cobjPatcher()
         ]
     }
 });
