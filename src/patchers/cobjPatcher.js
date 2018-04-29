@@ -17,7 +17,7 @@ let cobjPatcher = function() {
         helpers.logMessage(`Removing conditions for ${recipe.editorID}`);
         xelib.RemoveElement(recipe.record, 'Conditions');
 
-        let smithingPerkFormID = getSmithingPerkFormID(recipe, helpers);
+        let smithingPerkFormID = getSmithingPerkFormID(recipe, materials, helpers);
         if (!smithingPerkFormID) {
             return;
         }
@@ -28,10 +28,10 @@ let cobjPatcher = function() {
         let condition = xelib.AddCondition(recipe.record, 'HasPerk', '10000000', '1');
         xelib.SetValue(condition, 'CTDA\\Parameter #1', smithingPerkFormID);
         xelib.RemoveCondition(recipe.record, 'GetWantBlocking');
-        herlpers.logMessage(`Added HasPerk (${smithingPerkFormID} condition to ${recipe.editorID})`);
+        helpers.logMessage(`Added HasPerk (${smithingPerkFormID} condition to ${recipe.editorID})`);
     }
 
-    let getSmithingPerkFormID = function(recipe, helpers) {
+    let getSmithingPerkFormID = function(recipe, materials, helpers) {
         let materialName = getMaterialName(recipe.outputRecordName, materials, helpers);
         if (!materialName) {
             helpers.logMessage(`WARNING: No material found for ${recipe.outputRecordName}. ${recipe.EditorID} recipe will not be patched.`);
@@ -72,7 +72,7 @@ let cobjPatcher = function() {
                     if (!recipe.isStaffRecipe && !recipe.isWeaponRecipe && !recipe.isArmorRecipe) {
                         return false;
                     }
-                    if (!recipe.output) {
+                    if (!recipe.outputRecord) {
                         helpers.logMessage(`WARNING: ${recipe.editorID} has no output and will not be patched.`);
                         return false;
                     }
@@ -84,7 +84,7 @@ let cobjPatcher = function() {
             let recipe = new Recipe(record);
 
             // TODO: if useMage
-            if (recipe.isStaffRecipe() && shouldDisableStaffRecipe(locals.enchantingConfig.staffCraftingDisableExclusions, recipe.outputRecordEditorID)) {
+            if (recipe.isStaffRecipe && shouldDisableStaffRecipe(locals.enchantingConfig.staffCraftingDisableExclusions, recipe.outputRecordEditorID)) {
                 helpers.logMessage(`Disabling staff recipe: ${recipe.editorID}`);
                 // TODO: verify this works, probably doesn't
                 xelib.SetUIntValue(record, 'BNAM', 0x00013794);

@@ -34,11 +34,11 @@ let mgefPatcher = function() {
     let addDisarmConditions = function(magicEffect, helpers) {
         // TODO: get actual Function name
         // TODO: ensure Type is correct
-        let condition = xelib.AddCondition(magicEffect.record, 'WornHasKeyword', '00010000', '0');
+        let condition1 = xelib.AddCondition(magicEffect.record, 'WornHasKeyword', '00010000', '0');
         // TODO: PerMa form ID
         xelib.SetValue(condition, 'CTDA\\Parameter #1', '2b222c');
 
-        let condition = xelib.AddCondition(recipe.record, 'HasPerk', '00010000', '0');
+        let condition2 = xelib.AddCondition(recipe.record, 'HasPerk', '00010000', '0');
         // TODO: PerMa form ID
         xelib.SetValue(condition, 'CTDA\\Parameter #1', '3960f9');
 
@@ -64,12 +64,12 @@ let mgefPatcher = function() {
         let script = xelib.AddScript(magicEffect.record, 'ShoutExpScriptName', 'Flags');
 
         // TODO: Type, Flags, 
-        let scriptProperty = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Type', 'Flags'); 
+        let scriptPropertyq = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Type', 'Flags'); 
         // TODO: path, PerMa form ID
         xelib.SetValue(scriptProperty, 'DATA\\?', '44251b');
 
         // TODO: Type, Flags, 
-        let scriptProperty3 = xelib.AddScriptProperty(script, 'playerref', 'Type', 'Flags'); 
+        let scriptProperty2 = xelib.AddScriptProperty(script, 'playerref', 'Type', 'Flags'); 
         // TODO: path, PerMa form ID
         xelib.SetValue(scriptProperty, 'DATA\\?', '000014');
 
