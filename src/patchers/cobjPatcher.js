@@ -1,9 +1,8 @@
 //=require ../records/recipe.js
 
 const cobjPatcher = function() {
-    let shouldDisableStaffRecipe = function(staffCraftingDisableExclusions, outputRecordEditorID) {
+    const shouldDisableStaffRecipe = function(staffCraftingDisableExclusions, outputRecordEditorID) {
         // TODO: reevaluate this logic, seems funky
-        let shouldDisable = false;
         staffCraftingDisableExclusions.forEach(exclusion => {
             if (outputRecordEditorID.includes(exclusion)) {
                 return true;
@@ -12,11 +11,12 @@ const cobjPatcher = function() {
         return false;
     };
 
-    let changeRecipeConditions = function(recipe, materials, helpers) {
-        helpers.logMessage(`Removing conditions for ${recipe.editorID}`);
+    const changeRecipeConditions = function(recipe, equipmentMaterials, materials, helpers) {
+        // TODO: excessive logging?
+        helpers.logMessage(`(COBJ) removing conditions for ${recipe.editorID}`);
         xelib.RemoveElement(recipe.record, 'Conditions');
 
-        let smithingPerkFormID = getSmithingPerkFormID(recipe, materials, helpers);
+        const smithingPerkFormID = getSmithingPerkFormID(recipe, equipmentMaterials, materials, helpers);
         if (!smithingPerkFormID) {
             return;
         }
@@ -24,33 +24,34 @@ const cobjPatcher = function() {
         // TODO: hacky workaround to add condition until xelib is fixed
         xelib.AddElement(recipe.record, 'Conditions');
         // TODO: is this Type correct? looks like Not Equal To
-        let condition = xelib.AddCondition(recipe.record, 'HasPerk', '10000000', '1');
+        const condition = xelib.AddCondition(recipe.record, 'HasPerk', '10000000', '1');
         xelib.SetValue(condition, 'CTDA\\Parameter #1', smithingPerkFormID);
         xelib.RemoveCondition(recipe.record, 'GetWantBlocking');
-        helpers.logMessage(`Added HasPerk (${smithingPerkFormID} condition to ${recipe.editorID})`);
+        // TODO: excessive logging?
+        helpers.logMessage(`(COBJ) added HasPerk (${smithingPerkFormID} condition to ${recipe.editorID})`);
     }
 
-    let getSmithingPerkFormID = function(recipe, materials, helpers) {
-        let materialName = getMaterialName(recipe.outputRecordName, materials, helpers);
+    const getSmithingPerkFormID = function(recipe, equipmentMaterials, materials, helpers) {
+        const materialName = getMaterialName(recipe.outputRecordName, equipmentMaterials);
         if (!materialName) {
-            helpers.logMessage(`WARNING: No material found for ${recipe.outputRecordName}. ${recipe.EditorID} recipe will not be patched.`);
+            helpers.logMessage(`(COBJ) WARNING: no material found for ${recipe.outputRecordName}. ${recipe.EditorID} recipe will not be patched.`);
             return null;
         }
 
-        let material = CraftingConstants.MATERIALS.find(m => m.name === materialName);
+        const material = materials.find(m => m.name === materialName);
         if (!material) {
-            helpers.logMessage(`WARNING: No material found with name ${materialName}. ${recipe.EditorID} recipe will not be patched.`);
+            helpers.logMessage(`(COBJ) WARNING: no material found with name ${materialName}. ${recipe.EditorID} recipe will not be patched.`);
             return null;
         }
 
         return material.smithingPerkFormID;
     }
 
-    let getMaterialName = function(outputName, materials, helpers) {
-        let matchLength = 0;
+    const getMaterialName = function(outputName, equipmentMaterials) {
         let materialName = null;
+        let matchLength = 0;
 
-        materials.forEach(m => {
+        equipmentMaterials.forEach(m => {
             m.nameSubstrings.forEach(substring => {
                 if (outputName.includes(substring) && substring.length > matchLength) {
                     materialName = m.material;
@@ -67,12 +68,15 @@ const cobjPatcher = function() {
             return {
                 signature: 'COBJ',
                 filter: function(record) {
-                    let recipe = new Recipe(record);
-                    if (!recipe.isStaffRecipe && !recipe.isWeaponRecipe && !recipe.isArmorRecipe) {
+                    const craftingStationFormIDs = locals.CRAFTING_FORM_IDS.CRAFTING_STATIONS;
+                    const patchableWorkBenches = [craftingStationFormIDs.STAFF_ENCHANTER, craftingStationFormIDs.SHARPENING_WHEEL, craftingStationFormIDs.ARMOR_TABLE];
+                    const recipe = new Recipe(record);
+                    
+                    if (!patchableWorkBenches.includes(recipe.workbenchFormID)) {
                         return false;
                     }
                     if (!recipe.outputRecord) {
-                        helpers.logMessage(`WARNING: ${recipe.editorID} has no output and will not be patched.`);
+                        helpers.logMessage(`(COBJ) WARNING: ${recipe.editorID} has no output and will not be patched.`);
                         return false;
                     }
                     return true;
@@ -80,17 +84,19 @@ const cobjPatcher = function() {
             }
         },
         patch: function(record, helpers, settings, locals) {
-            let recipe = new Recipe(record);
+            const craftingStationFormIDs = locals.CRAFTING_FORM_IDS.CRAFTING_STATIONS;
+            const recipe = new Recipe(record);
 
             // TODO: if useMage
-            if (recipe.isStaffRecipe && shouldDisableStaffRecipe(locals.enchantingConfig.staffCraftingDisableExclusions, recipe.outputRecordEditorID)) {
-                helpers.logMessage(`Disabling staff recipe: ${recipe.editorID}`);
+            if (recipe.workbenchFormID === craftingStationFormIDs.STAFF_ENCHANTER 
+                && shouldDisableStaffRecipe(locals.enchantingConfig.staffCraftingDisableExclusions, recipe.outputRecordEditorID)) {
+                helpers.logMessage(`(COBJ) disabling staff recipe: ${recipe.editorID}`);
                 // TODO: verify this works, probably doesn't
                 xelib.SetUIntValue(record, 'BNAM', 0x00013794);
-            } else if (recipe.isWeaponRecipe || recipe.isArmorRecipe) {
+            } else {
                 // TODO: if useWarrior
-                let materials = recipe.isWeaponRecipe ? locals.weaponMaterials : locals.armorMaterials;
-                changeRecipeConditions(recipe, materials, helpers);
+                const equipmentMaterials = recipe.isWeaponRecipe ? locals.weaponMaterials : locals.armorMaterials;
+                changeRecipeConditions(recipe, equipmentMaterials, locals.MATERIALS, helpers);
             }
         }
     };

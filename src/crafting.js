@@ -1,4 +1,4 @@
-const createCraftingConstants = function(dragonbornOrdinal, perMaMasterOrdinal) {
+const createCraftingFormIDs = function(dragonbornLoadOrder, perMaMasterLoadOrder) {
     return {
         INGOTS: {
             STEEL: '0005ace5',
@@ -22,7 +22,7 @@ const createCraftingConstants = function(dragonbornOrdinal, perMaMasterOrdinal) 
         CRAFTING_STATIONS: {
             SMELTER: '000a5cce',
             TANNING_RACK: '0007866a',
-            STAFF_ENCHANTER: dragonbornOrdinal + '017738',
+            STAFF_ENCHANTER: dragonbornLoadOrder + '017738',
             SHARPENING_WHEEL: '00088108',
             ARMOR_TABLE: '000adb78'
         },
@@ -36,9 +36,9 @@ const createCraftingConstants = function(dragonbornOrdinal, perMaMasterOrdinal) 
             ADVANCED: '000cb414',
             GLASS: '000cb411',
             DRAGON: '00052190',
-            LEATHER: perMaMasterOrdinal + '1d8be6',
-            SILVER: perMaMasterOrdinal + '0a82a6',
-            REFINED_SILVER: perMaMasterOrdinal + '054ff5'
+            LEATHER: perMaMasterLoadOrder + '1d8be6',
+            SILVER: perMaMasterLoadOrder + '0a82a6',
+            REFINED_SILVER: perMaMasterLoadOrder + '054ff5'
         }
     };
 };

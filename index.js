@@ -1,6 +1,11 @@
 /* global ngapp, xelib */
 //=require src/patchers/*.js
-//=require src/craftingConstants.js
+//=require src/crafting.js
+
+const getLoadOrder = function(fileName) {
+    const loadOrder = xelib.GetFileLoadOrder(xelib.FileByName(fileName)).toString(16);
+    return loadOrder.length === 2 ? loadOrder : `0${loadOrder}`;
+};
 
 registerPatcher({
     info: info,
@@ -25,13 +30,18 @@ registerPatcher({
             locals.enchantingConfig = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/enchanting.json`);
             locals.weaponMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/weapon-materials.json`);
             locals.armorMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/armor-materials.json`);
+        
+            const dragonbornLoadOrder = getLoadOrder('Dragonborn.esm');
+            const perMaMasterLoadOrder = getLoadOrder('PerkusMaximus_Master.esp');
 
-            const perMaMasterOrdinal = xelib.GetFileLoadOrder(xelib.FileByName('PerkusMaximus_Master.esp'));
-            locals.CRAFTING_CONSTANTS = createCraftingConstants(perMaMasterOrdinal);
+            const craftingFormIDs = createCraftingFormIDs(dragonbornLoadOrder, perMaMasterLoadOrder);
+            locals.CRAFTING_FORM_IDS = craftingFormIDs;
+            locals.MATERIALS = createMaterials(craftingFormIDs);
+
         },
         process: [
-            gameSettingsPatcher()//, 
-            //cobjPatcher()
+            gameSettingsPatcher(), 
+            cobjPatcher()
         ]
     }
 });

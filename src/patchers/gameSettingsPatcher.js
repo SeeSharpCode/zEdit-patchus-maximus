@@ -5,16 +5,16 @@ const gameSettingsPatcher = function() {
             return {
                 signature: 'GMST',
                 filter: function (record) {
-                    let editorID = xelib.EditorID(record);
+                    const editorID = xelib.EditorID(record);
                     return Object.keys(locals.gameSettings).includes(editorID);
                 }
             };
         },
         patch: function (record, helpers, settings, locals) {
-            let editorID = xelib.EditorID(record);
-            let value = locals.gameSettings[editorID];
-            helpers.logMessage(`Setting ${editorID} to ${value}`);
+            const editorID = xelib.EditorID(record);
+            const value = locals.gameSettings[editorID];
             xelib.SetFloatValue(record, 'DATA\\Float', value);
+            helpers.logMessage(`(GMST) set ${editorID} to ${value}`);
         }
     };
 };

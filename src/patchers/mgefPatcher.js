@@ -1,8 +1,7 @@
 const mgefPatcher = function() {
-    class MagicEffect {
+    class Shout {
         constructor(record) {
             this.record = record;
-            this.name = xelib.Name(record);
             this.archetype = xelib.GetValue(this.record, 'Magic Effect Data\\DATA\\Archtype');
         }
 
@@ -10,95 +9,88 @@ const mgefPatcher = function() {
             return ['Absorb', 'Value Mod', 'Dual Value Mod'];
         }
 
-        get isDisarm() {
-            return this.archetype === 'Disarm';
-        }
-
-        get isShout() {
-            // TODO: get actual keyword
-            return xelib.HasKeyword(this.record, 'ShoutEffect');
-        }
-
-        get isHarmfulShout() {
-            return this.isShout 
-                && MagicEffect.HARMFUL_SHOUT_ARCHETYPES.includes(this.archetype) 
+        get isHarmful() {
+            return Shout.HARMFUL_SHOUT_ARCHETYPES.includes(this.archetype) 
                 && xelib.GetFlag(this.record, 'Magic Effect Data\\DATA\\Flags\\Detrimental'); // TODO: ensure this works
         }
 
-        get isSummoningShout() {
+        get isSummoning() {
             // TODO: check actual keyword
-            return this.isShout && this.archetype === 'Summon Creature';
+            return this.archetype === 'Summon Creature';
+        }
+
+        addKeyword() {
+            let keyword = "";
+            if (this.isHarmfulShout) {
+                keyword = 'ShoutHarmful';
+            } else if (this.isSummoningShout) {
+                keyword = 'ShoutSummoning';
+            } else {
+                keyword = 'ShoutNonHarmful';
+            }
+            xelib.AddKeyword(magicEffect.record, keyword);
         }
     }
 
-    let addDisarmConditions = function(magicEffect, helpers) {
+    const isDisarmEffect = function(record) { 
+        return xelib.GetValue(this.record, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm'; 
+    }
+
+    const addDisarmConditions = function(record) {
         // TODO: get actual Function name
         // TODO: ensure Type is correct
-        let condition1 = xelib.AddCondition(magicEffect.record, 'WornHasKeyword', '00010000', '0');
+        const condition1 = xelib.AddCondition(record, 'WornHasKeyword', '00010000', '0');
         // TODO: PerMa form ID
-        xelib.SetValue(condition, 'CTDA\\Parameter #1', '2b222c');
+        xelib.SetValue(condition1, 'CTDA\\Parameter #1', '2b222c');
 
-        let condition2 = xelib.AddCondition(recipe.record, 'HasPerk', '00010000', '0');
+        const condition2 = xelib.AddCondition(record, 'HasPerk', '00010000', '0');
         // TODO: PerMa form ID
-        xelib.SetValue(condition, 'CTDA\\Parameter #1', '3960f9');
-
-        helpers.logMessage(`Added WornHasKeyword and HasPerk conditions to disarm effect: ${magicEffect.name}`);
+        xelib.SetValue(condition2, 'CTDA\\Parameter #1', '3960f9');
     };
 
-    let patchShout = function(magicEffect, helpers) {
-        if (magicEffect.isHarmfulShout) {
-            // TODO: get PerMa keyword
-            xelib.AddKeyword(magicEffect.record, 'ShoutHarmful');
-            helpers.logMessage(`${magicEffect.name} marked as harmful shout`);
-        } else if (magicEffect.isSummoningShout) {
-            // TODO: get PerMa keyword
-            xelib.AddKeyword(magicEffect.record, 'ShoutSummoning');
-            helpers.logMessage(`${magicEffect.name} marked as summoning shout`);
-        } else {
-            // TODO: get PerMa keyword
-            xelib.AddKeyword(magicEffect.record, 'ShoutNonHarmful');
-            helpers.logMessage(`${magicEffect.name} marked as non-harmful shout`);
-        }
-
+    const addScriptToShout = function(shout, helpers) {
         // TODO: get correct script name and Flags value
-        let script = xelib.AddScript(magicEffect.record, 'ShoutExpScriptName', 'Flags');
+        const script = xelib.AddScript(shout.record, 'ShoutExpScriptName', 'Flags');
 
         // TODO: Type, Flags, 
-        let scriptPropertyq = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Type', 'Flags'); 
+        const scriptProperty1 = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Type', 'Flags'); 
         // TODO: path, PerMa form ID
-        xelib.SetValue(scriptProperty, 'DATA\\?', '44251b');
+        xelib.SetValue(scriptProperty1, 'DATA\\?', '44251b');
 
         // TODO: Type, Flags, 
-        let scriptProperty2 = xelib.AddScriptProperty(script, 'playerref', 'Type', 'Flags'); 
+        const scriptProperty2 = xelib.AddScriptProperty(script, 'playerref', 'Type', 'Flags'); 
         // TODO: path, PerMa form ID
-        xelib.SetValue(scriptProperty, 'DATA\\?', '000014');
+        xelib.SetValue(scriptProperty2, 'DATA\\?', '000014');
 
         // TODO: Type, Flags, 
-        let scriptProperty3 = xelib.AddScriptProperty(script, 'expFactor', 'Type', 'Flags'); 
+        const scriptProperty3 = xelib.AddScriptProperty(script, 'expFactor', 'Type', 'Flags'); 
         // TODO: path, PerMa form ID
         // NOTE: value of 1 is hardcoded in PerMa but was meant to be calculated
-        xelib.SetValue(scriptProperty, 'DATA\\?', '1');
+        xelib.SetValue(scriptProperty2, 'DATA\\?', '1');
     };
 
     return {
         load: function(plugin, helpers, settings, locals) {
             return {
                 signature: 'MGEF',
-                filter: function(record) {
-                    let magicEffect = new MagicEffect(record);                    
-                    return magicEffect.isDisarm || magicEffect.isShout;
+                filter: function(record) {                 
+                    return isDisarmEffect(record) || 
+                        xelib.HasKeyword(this.record, 'ShoutEffect');
                 }
             }
         },
         patch: function(record, helpers, settings, locals) {
-            let magicEffect = new MagicEffect(record);
-            // TODO: Fix this logic. The else if's should be nested under isShout
-            if (magicEffect.isDisarm) {
+            const name = xelib.Name(record);
+            if (isDisarmEffect(record)) {
                 // TODO: get PerMa keyword
-                xelib.AddKeyword(magicEffect.record, 'MagicDisarm'); 
-                addDisarmConditions(magicEffect, helpers);
-            } else if (magicEffect.isShout) {
-                patchShout(magicEffect, helpers);
+                xelib.AddKeyword(record, 'MagicDisarm'); 
+                addDisarmConditions(record, helpers);
+                helpers.logMessage(`(MGEF) patched disarm effect: ${name}`);
+            } else {
+                const shout = new Shout(record);
+                shout.addKeyword();
+                addScriptToShout(shout);
+                helpers.logMessage(`(MGEF) patched shout: ${name}`);
             }
         }
     };
