@@ -1,7 +1,6 @@
 //=require ../records/recipe.js
-//=require ../craftingConstants.js
 
-let cobjPatcher = function() {
+const cobjPatcher = function() {
     let shouldDisableStaffRecipe = function(staffCraftingDisableExclusions, outputRecordEditorID) {
         // TODO: reevaluate this logic, seems funky
         let shouldDisable = false;

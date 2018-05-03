@@ -12,11 +12,11 @@ class Recipe {
         }
     }
 
-    get isStaffRecipe() {
+    get isStaffRecipe(staffEnchanterID) {
         return this.workbenchEditorID === CraftingConstants.CRAFTING_STATIONS.STAFF_ENCHANTER_EDITOR_ID;
     }
 
-    get isWeaponRecipe() {
+    get isWeaponRecipe(sharpeningWheelEditorID) {
         return this.workbenchEditorID === CraftingConstants.CRAFTING_STATIONS.SHARPENING_WHEEL_EDITOR_ID;
     }
 

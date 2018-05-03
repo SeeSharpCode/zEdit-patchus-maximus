@@ -1,5 +1,5 @@
 // // TODO: if useWarrior
-let gameSettingsPatcher = function() {
+const gameSettingsPatcher = function() {
     return {
         load: function (plugin, helpers, settings, locals) {
             return {

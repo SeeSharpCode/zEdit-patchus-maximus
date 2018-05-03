@@ -1,4 +1,4 @@
-let mgefPatcher = function() {
+const mgefPatcher = function() {
     class MagicEffect {
         constructor(record) {
             this.record = record;

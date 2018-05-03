@@ -1,6 +1,6 @@
 /* global ngapp, xelib */
-//=require src/utils.js
 //=require src/patchers/*.js
+//=require src/craftingConstants.js
 
 registerPatcher({
     info: info,
@@ -25,10 +25,13 @@ registerPatcher({
             locals.enchantingConfig = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/enchanting.json`);
             locals.weaponMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/weapon-materials.json`);
             locals.armorMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/armor-materials.json`);
+
+            const perMaMasterOrdinal = xelib.GetFileLoadOrder(xelib.FileByName('PerkusMaximus_Master.esp'));
+            locals.CRAFTING_CONSTANTS = createCraftingConstants(perMaMasterOrdinal);
         },
         process: [
-            gameSettingsPatcher(), 
-            cobjPatcher()
+            gameSettingsPatcher()//, 
+            //cobjPatcher()
         ]
     }
 });
