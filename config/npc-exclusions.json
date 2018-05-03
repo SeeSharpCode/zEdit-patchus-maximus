@@ -1,0 +1,21 @@
+{
+    "exactMatchExclusions": {
+        "editorIDs": [
+            "dunSnaplegSpriggan",
+            "EncSprigganSwarm"
+        ],
+        "names": [
+
+        ]
+    },
+    "partialMatchExclusions": {
+        "editorIDs": [
+            "ARTHLALShip",
+            "3DNPC",
+            "Chicken"
+        ],
+        "names": [
+            "NO TEXT"
+        ]
+    }
+}

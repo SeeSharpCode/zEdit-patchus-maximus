@@ -30,6 +30,7 @@ registerPatcher({
             locals.enchantingConfig = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/enchanting.json`);
             locals.weaponMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/weapon-materials.json`);
             locals.armorMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/armor-materials.json`);
+            locals.npcExclusions = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/npc-exclusions.json`);
         
             const dragonbornLoadOrder = getLoadOrder('Dragonborn.esm');
             const perMaMasterLoadOrder = getLoadOrder('PerkusMaximus_Master.esp');
@@ -37,11 +38,12 @@ registerPatcher({
             const craftingFormIDs = createCraftingFormIDs(dragonbornLoadOrder, perMaMasterLoadOrder);
             locals.CRAFTING_FORM_IDS = craftingFormIDs;
             locals.MATERIALS = createMaterials(craftingFormIDs);
-
         },
         process: [
             gameSettingsPatcher(), 
-            cobjPatcher()
+            cobjPatcher(),
+            mgefPatcher(),
+            npcPatcher()
         ]
     }
 });
