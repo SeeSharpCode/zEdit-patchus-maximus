@@ -41,9 +41,9 @@ registerPatcher({
         },
         process: [
             gameSettingsPatcher(), 
-            cobjPatcher(),
-            mgefPatcher(),
-            npcPatcher()
+            cobjPatcher()//,
+            //mgefPatcher(),
+            //npcPatcher()
         ]
     }
 });
