@@ -12,7 +12,7 @@ registerPatcher({
     gameModes: [xelib.gmTES5, xelib.gmSSE],
     settings: {
         label: 'Cell Encounter Levels In Name',
-        templateUrl: `${patcherPath}/partials/settings.html`,
+        templateUrl: `${patcherUrl}/partials/settings.html`,
         defaultSettings: {
             formulaRangedLeveled: '{name} [{min} ~ {max}]',
             formulaDeleveled: '{name} [{min}]',
