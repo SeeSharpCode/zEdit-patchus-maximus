@@ -1,14 +1,10 @@
 //=require ../records/recipe.js
 
 const cobjPatcher = function () {
-    const shouldDisableStaffRecipe = function (staffCraftingDisableExclusions, outputRecordEditorID) {
-        // TODO: reevaluate this logic, seems funky
-        staffCraftingDisableExclusions.forEach(exclusion => {
-            if (outputRecordEditorID.includes(exclusion)) {
-                return true;
-            }
+    const shouldDisableStaffRecipe = function(staffCraftingDisableExclusions, outputRecordEditorID) {
+        return !!staffCraftingDisableExclusions.find(exclusion => {
+            return outputRecordEditorID.includes(exclusion);
         });
-        return false;
     };
 
     const changeRecipeConditions = function (recipe, equipmentMaterials, materials, helpers) {
