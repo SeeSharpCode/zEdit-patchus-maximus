@@ -2,9 +2,8 @@
 //=require src/patchers/*.js
 //=require src/crafting.js
 
-const getLoadOrder = function(fileName) {
-    const loadOrder = xelib.GetFileLoadOrder(xelib.FileByName(fileName)).toString(16);
-    return loadOrder.length === 2 ? loadOrder : `0${loadOrder}`;
+const loadConfig = function(name) {
+    return fh.loadJsonFile(`${patcherUrl}/config/${name}.json`);
 };
 
 registerPatcher({
@@ -23,18 +22,14 @@ registerPatcher({
     requiredFiles: ['PerkusMaximus_Master.esp'],
     execute: {
         initialize: function(patch, helpers, settings, locals) {
-            locals.gameSettings = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/game-settings.json`);
-            locals.enchantingConfig = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/enchanting.json`);
-            locals.weaponMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/weapon-materials.json`);
-            locals.armorMaterials = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/armor-materials.json`);
-            locals.npcExclusions = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/npc-exclusions.json`);
-        
-            const dragonbornLoadOrder = getLoadOrder('Dragonborn.esm');
-            const perMaMasterLoadOrder = getLoadOrder('PerkusMaximus_Master.esp');
+            locals.gameSettings = loadConfig('game-settings');
+            locals.enchantingConfig = loadConfig('enchanting');
+            locals.weaponMaterials = loadConfig('weapon-materials');
+            locals.armorMaterials = loadConfig('armor-materials');
+            locals.npcExclusions = loadConfig('npc-exclusions');
 
-            const craftingFormIDs = createCraftingFormIDs(dragonbornLoadOrder, perMaMasterLoadOrder);
-            locals.CRAFTING_FORM_IDS = craftingFormIDs;
-            locals.MATERIALS = createMaterials(craftingFormIDs);
+            locals.CRAFTING_FORM_IDS = createCraftingFormIDs();
+            locals.MATERIALS = createMaterials(locals.CRAFTING_FORM_IDS);
         },
         process: [
             gameSettingsPatcher(), 

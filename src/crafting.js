@@ -1,4 +1,12 @@
-const createCraftingFormIDs = function(dragonbornLoadOrder, perMaMasterLoadOrder) {
+const getLoadOrder = function(fileName) {
+    const file = xelib.FileByName(fileName);
+    return xelib.Hex(xelib.GetFileLoadOrder(file), 2);
+};
+
+const createCraftingFormIDs = function() {
+    const dragonbornLoadOrder = getLoadOrder('Dragonborn.esm');
+    const perMaMasterLoadOrder = getLoadOrder('PerkusMaximus_Master.esp');
+
     return {
         INGOTS: {
             STEEL: '0005ace5',
