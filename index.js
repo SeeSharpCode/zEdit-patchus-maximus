@@ -20,10 +20,10 @@ registerPatcher({
             patchFileName: 'PatchusMaximus.esp'
         }
     },
-    requiredFiles: [],
     getFilesToPatch: function(filenames) {
         return filenames;
     },
+    requiredFiles: ['PerkusMaximus_Master.esp'],
     execute: {
         initialize: function(patch, helpers, settings, locals) {
             locals.gameSettings = fh.loadJsonFile(`${fh.fileUrlToPath(patcherPath)}/config/game-settings.json`);
