@@ -1,9 +1,8 @@
 class Recipe {
-    constructor(record, craftingStationFormIDs) {
+    constructor(record) {
         this.record = record;
         this.editorID = xelib.EditorID(record);
-        this.workbenchFormID = xelib.GetHexFormID(xelib.GetLinksTo(record, 'BNAM'));
-        this.craftingStationFormIDs = craftingStationFormIDs;
+        this.workbench = xelib.EditorID(xelib.GetLinksTo(record, 'BNAM'));
         this.outputRecord = xelib.GetLinksTo(record, 'CNAM');
         if (this.outputRecord) {
             this.outputRecordEditorID = xelib.EditorID(this.outputRecord);
@@ -12,14 +11,14 @@ class Recipe {
     }
 
     get isWeaponRecipe() {
-        return this.workbenchFormID === this.craftingStationFormIDs.SHARPENING_WHEEL;
+        return this.workbench === 'CraftingSmithingSharpeningWheel';
     }
     
-    get isArmornRecipe() {
-        return this.workbenchFormID === this.craftingStationFormIDs.ARMOR_TABLE;
+    get isArmorRecipe() {
+        return this.workbench === 'CraftingSmithingArmorTable';
     }
     
     get isStaffRecipe() {
-        return this.workbenchFormID === this.craftingStationFormIDs.STAFF_ENCHANTER;
+        return this.workbench === 'DLC2StaffEnchanter';
     }
 }

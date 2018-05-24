@@ -1,16 +1,14 @@
 // // TODO: if useWarrior
-const gameSettingsPatcher = function() {
+const gameSettingsPatcher = function(helpers, settings, locals) {
     return {
-        load: function (plugin, helpers, settings, locals) {
-            return {
-                signature: 'GMST',
-                filter: function (record) {
-                    const editorID = xelib.EditorID(record);
-                    return Object.keys(locals.gameSettings).includes(editorID);
-                }
-            };
+        load: {
+            signature: 'GMST',
+            filter: function(record) {
+                const editorID = xelib.EditorID(record);
+                return Object.keys(locals.gameSettings).includes(editorID);
+            }
         },
-        patch: function (record, helpers, settings, locals) {
+        patch: function(record) {
             const editorID = xelib.EditorID(record);
             const value = locals.gameSettings[editorID];
             xelib.SetFloatValue(record, 'DATA\\Float', value);

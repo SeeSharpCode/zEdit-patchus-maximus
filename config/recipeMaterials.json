@@ -1,0 +1,170 @@
+{
+  "IRON": {
+    "smithingPerk": null,
+    "breakdownProduct": "IronIngot",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IronIngot"
+  },
+  "STEEL": {
+    "smithingPerk": "SteelSmithing",
+    "breakdownProduct": "IngotSteel",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotSteel"
+  },
+  "DWARVEN": {
+    "smithingPerk": "DwarvenSmithing",
+    "breakdownProduct": "IngotDwarven",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotDwarven"
+  },
+  "FALMER": {
+    "smithingPerk": "AdvancedArmors",
+    "breakdownProduct": "IngotChitin",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotChitin"
+  },
+  "ORCISH": {
+    "smithingPerk": "OrcishSmithing",
+    "breakdownProduct": "IngotOrichalcum",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotOrichalcum"
+  },
+  "EBONY": {
+    "smithingPerk": "EbonySmithing",
+    "breakdownProduct": "IngotEbony",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotEbony"
+  },
+  "DRAGONPLATE": {
+    "smithingPerk": "DragonArmor",
+    "breakdownProduct": "IngotDragonbone",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotDragonbone"
+  },
+  "DAEDRIC": {
+    "smithingPerk": "DaedricSmithing",
+    "breakdownProduct": "IngotEbony",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotDragonbone"
+  },
+  "ELVEN": {
+    "smithingPerk": "ElvenSmithing",
+    "breakdownProduct": "IngotMoonstone",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotMoonstone"
+  },
+  "GLASS": {
+    "smithingPerk": "GlassSmithing",
+    "breakdownProduct": "IngotMalachite",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotMalachite"
+  },
+  "DRAGONSCALE": {
+    "smithingPerk": "DragonArmor",
+    "breakdownProduct": "IngotDragonbone",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotDragonbone"
+  },
+  "STALHRIM": {
+    "smithingPerk": "EbonySmithing",
+    "breakdownProduct": "IngotStalhrim",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotStalhrim"
+  },
+  "WOOD": {
+    "smithingPerk": null,
+    "breakdownProduct": "Charcoal",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotFirewood"
+  },
+  "ADVANCED": {
+    "smithingPerk": "AdvancedArmors",
+    "breakdownProduct": "IngotCorondum",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotCorondum"
+  },
+  "SILVER": {
+    "smithingPerk": "SilverSmithing",
+    "breakdownProduct": "IngotSilver",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotSilver"
+  },
+  "REFINED_SILVER": {
+    "smithingPerk": "Refined_silverSmithing",
+    "breakdownProduct": "IngotSilver",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotSilver"
+  },
+  "DRAUGR": {
+    "smithingPerk": "SteelSmithing",
+    "breakdownProduct": "IngotSteel",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotSteel"
+  },
+  "CHITIN": {
+    "smithingPerk": "AdvancedArmors",
+    "breakdownProduct": "IngotCorondum",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotCorondum"
+  },
+  "GOLD": {
+    "smithingPerk": "SilverSmithing",
+    "breakdownProduct": "IngotGold",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotGold"
+  },
+  "BONEMOLD_HEAVY": {
+    "smithingPerk": "AdvancedArmors",
+    "breakdownProduct": "IngotIron",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotIron"
+  },
+  "STEELPLATE": {
+    "smithingPerk": "AdvancedArmors",
+    "breakdownProduct": "IngotSteel",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotSteel"
+  },
+  "FUR": {
+    "smithingPerk": null,
+    "breakdownProduct": "LeatherStrips",
+    "breakdownStation": "CraftingTanningRack",
+    "temperingInput": "LeatherStrips"
+  },
+  "HIDE": {
+    "smithingPerk": null,
+    "breakdownProduct": "LeatherStrips",
+    "breakdownStation": "CraftingTanningRack",
+    "temperingInput": "LeatherStrips"
+  },
+  "LEATHER": {
+    "smithingPerk": "LeatherSmithing",
+    "breakdownProduct": "LeatherStrips",
+    "breakdownStation": "CraftingTanningRack",
+    "temperingInput": "LeatherStrips"
+  },
+  "SCALED": {
+    "smithingPerk": "AdvancedArmors",
+    "breakdownProduct": "IngotCorondum",
+    "breakdownStation": "CraftingTanningRack",
+    "temperingInput": "IngotCorundum"
+  },
+  "STALHRIM_HEAVY": {
+    "smithingPerk": "EbonySmithing",
+    "breakdownProduct": "IngotStalhrim",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotStalhrim"
+  },
+  "STALHRIM_LIGHT": {
+    "smithingPerk": "EbonySmithing",
+    "breakdownProduct": "IngotStalhrim",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotStalhrim"
+  },
+  "NORDIC_HEAVY": {
+    "smithingPerk": "AdvancedArmors",
+    "breakdownProduct": "IngotCorondum",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotCorundum"
+  }
+}

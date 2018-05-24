@@ -1,9 +1,27 @@
-/* global ngapp, xelib */
+/* global ngapp, xelib, fh, patcherUrl, patcherPath */
+//=require src/polyfills.js
 //=require src/patchers/*.js
-//=require src/crafting.js
 
-const loadConfig = function(name) {
-    return fh.loadJsonFile(`${patcherUrl}/config/${name}.json`);
+const signaturesToMap = ['MISC', 'KYWD', 'PERK'];
+
+const buildReferenceMaps = function(locals) {
+    signaturesToMap.forEach(sig => {
+        let records = xelib.GetRecords(0, sig, false);
+        locals[sig] = records.reduce((obj, rec) => {
+            const edid = xelib.EditorID(rec);
+            if (edid) obj[edid] = rec;
+            return obj;
+        }, {});
+    });
+};
+
+const loadConfiguration = function(locals) {
+    fh.getFiles(`${patcherPath}/config`, {
+        matching: '*.json'
+    }).forEach(filePath => {
+        let baseName = fh.getBaseName(filePath);
+        locals[baseName] = fh.loadJsonFile(filePath);
+    });
 };
 
 registerPatcher({
@@ -16,26 +34,21 @@ registerPatcher({
             formulaRangedLeveled: '{name} [{min} ~ {max}]',
             formulaDeleveled: '{name} [{min}]',
             formulaLeveled: '{name} [{min}+]',
-            patchFileName: 'PatchusMaximus.esp'
+            patchFileName: 'PatchusMaximus.esp',
+            staffCraftingInclusions: ['ACX', 'Unenchanted']
         }
     },
     requiredFiles: ['PerkusMaximus_Master.esp'],
-    execute: {
-        initialize: function(patch, helpers, settings, locals) {
-            locals.gameSettings = loadConfig('game-settings');
-            locals.enchantingConfig = loadConfig('enchanting');
-            locals.weaponMaterials = loadConfig('weapon-materials');
-            locals.armorMaterials = loadConfig('armor-materials');
-            locals.npcExclusions = loadConfig('npc-exclusions');
-
-            locals.CRAFTING_FORM_IDS = createCraftingFormIDs();
-            locals.MATERIALS = createMaterials(locals.CRAFTING_FORM_IDS);
+    execute: (patch, helpers, settings, locals) => ({
+        initialize: function() {
+            loadConfiguration(locals);
+            buildReferenceMaps(locals);
         },
         process: [
-            gameSettingsPatcher(), 
-            cobjPatcher()//,
+            gameSettingsPatcher(helpers, settings, locals),
+            cobjPatcher(helpers, settings, locals)//,
             //mgefPatcher(),
             //npcPatcher()
         ]
-    }
+    })
 });
