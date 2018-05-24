@@ -20,9 +20,6 @@ registerPatcher({
             patchFileName: 'PatchusMaximus.esp'
         }
     },
-    getFilesToPatch: function(filenames) {
-        return filenames;
-    },
     requiredFiles: ['PerkusMaximus_Master.esp'],
     execute: {
         initialize: function(patch, helpers, settings, locals) {
