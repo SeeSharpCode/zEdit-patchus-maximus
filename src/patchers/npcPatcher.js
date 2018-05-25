@@ -1,39 +1,19 @@
-const npcPatcher = function() {
-    const isExcluded = function(npcRecord, npcExclusions) {
-        const editorID = xelib.EditorID(record);
-        const name = xelib.Name(record);
+const npcPatcher = function(helpers, settings, locals) {
+    let exclusions = locals.npcExclusions.map(e => new Regexp(e));
 
-        if (npcExclusions.exactMatchExclusions.editorIDs.includes(editorID) || 
-            npcExclusions.exactMatchExclusions.names.includes(name)) {
-                return true;
-        }
-        npcExclusions.partialMatchExclusions.editorIDs.forEach(excludedEditorID => {
-            if (editorID.contains(excludedEditorID)) {
-                return true;
-            }
-        });    
-        npcExclusions.partialMatchExclusions.names.forEach(excludedName => {
-            if (editorID.contains(excludedName)) {
-                return true;
-            }
-        }); 
-        return false;
-    }
+    let filterFn = function(record) {
+        let editorID = xelib.EditorID(record);
+        if (!xelib.FullName(record)) return;
+        return !!exclusions.find(expr => expr.test(editorID));
+    };
 
     return {
-        load: function (plugin, helpers, settings, locals) {
-            return {
-                signature: 'NPC_',
-                filter: function (record) {
-                    return !isExcluded(record);
-                }
-            };
+        load: {
+            signature: 'NPC_',
+            filter: filterFn
         },
-        patch: function (record, helpers, settings, locals) {
-            const editorID = xelib.EditorID(record);
-            const value = locals.gameSettings[editorID];
-            xelib.SetFloatValue(record, 'DATA\\Float', value);
-            helpers.logMessage(`(GMST) set ${editorID} to ${value}`);
+        patch: function (record) {
+            // TODO
         }
     };
 };
