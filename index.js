@@ -24,6 +24,13 @@ const loadConfiguration = function(locals) {
     });
 };
 
+const detectPerMaModules = function(locals) {
+    xelib.GetLoadedFileNames().forEach(filename => {
+        let match = filename.match(/PerkusMaximus_(?!Master)(\w+)\.esp/);
+        if (match) locals[`use${match[1]}`] = true;
+    });
+};
+
 registerPatcher({
     info: info,
     gameModes: [xelib.gmTES5, xelib.gmSSE],
@@ -43,6 +50,7 @@ registerPatcher({
         initialize: function() {
             loadConfiguration(locals);
             buildReferenceMaps(locals);
+            detectPerMaModules(locals);
         },
         process: [
             gameSettingsPatcher(helpers, settings, locals),
