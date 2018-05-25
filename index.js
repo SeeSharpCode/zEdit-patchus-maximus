@@ -35,7 +35,7 @@ registerPatcher({
     info: info,
     gameModes: [xelib.gmTES5, xelib.gmSSE],
     settings: {
-        label: 'Cell Encounter Levels In Name',
+        label: 'Patchus Maximus',
         templateUrl: `${patcherUrl}/partials/settings.html`,
         defaultSettings: {
             formulaRangedLeveled: '{name} [{min} ~ {max}]',
