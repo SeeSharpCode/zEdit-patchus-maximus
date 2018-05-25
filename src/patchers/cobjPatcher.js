@@ -41,6 +41,7 @@ const cobjPatcher = function(helpers, settings, locals) {
     };
 
     const changeRecipeConditions = function(recipe) {
+        if (!locals.useWarrior) return;
         xelib.RemoveElement(recipe.record, 'Conditions');
 
         const smithingPerkFormID = getSmithingPerkFormID(recipe);
@@ -52,25 +53,27 @@ const cobjPatcher = function(helpers, settings, locals) {
     };
 
     const shouldDisableStaffRecipe = function(recipe) {
-        if (!recipe.isStaffRecipe) return;
+        if (!locals.useMage) return;
         return !!settings.staffCraftingInclusions.find(exclusion => {
             return recipe.outputRecordEditorID.includes(exclusion);
         });
     };
 
-    const patchableWorkbenches = [
-        'DLC2StaffEnchanter',
-        'CraftingSmithingSharpeningWheel',
-        'CraftingSmithingArmorTable'
-    ];
+    const handleWorkBench = {
+        'DLC2StaffEnchanter': function(recipe) {
+            if (!shouldDisableStaffRecipe(recipe)) return;
+            helpers.logMessage(`(COBJ) disabling staff recipe: ${recipe.editorID}`);
+            xelib.SetUIntValue(recipe.record, 'BNAM', 0);
+        },
+        'CraftingSmithingSharpeningWheel': changeRecipeConditions,
+        'CraftingSmithingArmorTable': changeRecipeConditions
+    };
 
     const cobjFilter = function(record) {
         let workbench = xelib.GetRefEditorID(record, 'BNAM');
-        if (!patchableWorkbenches.includes(workbench)) return;
-        if (!xelib.GetLinksTo(record, 'CNAM')) {
-            warn(`${xelib.EditorID(record)} has no output and will not be patched.`);
-            return;
-        }
+        if (!handleWorkBench.hasOwnProperty(workbench)) return;
+        if (!xelib.GetLinksTo(record, 'CNAM'))
+            return warn(`${xelib.EditorID(record)} has no output and will not be patched.`);
         return true;
     };
 
@@ -81,14 +84,7 @@ const cobjPatcher = function(helpers, settings, locals) {
         },
         patch: function(record) {
             const recipe = new Recipe(record);
-
-            // TODO: if useMage, if useWarrior
-            if (shouldDisableStaffRecipe(recipe)) {
-                helpers.logMessage(`(COBJ) disabling staff recipe: ${recipe.editorID}`);
-                xelib.SetUIntValue(record, 'BNAM', 0);
-            } else if (recipe.isWeaponRecipe || recipe.isArmorRecipe) {
-                changeRecipeConditions(recipe);
-            }
+            handleWorkbench[recipe.workbench](recipe);
         }
     };
 };
