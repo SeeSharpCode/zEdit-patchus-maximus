@@ -1,6 +1,9 @@
-let gulp = require('gulp'),
-    clean = require('gulp-clean'),
-    include = require('gulp-include');
+const fs = require('fs'),
+      gulp = require('gulp'),
+      clean = require('gulp-clean'),
+      include = require('gulp-include'),
+      rename = require('gulp-rename'),
+      zip = require('gulp-zip');
 
 gulp.task('clean', function () {
     return gulp.src('dist', { read: false })
@@ -23,14 +26,18 @@ gulp.task('build', ['clean'], function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean-deploy', function () {
-    return gulp.src('../zEdit Alpha v0.3.0 - Portable/modules/patchus-maximus', { read: false })
-        .pipe(clean({force: true}));
-});
+gulp.task('release', function() {
+    let moduleInfo = JSON.parse(fs.readFileSync('module.json')),
+        moduleId = moduleInfo.id,
+        moduleVersion = moduleInfo.version,
+        zipFileName = `${moduleId}-v${moduleVersion}.zip`;
 
-gulp.task('deploy', ['clean-deploy'], function() {
-    gulp.src('dist/**')
-        .pipe(gulp.dest('../zEdit Alpha v0.3.0 - Portable/modules/patchus-maximus'));
+    console.log(`Packaging ${zipFileName}`);
+
+    gulp.src('dist/**/*', { base: 'dist/'})
+        .pipe(rename((path) => path.dirname = `${moduleId}/${path.dirname}`))
+        .pipe(zip(zipFileName))
+        .pipe(gulp.dest('.'));
 });
 
 gulp.task('default', ['build']);
