@@ -1,4 +1,4 @@
-// // TODO: if useWarrior
+// TODO: if useWarrior
 const gameSettingsPatcher = function(helpers, settings, locals) {
     return {
         load: {

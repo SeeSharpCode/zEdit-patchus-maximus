@@ -38,10 +38,6 @@ registerPatcher({
         label: 'Patchus Maximus',
         templateUrl: `${patcherUrl}/partials/settings.html`,
         defaultSettings: {
-            formulaRangedLeveled: '{name} [{min} ~ {max}]',
-            formulaDeleveled: '{name} [{min}]',
-            formulaLeveled: '{name} [{min}+]',
-            patchFileName: 'PatchusMaximus.esp',
             staffCraftingInclusions: ['ACX', 'Unenchanted']
         }
     },
