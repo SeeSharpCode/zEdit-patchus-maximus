@@ -16,10 +16,11 @@ const buildReferenceMaps = function(locals) {
 };
 
 const loadConfiguration = function(locals) {
-    fh.getFiles(`${patcherPath}/config`, {
-        matching: '*.json'
-    }).forEach(filePath => {
-        let baseName = fh.getBaseName(filePath);
+    fh.jetpack.find(`${patcherPath}/config`, {
+        matching: '*.json',
+        recursive: false
+    }).map(path => fh.jetpack.path(path)).forEach(filePath => {
+        let baseName = filePath.match(/(.*\\)?(.*)\.[^\\]+/)[2];
         locals[baseName] = fh.loadJsonFile(filePath);
     });
 };
@@ -49,8 +50,8 @@ registerPatcher({
             detectPerMaModules(locals);
         },
         process: [
-            gameSettingsPatcher(helpers, settings, locals),
-            cobjPatcher(helpers, settings, locals)//,
+            gameSettingsPatcher(helpers, settings, locals)
+            //cobjPatcher(helpers, settings, locals),
             //mgefPatcher(),
             //npcPatcher()
         ]
