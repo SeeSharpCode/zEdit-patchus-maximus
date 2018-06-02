@@ -11,13 +11,13 @@ const cobjPatcher = function(helpers, settings, locals) {
     };
 
     const getMaterialName = function(recipe) {
-        let outputName = recipe.outputRecordName,
-            materialName = null,
+        const outputName = recipe.outputRecordName;
+        let materialName = null,
             matchLength = 0;
 
         getEquipmentMaterials(recipe).forEach(m => {
             m.nameSubstrings.forEach(substring => {
-                let subLen = substring.length;
+                const subLen = substring.length;
                 if (outputName.includes(substring) && subLen > matchLength) {
                     materialName = m.material;
                     matchLength = subLen;
@@ -47,9 +47,7 @@ const cobjPatcher = function(helpers, settings, locals) {
         const smithingPerkFormID = getSmithingPerkFormID(recipe);
         if (!smithingPerkFormID) return;
 
-        // TODO: is this Type correct? looks like Not Equal To
-        const condition = xelib.AddCondition(recipe.record, 'HasPerk', '10000000', '1');
-        xelib.SetValue(condition, 'CTDA\\Parameter #1', smithingPerkFormID);
+        xelib.AddCondition(recipe.record, 'HasPerk', '00010000', '1', smithingPerkFormID);
     };
 
     const shouldDisableStaffRecipe = function(recipe) {
@@ -59,7 +57,7 @@ const cobjPatcher = function(helpers, settings, locals) {
         });
     };
 
-    const handleWorkBench = {
+    const handleWorkbench = {
         'DLC2StaffEnchanter': function(recipe) {
             if (!shouldDisableStaffRecipe(recipe)) return;
             helpers.logMessage(`(COBJ) disabling staff recipe: ${recipe.editorID}`);
@@ -71,7 +69,7 @@ const cobjPatcher = function(helpers, settings, locals) {
 
     const cobjFilter = function(record) {
         let workbench = xelib.GetRefEditorID(record, 'BNAM');
-        if (!handleWorkBench.hasOwnProperty(workbench)) return;
+        if (!handleWorkbench.hasOwnProperty(workbench)) return;
         if (!xelib.GetLinksTo(record, 'CNAM'))
             return warn(`${xelib.EditorID(record)} has no output and will not be patched.`);
         return true;

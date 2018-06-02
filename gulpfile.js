@@ -33,6 +33,7 @@ gulp.task('deploy', ['build'], function () {
 
 gulp.task('watch', function() {
     gulp.watch('src/**/*.js', ['deploy']);
+    gulp.watch('index.js', ['deploy']);
 });
 
 gulp.task('release', function() {
