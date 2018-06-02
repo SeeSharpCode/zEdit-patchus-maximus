@@ -10,7 +10,7 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
-gulp.task('build', ['clean'], function () {
+gulp.task('build', ['clean'], function() {
     gulp.src('index.js')
         .pipe(include())
         .on('error', console.log)
@@ -22,8 +22,17 @@ gulp.task('build', ['clean'], function () {
     gulp.src('config/*.json')
         .pipe(gulp.dest('dist/config'));
 
-    gulp.src('module.json')
+    return gulp.src('module.json')
         .pipe(gulp.dest('dist'));
+});
+
+gulp.task('deploy', ['build'], function () {
+    gulp.src('dist/**')
+        .pipe(gulp.dest('../zEdit_Alpha_v0.4.1 Portable_x64/modules/patchusMaximus'));
+});
+
+gulp.task('watch', function() {
+    gulp.watch('src/**/*.js', ['deploy']);
 });
 
 gulp.task('release', function() {
