@@ -1,5 +1,6 @@
 //=require ../records/recipe.js
 
+// TODO: test
 const cobjPatcher = function(helpers, settings, locals) {
     const warn = msg => helpers.logMessage(`(COBJ) WARNING: ${msg}`);
     const skip = (recipe, msg) => {
@@ -44,7 +45,8 @@ const cobjPatcher = function(helpers, settings, locals) {
         if (!locals.useWarrior) return;
         xelib.RemoveElement(recipe.record, 'Conditions');
 
-        const smithingPerkFormID = getSmithingPerkFormID(recipe);
+        // TODO getSmithingPerkFormID can technically return a function. Will this break?
+        const smithingPerkFormID = getSmithingPerkFormID(recipe); 
         if (!smithingPerkFormID) return;
 
         xelib.AddCondition(recipe.record, 'HasPerk', '00010000', '1', smithingPerkFormID);
@@ -61,7 +63,7 @@ const cobjPatcher = function(helpers, settings, locals) {
         'DLC2StaffEnchanter': function(recipe) {
             if (!shouldDisableStaffRecipe(recipe)) return;
             helpers.logMessage(`(COBJ) disabling staff recipe: ${recipe.editorID}`);
-            xelib.SetUIntValue(recipe.record, 'BNAM', 0);
+            xelib.SetUIntValue(recipe.record, 'BNAM', 0); // TODO get the proper form ID
         },
         'CraftingSmithingSharpeningWheel': changeRecipeConditions,
         'CraftingSmithingArmorTable': changeRecipeConditions
