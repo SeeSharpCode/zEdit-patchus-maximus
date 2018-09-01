@@ -1,10 +1,9 @@
 //=require ../records/recipe.js
 
-// TODO: test
 const cobjPatcher = function(helpers, settings, locals) {
-    const warn = msg => helpers.logMessage(`(COBJ) WARNING: ${msg}`);
+    const info = msg => helpers.logMessage(`(COBJ) INFO: ${msg}`);
     const skip = (recipe, msg) => {
-        warn(`${msg}. ${recipe.editorID} will not be patched.`);
+        info(`${msg}. ${recipe.editorID} will not be patched.`);
     };
 
     const getEquipmentMaterials = function(recipe) {
@@ -13,8 +12,8 @@ const cobjPatcher = function(helpers, settings, locals) {
 
     const getMaterialName = function(recipe) {
         const outputName = recipe.outputRecordName;
-        let materialName = null,
-            matchLength = 0;
+        let materialName = null;
+        let matchLength = 0;
 
         getEquipmentMaterials(recipe).forEach(m => {
             m.nameSubstrings.forEach(substring => {
@@ -38,42 +37,41 @@ const cobjPatcher = function(helpers, settings, locals) {
         if (!material)
             return skip(recipe, `no material found with name ${materialName}.`);
 
-        return material.smithingPerkFormID;
+        if (!material.smithingPerk) return;
+        return xelib.GetHexFormID(locals.PERK[material.smithingPerk]);
     };
 
     const changeRecipeConditions = function(recipe) {
         if (!locals.useWarrior) return;
         xelib.RemoveElement(recipe.record, 'Conditions');
 
-        // TODO getSmithingPerkFormID can technically return a function. Will this break?
-        const smithingPerkFormID = getSmithingPerkFormID(recipe); 
+        const smithingPerkFormID = getSmithingPerkFormID(recipe);
         if (!smithingPerkFormID) return;
-
         xelib.AddCondition(recipe.record, 'HasPerk', '00010000', '1', smithingPerkFormID);
     };
 
     const shouldDisableStaffRecipe = function(recipe) {
         if (!locals.useMage) return;
-        return !!settings.staffCraftingInclusions.find(exclusion => {
-            return recipe.outputRecordEditorID.includes(exclusion);
-        });
+        info(recipe.outputRecordEditorID);
+        // TODO make this exclusion list a setting
+        return recipe.outputRecordEditorID.includes('ACX') || recipe.outputRecordEditorID.includes('Unenchanted');
     };
 
     const handleWorkbench = {
         'DLC2StaffEnchanter': function(recipe) {
             if (!shouldDisableStaffRecipe(recipe)) return;
-            helpers.logMessage(`(COBJ) disabling staff recipe: ${recipe.editorID}`);
-            xelib.SetUIntValue(recipe.record, 'BNAM', 0); // TODO get the proper form ID
+            info(`(COBJ) disabling staff recipe: ${recipe.editorID}`);
+            xelib.SetUIntValue(recipe.record, 'BNAM', xelib.GetHexFormID(locals.KYWD['ActorTypeNPC']));
         },
         'CraftingSmithingSharpeningWheel': changeRecipeConditions,
         'CraftingSmithingArmorTable': changeRecipeConditions
     };
 
     const cobjFilter = function(record) {
-        let workbench = xelib.GetRefEditorID(record, 'BNAM');
+        const workbench = xelib.GetRefEditorID(record, 'BNAM');
         if (!handleWorkbench.hasOwnProperty(workbench)) return;
         if (!xelib.GetLinksTo(record, 'CNAM'))
-            return warn(`${xelib.EditorID(record)} has no output and will not be patched.`);
+            return info(`${xelib.EditorID(record)} has no output and will not be patched.`);
         return true;
     };
 

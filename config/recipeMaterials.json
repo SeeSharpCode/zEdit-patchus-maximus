@@ -84,13 +84,13 @@
     "temperingInput": "IngotCorondum"
   },
   "SILVER": {
-    "smithingPerk": "SilverSmithing",
+    "smithingPerk": "xMASMIMaterialGoldAndSilver",
     "breakdownProduct": "IngotSilver",
     "breakdownStation": "CraftingSmelter",
     "temperingInput": "IngotSilver"
   },
   "REFINED_SILVER": {
-    "smithingPerk": "Refined_silverSmithing",
+    "smithingPerk": "xMASMIMaterialRefinedSilver",
     "breakdownProduct": "IngotSilver",
     "breakdownStation": "CraftingSmelter",
     "temperingInput": "IngotSilver"
@@ -108,7 +108,7 @@
     "temperingInput": "IngotCorondum"
   },
   "GOLD": {
-    "smithingPerk": "SilverSmithing",
+    "smithingPerk": "xMASMIMaterialGoldAndSilver",
     "breakdownProduct": "IngotGold",
     "breakdownStation": "CraftingSmelter",
     "temperingInput": "IngotGold"
@@ -138,7 +138,7 @@
     "temperingInput": "LeatherStrips"
   },
   "LEATHER": {
-    "smithingPerk": "LeatherSmithing",
+    "smithingPerk": "xMASMIMaterialLeather",
     "breakdownProduct": "LeatherStrips",
     "breakdownStation": "CraftingTanningRack",
     "temperingInput": "LeatherStrips"

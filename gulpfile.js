@@ -28,7 +28,7 @@ gulp.task('build', ['clean'], function() {
 
 gulp.task('deploy', ['build'], function () {
     gulp.src('dist/**')
-        .pipe(gulp.dest('../zEdit_Alpha_v0.4.1 Portable_x64/modules/patchusMaximus'));
+        .pipe(gulp.dest('../zEdit_Alpha_v0.4.3/modules/patchusMaximus'));
 });
 
 gulp.task('watch', function() {

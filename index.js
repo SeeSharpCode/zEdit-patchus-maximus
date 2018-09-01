@@ -20,7 +20,8 @@ const loadConfiguration = function(locals) {
         matching: '*.json',
         recursive: false
     }).map(path => fh.jetpack.path(path)).forEach(filePath => {
-        let baseName = filePath.match(/(.*\\)?(.*)\.[^\\]+/)[2];
+        const fileName = fh.getFileName(filePath);
+        const baseName = fileName.substr(0, fileName.indexOf('.'));
         locals[baseName] = fh.loadJsonFile(filePath);
     });
 };
@@ -50,8 +51,8 @@ registerPatcher({
             detectPerMaModules(locals);
         },
         process: [
-            gameSettingsPatcher(helpers, settings, locals)
-            //cobjPatcher(helpers, settings, locals),
+            gameSettingsPatcher(helpers, settings, locals),
+            cobjPatcher(helpers, settings, locals)
             //mgefPatcher(),
             //npcPatcher()
         ]
