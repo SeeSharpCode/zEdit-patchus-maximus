@@ -33,7 +33,7 @@ const mgefPatcher = function() {
     }
 
     const isDisarmEffect = function(record) { 
-        return xelib.GetValue(this.record, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm'; 
+        return xelib.GetValue(record, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm'; 
     }
 
     const addDisarmConditions = function(record) {
@@ -73,9 +73,8 @@ const mgefPatcher = function() {
         load: function(plugin, helpers, settings, locals) {
             return {
                 signature: 'MGEF',
-                filter: function(record) {                 
-                    return isDisarmEffect(record) || 
-                        xelib.HasKeyword(this.record, 'ShoutEffect');
+                filter: function(record) {    
+                    return isDisarmEffect(record) || xelib.HasKeyword(record, 'MagicShout');
                 }
             }
         },
