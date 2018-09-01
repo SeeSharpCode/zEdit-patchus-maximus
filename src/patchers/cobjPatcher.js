@@ -52,7 +52,6 @@ const cobjPatcher = function(helpers, settings, locals) {
 
     const shouldDisableStaffRecipe = function(recipe) {
         if (!locals.useMage) return;
-        info(recipe.outputRecordEditorID);
         // TODO make this exclusion list a setting
         return recipe.outputRecordEditorID.includes('ACX') || recipe.outputRecordEditorID.includes('Unenchanted');
     };
@@ -60,7 +59,7 @@ const cobjPatcher = function(helpers, settings, locals) {
     const handleWorkbench = {
         'DLC2StaffEnchanter': function(recipe) {
             if (!shouldDisableStaffRecipe(recipe)) return;
-            info(`(COBJ) disabling staff recipe: ${recipe.editorID}`);
+            info(`disabling staff recipe: ${recipe.editorID}`);
             xelib.SetUIntValue(recipe.record, 'BNAM', xelib.GetHexFormID(locals.KYWD['ActorTypeNPC']));
         },
         'CraftingSmithingSharpeningWheel': changeRecipeConditions,

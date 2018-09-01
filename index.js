@@ -52,8 +52,8 @@ registerPatcher({
         },
         process: [
             gameSettingsPatcher(helpers, settings, locals),
-            cobjPatcher(helpers, settings, locals)
-            //mgefPatcher(),
+            cobjPatcher(helpers, settings, locals),
+            mgefPatcher()
             //npcPatcher()
         ]
     })
