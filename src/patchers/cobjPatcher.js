@@ -1,9 +1,9 @@
 //=require ../records/recipe.js
 
 const cobjPatcher = function(helpers, settings, locals) {
-    const info = msg => helpers.logMessage(`(COBJ) INFO: ${msg}`);
-    const skip = (recipe, msg) => {
-        info(`${msg}. ${recipe.editorID} will not be patched.`);
+    const log = message => helpers.logMessage(`(COBJ) ${message}`);
+    const skip = (recipe, message) => {
+        log(`${message}. ${recipe.editorID} will not be patched.`);
     };
 
     const getEquipmentMaterials = function(recipe) {
@@ -47,7 +47,7 @@ const cobjPatcher = function(helpers, settings, locals) {
 
         const smithingPerkFormID = getSmithingPerkFormID(recipe);
         if (!smithingPerkFormID) return;
-        xelib.AddCondition(recipe.record, 'HasPerk', '00010000', '1', smithingPerkFormID);
+        xelib.AddCondition(recipe.record, 'HasPerk', locals.conditionTypes.EqualTo, '1', smithingPerkFormID);
     };
 
     const shouldDisableStaffRecipe = function(recipe) {
@@ -59,7 +59,7 @@ const cobjPatcher = function(helpers, settings, locals) {
     const handleWorkbench = {
         'DLC2StaffEnchanter': function(recipe) {
             if (!shouldDisableStaffRecipe(recipe)) return;
-            info(`disabling staff recipe: ${recipe.editorID}`);
+            log(`disabling staff recipe: ${recipe.editorID}`);
             xelib.SetUIntValue(recipe.record, 'BNAM', xelib.GetHexFormID(locals.KYWD['ActorTypeNPC']));
         },
         'CraftingSmithingSharpeningWheel': changeRecipeConditions,
@@ -70,7 +70,7 @@ const cobjPatcher = function(helpers, settings, locals) {
         const workbench = xelib.GetRefEditorID(record, 'BNAM');
         if (!handleWorkbench.hasOwnProperty(workbench)) return;
         if (!xelib.GetLinksTo(record, 'CNAM'))
-            return info(`${xelib.EditorID(record)} has no output and will not be patched.`);
+            return log(`${xelib.EditorID(record)} has no output and will not be patched.`);
         return true;
     };
 

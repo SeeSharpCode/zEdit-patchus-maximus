@@ -46,6 +46,10 @@ registerPatcher({
     requiredFiles: ['PerkusMaximus_Master.esp'],
     execute: (patch, helpers, settings, locals) => ({
         initialize: function() {
+            locals.conditionTypes = {
+                EqualTo: '10000000',
+                EqualToOr: '10010000'
+            };
             loadConfiguration(locals);
             buildReferenceMaps(locals);
             detectPerMaModules(locals);
@@ -53,7 +57,7 @@ registerPatcher({
         process: [
             gameSettingsPatcher(helpers, settings, locals),
             cobjPatcher(helpers, settings, locals),
-            mgefPatcher()
+            mgefPatcher(helpers, settings, locals)
             //npcPatcher()
         ]
     })

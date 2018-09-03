@@ -1,17 +1,20 @@
-const mgefPatcher = function() {
+const mgefPatcher = function(helpers, settings, locals) {
+    const log = (message) => helpers.logMessage(`(MGEF) ${message}`);
+
     class Shout {
         constructor(record) {
+            this.editorID = xelib.EditorID(record);
             this.record = record;
-            this.archetype = xelib.GetValue(this.record, 'Magic Effect Data\\DATA\\Archtype');
+            this.archetype = xelib.GetValue(this.record, 'Magic Effect Data\\DATA - Data\\Archtype');
         }
 
         static get HARMFUL_SHOUT_ARCHETYPES() {
-            return ['Absorb', 'Value Mod', 'Dual Value Mod'];
+            return ['Absorb', 'Value Modifier', 'Dual Value Modifier'];
         }
 
         get isHarmful() {
             return Shout.HARMFUL_SHOUT_ARCHETYPES.includes(this.archetype) 
-                && xelib.GetFlag(this.record, 'Magic Effect Data\\DATA\\Flags\\Detrimental'); // TODO: ensure this works
+                && xelib.GetFlag(this.record, 'Magic Effect Data\\DATA - Data\\Flags', 'Detrimental'); // TODO: ensure this works
         }
 
         get isSummoning() {
@@ -21,14 +24,14 @@ const mgefPatcher = function() {
 
         addKeyword() {
             let keyword = "";
-            if (this.isHarmfulShout) {
-                keyword = 'ShoutHarmful';
+            if (this.isHarmful) {
+                keyword = 'xMASPEShoutHarmful';
             } else if (this.isSummoningShout) {
-                keyword = 'ShoutSummoning';
+                keyword = 'xMASPEShoutSummoning';
             } else {
-                keyword = 'ShoutNonHarmful';
+                keyword = 'xMASPEShoutNonHarmful';
             }
-            xelib.AddKeyword(magicEffect.record, keyword);
+            xelib.AddKeyword(this.record, keyword);
         }
     }
 
@@ -37,15 +40,10 @@ const mgefPatcher = function() {
     }
 
     const addDisarmConditions = function(record) {
-        // TODO: get actual Function name
-        // TODO: ensure Type is correct
-        const condition1 = xelib.AddCondition(record, 'WornHasKeyword', '00010000', '0');
-        // TODO: PerMa form ID
-        xelib.SetValue(condition1, 'CTDA\\Parameter #1', '2b222c');
-
-        const condition2 = xelib.AddCondition(record, 'HasPerk', '00010000', '0');
-        // TODO: PerMa form ID
-        xelib.SetValue(condition2, 'CTDA\\Parameter #1', '3960f9');
+        xelib.AddCondition(record, 'WornHasKeyword', locals.conditionTypes.EqualToOr, 
+            '0', xelib.GetHexFormID(locals.KYWD['xMAWeapSchoolLightWeaponry']));
+        xelib.AddCondition(record, 'HasPerk', locals.conditionTypes.EqualToOr, 
+            '0', xelib.GetHexFormID(locals.PERK['xMALIASecureGrip']));
     };
 
     const addScriptToShout = function(shout, helpers) {
@@ -70,26 +68,23 @@ const mgefPatcher = function() {
     };
 
     return {
-        load: function(plugin, helpers, settings, locals) {
-            return {
-                signature: 'MGEF',
-                filter: function(record) {    
-                    return isDisarmEffect(record) || xelib.HasKeyword(record, 'MagicShout');
-                }
+        load: {
+            signature: 'MGEF',
+            filter: function(record) {
+                return isDisarmEffect(record) || xelib.HasKeyword(record, 'MagicShout');
             }
         },
-        patch: function(record, helpers, settings, locals) {
+        patch: function(record) {
             const name = xelib.Name(record);
             if (isDisarmEffect(record)) {
-                // TODO: get PerMa keyword
-                xelib.AddKeyword(record, 'MagicDisarm'); 
+                xelib.AddKeyword(record, 'xMAMagicDisarm'); 
                 addDisarmConditions(record, helpers);
-                helpers.logMessage(`(MGEF) patched disarm effect: ${name}`);
+                log(`patched disarm effect: ${name}`);
             } else {
                 const shout = new Shout(record);
                 shout.addKeyword();
-                addScriptToShout(shout);
-                helpers.logMessage(`(MGEF) patched shout: ${name}`);
+                // addScriptToShout(shout);
+                log(`patched shout: ${name}`);
             }
         }
     };
