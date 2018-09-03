@@ -18,7 +18,6 @@ const mgefPatcher = function(helpers, settings, locals) {
         }
 
         get isSummoning() {
-            // TODO: check actual keyword
             return this.archetype === 'Summon Creature';
         }
 
@@ -26,7 +25,7 @@ const mgefPatcher = function(helpers, settings, locals) {
             let keyword = "";
             if (this.isHarmful) {
                 keyword = 'xMASPEShoutHarmful';
-            } else if (this.isSummoningShout) {
+            } else if (this.isSummoning) {
                 keyword = 'xMASPEShoutSummoning';
             } else {
                 keyword = 'xMASPEShoutNonHarmful';
@@ -46,25 +45,25 @@ const mgefPatcher = function(helpers, settings, locals) {
             '0', xelib.GetHexFormID(locals.PERK['xMALIASecureGrip']));
     };
 
-    const addScriptToShout = function(shout, helpers) {
-        // TODO: get correct script name and Flags value
-        const script = xelib.AddScript(shout.record, 'ShoutExpScriptName', 'Flags');
+    const addShoutExperienceScript = function(shout) {
+        const vmad = xelib.AddElement(shout.record, 'VMAD');
+        xelib.SetIntValue(vmad, 'Version', 5);
+        xelib.SetIntValue(vmad, 'Object Format', 2);
+        xelib.AddElement(vmad, 'Scripts');
 
-        // TODO: Type, Flags, 
-        const scriptProperty1 = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Type', 'Flags'); 
-        // TODO: path, PerMa form ID
-        xelib.SetValue(scriptProperty1, 'DATA\\?', '44251b');
+        const script = xelib.AddScript(shout.record, 'xMATHIShoutExpScript', 'Local');
 
-        // TODO: Type, Flags, 
-        const scriptProperty2 = xelib.AddScriptProperty(script, 'playerref', 'Type', 'Flags'); 
-        // TODO: path, PerMa form ID
-        xelib.SetValue(scriptProperty2, 'DATA\\?', '000014');
+        const shoutExperienceBaseProperty = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Object', 'Edited'); 
+        xelib.SetValue(shoutExperienceBaseProperty, 'Value\\Object Union\\Object v2\\FormID', xelib.GetHexFormID(locals.GLOB['xMATHIShoutExpBase']));
+        xelib.SetValue(shoutExperienceBaseProperty, 'Value\\Object Union\\Object v2\\Alias', 'None');
 
-        // TODO: Type, Flags, 
-        const scriptProperty3 = xelib.AddScriptProperty(script, 'expFactor', 'Type', 'Flags'); 
-        // TODO: path, PerMa form ID
-        // NOTE: value of 1 is hardcoded in PerMa but was meant to be calculated
-        xelib.SetValue(scriptProperty2, 'DATA\\?', '1');
+        const playerRefProperty = xelib.AddScriptProperty(script, 'playerref', 'Object', 'Edited'); 
+        xelib.SetValue(playerRefProperty, 'Value\\Object Union\\Object v2\\FormID', '00000014');
+        xelib.SetValue(playerRefProperty, 'Value\\Object Union\\Object v2\\Alias', 'None');
+
+        const expFactorProperty = xelib.AddScriptProperty(script, 'expFactor', 'Float', 'Edited'); 
+        // TODO looks like T3ndo meant to calculate this
+        xelib.SetFloatValue(expFactorProperty, 'Float', 1);
     };
 
     return {
@@ -83,7 +82,7 @@ const mgefPatcher = function(helpers, settings, locals) {
             } else {
                 const shout = new Shout(record);
                 shout.addKeyword();
-                // addScriptToShout(shout);
+                addShoutExperienceScript(shout);
                 log(`patched shout: ${name}`);
             }
         }

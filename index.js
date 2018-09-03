@@ -2,7 +2,7 @@
 //=require src/polyfills.js
 //=require src/patchers/*.js
 
-const signaturesToMap = ['MISC', 'KYWD', 'PERK'];
+const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB'];
 
 const buildReferenceMaps = function(locals) {
     signaturesToMap.forEach(sig => {
