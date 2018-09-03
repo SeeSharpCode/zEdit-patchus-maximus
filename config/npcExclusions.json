@@ -1,7 +1,7 @@
 [
     "^dunSnaplegSpriggan$",
     "^EncSprigganSwarm$",
-    "^3DNPC",
-    "^ARTHLALShip",
-    "^Chicken"
+    "3DNPC",
+    "ARTHLALShip",
+    "Chicken"
 ]

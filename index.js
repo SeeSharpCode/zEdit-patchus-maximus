@@ -55,10 +55,10 @@ registerPatcher({
             detectPerMaModules(locals);
         },
         process: [
-            gameSettingsPatcher(helpers, settings, locals),
-            cobjPatcher(helpers, settings, locals),
-            mgefPatcher(helpers, settings, locals)
-            //npcPatcher()
+            //gameSettingsPatcher(helpers, settings, locals),
+            //cobjPatcher(helpers, settings, locals),
+            //mgefPatcher(helpers, settings, locals),
+            //npcPatcher(helpers, settings, locals)
         ]
     })
 });
