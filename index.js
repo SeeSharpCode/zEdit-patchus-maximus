@@ -50,11 +50,14 @@ registerPatcher({
                 EqualTo: '10000000',
                 EqualToOr: '10010000'
             };
-            
+
             loadConfiguration(locals);
             buildReferenceMaps(locals);
             detectPerMaModules(locals);
 
+            locals.passiveScalingSpellsPerkFormID = xelib.GetHexFormID(locals.PERK['xMAMAGPassiveScalingSpells']);
+            locals.passiveEffectsPerkFormID = xelib.GetHexFormID(locals.PERK['xMAMAGPassiveEffects']);
+            locals.alchemySkillBoostsPerkFormID = xelib.GetHexFormID(locals.PERK['AlchemySkillBoosts']);
             locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
         },
         process: [

@@ -4,7 +4,7 @@ const npcPatcher = function(helpers, settings, locals) {
 
     const npcFilter = function(record) {
         const name = xelib.FullName(record);
-        if (name && name.includes('NO TEXT')) {
+        if (!name) {
             return false;
         }
         
@@ -15,7 +15,9 @@ const npcPatcher = function(helpers, settings, locals) {
     };
 
     const addMagePerks = function(record) {
-        xelib.AddPerk(record, 'xMAMAGPassiveScalingSpells', '1');
+        xelib.AddPerk(record, locals.passiveScalingSpellsPerkFormID, '1');
+        xelib.AddPerk(record, locals.passiveEffectsPerkFormID, '1');
+        xelib.AddPerk(record, locals.alchemySkillBoostsPerkFormID, '1');
     };
 
     return {
@@ -26,6 +28,9 @@ const npcPatcher = function(helpers, settings, locals) {
         patch: function (record) {
             if (locals.useMage) {
                 addMagePerks(record);
+            }
+            if (locals.useThief) {
+
             }
         }
     };
