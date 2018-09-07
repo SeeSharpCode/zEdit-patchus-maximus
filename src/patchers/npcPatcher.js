@@ -1,4 +1,4 @@
-// TODO resume after figuring out performance issues
+// TODO patch player
 const npcPatcher = function(helpers, settings, locals) {
     const log = message => helpers.logMessage(`(NPC_) ${message}`);
 
@@ -20,6 +20,17 @@ const npcPatcher = function(helpers, settings, locals) {
         xelib.AddPerk(record, locals.alchemySkillBoostsPerkFormID, '1');
     };
 
+    const addWarriorPerks = function(record) {
+        xelib.AddPerk(record, locals.scarredPassivePerkFormID, '1');
+        xelib.AddPerk(record, locals.passiveScalingFistPerkFormID, '1');
+        xelib.AddPerk(record, locals.passiveScalingCriticalDamagePerkFormID, '1');
+        xelib.AddPerk(record, locals.passiveCrossbowEffectsPerkFormID, '1');
+    };
+
+    const addSpell = function(record, spellFormID) {
+        xelib.AddArrayItem(record, 'Actor Effects', '', spellFormID);
+    };
+
     return {
         load: {
             signature: 'NPC_',
@@ -30,8 +41,11 @@ const npcPatcher = function(helpers, settings, locals) {
                 addMagePerks(record);
             }
             if (locals.useThief) {
-                const spell = xelib.AddElement(record, 'Actor Effects\\SPLO');
-                xelib.SetValue(spell, '', locals.thiefModuleCombatAbilityFormID);
+                addSpell(record, locals.thiefModuleCombatAbilityFormID);
+            }
+            if (locals.useWarrior) {
+                addWarriorPerks(record);
+                addSpell(record, locals.shieldTypeDetectorAbilitySpellFormID);
             }
         }
     };

@@ -59,6 +59,11 @@ registerPatcher({
             locals.passiveEffectsPerkFormID = xelib.GetHexFormID(locals.PERK['xMAMAGPassiveEffects']);
             locals.alchemySkillBoostsPerkFormID = xelib.GetHexFormID(locals.PERK['AlchemySkillBoosts']);
             locals.thiefModuleCombatAbilityFormID = xelib.GetHexFormID(locals.SPEL['xMATHICombatAbility']);
+            locals.scarredPassivePerkFormID = xelib.GetHexFormID(locals.PERK['xMAHEWScarredPassive']);
+            locals.passiveScalingFistPerkFormID = xelib.GetHexFormID(locals.PERK['xMAWARPassiveScalingFistWeapon']);
+            locals.shieldTypeDetectorAbilitySpellFormID = xelib.GetHexFormID(locals.SPEL['xMAWARShieldTypeDetectorAbility']);
+            locals.passiveScalingCriticalDamagePerkFormID = xelib.GetHexFormID(locals.PERK['xMAWARPassiveScalingCriticalDamage']);
+            locals.passiveCrossbowEffectsPerkFormID = xelib.GetHexFormID(locals.PERK['xMAWARPassiveCrossbowEffects']);
 
             locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
         },
