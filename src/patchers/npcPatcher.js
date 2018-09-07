@@ -30,7 +30,8 @@ const npcPatcher = function(helpers, settings, locals) {
                 addMagePerks(record);
             }
             if (locals.useThief) {
-
+                const spell = xelib.AddElement(record, 'Actor Effects\\SPLO');
+                xelib.SetValue(spell, '', locals.thiefModuleCombatAbilityFormID);
             }
         }
     };

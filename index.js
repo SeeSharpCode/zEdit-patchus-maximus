@@ -2,7 +2,7 @@
 //=require src/polyfills.js
 //=require src/patchers/*.js
 
-const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB'];
+const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
 
 const buildReferenceMaps = function(locals) {
     signaturesToMap.forEach(sig => {
@@ -58,6 +58,8 @@ registerPatcher({
             locals.passiveScalingSpellsPerkFormID = xelib.GetHexFormID(locals.PERK['xMAMAGPassiveScalingSpells']);
             locals.passiveEffectsPerkFormID = xelib.GetHexFormID(locals.PERK['xMAMAGPassiveEffects']);
             locals.alchemySkillBoostsPerkFormID = xelib.GetHexFormID(locals.PERK['AlchemySkillBoosts']);
+            locals.thiefModuleCombatAbilityFormID = xelib.GetHexFormID(locals.SPEL['xMATHICombatAbility']);
+
             locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
         },
         process: [
