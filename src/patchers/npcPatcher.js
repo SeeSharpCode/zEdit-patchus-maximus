@@ -9,8 +9,7 @@ const npcPatcher = function(helpers, settings, locals) {
         }
         
         const editorID = xelib.EditorID(record);
-        const exclusions = locals.npcExclusions.map(e => new RegExp(e));
-        const exclude = exclusions.find(expr => expr.test(editorID));
+        const exclude = locals.npcExclusions.find(expr => expr.test(editorID));
         if (exclude) log(`excluding ${editorID}`);
         return !exclude;
     };

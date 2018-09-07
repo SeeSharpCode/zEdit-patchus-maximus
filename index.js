@@ -50,15 +50,18 @@ registerPatcher({
                 EqualTo: '10000000',
                 EqualToOr: '10010000'
             };
+            
             loadConfiguration(locals);
             buildReferenceMaps(locals);
             detectPerMaModules(locals);
+
+            locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
         },
         process: [
             //gameSettingsPatcher(helpers, settings, locals),
             //cobjPatcher(helpers, settings, locals),
             //mgefPatcher(helpers, settings, locals),
-            //npcPatcher(helpers, settings, locals)
+            npcPatcher(helpers, settings, locals)
         ]
     })
 });
