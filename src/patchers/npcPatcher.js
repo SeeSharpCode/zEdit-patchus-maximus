@@ -15,16 +15,16 @@ const npcPatcher = function(helpers, settings, locals) {
     };
 
     const addMagePerks = function(record) {
-        xelib.AddPerk(record, locals.passiveScalingSpellsPerkFormID, '1');
-        xelib.AddPerk(record, locals.passiveEffectsPerkFormID, '1');
-        xelib.AddPerk(record, locals.alchemySkillBoostsPerkFormID, '1');
+        xelib.AddPerk(record, locals.PERK.xMAMAGPassiveScalingSpells, '1');
+        xelib.AddPerk(record, locals.PERK.xMAMAGPassiveEffects, '1');
+        xelib.AddPerk(record, locals.PERK.AlchemySkillBoosts, '1');
     };
 
     const addWarriorPerks = function(record) {
-        xelib.AddPerk(record, locals.scarredPassivePerkFormID, '1');
-        xelib.AddPerk(record, locals.passiveScalingFistPerkFormID, '1');
-        xelib.AddPerk(record, locals.passiveScalingCriticalDamagePerkFormID, '1');
-        xelib.AddPerk(record, locals.passiveCrossbowEffectsPerkFormID, '1');
+        xelib.AddPerk(record, locals.PERK.xMAHEWScarredPassive, '1');
+        xelib.AddPerk(record, locals.PERK.xMAWARPassiveScalingFistWeapon, '1');
+        xelib.AddPerk(record, locals.PERK.xMAWARPassiveScalingCriticalDamage, '1');
+        xelib.AddPerk(record, locals.PERK.xMAWARPassiveCrossbowEffects, '1');
     };
 
     const addSpell = function(record, spellFormID) {
@@ -41,11 +41,11 @@ const npcPatcher = function(helpers, settings, locals) {
                 addMagePerks(record);
             }
             if (locals.useThief) {
-                addSpell(record, locals.thiefModuleCombatAbilityFormID);
+                addSpell(record, locals.SPEL.xMATHICombatAbility);
             }
             if (locals.useWarrior) {
                 addWarriorPerks(record);
-                addSpell(record, locals.shieldTypeDetectorAbilitySpellFormID);
+                addSpell(record, locals.SPEL.xMAWARShieldTypeDetectorAbility);
             }
         }
     };

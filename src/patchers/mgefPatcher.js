@@ -14,7 +14,7 @@ const mgefPatcher = function(helpers, settings, locals) {
 
         get isHarmful() {
             return Shout.HARMFUL_SHOUT_ARCHETYPES.includes(this.archetype) 
-                && xelib.GetFlag(this.record, 'Magic Effect Data\\DATA - Data\\Flags', 'Detrimental'); // TODO: ensure this works
+                && xelib.GetFlag(this.record, 'Magic Effect Data\\DATA - Data\\Flags', 'Detrimental'); // TODO ensure this works
         }
 
         get isSummoning() {
@@ -39,10 +39,8 @@ const mgefPatcher = function(helpers, settings, locals) {
     }
 
     const addDisarmConditions = function(record) {
-        xelib.AddCondition(record, 'WornHasKeyword', locals.conditionTypes.EqualToOr, 
-            '0', xelib.GetHexFormID(locals.KYWD['xMAWeapSchoolLightWeaponry']));
-        xelib.AddCondition(record, 'HasPerk', locals.conditionTypes.EqualToOr, 
-            '0', xelib.GetHexFormID(locals.PERK['xMALIASecureGrip']));
+        xelib.AddCondition(record, 'WornHasKeyword', locals.conditionTypes.EqualToOr, '0', locals.KYWD.xMAWeapSchoolLightWeaponry);
+        xelib.AddCondition(record, 'HasPerk', locals.conditionTypes.EqualToOr, '0', locals.PERK.xMALIASecureGrip);
     };
 
     const addShoutExperienceScript = function(shout) {
@@ -54,7 +52,7 @@ const mgefPatcher = function(helpers, settings, locals) {
         const script = xelib.AddScript(shout.record, 'xMATHIShoutExpScript', 'Local');
 
         const shoutExperienceBaseProperty = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Object', 'Edited'); 
-        xelib.SetValue(shoutExperienceBaseProperty, 'Value\\Object Union\\Object v2\\FormID', xelib.GetHexFormID(locals.GLOB['xMATHIShoutExpBase']));
+        xelib.SetValue(shoutExperienceBaseProperty, 'Value\\Object Union\\Object v2\\FormID', locals.GLOB.xMATHIShoutExpBase);
         xelib.SetValue(shoutExperienceBaseProperty, 'Value\\Object Union\\Object v2\\Alias', 'None');
 
         const playerRefProperty = xelib.AddScriptProperty(script, 'playerref', 'Object', 'Edited'); 

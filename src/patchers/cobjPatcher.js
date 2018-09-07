@@ -38,7 +38,7 @@ const cobjPatcher = function(helpers, settings, locals) {
             return skip(recipe, `no material found with name ${materialName}.`);
 
         if (!material.smithingPerk) return;
-        return xelib.GetHexFormID(locals.PERK[material.smithingPerk]);
+        return locals.PERK[material.smithingPerk];
     };
 
     const changeRecipeConditions = function(recipe) {
@@ -60,7 +60,7 @@ const cobjPatcher = function(helpers, settings, locals) {
         'DLC2StaffEnchanter': function(recipe) {
             if (!shouldDisableStaffRecipe(recipe)) return;
             log(`disabling staff recipe: ${recipe.editorID}`);
-            xelib.SetUIntValue(recipe.record, 'BNAM', xelib.GetHexFormID(locals.KYWD['ActorTypeNPC']));
+            xelib.SetUIntValue(recipe.record, 'BNAM', locals.KYWD.ActorTypeNPC);
         },
         'CraftingSmithingSharpeningWheel': changeRecipeConditions,
         'CraftingSmithingArmorTable': changeRecipeConditions
