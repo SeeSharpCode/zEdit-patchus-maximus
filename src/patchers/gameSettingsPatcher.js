@@ -1,4 +1,4 @@
-const gameSettingsPatcher = function(helpers, settings, locals) {
+export default function gameSettingsPatcher(helpers, locals) {
     return {
         load: {
             signature: 'GMST',

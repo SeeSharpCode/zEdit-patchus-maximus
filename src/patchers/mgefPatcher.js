@@ -1,4 +1,4 @@
-const mgefPatcher = function(helpers, settings, locals) {
+export default function mgefPatcher(helpers, locals) {
     const log = (message) => helpers.logMessage(`(MGEF) ${message}`);
 
     class Shout {
@@ -24,11 +24,11 @@ const mgefPatcher = function(helpers, settings, locals) {
         addKeyword() {
             let keyword = "";
             if (this.isHarmful) {
-                keyword = 'xMASPEShoutHarmful';
+                keyword = locals.KYWD.xMASPEShoutHarmful;
             } else if (this.isSummoning) {
-                keyword = 'xMASPEShoutSummoning';
+                keyword = locals.KYWD.xMASPEShoutSummoning;
             } else {
-                keyword = 'xMASPEShoutNonHarmful';
+                keyword = locals.KYWD.xMASPEShoutNonHarmful;
             }
             xelib.AddKeyword(this.record, keyword);
         }
@@ -56,7 +56,7 @@ const mgefPatcher = function(helpers, settings, locals) {
         xelib.SetValue(shoutExperienceBaseProperty, 'Value\\Object Union\\Object v2\\Alias', 'None');
 
         const playerRefProperty = xelib.AddScriptProperty(script, 'playerref', 'Object', 'Edited'); 
-        xelib.SetValue(playerRefProperty, 'Value\\Object Union\\Object v2\\FormID', '00000014');
+        xelib.SetValue(playerRefProperty, 'Value\\Object Union\\Object v2\\FormID', locals.playerRefFormID);
         xelib.SetValue(playerRefProperty, 'Value\\Object Union\\Object v2\\Alias', 'None');
 
         const expFactorProperty = xelib.AddScriptProperty(script, 'expFactor', 'Float', 'Edited'); 
@@ -68,7 +68,7 @@ const mgefPatcher = function(helpers, settings, locals) {
         load: {
             signature: 'MGEF',
             filter: function(record) {
-                return isDisarmEffect(record) || xelib.HasKeyword(record, 'MagicShout');
+                return isDisarmEffect(record) || xelib.HasKeyword(record, locals.KYWD.MagicShout);
             }
         },
         patch: function(record) {
@@ -77,7 +77,8 @@ const mgefPatcher = function(helpers, settings, locals) {
                 xelib.AddKeyword(record, 'xMAMagicDisarm'); 
                 addDisarmConditions(record, helpers);
                 log(`patched disarm effect: ${name}`);
-            } else {
+            } 
+            if (xelib.HasKeyword(record, locals.KYWD.MagicShout)) {
                 const shout = new Shout(record);
                 shout.addKeyword();
                 addShoutExperienceScript(shout);

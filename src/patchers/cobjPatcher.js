@@ -1,6 +1,6 @@
-//=require ../records/recipe.js
+import Recipe from '../records/recipe';
 
-const cobjPatcher = function(helpers, settings, locals) {
+export default function cobjPatcher(helpers, locals) {
     const log = message => helpers.logMessage(`(COBJ) ${message}`);
     const skip = (recipe, message) => {
         log(`${message}. ${recipe.editorID} will not be patched.`);

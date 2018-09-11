@@ -1,6 +1,9 @@
 /* global ngapp, xelib, fh, patcherUrl, patcherPath */
-//=require src/polyfills.js
-//=require src/patchers/*.js
+
+import cobjPatcher from './src/patchers/cobjPatcher';
+import gameSettingsPatcher from './src/patchers/gameSettingsPatcher';
+import mgefPatcher from './src/patchers/mgefPatcher';
+import npcPatcher from './src/patchers/npcPatcher';
 
 const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
 
@@ -56,12 +59,15 @@ registerPatcher({
             detectPerMaModules(locals);
             
             locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
+
+            locals.playerFormID = '00000007';
+            locals.playerRefFormID = '00000014';
         },
         process: [
-            //gameSettingsPatcher(helpers, settings, locals),
-            //cobjPatcher(helpers, settings, locals),
-            //mgefPatcher(helpers, settings, locals),
-            npcPatcher(helpers, settings, locals)
+            //gameSettingsPatcher(helpers, locals),
+            //cobjPatcher(helpers, locals),
+            //mgefPatcher(helpers, locals),
+            npcPatcher(helpers, locals)
         ]
     })
 });

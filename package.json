@@ -5,20 +5,16 @@
   "version": "1.0.0",
   "author": "Breems",
   "copyright": "© 2019, Breems",
-  "repository": "https://github.com/SeeSharpCode/zedit-patchus-maximus",
+  "repository": "https://github.com/SeeSharpCode/zEdit-patchus-maximus",
   "license": "MIT",
   "scripts": {
-    "build": "gulp build"
+    "build": "rollup -c"
   },
   "dependencies": {
     "zedit-unified-patching-framework": "github:z-edit/zedit-unified-patching-framework"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.4.0",
-    "gulp-include": "^2.3.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-watch": "^5.0.0",
-    "gulp-zip": "^4.1.0"
+    "rollup": "^0.65.2",
+    "rollup-plugin-copy": "^0.2.3"
   }
 }

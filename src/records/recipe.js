@@ -1,4 +1,4 @@
-class Recipe {
+export default class Recipe {
     constructor(record) {
         this.record = record;
         this.editorID = xelib.EditorID(record);
