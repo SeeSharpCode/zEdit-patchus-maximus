@@ -59,8 +59,8 @@ export default function cobjPatcher(helpers, locals) {
     const handleWorkbench = {
         'DLC2StaffEnchanter': function(recipe) {
             if (!shouldDisableStaffRecipe(recipe)) return;
-            log(`disabling staff recipe: ${recipe.editorID}`);
             xelib.SetUIntValue(recipe.record, 'BNAM', locals.KYWD.ActorTypeNPC);
+            log(`disabled staff recipe: ${recipe.editorID}`);
         },
         'CraftingSmithingSharpeningWheel': changeRecipeConditions,
         'CraftingSmithingArmorTable': changeRecipeConditions
