@@ -1,5 +1,6 @@
 /* global ngapp, xelib, fh, patcherUrl, patcherPath */
 
+import globPatcher from './src/patchers/globPatcher';
 import cobjPatcher from './src/patchers/cobjPatcher';
 import gameSettingsPatcher from './src/patchers/gameSettingsPatcher';
 import mgefPatcher from './src/patchers/mgefPatcher';
@@ -64,10 +65,11 @@ registerPatcher({
             locals.playerRefFormID = '00000014';
         },
         process: [
+            globPatcher(helpers, locals)
             //gameSettingsPatcher(helpers, locals),
             //cobjPatcher(helpers, locals),
             //mgefPatcher(helpers, locals),
-            npcPatcher(helpers, locals)
+            //npcPatcher(helpers, locals)
         ]
     })
 });
