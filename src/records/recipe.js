@@ -13,11 +13,11 @@ export default class Recipe {
     get isWeaponRecipe() {
         return this.workbench === 'CraftingSmithingSharpeningWheel';
     }
-    
+
     get isArmorRecipe() {
         return this.workbench === 'CraftingSmithingArmorTable';
     }
-    
+
     get isStaffRecipe() {
         return this.workbench === 'DLC2StaffEnchanter';
     }

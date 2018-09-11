@@ -1,16 +1,16 @@
 /* global ngapp, xelib, fh, patcherUrl, patcherPath */
 
 import globPatcher from './src/patchers/globPatcher';
-import cobjPatcher from './src/patchers/cobjPatcher';
-import gameSettingsPatcher from './src/patchers/gameSettingsPatcher';
-import mgefPatcher from './src/patchers/mgefPatcher';
-import npcPatcher from './src/patchers/npcPatcher';
+// import cobjPatcher from './src/patchers/cobjPatcher';
+// import gameSettingsPatcher from './src/patchers/gameSettingsPatcher';
+// import mgefPatcher from './src/patchers/mgefPatcher';
+// import npcPatcher from './src/patchers/npcPatcher';
 
 const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
 
 const buildReferenceMaps = function(locals) {
     signaturesToMap.forEach(sig => {
-        let records = xelib.GetRecords(0, sig, false);
+        const records = xelib.GetRecords(0, sig, false);
         locals[sig] = records.reduce((obj, rec) => {
             const edid = xelib.EditorID(rec);
             if (edid) obj[edid] = xelib.GetHexFormID(rec);
@@ -32,7 +32,7 @@ const loadConfiguration = function(locals) {
 
 const detectPerMaModules = function(locals) {
     xelib.GetLoadedFileNames().forEach(filename => {
-        let match = filename.match(/PerkusMaximus_(?!Master)(\w+)\.esp/);
+        const match = filename.match(/PerkusMaximus_(?!Master)(\w+)\.esp/);
         if (match) locals[`use${match[1]}`] = true;
     });
 };
@@ -49,7 +49,7 @@ registerPatcher({
     },
     requiredFiles: ['PerkusMaximus_Master.esp'],
     execute: (patch, helpers, settings, locals) => ({
-        initialize: function() {
+        initialize: () => {
             locals.conditionTypes = {
                 EqualTo: '10000000',
                 EqualToOr: '10010000'
@@ -58,7 +58,7 @@ registerPatcher({
             loadConfiguration(locals);
             buildReferenceMaps(locals);
             detectPerMaModules(locals);
-            
+
             locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
 
             locals.playerFormID = '00000007';
@@ -66,10 +66,10 @@ registerPatcher({
         },
         process: [
             globPatcher(helpers, locals)
-            //gameSettingsPatcher(helpers, locals),
-            //cobjPatcher(helpers, locals),
-            //mgefPatcher(helpers, locals),
-            //npcPatcher(helpers, locals)
+            // gameSettingsPatcher(helpers, locals),
+            // cobjPatcher(helpers, locals),
+            // mgefPatcher(helpers, locals),
+            // npcPatcher(helpers, locals)
         ]
     })
 });

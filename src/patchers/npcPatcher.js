@@ -1,12 +1,12 @@
 export default function npcPatcher(helpers, locals) {
     const log = message => helpers.logMessage(`(NPC_) ${message}`);
 
-    const npcFilter = function(record) {
+    const npcFilter = function (record) {
         const name = xelib.FullName(record);
         if (!name) {
             return false;
         }
-        
+
         const editorID = xelib.EditorID(record);
         const exclude = locals.npcExclusions.find(expr => expr.test(editorID));
         if (exclude) log(`excluding ${editorID}`);
@@ -17,7 +17,7 @@ export default function npcPatcher(helpers, locals) {
         xelib.AddArrayItem(record, 'Actor Effects', '', spellFormID);
     };
 
-    const patchNpc = function(record) {
+    const patchNpc = function patchNpc(record) {
         if (locals.useMage) {
             xelib.AddPerk(record, locals.PERK.xMAMAGPassiveScalingSpells, '1');
             xelib.AddPerk(record, locals.PERK.xMAMAGPassiveEffects, '1');
@@ -33,7 +33,7 @@ export default function npcPatcher(helpers, locals) {
             xelib.AddPerk(record, locals.PERK.xMAWARPassiveScalingCriticalDamage, '1');
             xelib.AddPerk(record, locals.PERK.xMAWARPassiveCrossbowEffects, '1');
         }
-    }
+    };
 
     const patchPlayer = function(record) {
         addSpell(record, locals.SPEL.xMAWeaponSpeedFix);
@@ -64,14 +64,14 @@ export default function npcPatcher(helpers, locals) {
             xelib.AddPerk(record, locals.PERK.ArcaneBlacksmith, '1');
             xelib.AddPerk(record, locals.PERK.xMAWARPassiveDualWieldMalus, '1');
         }
-    }
+    };
 
     return {
         load: {
             signature: 'NPC_',
             filter: npcFilter
         },
-        patch: function (record) {
+        patch: record => {
             patchNpc(record);
 
             if (xelib.GetHexFormID(record) === locals.playerFormID) {
@@ -79,4 +79,4 @@ export default function npcPatcher(helpers, locals) {
             }
         }
     };
-};
+}

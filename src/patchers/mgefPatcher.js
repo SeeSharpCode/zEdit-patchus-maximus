@@ -13,7 +13,7 @@ export default function mgefPatcher(helpers, locals) {
         }
 
         get isHarmful() {
-            return Shout.HARMFUL_SHOUT_ARCHETYPES.includes(this.archetype) 
+            return Shout.HARMFUL_SHOUT_ARCHETYPES.includes(this.archetype)
                 && xelib.GetFlag(this.record, 'Magic Effect Data\\DATA - Data\\Flags', 'Detrimental'); // TODO ensure this works
         }
 
@@ -22,7 +22,7 @@ export default function mgefPatcher(helpers, locals) {
         }
 
         addKeyword() {
-            let keyword = "";
+            let keyword = '';
             if (this.isHarmful) {
                 keyword = locals.KYWD.xMASPEShoutHarmful;
             } else if (this.isSummoning) {
@@ -34,9 +34,9 @@ export default function mgefPatcher(helpers, locals) {
         }
     }
 
-    const isDisarmEffect = function(record) { 
-        return xelib.GetValue(record, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm'; 
-    }
+    const isDisarmEffect = function(record) {
+        return xelib.GetValue(record, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm';
+    };
 
     const addDisarmConditions = function(record) {
         xelib.AddCondition(record, 'WornHasKeyword', locals.conditionTypes.EqualToOr, '0', locals.KYWD.xMAWeapSchoolLightWeaponry);
@@ -51,15 +51,15 @@ export default function mgefPatcher(helpers, locals) {
 
         const script = xelib.AddScript(shout.record, 'xMATHIShoutExpScript', 'Local');
 
-        const shoutExperienceBaseProperty = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Object', 'Edited'); 
+        const shoutExperienceBaseProperty = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Object', 'Edited');
         xelib.SetValue(shoutExperienceBaseProperty, 'Value\\Object Union\\Object v2\\FormID', locals.GLOB.xMATHIShoutExpBase);
         xelib.SetValue(shoutExperienceBaseProperty, 'Value\\Object Union\\Object v2\\Alias', 'None');
 
-        const playerRefProperty = xelib.AddScriptProperty(script, 'playerref', 'Object', 'Edited'); 
+        const playerRefProperty = xelib.AddScriptProperty(script, 'playerref', 'Object', 'Edited');
         xelib.SetValue(playerRefProperty, 'Value\\Object Union\\Object v2\\FormID', locals.playerRefFormID);
         xelib.SetValue(playerRefProperty, 'Value\\Object Union\\Object v2\\Alias', 'None');
 
-        const expFactorProperty = xelib.AddScriptProperty(script, 'expFactor', 'Float', 'Edited'); 
+        const expFactorProperty = xelib.AddScriptProperty(script, 'expFactor', 'Float', 'Edited');
         // TODO looks like T3ndo meant to calculate this
         xelib.SetFloatValue(expFactorProperty, 'Float', 1);
     };
@@ -67,17 +67,15 @@ export default function mgefPatcher(helpers, locals) {
     return {
         load: {
             signature: 'MGEF',
-            filter: function(record) {
-                return isDisarmEffect(record) || xelib.HasKeyword(record, locals.KYWD.MagicShout);
-            }
+            filter: record => isDisarmEffect(record) || xelib.HasKeyword(record, locals.KYWD.MagicShout)
         },
-        patch: function(record) {
+        patch: record => {
             const name = xelib.Name(record);
             if (isDisarmEffect(record)) {
-                xelib.AddKeyword(record, 'xMAMagicDisarm'); 
+                xelib.AddKeyword(record, 'xMAMagicDisarm');
                 addDisarmConditions(record, helpers);
                 log(`patched disarm effect: ${name}`);
-            } 
+            }
             if (xelib.HasKeyword(record, locals.KYWD.MagicShout)) {
                 const shout = new Shout(record);
                 shout.addKeyword();
@@ -86,4 +84,4 @@ export default function mgefPatcher(helpers, locals) {
             }
         }
     };
-};
+}

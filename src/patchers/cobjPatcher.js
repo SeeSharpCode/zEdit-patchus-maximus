@@ -30,14 +30,16 @@ export default function cobjPatcher(helpers, locals) {
 
     const getSmithingPerkFormID = function(recipe) {
         const materialName = getMaterialName(recipe);
-        if (!materialName)
+        if (!materialName) {
             return skip(recipe, `no material found for ${recipe.outputRecordName}.`);
+        }
 
         const material = locals.recipeMaterials[materialName];
-        if (!material)
+        if (!material) {
             return skip(recipe, `no material found with name ${materialName}.`);
+        }
 
-        if (!material.smithingPerk) return;
+        if (!material.smithingPerk) return null;
         return locals.PERK[material.smithingPerk];
     };
 
@@ -51,26 +53,28 @@ export default function cobjPatcher(helpers, locals) {
     };
 
     const shouldDisableStaffRecipe = function(recipe) {
-        if (!locals.useMage) return;
+        if (!locals.useMage) return false;
         // TODO make this exclusion list a setting
         return recipe.outputRecordEditorID.includes('ACX') || recipe.outputRecordEditorID.includes('Unenchanted');
     };
 
     const handleWorkbench = {
-        'DLC2StaffEnchanter': function(recipe) {
+        DLC2StaffEnchanter: recipe => {
             if (!shouldDisableStaffRecipe(recipe)) return;
             xelib.SetUIntValue(recipe.record, 'BNAM', locals.KYWD.ActorTypeNPC);
             log(`disabled staff recipe: ${recipe.editorID}`);
         },
-        'CraftingSmithingSharpeningWheel': changeRecipeConditions,
-        'CraftingSmithingArmorTable': changeRecipeConditions
+        CraftingSmithingSharpeningWheel: changeRecipeConditions,
+        CraftingSmithingArmorTable: changeRecipeConditions
     };
 
     const cobjFilter = function(record) {
         const workbench = xelib.GetRefEditorID(record, 'BNAM');
-        if (!handleWorkbench.hasOwnProperty(workbench)) return;
-        if (!xelib.GetLinksTo(record, 'CNAM'))
+        // TODO verify this works
+        if (!Object.keys(handleWorkbench).includes(workbench)) return false;
+        if (!xelib.GetLinksTo(record, 'CNAM')) {
             return log(`${xelib.EditorID(record)} has no output and will not be patched.`);
+        }
         return true;
     };
 
@@ -79,9 +83,9 @@ export default function cobjPatcher(helpers, locals) {
             signature: 'COBJ',
             filter: cobjFilter
         },
-        patch: function(record) {
+        patch: record => {
             const recipe = new Recipe(record);
             handleWorkbench[recipe.workbench](recipe);
         }
     };
-};
+}
