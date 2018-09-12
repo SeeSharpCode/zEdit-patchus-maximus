@@ -2,7 +2,7 @@ export default function gameSettingsPatcher(helpers, locals) {
     return {
         load: {
             signature: 'GMST',
-            filter: (record) => {
+            filter: record => {
                 if (!locals.useWarrior) return false;
                 const editorID = xelib.EditorID(record);
                 return Object.keys(locals.gameSettings).includes(editorID);

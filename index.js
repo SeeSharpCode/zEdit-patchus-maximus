@@ -1,10 +1,11 @@
-/* global ngapp, xelib, fh, patcherUrl, patcherPath */
+/* global xelib, fh, patcherUrl, patcherPath */
 
 import globPatcher from './src/patchers/globPatcher';
-// import cobjPatcher from './src/patchers/cobjPatcher';
-// import gameSettingsPatcher from './src/patchers/gameSettingsPatcher';
-// import mgefPatcher from './src/patchers/mgefPatcher';
-// import npcPatcher from './src/patchers/npcPatcher';
+import cobjPatcher from './src/patchers/cobjPatcher';
+import gameSettingsPatcher from './src/patchers/gameSettingsPatcher';
+import mgefPatcher from './src/patchers/mgefPatcher';
+import npcPatcher from './src/patchers/npcPatcher';
+import racePatcher from './src/patchers/racePatcher';
 
 const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
 
@@ -65,11 +66,12 @@ registerPatcher({
             locals.playerRefFormID = '00000014';
         },
         process: [
-            globPatcher(helpers, locals)
+            // globPatcher(helpers, locals),
             // gameSettingsPatcher(helpers, locals),
             // cobjPatcher(helpers, locals),
             // mgefPatcher(helpers, locals),
             // npcPatcher(helpers, locals)
+            racePatcher(locals)
         ]
     })
 });
