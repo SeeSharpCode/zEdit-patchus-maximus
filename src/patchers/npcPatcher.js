@@ -1,3 +1,5 @@
+import { addSpell } from '../util';
+
 export default function npcPatcher(helpers, locals) {
     const log = message => helpers.logMessage(`(NPC_) ${message}`);
 
@@ -11,10 +13,6 @@ export default function npcPatcher(helpers, locals) {
         const exclude = locals.npcExclusions.find(expr => expr.test(editorID));
         if (exclude) log(`excluding ${editorID}`);
         return !exclude;
-    };
-
-    const addSpell = function(record, spellFormID) {
-        xelib.AddArrayItem(record, 'Actor Effects', '', spellFormID);
     };
 
     const patchNpc = function patchNpc(record) {
