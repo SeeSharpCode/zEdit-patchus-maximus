@@ -15,7 +15,7 @@ export default function racePatcher(locals) {
                 addSpell(record, locals.SPEL.xMAWARMainLogicAbility);
                 addSpell(record, locals.SPEL.xMAWARMainStaminaAbility);
 
-                if (locals.useThief && xelib.GetFlag(this.record, 'DATA -\\Flags', 'Playable')) {
+                if (locals.useThief && xelib.GetFlag(record, 'DATA -\\Flags', 'Playable')) {
                     addSpell(record, locals.SPEL.xMATHICombatAbility);
                     addSpell(record, locals.SPEL.xMAWARTHIPassiveArmorHeavy);
                     addSpell(record, locals.SPEL.xMAWARTHIPassiveArmorLight);
