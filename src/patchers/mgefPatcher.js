@@ -1,3 +1,4 @@
+// TODO SkyProc code didn't check for useMage, but it might make sense here
 export default function mgefPatcher(helpers, locals) {
     const log = (message) => helpers.logMessage(`(MGEF) ${message}`);
 
