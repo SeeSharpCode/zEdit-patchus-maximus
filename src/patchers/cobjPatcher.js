@@ -54,6 +54,7 @@ export default function cobjPatcher(helpers, locals) {
         log(`added HasPerk (${smithingPerkEditorID}) condition to ${recipe.editorID} recipe`);
     };
 
+    // TODO this doesn't seem to pick up any records
     const shouldDisableStaffRecipe = function(recipe) {
         if (!locals.useMage) return false;
         // TODO make this exclusion list a setting
@@ -75,7 +76,8 @@ export default function cobjPatcher(helpers, locals) {
         // TODO verify this works
         if (!Object.keys(handleWorkbench).includes(workbench)) return false;
         if (!xelib.GetLinksTo(record, 'CNAM')) {
-            return log(`${xelib.EditorID(record)} has no output and will not be patched.`);
+            log(`${xelib.EditorID(record)} has no output and will not be patched.`);
+            return false;
         }
         return true;
     };
