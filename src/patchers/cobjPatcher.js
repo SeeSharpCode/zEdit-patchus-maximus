@@ -28,7 +28,7 @@ export default function cobjPatcher(helpers, locals) {
         return materialName;
     };
 
-    const getSmithingPerkFormID = function(recipe) {
+    const getSmithingPerkEditorID = function(recipe) {
         const materialName = getMaterialName(recipe);
         if (!materialName) {
             return skip(recipe, `no material found for ${recipe.outputRecordName}.`);
@@ -39,17 +39,19 @@ export default function cobjPatcher(helpers, locals) {
             return skip(recipe, `no material found with name ${materialName}.`);
         }
 
-        if (!material.smithingPerk) return null;
-        return locals.PERK[material.smithingPerk];
+        return material.smithingPerk;
     };
 
     const changeRecipeConditions = function(recipe) {
         if (!locals.useWarrior) return;
         xelib.RemoveElement(recipe.record, 'Conditions');
+        log(`removed all conditions for ${recipe.editorID}`);
 
-        const smithingPerkFormID = getSmithingPerkFormID(recipe);
-        if (!smithingPerkFormID) return;
+        const smithingPerkEditorID = getSmithingPerkEditorID(recipe);
+        if (!smithingPerkEditorID) return;
+        const smithingPerkFormID = locals.PERK[smithingPerkEditorID];
         xelib.AddCondition(recipe.record, 'HasPerk', locals.conditionTypes.EqualTo, '1', smithingPerkFormID);
+        log(`added HasPerk (${smithingPerkEditorID}) condition to ${recipe.editorID} recipe`);
     };
 
     const shouldDisableStaffRecipe = function(recipe) {
