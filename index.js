@@ -7,9 +7,8 @@ import mgefPatcher from './src/patchers/mgefPatcher';
 import npcPatcher from './src/patchers/npcPatcher';
 import racePatcher from './src/patchers/racePatcher';
 
-const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
-
 const buildReferenceMaps = function(locals) {
+    const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
     signaturesToMap.forEach(sig => {
         const records = xelib.GetRecords(0, sig, false);
         locals[sig] = records.reduce((obj, rec) => {
@@ -31,10 +30,19 @@ const loadConfiguration = function(locals) {
     });
 };
 
-const detectPerMaModules = function(locals) {
-    xelib.GetLoadedFileNames().forEach(filename => {
-        const match = filename.match(/PerkusMaximus_(?!Master)(\w+)\.esp/);
-        if (match) locals[`use${match[1]}`] = true;
+const detectPerMaModules = function(helpers, locals) {
+    const perMaFileNamePrefix = 'PerkusMaximus_';
+    const perMaModules = ['Mage', 'Warrior', 'Thief'];
+
+    perMaModules.forEach(module => {
+        const moduleFileName = `${perMaFileNamePrefix}${module}.esp`;
+        const isLoaded = xelib.GetLoadedFileNames().find(fileName => fileName === moduleFileName);
+
+        if (isLoaded) {
+            locals[`use${module}`] = true;
+        } else {
+            helpers.logMessage(`Warning: ${module} module not detected. ${module} changes will not be made.`);
+        }
     });
 };
 
@@ -58,7 +66,7 @@ registerPatcher({
 
             loadConfiguration(locals);
             buildReferenceMaps(locals);
-            detectPerMaModules(locals);
+            detectPerMaModules(helpers, locals);
 
             locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
 
@@ -66,11 +74,11 @@ registerPatcher({
             locals.playerRefFormID = '00000014';
         },
         process: [
-            // globPatcher(helpers, locals),
-            // gameSettingsPatcher(helpers, locals),
-            // cobjPatcher(helpers, locals),
-            // mgefPatcher(helpers, locals),
-            // npcPatcher(helpers, locals)
+            globPatcher(helpers, locals),
+            gameSettingsPatcher(helpers, locals),
+            cobjPatcher(helpers, locals),
+            mgefPatcher(helpers, locals),
+            npcPatcher(helpers, locals),
             racePatcher(locals)
         ]
     })
