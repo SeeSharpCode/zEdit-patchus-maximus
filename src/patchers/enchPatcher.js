@@ -1,11 +1,11 @@
-export default function spellPatcher(patchFile, locals) {
+export default function enchPatcher(patchFile, locals) {
     return {
         load: {
-            signature: 'SPEL',
+            signature: 'ENCH',
             filter: record => {
                 if (!locals.useMage) return false;
-                const type = xelib.GetValue(record, 'SPIT - Data\\Type');
-                const castType = xelib.GetValue(record, 'SPIT - Data\\Cast Type');
+                const type = xelib.GetValue(record, 'ENIT - Effect Data\\Enchant Type');
+                const castType = xelib.GetValue(record, 'ENIT - Effect Data\\Cast Type');
                 return type === 'Ability' || castType === 'Constant Effect';
             }
         },

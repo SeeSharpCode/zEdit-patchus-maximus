@@ -2,10 +2,12 @@
 
 import globPatcher from './src/patchers/globPatcher';
 import cobjPatcher from './src/patchers/cobjPatcher';
-import gameSettingsPatcher from './src/patchers/gameSettingsPatcher';
+import gmstPatcher from './src/patchers/gmstPatcher';
 import mgefPatcher from './src/patchers/mgefPatcher';
 import npcPatcher from './src/patchers/npcPatcher';
 import racePatcher from './src/patchers/racePatcher';
+import spellPatcher from './src/patchers/spellPatcher';
+import enchPatcher from './src/patchers/enchPatcher';
 
 const buildReferenceMaps = function(locals) {
     const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
@@ -74,12 +76,14 @@ registerPatcher({
             locals.playerRefFormID = '00000014';
         },
         process: [
-            globPatcher(helpers, locals),
-            gameSettingsPatcher(helpers, locals),
-            cobjPatcher(helpers, locals),
-            mgefPatcher(helpers, locals),
-            npcPatcher(helpers, locals),
-            racePatcher(locals)
+            // globPatcher(helpers, locals),
+            // gmstPatcher(helpers, locals),
+            // cobjPatcher(helpers, locals),
+            // mgefPatcher(helpers, locals),
+            // npcPatcher(helpers, locals),
+            // racePatcher(locals),
+            spellPatcher(patch, locals),
+            // enchPatcher(patch, locals)
         ]
     })
 });
