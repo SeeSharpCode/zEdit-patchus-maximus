@@ -14,7 +14,7 @@ export default function spellPatcher(patchFile, locals) {
             const effects = xelib.GetElements(record, 'Effects');
             effects.forEach(effect => {
                 const mgef = xelib.GetLinksTo(effect, 'EFID');
-                const mgefOverride = xelib.GetWinningOverride(mgef);
+                const mgefOverride = xelib.GetPreviousOverride(mgef, patchFile);
                 // TODO helpers.copyToPatch in UPF 1.5+
                 const newMgef = xelib.CopyElement(mgefOverride, patchFile, false);
                 xelib.SetValue(newMgef, magicSkillPath, 'None');
