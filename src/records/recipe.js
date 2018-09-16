@@ -2,6 +2,7 @@ export default class Recipe {
     constructor(record) {
         this.record = record;
         this.editorID = xelib.EditorID(record);
+        // TODO get override for LinksTo?
         this.workbench = xelib.EditorID(xelib.GetLinksTo(record, 'BNAM'));
         this.outputRecord = xelib.GetLinksTo(record, 'CNAM');
         if (this.outputRecord) {

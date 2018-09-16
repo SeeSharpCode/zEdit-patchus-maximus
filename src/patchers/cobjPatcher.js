@@ -75,6 +75,7 @@ export default function cobjPatcher(helpers, locals) {
         const workbench = xelib.GetRefEditorID(record, 'BNAM');
         // TODO verify this works
         if (!Object.keys(handleWorkbench).includes(workbench)) return false;
+        // TODO GetWinningOverride?
         if (!xelib.GetLinksTo(record, 'CNAM')) {
             log(`${xelib.EditorID(record)} has no output and will not be patched.`);
             return false;

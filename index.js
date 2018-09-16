@@ -8,6 +8,7 @@ import npcPatcher from './src/patchers/npcPatcher';
 import racePatcher from './src/patchers/racePatcher';
 import spellPatcher from './src/patchers/spellPatcher';
 import enchPatcher from './src/patchers/enchPatcher';
+import alchPatcher from './src/patchers/alchPatcher';
 
 const buildReferenceMaps = function(locals) {
     const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
@@ -30,6 +31,12 @@ const loadConfiguration = function(locals) {
         const baseName = fileName.substr(0, fileName.indexOf('.'));
         locals[baseName] = fh.loadJsonFile(filePath);
     });
+};
+
+const buildExclusionPatterns = function(locals) {
+    locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
+    locals.alchemyExclusions.editorID = locals.alchemyExclusions.editorID.map(e => new RegExp(e));
+    locals.alchemyExclusions.name = locals.alchemyExclusions.name.map(e => new RegExp(e));
 };
 
 const detectPerMaModules = function(helpers, locals) {
@@ -67,10 +74,9 @@ registerPatcher({
             };
 
             loadConfiguration(locals);
+            buildExclusionPatterns(locals);
             buildReferenceMaps(locals);
             detectPerMaModules(helpers, locals);
-
-            locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
 
             locals.playerFormID = '00000007';
             locals.playerRefFormID = '00000014';
@@ -82,8 +88,9 @@ registerPatcher({
             // mgefPatcher(helpers, locals),
             // npcPatcher(helpers, locals),
             // racePatcher(locals),
-            spellPatcher(patch, locals),
+            // spellPatcher(patch, locals),
             // enchPatcher(patch, locals)
+            alchPatcher(patch, locals)
         ]
     })
 });
