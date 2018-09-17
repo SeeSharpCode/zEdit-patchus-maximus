@@ -4,13 +4,18 @@ export function addSpell(record, spellFormID) {
     xelib.AddArrayItem(record, 'Actor Effects', '', spellFormID);
 }
 
-export function removeMagicSchool(record, patchFile) {
-    const effects = xelib.GetElements(record, 'Effects');
-    effects.forEach(effect => {
+export function getEffects(record, patchFile) {
+    return xelib.GetElements(record, 'Effects').map(effect => {
         const mgef = xelib.GetLinksTo(effect, 'EFID');
-        const mgefOverride = xelib.GetPreviousOverride(mgef, patchFile);
+        return xelib.GetPreviousOverride(mgef, patchFile);
+    });
+}
+
+export function removeMagicSchool(record, patchFile) {
+    const effects = getEffects(record, patchFile).filter(effect => xelib.GetValue(effect, magicSkillPath) !== 'None');
+    effects.forEach(effect => {
         // TODO helpers.copyToPatch in UPF 1.5+
-        const newMgef = xelib.CopyElement(mgefOverride, patchFile, false);
-        xelib.SetValue(newMgef, magicSkillPath, 'None');
+        const patchedMgef = xelib.CopyElement(effect, patchFile, false);
+        xelib.SetValue(patchedMgef, magicSkillPath, 'None');
     });
 }
