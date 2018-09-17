@@ -89,8 +89,8 @@ registerPatcher({
             // npcPatcher(helpers, locals),
             // racePatcher(locals),
             // spellPatcher(patch, locals),
-            // enchPatcher(patch, locals)
-            alchPatcher(patch, locals)
+            // enchPatcher(patch, locals),
+            // alchPatcher(patch, locals)
         ]
     })
 });

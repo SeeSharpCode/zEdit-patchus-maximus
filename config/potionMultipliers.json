@@ -1,0 +1,216 @@
+[  
+    {  
+       "name":"Tier1",
+       "multiplierMagnitude":"4.25",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Minor",
+          "Weak",
+          "Lingering Magicka Poison",
+          "Lingering Stamina Poison"
+       ]
+    },
+    {  
+       "name":"Tier2",
+       "multiplierMagnitude":"6.0",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Potion of Alteration",
+          "Potion of Haggling",
+          "Potion of the Defender",
+          "Potion of the Guardian",
+          "Potion of Strength",
+          "Conjurer'xmlStorage Potion",
+          "Potion of Destruction",
+          "Brawler'xmlStorage Potion",
+          "Potion of the Knight",
+          "Potion of Illusion",
+          "Skirmisher'xmlStorage Potion",
+          "Potion of the Defender",
+          "Potion of True Shot",
+          "Potion of the Warrior",
+          "Potion of Glibness",
+          "Potion of Dexterity",
+          "Potion of the Healer",
+          "Weaponmaster'xmlStorage Potion",
+          "Potion of Light Feet",
+          "Potion of the Berserker",
+          "Potion of Regeneration",
+          "Potion of Lasting Potency",
+          "Potion of Vigor",
+          "Enduring",
+          "Potion of Resist Fire",
+          "Potion of Resist Cold",
+          "Potion of Resist Magic",
+          "Potion of Resist Shock",
+          "Potion of Healing",
+          "Potion of Stamina",
+          "Potion of Magicka",
+          "Potion of Plunder",
+          "Potion of Conflict",
+          "Potion of Larceny",
+          "Potion of Keenshot",
+          "Potion of Escape",
+          "Potion of Health",
+          "Potion of Extra Magicka",
+          "Potion of Enhanced Stamina",
+          "Enduring",
+          "Enduring",
+          "Poi",
+          "ver"
+       ]
+    },
+    {  
+       "name":"Tier3",
+       "multiplierMagnitude":"7.8",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Extended",
+          "Draught",
+          "Plentiful",
+          "Potent",
+          "Lasting",
+          "Draught of Lasting Potency"
+       ]
+    },
+    {  
+       "name":"Tier3.5",
+       "multiplierMagnitude":"8.2",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Solution",
+          "Solution of Lasting Potency"
+       ]
+    },
+    {  
+       "name":"Tier4",
+       "multiplierMagnitude":"9.6",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Philter",
+          "Philter of Lasting Potency",
+          "Potion of Vigorous",
+          "Virulent",
+          "Malign",
+          "Persisting"
+       ]
+    },
+    {  
+       "name":"Tier5",
+       "multiplierMagnitude":"11.4",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Prolonged",
+          "Elixir",
+          "Elixir of Lasting Potency",
+          "Extreme",
+          "Deadly",
+          "Unceasing"
+       ]
+    },
+    {  
+       "name":"Tier6",
+       "multiplierMagnitude":"15.96",
+       "multiplierDuration":"1.2",
+       "substrings":[  
+          "Grand Elixir"
+       ]
+    },
+    {  
+       "name":"Tier7",
+       "multiplierMagnitude":"17.00",
+       "multiplierDuration":"1.25",
+       "substrings":[  
+          "Prime Elixir"
+       ]
+    },
+    {  
+       "name":"DamRegen1",
+       "multiplierMagnitude":"1.0",
+       "multiplierDuration":"3.0",
+     "substrings": [
+       "Weak Recovery Poison",
+       "Weak Vigor Poison"
+     ]
+    },
+    {  
+       "name":"DamRegen2",
+       "multiplierMagnitude":"1.0",
+       "multiplierDuration":"5.0",
+       "substrings":[  
+          "Magicka Recovery Poison",
+          "Vigor Poison"
+       ]
+    },
+    {  
+       "name":"DamRegen3",
+       "multiplierMagnitude":"1.0",
+       "multiplierDuration":"7.0",
+       "substrings":[  
+          "Potent Recovery Poison",
+          "Potent Vigor Poison"
+       ]
+    },
+    {  
+       "name":"DamRegen4",
+       "multiplierMagnitude":"1.0",
+       "multiplierDuration":"9.0",
+       "substrings":[  
+          "Malign Recovery Poison",
+          "Malign Vigor Poison"
+       ]
+    },
+    {  
+       "name":"DamRegen5",
+       "multiplierMagnitude":"1.0",
+       "multiplierDuration":"10.0",
+       "substrings":[  
+          "Deadly Recovery Poison"
+       ]
+    },
+    {  
+       "name":"MindAffecting1",
+       "multiplierMagnitude":"8.0",
+       "multiplierDuration":"0.7",
+       "substrings":[  
+          "Weak Fear Poison",
+          "Weak Frenzy Poison"
+       ]
+    },
+    {  
+       "name":"MindAffecting2",
+       "multiplierMagnitude":"12.2",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Fear Poison",
+          "Frenzy Poison"
+       ]
+    },
+    {  
+       "name":"MindAffecting3",
+       "multiplierMagnitude":"18.3",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Potent Fear Poison",
+          "Potent Frenzy Poison"
+       ]
+    },
+    {  
+       "name":"MindAffecting4",
+       "multiplierMagnitude":"24.4",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Virulent Fear Poison",
+          "Virulent Frenzy Poison"
+       ]
+    },
+    {  
+       "name":"MindAffecting5",
+       "multiplierMagnitude":"30.5",
+       "multiplierDuration":"1.0",
+       "substrings":[  
+          "Deadly Fear Poison",
+          "Deadly Frenzy Poison"
+       ]
+    }
+ ]
