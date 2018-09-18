@@ -1,7 +1,7 @@
 [  
    {  
       "name":"AdvancedLow",
-      "material":"ADVANCED",
+      "type":"ADVANCED",
       "damageModifier":1.2,
       "reachModifier":0.01,
       "speedModifier":-0.04,
@@ -11,7 +11,7 @@
    },
    {  
       "name":"Advanced",
-      "material":"ADVANCED",
+      "type":"ADVANCED",
       "damageModifier":1.25,
       "reachModifier":0.01,
       "speedModifier":-0.04,
@@ -26,7 +26,7 @@
    },
    {  
       "name":"AdvancedHigh",
-      "material":"ADVANCED",
+      "type":"ADVANCED",
       "damageModifier":1.3,
       "reachModifier":0.01,
       "speedModifier":-0.04,
@@ -39,7 +39,7 @@
    },
    {  
       "name":"Bone",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":0.9,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -49,7 +49,7 @@
    },
    {  
       "name":"BoneHigh",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":0.95,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -59,7 +59,7 @@
    },
    {  
       "name":"Mammoth Bone",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":1.2,
       "reachModifier":0.01,
       "speedModifier":-0.02,
@@ -69,7 +69,7 @@
    },
    {  
       "name":"Mammoth BoneHigh",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":1.5,
       "reachModifier":0.01,
       "speedModifier":-0.02,
@@ -82,7 +82,7 @@
    },
    {  
       "name":"Bonemold",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":1.05,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -92,7 +92,7 @@
    },
    {  
       "name":"BonemoldHigh",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":1.1,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -102,7 +102,7 @@
    },
    {  
       "name":"BoundLow",
-      "material":"NONE",
+      "type":"NONE",
       "damageModifier":1.284,
       "reachModifier":0.0,
       "speedModifier":0.05,
@@ -114,7 +114,7 @@
    },
    {  
       "name":"Bound",
-      "material":"NONE",
+      "type":"NONE",
       "damageModifier":1.334,
       "reachModifier":0.0,
       "speedModifier":0.05,
@@ -124,7 +124,7 @@
    },
    {  
       "name":"BoundHigh",
-      "material":"NONE",
+      "type":"NONE",
       "damageModifier":1.384,
       "reachModifier":0.0,
       "speedModifier":0.05,
@@ -134,7 +134,7 @@
    },
    {  
       "name":"ChitinLow",
-      "material":"CHITIN",
+      "type":"CHITIN",
       "damageModifier":1.2,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -144,7 +144,7 @@
    },
    {  
       "name":"Chitin",
-      "material":"CHITIN",
+      "type":"CHITIN",
       "damageModifier":1.25,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -154,7 +154,7 @@
    },
    {  
       "name":"ChitinHigh",
-      "material":"CHITIN",
+      "type":"CHITIN",
       "damageModifier":1.3,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -164,7 +164,7 @@
    },
    {  
       "name":"DaedricLow",
-      "material":"DAEDRIC",
+      "type":"DAEDRIC",
       "damageModifier":1.95,
       "reachModifier":0.03,
       "speedModifier":-0.06,
@@ -174,7 +174,7 @@
    },
    {  
       "name":"Daedric",
-      "material":"DAEDRIC",
+      "type":"DAEDRIC",
       "damageModifier":2.0,
       "reachModifier":0.03,
       "speedModifier":-0.06,
@@ -256,7 +256,7 @@
    },
    {  
       "name":"DaedricHigh",
-      "material":"DAEDRIC",
+      "type":"DAEDRIC",
       "damageModifier":2.05,
       "reachModifier":0.03,
       "speedModifier":-0.06,
@@ -287,7 +287,7 @@
    },
    {  
       "name":"Dragonscale",
-      "material":"DRAGONSCALE",
+      "type":"DRAGONSCALE",
       "damageModifier":1.7,
       "reachModifier":0.04,
       "speedModifier":0.05,
@@ -301,7 +301,7 @@
    },
    {  
       "name":"DragonscaleHigh",
-      "material":"DRAGONSCALE",
+      "type":"DRAGONSCALE",
       "damageModifier":1.75,
       "reachModifier":0.04,
       "speedModifier":0.05,
@@ -311,7 +311,7 @@
    },
    {  
       "name":"Dragonplate",
-      "material":"DRAGONPLATE",
+      "type":"DRAGONPLATE",
       "damageModifier":1.9,
       "reachModifier":0.04,
       "speedModifier":-0.05,
@@ -329,7 +329,7 @@
    },
    {  
       "name":"DragonplateHigh",
-      "material":"DRAGONPLATE",
+      "type":"DRAGONPLATE",
       "damageModifier":1.95,
       "reachModifier":0.04,
       "speedModifier":-0.05,
@@ -339,7 +339,7 @@
    },
    {  
       "name":"Draugr",
-      "material":"DRAUGR",
+      "type":"DRAUGR",
       "damageModifier":1.3,
       "reachModifier":-0.1,
       "speedModifier":-0.05,
@@ -385,7 +385,7 @@
    },
    {  
       "name":"DraugrHigh",
-      "material":"DRAUGR",
+      "type":"DRAUGR",
       "damageModifier":1.35,
       "reachModifier":-0.1,
       "speedModifier":-0.05,
@@ -399,7 +399,7 @@
    },
    {  
       "name":"Draugr Honed",
-      "material":"DRAUGR",
+      "type":"DRAUGR",
       "damageModifier":1.4,
       "reachModifier":-0.1,
       "speedModifier":-0.05,
@@ -423,7 +423,7 @@
    },
    {  
       "name":"Draugr HonedHigh",
-      "material":"DRAUGR",
+      "type":"DRAUGR",
       "damageModifier":1.45,
       "reachModifier":-0.1,
       "speedModifier":-0.05,
@@ -436,7 +436,7 @@
    },
    {  
       "name":"DwarvenLow",
-      "material":"DWARVEN",
+      "type":"DWARVEN",
       "damageModifier":1.05,
       "reachModifier":0.0,
       "speedModifier":-0.03,
@@ -446,7 +446,7 @@
    },
    {  
       "name":"Dwarven",
-      "material":"DWARVEN",
+      "type":"DWARVEN",
       "damageModifier":1.1,
       "reachModifier":0.0,
       "speedModifier":-0.03,
@@ -504,7 +504,7 @@
    },
    {  
       "name":"DwarvenHigh",
-      "material":"DWARVEN",
+      "type":"DWARVEN",
       "damageModifier":1.15,
       "reachModifier":0.0,
       "speedModifier":-0.03,
@@ -522,7 +522,7 @@
    },
    {  
       "name":"EbonyLow",
-      "material":"EBONY",
+      "type":"EBONY",
       "damageModifier":1.65,
       "reachModifier":0.01,
       "speedModifier":-0.05,
@@ -532,7 +532,7 @@
    },
    {  
       "name":"Ebony",
-      "material":"EBONY",
+      "type":"EBONY",
       "damageModifier":1.7,
       "reachModifier":0.01,
       "speedModifier":-0.05,
@@ -627,7 +627,7 @@
    },
    {  
       "name":"EbonyHigh",
-      "material":"EBONY",
+      "type":"EBONY",
       "damageModifier":1.75,
       "reachModifier":0.01,
       "speedModifier":-0.05,
@@ -677,7 +677,7 @@
    },
    {  
       "name":"ElvenLow",
-      "material":"ELVEN",
+      "type":"ELVEN",
       "damageModifier":1.15,
       "reachModifier":0.0,
       "speedModifier":0.03,
@@ -687,7 +687,7 @@
    },
    {  
       "name":"Elven",
-      "material":"ELVEN",
+      "type":"ELVEN",
       "damageModifier":1.2,
       "reachModifier":0.0,
       "speedModifier":0.03,
@@ -753,7 +753,7 @@
    },
    {  
       "name":"ElvenHigh",
-      "material":"ELVEN",
+      "type":"ELVEN",
       "damageModifier":1.25,
       "reachModifier":0.0,
       "speedModifier":0.03,
@@ -775,7 +775,7 @@
    },
    {  
       "name":"Stormcloak",
-      "material":"STEEL",
+      "type":"STEEL",
       "damageModifier":1.1,
       "reachModifier":0.0,
       "speedModifier":-0.02,
@@ -785,7 +785,7 @@
    },
    {  
       "name":"Imperial",
-      "material":"STEEL",
+      "type":"STEEL",
       "damageModifier":1.1,
       "reachModifier":0.01,
       "speedModifier":0.01,
@@ -798,7 +798,7 @@
    },
    {  
       "name":"Dawnguard",
-      "material":"STEEL",
+      "type":"STEEL",
       "damageModifier":1.25,
       "reachModifier":0.0,
       "speedModifier":-0.03,
@@ -808,7 +808,7 @@
    },
    {  
       "name":"Dawnguard Rune",
-      "material":"STEEL",
+      "type":"STEEL",
       "damageModifier":1.25,
       "reachModifier":0.0,
       "speedModifier":-0.03,
@@ -818,7 +818,7 @@
    },
    {  
       "name":"Blades",
-      "material":"ADVANCED",
+      "type":"ADVANCED",
       "damageModifier":1.4,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -828,7 +828,7 @@
    },
    {  
       "name":"Skyforge",
-      "material":"STEEL",
+      "type":"STEEL",
       "damageModifier":1.4,
       "reachModifier":0.0,
       "speedModifier":0.02,
@@ -847,7 +847,7 @@
    },
    {  
       "name":"Nightingale",
-      "material":"DAEDRIC",
+      "type":"DAEDRIC",
       "damageModifier":1.9,
       "reachModifier":0.03,
       "speedModifier":0.05,
@@ -857,7 +857,7 @@
    },
    {  
       "name":"Falmer",
-      "material":"FALMER",
+      "type":"FALMER",
       "damageModifier":1.2,
       "reachModifier":-0.08,
       "speedModifier":-0.03,
@@ -867,7 +867,7 @@
    },
    {  
       "name":"FalmerHigh",
-      "material":"FALMER",
+      "type":"FALMER",
       "damageModifier":1.25,
       "reachModifier":-0.08,
       "speedModifier":0.0,
@@ -878,7 +878,7 @@
    },
    {  
       "name":"Ancient Falmer",
-      "material":"ELVEN",
+      "type":"ELVEN",
       "damageModifier":1.6,
       "reachModifier":0.0,
       "speedModifier":-0.03,
@@ -888,7 +888,7 @@
    },
    {  
       "name":"Forsworn",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":1.1,
       "reachModifier":0.0,
       "speedModifier":-0.03,
@@ -900,7 +900,7 @@
    },
    {  
       "name":"ForswornHigh",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":1.15,
       "reachModifier":0.0,
       "speedModifier":-0.03,
@@ -911,7 +911,7 @@
    },
    {  
       "name":"GlassLow",
-      "material":"GLASS",
+      "type":"GLASS",
       "damageModifier":1.45,
       "reachModifier":0.01,
       "speedModifier":0.03,
@@ -921,7 +921,7 @@
    },
    {  
       "name":"Glass",
-      "material":"GLASS",
+      "type":"GLASS",
       "damageModifier":1.5,
       "reachModifier":0.01,
       "speedModifier":0.03,
@@ -959,7 +959,7 @@
    },
    {  
       "name":"GlassHigh",
-      "material":"GLASS",
+      "type":"GLASS",
       "damageModifier":1.55,
       "reachModifier":0.05,
       "speedModifier":0.03,
@@ -975,7 +975,7 @@
    },
    {  
       "name":"Gold",
-      "material":"GOLD",
+      "type":"GOLD",
       "damageModifier":1.0,
       "reachModifier":0.03,
       "speedModifier":0.04,
@@ -986,7 +986,7 @@
    },
    {  
       "name":"GoldHigh",
-      "material":"GOLD",
+      "type":"GOLD",
       "damageModifier":1.05,
       "reachModifier":0.03,
       "speedModifier":0.04,
@@ -996,7 +996,7 @@
    },
    {  
       "name":"HorkerL",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":0.95,
       "reachModifier":0.02,
       "speedModifier":0.02,
@@ -1006,7 +1006,7 @@
    },
    {  
       "name":"HorkerH",
-      "material":"BONEMOLD_HEAVY",
+      "type":"BONEMOLD_HEAVY",
       "damageModifier":1.0,
       "reachModifier":0.02,
       "speedModifier":0.02,
@@ -1016,7 +1016,7 @@
    },
    {  
       "name":"IronClutter",
-      "material":"IRON",
+      "type":"IRON",
       "damageModifier":0.2,
       "reachModifier":0.0,
       "speedModifier":0.0,
@@ -1034,7 +1034,7 @@
    },
    {  
       "name":"IronLow",
-      "material":"IRON",
+      "type":"IRON",
       "damageModifier":0.85,
       "reachModifier":0.0,
       "speedModifier":-0.01,
@@ -1048,7 +1048,7 @@
    },
    {  
       "name":"Iron",
-      "material":"IRON",
+      "type":"IRON",
       "damageModifier":0.9,
       "reachModifier":0.0,
       "speedModifier":-0.01,
@@ -1093,7 +1093,7 @@
    },
    {  
       "name":"IronHigh",
-      "material":"IRON",
+      "type":"IRON",
       "damageModifier":0.95,
       "reachModifier":0.0,
       "speedModifier":-0.01,
@@ -1107,7 +1107,7 @@
    },
    {  
       "name":"OrcishLow",
-      "material":"ORCISH",
+      "type":"ORCISH",
       "damageModifier":1.25,
       "reachModifier":-0.03,
       "speedModifier":-0.04,
@@ -1117,7 +1117,7 @@
    },
    {  
       "name":"Orcish",
-      "material":"ORCISH",
+      "type":"ORCISH",
       "damageModifier":1.3,
       "reachModifier":-0.03,
       "speedModifier":-0.04,
@@ -1144,7 +1144,7 @@
    },
    {  
       "name":"OrcishHigh",
-      "material":"ORCISH",
+      "type":"ORCISH",
       "damageModifier":1.35,
       "reachModifier":-0.03,
       "speedModifier":-0.04,
@@ -1154,7 +1154,7 @@
    },
    {  
       "name":"None",
-      "material":"NONE",
+      "type":"NONE",
       "damageModifier":0.5,
       "reachModifier":0.0,
       "speedModifier":0.05,
@@ -1177,7 +1177,7 @@
    },
    {  
       "name":"NoneHigh",
-      "material":"NONE",
+      "type":"NONE",
       "damageModifier":0.55,
       "reachModifier":0.0,
       "speedModifier":0.05,
@@ -1187,7 +1187,7 @@
    },
    {  
       "name":"Death",
-      "material":"NONE",
+      "type":"NONE",
       "damageModifier":2.0,
       "reachModifier":0.0,
       "speedModifier":0.0,
@@ -1208,7 +1208,7 @@
    },
    {  
       "name":"NordLow",
-      "material":"ADVANCED",
+      "type":"ADVANCED",
       "damageModifier":1.25,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -1218,7 +1218,7 @@
    },
    {  
       "name":"Nord",
-      "material":"ADVANCED",
+      "type":"ADVANCED",
       "damageModifier":1.3,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -1231,7 +1231,7 @@
    },
    {  
       "name":"NordHigh",
-      "material":"ADVANCED",
+      "type":"ADVANCED",
       "damageModifier":1.35,
       "reachModifier":0.01,
       "speedModifier":0.02,
@@ -1246,7 +1246,7 @@
    },
    {  
       "name":"Silver",
-      "material":"SILVER",
+      "type":"SILVER",
       "damageModifier":1.0,
       "reachModifier":0.03,
       "speedModifier":0.04,
@@ -1260,7 +1260,7 @@
    },
    {  
       "name":"SilverHigh",
-      "material":"SILVER",
+      "type":"SILVER",
       "damageModifier":1.05,
       "reachModifier":0.03,
       "speedModifier":0.04,
@@ -1282,7 +1282,7 @@
    },
    {  
       "name":"RSilver",
-      "material":"REFINED_SILVER",
+      "type":"REFINED_SILVER",
       "damageModifier":1.0,
       "reachModifier":0.03,
       "speedModifier":0.04,
@@ -1296,7 +1296,7 @@
    },
    {  
       "name":"RSilverHigh",
-      "material":"REFINED_SILVER",
+      "type":"REFINED_SILVER",
       "damageModifier":1.05,
       "reachModifier":0.03,
       "speedModifier":0.04,
@@ -1316,7 +1316,7 @@
    },
    {  
       "name":"StalhrimLow",
-      "material":"STALHRIM",
+      "type":"STALHRIM",
       "damageModifier":1.75,
       "reachModifier":0.02,
       "speedModifier":0.04,
@@ -1326,7 +1326,7 @@
    },
    {  
       "name":"Stalhrim",
-      "material":"STALHRIM",
+      "type":"STALHRIM",
       "damageModifier":1.8,
       "reachModifier":0.02,
       "speedModifier":0.04,
@@ -1343,7 +1343,7 @@
    },
    {  
       "name":"StalhrimHigh",
-      "material":"STALHRIM",
+      "type":"STALHRIM",
       "damageModifier":1.85,
       "reachModifier":0.02,
       "speedModifier":0.04,
@@ -1356,7 +1356,7 @@
    },
    {  
       "name":"SteelLow",
-      "material":"STEEL",
+      "type":"STEEL",
       "damageModifier":0.95,
       "reachModifier":0.0,
       "speedModifier":-0.02,
@@ -1366,7 +1366,7 @@
    },
    {  
       "name":"Steel",
-      "material":"STEEL",
+      "type":"STEEL",
       "damageModifier":1.0,
       "reachModifier":0.0,
       "speedModifier":-0.02,
@@ -1540,7 +1540,7 @@
    },
    {  
       "name":"SteelHigh",
-      "material":"STEEL",
+      "type":"STEEL",
       "damageModifier":1.05,
       "reachModifier":0.0,
       "speedModifier":-0.02,
@@ -1575,7 +1575,7 @@
    },
    {  
       "name":"Wood",
-      "material":"WOOD",
+      "type":"WOOD",
       "damageModifier":0.8,
       "reachModifier":0.0,
       "speedModifier":0.01,
@@ -1599,7 +1599,7 @@
    },
    {  
       "name":"WoodHigh",
-      "material":"WOOD",
+      "type":"WOOD",
       "damageModifier":0.85,
       "reachModifier":0.0,
       "speedModifier":0.01,
@@ -1613,7 +1613,7 @@
    },
    {  
       "name":"Oakwood",
-      "material":"WOOD",
+      "type":"WOOD",
       "damageModifier":1.0,
       "reachModifier":0.0,
       "speedModifier":0.02,
@@ -1627,7 +1627,7 @@
    },
    {  
       "name":"Ashwood",
-      "material":"WOOD",
+      "type":"WOOD",
       "damageModifier":1.1,
       "reachModifier":0.0,
       "speedModifier":0.04,
@@ -1644,7 +1644,7 @@
    },
    {  
       "name":"Steelwood",
-      "material":"STEEL",
+      "type":"STEEL",
       "damageModifier":1.1,
       "reachModifier":0.0,
       "speedModifier":0.03,
@@ -1655,7 +1655,7 @@
    },
    {  
       "name":"Strongwood",
-      "material":"WOOD",
+      "type":"WOOD",
       "damageModifier":1.2,
       "reachModifier":0.0,
       "speedModifier":0.04,

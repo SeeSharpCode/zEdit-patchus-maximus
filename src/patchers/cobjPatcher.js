@@ -11,22 +11,22 @@ export default function cobjPatcher(helpers, locals) {
         return recipe.isWeaponRecipe ? locals.weaponMaterials : locals.armorMaterials;
     };
 
-    const getMaterialName = function(recipe) {
+    const getMaterialType = function(recipe) {
         const outputName = recipe.outputRecordName;
         const materials = getEquipmentMaterials(recipe);
         const material = getItemBySubstring(materials, outputName);
-        return material == null ? null : material.material;
+        return material == null ? null : material.type;
     };
 
     const getSmithingPerkEditorID = function(recipe) {
-        const materialName = getMaterialName(recipe);
-        if (!materialName) {
-            return skip(recipe, `no material found for ${recipe.outputRecordName}.`);
+        const materialType = getMaterialType(recipe);
+        if (!materialType) {
+            return skip(recipe, `no material type found for ${recipe.outputRecordName}.`);
         }
 
-        const material = locals.recipeMaterials[materialName];
+        const material = locals.recipeMaterials[materialType];
         if (!material) {
-            return skip(recipe, `no material found with name ${materialName}.`);
+            return skip(recipe, `no material found with type ${materialType}.`);
         }
 
         return material.smithingPerk;
