@@ -102,7 +102,7 @@
       "baseCost":"0.2",
       "allowIngredientVariation":true,
       "allowPotionMultiplier":true,
-      "substrings":[  
+      "nameSubstrings":[  
          "Regenerate Magicka",
          "Regenerate Stamina"
       ]
@@ -162,7 +162,7 @@
       "baseCost":"4.6",
       "allowIngredientVariation":true,
       "allowPotionMultiplier":true,
-      "substrings":[  
+      "nameSubstrings":[  
          "Restore Magicka",
          "Restore Stamina"
       ]
@@ -174,7 +174,7 @@
       "baseCost":"0.5",
       "allowIngredientVariation":false,
       "allowPotionMultiplier":true,
-      "substrings":[  
+      "nameSubstrings":[  
          "Fortify Alteration",
          "Fortify Conjuration",
          "Fortify Destruction",
@@ -195,7 +195,7 @@
       "baseCost":"1",
       "allowIngredientVariation":false,
       "allowPotionMultiplier":true,
-      "substrings":[  
+      "nameSubstrings":[  
          "Fortify Light Armor",
          "Fortify Heavy Armor"
       ]
@@ -207,7 +207,7 @@
       "baseCost":"1",
       "allowIngredientVariation":false,
       "allowPotionMultiplier":true,
-      "substrings":[  
+      "nameSubstrings":[  
          "Weaponmaster",
          "Guardian"
       ]
@@ -259,7 +259,7 @@
       "baseCost":"0.13",
       "allowIngredientVariation":true,
       "allowPotionMultiplier":true,
-      "substrings":[  
+      "nameSubstrings":[  
          "Fortify Magicka",
          "Fortify Stamina"
       ]

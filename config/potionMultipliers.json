@@ -3,7 +3,7 @@
        "name":"Tier1",
        "multiplierMagnitude":"4.25",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Minor",
           "Weak",
           "Lingering Magicka Poison",
@@ -14,7 +14,7 @@
        "name":"Tier2",
        "multiplierMagnitude":"6.0",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Potion of Alteration",
           "Potion of Haggling",
           "Potion of the Defender",
@@ -64,7 +64,7 @@
        "name":"Tier3",
        "multiplierMagnitude":"7.8",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Extended",
           "Draught",
           "Plentiful",
@@ -77,7 +77,7 @@
        "name":"Tier3.5",
        "multiplierMagnitude":"8.2",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Solution",
           "Solution of Lasting Potency"
        ]
@@ -86,7 +86,7 @@
        "name":"Tier4",
        "multiplierMagnitude":"9.6",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Philter",
           "Philter of Lasting Potency",
           "Potion of Vigorous",
@@ -99,7 +99,7 @@
        "name":"Tier5",
        "multiplierMagnitude":"11.4",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Prolonged",
           "Elixir",
           "Elixir of Lasting Potency",
@@ -112,7 +112,7 @@
        "name":"Tier6",
        "multiplierMagnitude":"15.96",
        "multiplierDuration":"1.2",
-       "substrings":[  
+       "nameSubstrings":[  
           "Grand Elixir"
        ]
     },
@@ -120,7 +120,7 @@
        "name":"Tier7",
        "multiplierMagnitude":"17.00",
        "multiplierDuration":"1.25",
-       "substrings":[  
+       "nameSubstrings":[  
           "Prime Elixir"
        ]
     },
@@ -128,7 +128,7 @@
        "name":"DamRegen1",
        "multiplierMagnitude":"1.0",
        "multiplierDuration":"3.0",
-     "substrings": [
+     "nameSubstrings": [
        "Weak Recovery Poison",
        "Weak Vigor Poison"
      ]
@@ -137,7 +137,7 @@
        "name":"DamRegen2",
        "multiplierMagnitude":"1.0",
        "multiplierDuration":"5.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Magicka Recovery Poison",
           "Vigor Poison"
        ]
@@ -146,7 +146,7 @@
        "name":"DamRegen3",
        "multiplierMagnitude":"1.0",
        "multiplierDuration":"7.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Potent Recovery Poison",
           "Potent Vigor Poison"
        ]
@@ -155,7 +155,7 @@
        "name":"DamRegen4",
        "multiplierMagnitude":"1.0",
        "multiplierDuration":"9.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Malign Recovery Poison",
           "Malign Vigor Poison"
        ]
@@ -164,7 +164,7 @@
        "name":"DamRegen5",
        "multiplierMagnitude":"1.0",
        "multiplierDuration":"10.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Deadly Recovery Poison"
        ]
     },
@@ -172,7 +172,7 @@
        "name":"MindAffecting1",
        "multiplierMagnitude":"8.0",
        "multiplierDuration":"0.7",
-       "substrings":[  
+       "nameSubstrings":[  
           "Weak Fear Poison",
           "Weak Frenzy Poison"
        ]
@@ -181,7 +181,7 @@
        "name":"MindAffecting2",
        "multiplierMagnitude":"12.2",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Fear Poison",
           "Frenzy Poison"
        ]
@@ -190,7 +190,7 @@
        "name":"MindAffecting3",
        "multiplierMagnitude":"18.3",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Potent Fear Poison",
           "Potent Frenzy Poison"
        ]
@@ -199,7 +199,7 @@
        "name":"MindAffecting4",
        "multiplierMagnitude":"24.4",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Virulent Fear Poison",
           "Virulent Frenzy Poison"
        ]
@@ -208,7 +208,7 @@
        "name":"MindAffecting5",
        "multiplierMagnitude":"30.5",
        "multiplierDuration":"1.0",
-       "substrings":[  
+       "nameSubstrings":[  
           "Deadly Fear Poison",
           "Deadly Frenzy Poison"
        ]
