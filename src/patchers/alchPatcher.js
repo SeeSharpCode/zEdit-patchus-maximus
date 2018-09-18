@@ -1,4 +1,4 @@
-import { getLinkedMagicEffect, removeMagicSchool } from '../util';
+import { getLinkedMagicEffect, removeMagicSchool, getItemBySubstring } from '../util';
 
 export default function alchPatcher(patchFile, locals) {
     const isExcluded = function(record) {
@@ -11,11 +11,7 @@ export default function alchPatcher(patchFile, locals) {
 
     const getAlchemyEffect = function(mgef) {
         const name = xelib.Name(mgef);
-        const namePattern = new RegExp(name);
-
-        // TODO make search match SkyProc search
-        return locals.alchemyEffects.find(e => e.name === name
-            || (e.substrings && e.substrings.find(s => namePattern.test(s))));
+        return locals.alchemyEffects.find(e => e.name === name) || getItemBySubstring(locals.alchemyEffects, name);
     };
 
     const makePotionEffectsGradual = function(record) {
