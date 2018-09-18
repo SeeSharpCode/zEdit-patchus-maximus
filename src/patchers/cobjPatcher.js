@@ -1,4 +1,5 @@
 import Recipe from '../records/recipe';
+import { getItemBySubstring } from '../util';
 
 export default function cobjPatcher(helpers, locals) {
     const log = message => helpers.logMessage(`(COBJ) ${message}`);
@@ -12,20 +13,9 @@ export default function cobjPatcher(helpers, locals) {
 
     const getMaterialName = function(recipe) {
         const outputName = recipe.outputRecordName;
-        let materialName = null;
-        let matchLength = 0;
-
-        getEquipmentMaterials(recipe).forEach(m => {
-            m.nameSubstrings.forEach(substring => {
-                const subLen = substring.length;
-                if (outputName.includes(substring) && subLen > matchLength) {
-                    materialName = m.material;
-                    matchLength = subLen;
-                }
-            });
-        });
-
-        return materialName;
+        const materials = getEquipmentMaterials(recipe);
+        const material = getItemBySubstring(materials, outputName);
+        return material == null ? null : material.material;
     };
 
     const getSmithingPerkEditorID = function(recipe) {
@@ -73,7 +63,6 @@ export default function cobjPatcher(helpers, locals) {
 
     const cobjFilter = function(record) {
         const workbench = xelib.GetRefEditorID(record, 'BNAM');
-        // TODO verify this works
         if (!Object.keys(handleWorkbench).includes(workbench)) return false;
         // TODO GetWinningOverride?
         if (!xelib.GetLinksTo(record, 'CNAM')) {

@@ -4,6 +4,22 @@ export function addSpell(record, spellFormID) {
     xelib.AddArrayItem(record, 'Actor Effects', '', spellFormID);
 }
 
+export function getItemBySubstring(list, searchValue) {
+    let result = null;
+    let matchLength = 0;
+
+    list.forEach(item => {
+        item.nameSubstrings.forEach(substring => {
+            if (searchValue.includes(substring) && substring.length > matchLength) {
+                result = item;
+                matchLength = substring.length;
+            }
+        });
+    });
+
+    return result;
+}
+
 export function getLinkedMagicEffect(record, patchFile) {
     const mgef = xelib.GetLinksTo(record, 'EFID');
     return xelib.GetPreviousOverride(mgef, patchFile);
