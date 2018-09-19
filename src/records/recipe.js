@@ -7,7 +7,7 @@ export default class Recipe {
         this.outputRecord = xelib.GetLinksTo(record, 'CNAM');
         if (this.outputRecord) {
             this.outputRecordEditorID = xelib.EditorID(this.outputRecord);
-            this.outputRecordName = xelib.Name(this.outputRecord);
+            this.outputRecordName = xelib.FullName(this.outputRecord);
         }
     }
 

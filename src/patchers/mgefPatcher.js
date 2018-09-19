@@ -71,7 +71,7 @@ export default function mgefPatcher(helpers, locals) {
             filter: record => isDisarmEffect(record) || xelib.HasKeyword(record, locals.KYWD.MagicShout)
         },
         patch: record => {
-            const name = xelib.Name(record);
+            const name = xelib.FullName(record);
             if (isDisarmEffect(record)) {
                 xelib.AddKeyword(record, 'xMAMagicDisarm');
                 addDisarmConditions(record, helpers);
