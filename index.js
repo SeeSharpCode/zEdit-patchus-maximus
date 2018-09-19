@@ -35,8 +35,8 @@ const loadConfiguration = function(locals) {
 
 const buildExclusionPatterns = function(locals) {
     locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
-    locals.alchemyExclusions.editorID = locals.alchemyExclusions.editorID.map(e => new RegExp(e));
-    locals.alchemyExclusions.name = locals.alchemyExclusions.name.map(e => new RegExp(e));
+    locals.potionExclusions.editorID = locals.potionExclusions.editorID.map(e => new RegExp(e));
+    locals.potionExclusions.name = locals.potionExclusions.name.map(e => new RegExp(e));
 };
 
 const detectPerMaModules = function(helpers, locals) {

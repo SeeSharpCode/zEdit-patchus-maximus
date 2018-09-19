@@ -2,11 +2,10 @@ import { getLinkedMagicEffect, removeMagicSchool, getItemBySubstring } from '../
 
 export default function alchPatcher(patchFile, locals) {
     const isExcluded = function(record) {
-        const editorIDExcluded = locals.alchemyExclusions.editorID.find(expr => expr.test(xelib.EditorID(record)));
+        const editorIDExcluded = locals.potionExclusions.editorID.find(expr => expr.test(xelib.EditorID(record)));
         if (editorIDExcluded) return false;
 
-        const nameExcluded = locals.alchemyExclusions.name.find(expr => expr.test(xelib.FullName(record)));
-        return nameExcluded;
+        return locals.potionExclusions.name.find(expr => expr.test(xelib.FullName(record)));
     };
 
     const getAlchemyEffect = function(mgef) {
