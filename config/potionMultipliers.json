@@ -128,10 +128,10 @@
        "name":"DamRegen1",
        "multiplierMagnitude":"1.0",
        "multiplierDuration":"3.0",
-     "nameSubstrings": [
-       "Weak Recovery Poison",
-       "Weak Vigor Poison"
-     ]
+       "nameSubstrings": [
+         "Weak Recovery Poison",
+         "Weak Vigor Poison"
+       ]
     },
     {  
        "name":"DamRegen2",

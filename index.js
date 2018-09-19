@@ -90,7 +90,7 @@ registerPatcher({
             // racePatcher(locals),
             // spellPatcher(patch, locals),
             // enchPatcher(patch, locals),
-            // alchPatcher(patch, locals)
+            alchPatcher(patch, locals)
         ]
     })
 });

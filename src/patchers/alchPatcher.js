@@ -15,16 +15,33 @@ export default function alchPatcher(patchFile, locals) {
     };
 
     const makePotionEffectsGradual = function(record) {
-        xelib.GetElements(record, 'Effects').forEach(effect => {
-            const duration = xelib.GetFloatValue(effect, 'EFIT - \\Duration');
-            const magnitude = xelib.GetFloatValue(effect, 'EFIT - \\Duration');
-
+        /* eslint no-restricted-syntax: off, no-continue: off */
+        for (const effect of xelib.GetElements(record, 'Effects')) {
             const mgef = getLinkedMagicEffect(effect, patchFile);
             const alchemyEffect = getAlchemyEffect(mgef);
-            if (alchemyEffect) {
-                const cost = xelib.GetFloatValue(mgef, 'Magic Effect Data\\DATA - Data\\Base Cost');
+            if (!alchemyEffect || !alchemyEffect.allowPotionMultiplier) continue;
+
+            const potionMultiplier = getItemBySubstring(locals.potionMultipliers, xelib.Name(record));
+            if (!potionMultiplier) continue;
+
+            // const oldDuration = xelib.GetFloatValue(effect, 'EFIT - \\Duration');
+            const newDuration = alchemyEffect.baseDuration * potionMultiplier.multiplierDuration;
+            // const oldMagnitude = xelib.GetFloatValue(effect, 'EFIT - \\Duration');
+            const newMagnitude = alchemyEffect.baseMagnitude * potionMultiplier.multiplierMagnitude;
+            // const oldCost = xelib.GetFloatValue(mgef, 'Magic Effect Data\\DATA - Data\\Base Cost');
+            const newCost = alchemyEffect.baseCost;
+
+            const mgefDescription = xelib.GetValue(mgef, 'DNAM - Magic Item Description');
+            if (!mgefDescription.includes('<dur>')) {
+                xelib.SetFlag(mgef, 'Magic Effect Data\\DATA - Data\\Flags', 'No Duration', false);
+                const newDescription = `${mgefDescription} [Duration: <dur> seconds]`;
+                xelib.SetValue(mgef, 'DNAM - Magic Item Description', newDescription);
             }
-        });
+
+            xelib.SetFloatValue(effect, 'EFIT - \\Duration', newDuration);
+            xelib.SetFloatValue(effect, 'EFIT - \\Magnitude', newMagnitude);
+            xelib.SetFloatValue(mgef,'Magic Effect Data\\DATA - Data\\Base Cost', newCost);
+        }
     };
 
     return {
