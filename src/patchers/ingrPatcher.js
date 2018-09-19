@@ -1,11 +1,8 @@
 import { getLinkedMagicEffect, removeMagicSchool, getItemBySubstring } from '../util';
 
-export default function alchPatcher(patchFile, locals) {
+export default function ingrPatcher(patchFile, locals) {
     const isExcluded = function(record) {
-        const editorIDExcluded = locals.potionExclusions.editorID.find(expr => expr.test(xelib.EditorID(record)));
-        if (editorIDExcluded) return false;
-
-        return locals.potionExclusions.name.find(expr => expr.test(xelib.FullName(record)));
+        return locals.ingredientExclusions.find(expr => expr.test(xelib.EditorID(record)));
     };
 
     const getAlchemyEffect = function(mgef) {
@@ -22,39 +19,34 @@ export default function alchPatcher(patchFile, locals) {
         }
     };
 
-    const makePotionEffectGradual = function(effect, recordName) {
+    const makeIngredientEffectGradual = function(effect, recordName) {
         const mgef = getLinkedMagicEffect(effect, patchFile);
         const alchemyEffect = getAlchemyEffect(mgef);
-        if (!alchemyEffect || !alchemyEffect.allowPotionMultiplier) return;
+        if (!alchemyEffect || !alchemyEffect.allowIngredientVariation) return;
 
-        const potionMultiplier = getItemBySubstring(locals.potionMultipliers, recordName);
-        if (!potionMultiplier) return;
-
-        addDurationToDescription(mgef);
+        const ingredientVariation = getItemBySubstring(locals.ingredientVariations, recordName);
+        if (!ingredientVariation) return;
 
         // const oldDuration = xelib.GetFloatValue(effect, 'EFIT - \\Duration');
         // const oldMagnitude = xelib.GetFloatValue(effect, 'EFIT - \\Duration');
-        // const oldCost = xelib.GetFloatValue(mgef, 'Magic Effect Data\\DATA - Data\\Base Cost');
-        const newDuration = alchemyEffect.baseDuration * potionMultiplier.multiplierDuration;
-        const newMagnitude = alchemyEffect.baseMagnitude * potionMultiplier.multiplierMagnitude;
-        const newCost = alchemyEffect.baseCost;
+        const newDuration = alchemyEffect.baseDuration * ingredientVariation.multiplierDuration;
+        const newMagnitude = alchemyEffect.baseMagnitude * ingredientVariation.multiplierMagnitude;
 
         // TODO only change if new value != old value
         xelib.SetFloatValue(effect, 'EFIT - \\Duration', newDuration);
         xelib.SetFloatValue(effect, 'EFIT - \\Magnitude', newMagnitude);
-        xelib.SetFloatValue(mgef, 'Magic Effect Data\\DATA - Data\\Base Cost', newCost);
     };
 
     return {
         load: {
-            signature: 'ALCH',
+            signature: 'INGR',
             filter: record => locals.useThief
         },
         patch: record => {
             removeMagicSchool(record, patchFile);
 
             if (!isExcluded(record)) {
-                xelib.GetElements(record, 'Effects').forEach(effect => makePotionEffectGradual(effect, xelib.FullName(record)));
+                xelib.GetElements(record, 'Effects').forEach(effect => makeIngredientEffectGradual(effect, xelib.FullName(record)));
             }
         }
     };
