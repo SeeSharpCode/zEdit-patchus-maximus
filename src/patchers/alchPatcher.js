@@ -8,11 +8,6 @@ export default function alchPatcher(patchFile, locals) {
         return locals.potionExclusions.name.find(expr => expr.test(xelib.FullName(record)));
     };
 
-    const getAlchemyEffect = function(mgef) {
-        const name = xelib.FullName(mgef);
-        return locals.alchemyEffects.find(e => e.name === name) || getItemBySubstring(locals.alchemyEffects, name);
-    };
-
     const addDurationToDescription = function(mgef) {
         const mgefDescription = xelib.GetValue(mgef, 'DNAM - Magic Item Description');
         if (!mgefDescription.includes('<dur>')) {
@@ -24,7 +19,7 @@ export default function alchPatcher(patchFile, locals) {
 
     const makePotionEffectGradual = function(effect, recordName) {
         const mgef = getLinkedMagicEffect(effect, patchFile);
-        const alchemyEffect = getAlchemyEffect(mgef);
+        const alchemyEffect = getItemBySubstring(locals.alchemyEffects, xelib.FullName(mgef));
         if (!alchemyEffect || !alchemyEffect.allowPotionMultiplier) return;
 
         const potionMultiplier = getItemBySubstring(locals.potionMultipliers, recordName);
