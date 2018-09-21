@@ -24,8 +24,7 @@ const buildReferenceMaps = function(locals) {
 
 const loadConfiguration = function(locals) {
     fh.jetpack.find(`${patcherPath}/config`, {
-        matching: '*.json',
-        recursive: false
+        matching: '*.json'
     }).map(path => fh.jetpack.path(path)).forEach(filePath => {
         const fileName = fh.getFileName(filePath);
         const baseName = fileName.substr(0, fileName.indexOf('.'));
