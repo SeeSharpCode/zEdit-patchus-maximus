@@ -9,6 +9,7 @@ import racePatcher from './src/patchers/racePatcher';
 import spellPatcher from './src/patchers/spellPatcher';
 import enchPatcher from './src/patchers/enchPatcher';
 import alchPatcher from './src/patchers/alchPatcher';
+import ingrPatcher from './src/patchers/ingrPatcher';
 
 const buildReferenceMaps = function(locals) {
     const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
@@ -32,10 +33,12 @@ const loadConfiguration = function(locals) {
     });
 };
 
+// TODO refactor this
 const buildExclusionPatterns = function(locals) {
     locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
     locals.potionExclusions.editorID = locals.potionExclusions.editorID.map(e => new RegExp(e));
     locals.potionExclusions.name = locals.potionExclusions.name.map(e => new RegExp(e));
+    locals.ingredientExclusions = locals.ingredientExclusions.map(e => new RegExp(e));
 };
 
 const detectPerMaModules = function(helpers, locals) {
@@ -89,7 +92,8 @@ registerPatcher({
             // racePatcher(locals),
             // spellPatcher(patch, locals),
             // enchPatcher(patch, locals),
-            alchPatcher(patch, locals)
+            // alchPatcher(patch, locals),
+            ingrPatcher(patch, locals)
         ]
     })
 });

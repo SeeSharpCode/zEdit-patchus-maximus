@@ -1,4 +1,4 @@
-import { getLinkedMagicEffect, removeMagicSchool, getItemBySubstring } from '../util';
+import { getLinkedRecord, removeMagicSchool, getItemBySubstring } from '../util';
 
 export default function alchPatcher(patchFile, locals) {
     const isExcluded = function(record) {
@@ -18,7 +18,7 @@ export default function alchPatcher(patchFile, locals) {
     };
 
     const makePotionEffectGradual = function(effect, recordName) {
-        const mgef = getLinkedMagicEffect(effect, patchFile);
+        const mgef = getLinkedRecord(effect, 'EFID', patchFile);
         const alchemyEffect = getItemBySubstring(locals.alchemyEffects, xelib.FullName(mgef));
         if (!alchemyEffect || !alchemyEffect.allowPotionMultiplier) return;
 

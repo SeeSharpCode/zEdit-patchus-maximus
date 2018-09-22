@@ -20,18 +20,18 @@ export function getItemBySubstring(list, searchValue) {
     return result;
 }
 
-export function getLinkedMagicEffect(record, patchFile) {
-    const mgef = xelib.GetLinksTo(record, 'EFID');
-    return xelib.GetPreviousOverride(mgef, patchFile);
+export function getLinkedRecord(element, path, patchFile) {
+    const linkedRecord = xelib.GetLinksTo(element, path);
+    const linkedRecordOverride = xelib.GetPreviousOverride(linkedRecord, patchFile);
+    return xelib.CopyElement(linkedRecordOverride, patchFile, false);
 }
 
 export function removeMagicSchool(record, patchFile) {
     const mgefRecords = xelib.GetElements(record, 'Effects')
-        .map(effect => getLinkedMagicEffect(effect, patchFile))
-        .filter(effect => xelib.GetValue(effect, magicSkillPath) !== 'None');
+        .map(effect => getLinkedRecord(effect, 'EFID', patchFile))
+        .filter(mgef => xelib.GetValue(mgef, magicSkillPath) !== 'None');
 
-    mgefRecords.forEach(effect => {
-        const patchedMgef = xelib.CopyElement(effect, patchFile, false);
-        xelib.SetValue(patchedMgef, magicSkillPath, 'None');
+    mgefRecords.forEach(mgef => {
+        xelib.SetValue(mgef, magicSkillPath, 'None');
     });
 }
