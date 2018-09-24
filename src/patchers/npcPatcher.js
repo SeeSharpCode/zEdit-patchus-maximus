@@ -3,7 +3,7 @@ import { addSpell } from '../util';
 export default function npcPatcher(helpers, locals) {
     const log = message => helpers.logMessage(`(NPC_) ${message}`);
 
-    const npcFilter = function (record) {
+    const npcFilter = function(record) {
         const name = xelib.FullName(record);
         if (!name) {
             return false;
@@ -42,7 +42,7 @@ export default function npcPatcher(helpers, locals) {
             addSpell(record, locals.SPEL.xMAMAGMainAbility);
             xelib.AddPerk(record, locals.PERK.xMAMAGPassiveScalingSpellsScroll, '1');
 
-            // TODO control this via a setting
+            // TODO control starting spells via a setting
             addSpell(record, locals.SPEL.xMADESFireFlames);
             addSpell(record, locals.SPEL.xMARESHealRecovery);
         }
