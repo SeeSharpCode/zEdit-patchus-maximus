@@ -3,7 +3,7 @@ import { getLinkedRecord, removeMagicSchool, getItemBySubstring } from '../util'
 export default function alchPatcher(patchFile, locals) {
     const isExcluded = function(record) {
         const editorIDExcluded = locals.potionExclusions.editorID.find(expr => expr.test(xelib.EditorID(record)));
-        if (editorIDExcluded) return false;
+        if (editorIDExcluded) return true;
 
         return locals.potionExclusions.name.find(expr => expr.test(xelib.FullName(record)));
     };
