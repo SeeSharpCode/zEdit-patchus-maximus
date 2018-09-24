@@ -8,15 +8,18 @@ export default function ingrPatcher(patchFile, locals) {
     const makeIngredientEffectGradual = function(effect, recordName) {
         const mgef = getLinkedRecord(effect, 'EFID', patchFile);
         const alchemyEffect = getItemBySubstring(locals.alchemyEffects, xelib.FullName(mgef));
-        if (!alchemyEffect || !alchemyEffect.allowIngredientVariation) return;
+        if (!alchemyEffect) return;
 
-        const ingredientVariation = getItemBySubstring(locals.ingredientVariations, recordName);
-        if (!ingredientVariation) return;
+        let newDuration = alchemyEffect.baseDuration;
+        let newMagnitude = alchemyEffect.baseMagnitude;
 
-        // const oldDuration = xelib.GetFloatValue(effect, 'EFIT - \\Duration');
-        // const oldMagnitude = xelib.GetFloatValue(effect, 'EFIT - \\Duration');
-        const newDuration = alchemyEffect.baseDuration * ingredientVariation.multiplierDuration;
-        const newMagnitude = alchemyEffect.baseMagnitude * ingredientVariation.multiplierMagnitude;
+        if (alchemyEffect.allowIngredientVariation) {
+            const ingredientVariation = getItemBySubstring(locals.ingredientVariations, recordName);
+            if (ingredientVariation) {
+                newDuration *= ingredientVariation.multiplierDuration;
+                newMagnitude *= ingredientVariation.multiplierMagnitude;
+            }
+        }
 
         // TODO only change if new value != old value
         xelib.SetFloatValue(effect, 'EFIT - \\Duration', newDuration);
