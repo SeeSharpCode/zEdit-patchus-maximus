@@ -10,7 +10,7 @@ export default function mgefPatcher(helpers, locals) {
         }
 
         static get HARMFUL_SHOUT_ARCHETYPES() {
-            return ['Absorb', 'Value Modifier', 'Dual Value Modifier'];
+            return ['Value Modifier', 'Peak Value Modifier', 'Dual Value Modifier'];
         }
 
         get isHarmful() {
