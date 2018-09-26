@@ -1,5 +1,8 @@
 import Recipe from '../records/recipe';
 import { getItemBySubstring } from '../util';
+import weaponMaterials from '../../config/materials/weaponMaterials.json';
+import armorMaterials from '../../config/materials/armorMaterials.json';
+import recipeMaterials from '../../config/materials/recipeMaterials.json';
 
 export default function cobjPatcher(helpers, locals) {
     const log = message => helpers.logMessage(`(COBJ) ${message}`);
@@ -8,7 +11,7 @@ export default function cobjPatcher(helpers, locals) {
     };
 
     const getEquipmentMaterials = function(recipe) {
-        return recipe.isWeaponRecipe ? locals.weaponMaterials : locals.armorMaterials;
+        return recipe.isWeaponRecipe ? weaponMaterials : armorMaterials;
     };
 
     const getMaterialType = function(recipe) {
@@ -24,7 +27,7 @@ export default function cobjPatcher(helpers, locals) {
             return skip(recipe, `no material type found for ${recipe.outputRecordName}.`);
         }
 
-        const material = locals.recipeMaterials[materialType];
+        const material = recipeMaterials[materialType];
         if (!material) {
             return skip(recipe, `no material found with type ${materialType}.`);
         }

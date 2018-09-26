@@ -1,11 +1,14 @@
 import { getLinkedRecord, removeMagicSchool, getItemBySubstring } from '../util';
+import potionExclusions from '../../config/alchemy/potionExclusions.json';
+import alchemyEffects from '../../config/alchemy/alchemyEffects.json';
+import potionMultipliers from '../../config/alchemy/potionMultipliers.json';
 
 export default function alchPatcher(patchFile, locals) {
     const isExcluded = function(record) {
-        const editorIDExcluded = locals.potionExclusions.editorID.find(expr => expr.test(xelib.EditorID(record)));
+        const editorIDExcluded = potionExclusions.editorID.find(expr => expr.test(xelib.EditorID(record)));
         if (editorIDExcluded) return true;
 
-        return locals.potionExclusions.name.find(expr => expr.test(xelib.FullName(record)));
+        return potionExclusions.name.find(expr => expr.test(xelib.FullName(record)));
     };
 
     const addDurationToDescription = function(mgef) {
@@ -19,10 +22,10 @@ export default function alchPatcher(patchFile, locals) {
 
     const makePotionEffectGradual = function(effect, recordName) {
         const mgef = getLinkedRecord(effect, 'EFID', patchFile);
-        const alchemyEffect = getItemBySubstring(locals.alchemyEffects, xelib.FullName(mgef));
+        const alchemyEffect = getItemBySubstring(alchemyEffects, xelib.FullName(mgef));
         if (!alchemyEffect || !alchemyEffect.allowPotionMultiplier) return;
 
-        const potionMultiplier = getItemBySubstring(locals.potionMultipliers, recordName);
+        const potionMultiplier = getItemBySubstring(potionMultipliers, recordName);
         if (!potionMultiplier) return;
 
         addDurationToDescription(mgef);

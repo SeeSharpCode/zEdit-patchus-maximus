@@ -1,4 +1,5 @@
 import copy from 'rollup-plugin-copy';
+import json from 'rollup-plugin-json';
 
 export default {
     input: 'index.js',
@@ -8,6 +9,9 @@ export default {
         strict: false
     },
     plugins: [
+        json({
+            namedExports: false
+        }),
         copy({
             "partials": "dist/partials",
             "config": "dist/config",

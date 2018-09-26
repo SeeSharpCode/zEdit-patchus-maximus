@@ -1,5 +1,6 @@
 /* global xelib, fh, patcherUrl, patcherPath */
 
+// TODO export everything from the patchers folder
 import globPatcher from './src/patchers/globPatcher';
 import cobjPatcher from './src/patchers/cobjPatcher';
 import gmstPatcher from './src/patchers/gmstPatcher';
@@ -20,16 +21,6 @@ const buildReferenceMaps = function(locals) {
             if (edid) obj[edid] = xelib.GetHexFormID(rec);
             return obj;
         }, {});
-    });
-};
-
-const loadConfiguration = function(locals) {
-    fh.jetpack.find(`${patcherPath}/config`, {
-        matching: '*.json'
-    }).map(path => fh.jetpack.path(path)).forEach(filePath => {
-        const fileName = fh.getFileName(filePath);
-        const baseName = fileName.substr(0, fileName.indexOf('.'));
-        locals[baseName] = fh.loadJsonFile(filePath);
     });
 };
 
@@ -57,7 +48,9 @@ const detectPerMaModules = function(helpers, locals) {
     });
 };
 
+/* eslint no-undef: off */
 registerPatcher({
+    /* eslint object-shorthand: off */
     info: info,
     gameModes: [xelib.gmTES5, xelib.gmSSE],
     settings: {
@@ -75,7 +68,6 @@ registerPatcher({
                 EqualToOr: '10010000'
             };
 
-            loadConfiguration(locals);
             buildExclusionPatterns(locals);
             buildReferenceMaps(locals);
             detectPerMaModules(helpers, locals);
@@ -84,8 +76,8 @@ registerPatcher({
             locals.playerRefFormID = '00000014';
         },
         process: [
-            // globPatcher(helpers, locals),
-            // gmstPatcher(helpers, locals),
+            globPatcher(helpers, locals),
+            gmstPatcher(helpers, locals),
             // cobjPatcher(helpers, locals),
             // mgefPatcher(helpers, locals),
             // npcPatcher(helpers, locals),
@@ -93,7 +85,7 @@ registerPatcher({
             // spellPatcher(patch, locals),
             // enchPatcher(patch, locals),
             // alchPatcher(patch, locals),
-            ingrPatcher(patch, locals)
+            // ingrPatcher(patch, locals)
         ]
     })
 });
