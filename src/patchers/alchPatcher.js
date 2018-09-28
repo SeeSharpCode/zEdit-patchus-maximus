@@ -1,16 +1,6 @@
-import { getLinkedRecord, removeMagicSchool, getItemBySubstring } from '../util';
-import potionExclusions from '../../config/alchemy/potionExclusions.json';
-import alchemyEffects from '../../config/alchemy/alchemyEffects.json';
-import potionMultipliers from '../../config/alchemy/potionMultipliers.json';
+import { getLinkedRecord, removeMagicSchool } from '../util';
 
-export default function alchPatcher(patchFile, locals) {
-    const isExcluded = function(record) {
-        const editorIDExcluded = potionExclusions.editorID.find(expr => expr.test(xelib.EditorID(record)));
-        if (editorIDExcluded) return true;
-
-        return potionExclusions.name.find(expr => expr.test(xelib.FullName(record)));
-    };
-
+export default function alchPatcher(patchFile, locals, configService) {
     const addDurationToDescription = function(mgef) {
         const mgefDescription = xelib.GetValue(mgef, 'DNAM - Magic Item Description');
         if (!mgefDescription.includes('<dur>')) {
@@ -22,10 +12,10 @@ export default function alchPatcher(patchFile, locals) {
 
     const makePotionEffectGradual = function(effect, recordName) {
         const mgef = getLinkedRecord(effect, 'EFID', patchFile);
-        const alchemyEffect = getItemBySubstring(alchemyEffects, xelib.FullName(mgef));
+        const alchemyEffect = configService.getAlchemyEffect(xelib.FullName(mgef));
         if (!alchemyEffect || !alchemyEffect.allowPotionMultiplier) return;
 
-        const potionMultiplier = getItemBySubstring(potionMultipliers, recordName);
+        const potionMultiplier = configService.getPotionMultiplier(recordName);
         if (!potionMultiplier) return;
 
         addDurationToDescription(mgef);
@@ -50,10 +40,8 @@ export default function alchPatcher(patchFile, locals) {
         },
         patch: record => {
             removeMagicSchool(record, patchFile);
-
-            if (!isExcluded(record)) {
-                xelib.GetElements(record, 'Effects').forEach(effect => makePotionEffectGradual(effect, xelib.FullName(record)));
-            }
+            if (configService.isExcluded(record)) return;
+            xelib.GetElements(record, 'Effects').forEach(effect => makePotionEffectGradual(effect, xelib.FullName(record)));
         }
     };
 }

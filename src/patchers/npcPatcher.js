@@ -1,7 +1,6 @@
 import { addSpell } from '../util';
-import npcExclusions from '../../config/npcExclusions.json';
 
-export default function npcPatcher(helpers, locals) {
+export default function npcPatcher(helpers, locals, configService) {
     const log = message => helpers.logMessage(`(NPC_) ${message}`);
 
     const npcFilter = function(record) {
@@ -11,7 +10,7 @@ export default function npcPatcher(helpers, locals) {
         }
 
         const editorID = xelib.EditorID(record);
-        const exclude = npcExclusions.find(expr => expr.test(editorID));
+        const exclude = configService.isExcluded(record);
         if (exclude) log(`excluding ${editorID}`);
         return !exclude;
     };

@@ -1,7 +1,10 @@
-[
-    "^HISAnimalBloodLarge$",
-    "^LCSDragonEggBlue$",
-    "^LCSDragonEggGrenn$",
-    "^LCSDragonEggRedd$",
-    "^Volundr"
-]
+{
+    "recordSignature": "INGR",
+    "editorIDs": [
+        "^HISAnimalBloodLarge$",
+        "^LCSDragonEggBlue$",
+        "^LCSDragonEggGrenn$",
+        "^LCSDragonEggRedd$",
+        "^Volundr"
+    ]
+}

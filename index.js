@@ -1,5 +1,7 @@
+/* eslint no-unused-vars: off */
 /* global xelib, fh, patcherUrl, patcherPath */
 
+import ConfigService from './src/configService';
 // TODO export everything from the patchers folder
 import globPatcher from './src/patchers/globPatcher';
 import cobjPatcher from './src/patchers/cobjPatcher';
@@ -24,14 +26,6 @@ const buildReferenceMaps = function(locals) {
     });
 };
 
-// TODO refactor this
-const buildExclusionPatterns = function(locals) {
-    locals.npcExclusions = locals.npcExclusions.map(e => new RegExp(e));
-    locals.potionExclusions.editorID = locals.potionExclusions.editorID.map(e => new RegExp(e));
-    locals.potionExclusions.name = locals.potionExclusions.name.map(e => new RegExp(e));
-    locals.ingredientExclusions = locals.ingredientExclusions.map(e => new RegExp(e));
-};
-
 const detectPerMaModules = function(helpers, locals) {
     const perMaFileNamePrefix = 'PerkusMaximus_';
     const perMaModules = ['Mage', 'Warrior', 'Thief'];
@@ -47,6 +41,8 @@ const detectPerMaModules = function(helpers, locals) {
         }
     });
 };
+
+const configService = new ConfigService();
 
 /* eslint no-undef: off */
 registerPatcher({
@@ -78,14 +74,14 @@ registerPatcher({
         process: [
             globPatcher(helpers, locals),
             gmstPatcher(helpers, locals),
-            // cobjPatcher(helpers, locals),
+            // cobjPatcher(helpers, locals, configService),
             // mgefPatcher(helpers, locals),
-            // npcPatcher(helpers, locals),
+            // npcPatcher(helpers, locals, configService),
             // racePatcher(locals),
             // spellPatcher(patch, locals),
             // enchPatcher(patch, locals),
-            // alchPatcher(patch, locals),
-            // ingrPatcher(patch, locals)
+            // alchPatcher(patch, locals, configService),
+            // ingrPatcher(patch, locals, configService)
         ]
     })
 });

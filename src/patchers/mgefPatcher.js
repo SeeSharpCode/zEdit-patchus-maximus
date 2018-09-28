@@ -1,39 +1,8 @@
+import Shout from '../model/shout';
+
 // TODO SkyProc code didn't check for useMage, but it might make sense here
 export default function mgefPatcher(helpers, locals) {
     const log = (message) => helpers.logMessage(`(MGEF) ${message}`);
-
-    class Shout {
-        constructor(record) {
-            this.editorID = xelib.EditorID(record);
-            this.record = record;
-            this.archetype = xelib.GetValue(this.record, 'Magic Effect Data\\DATA - Data\\Archtype');
-        }
-
-        static get HARMFUL_SHOUT_ARCHETYPES() {
-            return ['Value Modifier', 'Peak Value Modifier', 'Dual Value Modifier'];
-        }
-
-        get isHarmful() {
-            return Shout.HARMFUL_SHOUT_ARCHETYPES.includes(this.archetype)
-                && xelib.GetFlag(this.record, 'Magic Effect Data\\DATA - Data\\Flags', 'Detrimental'); // TODO ensure this works
-        }
-
-        get isSummoning() {
-            return this.archetype === 'Summon Creature';
-        }
-
-        addKeyword() {
-            let keyword = '';
-            if (this.isHarmful) {
-                keyword = locals.KYWD.xMASPEShoutHarmful;
-            } else if (this.isSummoning) {
-                keyword = locals.KYWD.xMASPEShoutSummoning;
-            } else {
-                keyword = locals.KYWD.xMASPEShoutNonHarmful;
-            }
-            xelib.AddKeyword(this.record, keyword);
-        }
-    }
 
     const isDisarmEffect = function(record) {
         return xelib.GetValue(record, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm';
@@ -79,7 +48,7 @@ export default function mgefPatcher(helpers, locals) {
             }
             if (xelib.HasKeyword(record, locals.KYWD.MagicShout)) {
                 const shout = new Shout(record);
-                shout.addKeyword();
+                shout.addKeyword(locals.KYWD);
                 addShoutExperienceScript(shout);
                 log(`patched shout: ${name}`);
             }

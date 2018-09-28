@@ -1,23 +1,16 @@
-import { getLinkedRecord, removeMagicSchool, getItemBySubstring } from '../util';
-import ingredientExclusions from '../../config/alchemy/ingredientExclusions.json';
-import alchemyEffects from '../../config/alchemy/alchemyEffects.json';
-import ingredientVariations from '../../config/alchemy/ingredientVariations.json';
+import { getLinkedRecord, removeMagicSchool } from '../util';
 
-export default function ingrPatcher(patchFile, locals) {
-    const isExcluded = function(record) {
-        return ingredientExclusions.find(expr => expr.test(xelib.EditorID(record)));
-    };
-
+export default function ingrPatcher(patchFile, locals, configService) {
     const makeIngredientEffectGradual = function(effect, recordName) {
         const mgef = getLinkedRecord(effect, 'EFID', patchFile);
-        const alchemyEffect = getItemBySubstring(alchemyEffects, xelib.FullName(mgef));
+        const alchemyEffect = configService.getAlchemyEffect(xelib.FullName(mgef));
         if (!alchemyEffect) return;
 
         let newDuration = alchemyEffect.baseDuration;
         let newMagnitude = alchemyEffect.baseMagnitude;
 
         if (alchemyEffect.allowIngredientVariation) {
-            const ingredientVariation = getItemBySubstring(ingredientVariations, recordName);
+            const ingredientVariation = configService.getIngredientVariation(recordName);
             if (ingredientVariation) {
                 newDuration *= ingredientVariation.multiplierDuration;
                 newMagnitude *= ingredientVariation.multiplierMagnitude;
@@ -36,10 +29,8 @@ export default function ingrPatcher(patchFile, locals) {
         },
         patch: record => {
             removeMagicSchool(record, patchFile);
-
-            if (!isExcluded(record)) {
-                xelib.GetElements(record, 'Effects').forEach(effect => makeIngredientEffectGradual(effect, xelib.FullName(record)));
-            }
+            if (configService.isExcluded(record)) return;
+            xelib.GetElements(record, 'Effects').forEach(effect => makeIngredientEffectGradual(effect, xelib.FullName(record)));
         }
     };
 }

@@ -1,7 +1,10 @@
-[
-    "^dunSnaplegSpriggan$",
-    "^EncSprigganSwarm$",
-    "3DNPC",
-    "ARTHLALShip",
-    "Chicken"
-]
+{
+    "recordSignature": "NPC_",
+    "editorIDs": [
+        "^dunSnaplegSpriggan$",
+        "^EncSprigganSwarm$",
+        "3DNPC",
+        "ARTHLALShip",
+        "Chicken"
+    ]
+}

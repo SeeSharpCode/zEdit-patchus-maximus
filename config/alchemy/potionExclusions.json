@@ -1,5 +1,6 @@
 {
-    "editorID": [
+    "recordSignature": "ALCH",
+    "editorIDs": [
         "Food",
         "_DS_BoneBlood",
         "_DS_Potn_HircinesAgony",
@@ -25,7 +26,7 @@
         "^lalawench_A",
         "^VolundrPotion1$"
     ],
-    "name": [
+    "names": [
         "Cure Poison",
         "Invisibility",
         "Waterbreathing",
