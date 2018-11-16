@@ -1,4 +1,4 @@
-import Recipe from '../records/recipe';
+import Recipe from '../model/recipe';
 
 export default function cobjPatcher(helpers, locals, configService) {
     const log = message => helpers.logMessage(`(COBJ) ${message}`);

@@ -1,12 +1,12 @@
-import ingredientExclusions from '../config/alchemy/ingredientExclusions';
-import potionExclusions from '../config/alchemy/potionExclusions';
-import npcExclusions from '../config/npcExclusions';
-import alchemyEffects from '../config/alchemy/alchemyEffects';
-import ingredientVariations from '../config/alchemy/ingredientVariations';
-import potionMultipliers from '../config/alchemy/potionMultipliers';
-import armorMaterials from '../config/materials/armorMaterials';
-import weaponMaterials from '../config/materials/weaponMaterials';
-import recipeMaterials from '../config/materials/recipeMaterials';
+import ingredientExclusions from '../config/alchemy/ingredientExclusions.json';
+import potionExclusions from '../config/alchemy/potionExclusions.json';
+import npcExclusions from '../config/npcExclusions.json';
+import alchemyEffects from '../config/alchemy/alchemyEffects.json';
+import ingredientVariations from '../config/alchemy/ingredientVariations.json';
+import potionMultipliers from '../config/alchemy/potionMultipliers.json';
+import armorMaterials from '../config/materials/armorMaterials.json';
+import weaponMaterials from '../config/materials/weaponMaterials.json';
+import recipeMaterials from '../config/materials/recipeMaterials.json';
 
 export default class ConfigService {
     constructor() {

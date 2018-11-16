@@ -13,6 +13,7 @@ import spellPatcher from './src/patchers/spellPatcher';
 import enchPatcher from './src/patchers/enchPatcher';
 import alchPatcher from './src/patchers/alchPatcher';
 import ingrPatcher from './src/patchers/ingrPatcher';
+import bookPatcher from './src/patchers/bookPatcher';
 
 const buildReferenceMaps = function(locals) {
     const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
@@ -64,7 +65,6 @@ registerPatcher({
                 EqualToOr: '10010000'
             };
 
-            buildExclusionPatterns(locals);
             buildReferenceMaps(locals);
             detectPerMaModules(helpers, locals);
 
@@ -72,8 +72,8 @@ registerPatcher({
             locals.playerRefFormID = '00000014';
         },
         process: [
-            globPatcher(helpers, locals),
-            gmstPatcher(helpers, locals),
+            // globPatcher(helpers, locals),
+            // gmstPatcher(helpers, locals),
             // cobjPatcher(helpers, locals, configService),
             // mgefPatcher(helpers, locals),
             // npcPatcher(helpers, locals, configService),
@@ -81,7 +81,8 @@ registerPatcher({
             // spellPatcher(patch, locals),
             // enchPatcher(patch, locals),
             // alchPatcher(patch, locals, configService),
-            // ingrPatcher(patch, locals, configService)
+            // ingrPatcher(patch, locals, configService),
+            bookPatcher(helpers, locals)
         ]
     })
 });

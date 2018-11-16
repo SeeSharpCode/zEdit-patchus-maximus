@@ -10,7 +10,8 @@ export default {
     },
     plugins: [
         json({
-            namedExports: false
+            namedExports: false,
+            preferConst: true
         }),
         copy({
             "partials": "dist/partials",

@@ -5,6 +5,7 @@ export default function bookPatcher(helpers, locals) {
             filter: record => xelib.GetFlag(record, 'DATA - Data\\Flags', 'Teaches Spell')
         },
         patch: record => {
+            helpers.logMessage(`(BOOK) ${xelib.FullName(record)}`);
         }
     };
 }
