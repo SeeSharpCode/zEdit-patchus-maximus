@@ -82,7 +82,7 @@ registerPatcher({
             // enchPatcher(patch, locals),
             // alchPatcher(patch, locals, configService),
             // ingrPatcher(patch, locals, configService),
-            bookPatcher(helpers, locals)
+            bookPatcher(configService)
         ]
     })
 });

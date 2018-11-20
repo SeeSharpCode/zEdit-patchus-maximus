@@ -10,9 +10,9 @@ export default function npcPatcher(helpers, locals, configService) {
         }
 
         const editorID = xelib.EditorID(record);
-        const exclude = configService.isExcluded(record);
-        if (exclude) log(`excluding ${editorID}`);
-        return !exclude;
+        const isExcluded = configService.isExcluded(record);
+        if (isExcluded) log(`excluding ${editorID}`);
+        return !isExcluded;
     };
 
     const patchNpc = function patchNpc(record) {
