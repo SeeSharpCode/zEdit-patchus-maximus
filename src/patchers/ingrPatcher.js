@@ -1,16 +1,18 @@
 import { getLinkedRecord, removeMagicSchool } from '../util';
+import { isExcludedFromPatching } from '../exclusionUtils';
+import { getIngredientVariation, getAlchemyEffect } from '../configUtils';
 
-export default function ingrPatcher(patchFile, locals, configService) {
+export default function ingrPatcher(patchFile, locals) {
     const makeIngredientEffectGradual = function(effect, recordName) {
         const mgef = getLinkedRecord(effect, 'EFID', patchFile);
-        const alchemyEffect = configService.getAlchemyEffect(xelib.FullName(mgef));
+        const alchemyEffect = getAlchemyEffect(xelib.FullName(mgef));
         if (!alchemyEffect) return;
 
         let newDuration = alchemyEffect.baseDuration;
         let newMagnitude = alchemyEffect.baseMagnitude;
 
         if (alchemyEffect.allowIngredientVariation) {
-            const ingredientVariation = configService.getIngredientVariation(recordName);
+            const ingredientVariation = getIngredientVariation(recordName);
             if (ingredientVariation) {
                 newDuration *= ingredientVariation.multiplierDuration;
                 newMagnitude *= ingredientVariation.multiplierMagnitude;
@@ -29,7 +31,7 @@ export default function ingrPatcher(patchFile, locals, configService) {
         },
         patch: record => {
             removeMagicSchool(record, patchFile);
-            if (configService.isExcluded(record)) return;
+            if (isExcludedFromPatching(record)) return;
             xelib.GetElements(record, 'Effects').forEach(effect => makeIngredientEffectGradual(effect, xelib.FullName(record)));
         }
     };

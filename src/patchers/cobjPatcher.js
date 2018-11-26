@@ -1,6 +1,7 @@
 import Recipe from '../model/recipe';
+import { getArmorMaterial, getWeaponMaterial, getRecipeMaterial } from '../configUtils';
 
-export default function cobjPatcher(helpers, locals, configService) {
+export default function cobjPatcher(helpers, locals) {
     const log = message => helpers.logMessage(`(COBJ) ${message}`);
     const skip = (recipe, message) => {
         log(`${message}. ${recipe.editorID} will not be patched.`);
@@ -8,7 +9,7 @@ export default function cobjPatcher(helpers, locals, configService) {
 
     const getMaterialType = function(recipe) {
         const outputName = recipe.outputRecordName;
-        const material = recipe.isWeaponRecipe ? configService.getWeaponMaterial(outputName) : configService.getArmorMaterial(outputName);
+        const material = recipe.isWeaponRecipe ? getWeaponMaterial(outputName) : getArmorMaterial(outputName);
         return material == null ? null : material.type;
     };
 
@@ -18,7 +19,7 @@ export default function cobjPatcher(helpers, locals, configService) {
             return skip(recipe, `no material type found for ${recipe.outputRecordName}.`);
         }
 
-        const material = configService.getRecipeMaterial(materialType);
+        const material = getRecipeMaterial(materialType);
         if (!material) {
             return skip(recipe, `no material found with type ${materialType}.`);
         }

@@ -1,6 +1,8 @@
 import { getLinkedRecord, removeMagicSchool } from '../util';
+import { isExcludedFromPatching } from '../exclusionUtils';
+import { getPotionMultiplier, getAlchemyEffect } from '../configUtils';
 
-export default function alchPatcher(patchFile, locals, configService) {
+export default function alchPatcher(patchFile, locals) {
     const addDurationToDescription = function(mgef) {
         const mgefDescription = xelib.GetValue(mgef, 'DNAM - Magic Item Description');
         if (!mgefDescription.includes('<dur>')) {
@@ -12,10 +14,10 @@ export default function alchPatcher(patchFile, locals, configService) {
 
     const makePotionEffectGradual = function(effect, recordName) {
         const mgef = getLinkedRecord(effect, 'EFID', patchFile);
-        const alchemyEffect = configService.getAlchemyEffect(xelib.FullName(mgef));
+        const alchemyEffect = getAlchemyEffect(xelib.FullName(mgef));
         if (!alchemyEffect || !alchemyEffect.allowPotionMultiplier) return;
 
-        const potionMultiplier = configService.getPotionMultiplier(recordName);
+        const potionMultiplier = getPotionMultiplier(recordName);
         if (!potionMultiplier) return;
 
         addDurationToDescription(mgef);
@@ -40,7 +42,7 @@ export default function alchPatcher(patchFile, locals, configService) {
         },
         patch: record => {
             removeMagicSchool(record, patchFile);
-            if (configService.isExcluded(record)) return;
+            if (isExcludedFromPatching(record)) return;
             xelib.GetElements(record, 'Effects').forEach(effect => makePotionEffectGradual(effect, xelib.FullName(record)));
         }
     };

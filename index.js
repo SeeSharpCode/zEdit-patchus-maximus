@@ -1,7 +1,6 @@
 /* eslint no-unused-vars: off */
 /* global xelib, fh, patcherUrl, patcherPath */
 
-import ConfigService from './src/configService';
 // TODO export everything from the patchers folder
 import globPatcher from './src/patchers/globPatcher';
 import cobjPatcher from './src/patchers/cobjPatcher';
@@ -43,8 +42,6 @@ const detectPerMaModules = function(helpers, locals) {
     });
 };
 
-const configService = new ConfigService();
-
 /* eslint no-undef: off */
 registerPatcher({
     /* eslint object-shorthand: off */
@@ -74,15 +71,15 @@ registerPatcher({
         process: [
             // globPatcher(helpers, locals),
             // gmstPatcher(helpers, locals),
-            // cobjPatcher(helpers, locals, configService),
+            // cobjPatcher(helpers, locals),
             // mgefPatcher(helpers, locals),
-            // npcPatcher(helpers, locals, configService),
+            // npcPatcher(helpers, locals),
             // racePatcher(locals),
             // spellPatcher(patch, locals),
             // enchPatcher(patch, locals),
-            // alchPatcher(patch, locals, configService),
-            // ingrPatcher(patch, locals, configService),
-            bookPatcher(configService)
+            // alchPatcher(patch, locals),
+            // ingrPatcher(patch, locals),
+            bookPatcher(patch)
         ]
     })
 });

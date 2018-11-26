@@ -1,7 +1,14 @@
-export default function bookPatcher(configService) {
-    const createStaff = function(record) {
+import { isExcludedFromStaffCrafting } from "../exclusionUtils";
+import { getLinkedRecord } from "../util";
 
+export default function bookPatcher(patch) {
+    const shouldCreateStaff = function(bookEditorID, spellEditorID) {
+        return isExcludedFromStaffCrafting(bookEditorID) || isExcludedFromStaffCrafting(spellEditorID);
     };
+
+    const createStaff = function(spell) {
+        
+    }
 
     return {
         load: {
@@ -9,8 +16,11 @@ export default function bookPatcher(configService) {
             filter: record => xelib.GetFlag(record, 'DATA - Data\\Flags', 'Teaches Spell')
         },
         patch: record => {
-            if (createStaff(record)) {
-
+            const editorID = xelib.EditorID(record);
+            const spell = getLinkedRecord(record, 'DATA - Data\\Teaches', patch);
+            const spellEditorID = xelib.EditorID(spell);
+            if (shouldCreateStaff(editorID, spellEditorID)) {
+                 
             }
         }
     };
