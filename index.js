@@ -79,7 +79,7 @@ registerPatcher({
             // enchPatcher(patch, locals),
             // alchPatcher(patch, locals),
             // ingrPatcher(patch, locals),
-            bookPatcher(patch)
+            bookPatcher(patch, helpers)
         ]
     })
 });
