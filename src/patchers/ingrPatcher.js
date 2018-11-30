@@ -1,6 +1,6 @@
-import { getLinkedRecord, removeMagicSchool } from '../util';
-import { isExcludedFromPatching } from '../exclusionUtils';
-import { getIngredientVariation, getAlchemyEffect } from '../configUtils';
+import { getLinkedRecord, removeMagicSchool } from '../utils';
+import { isExcludedFromPatching } from '../exclusions';
+import { getIngredientVariation, getAlchemyEffect } from '../config';
 
 export default function ingrPatcher(patchFile, locals) {
     const makeIngredientEffectGradual = function(effect, recordName) {

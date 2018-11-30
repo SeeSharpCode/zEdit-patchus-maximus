@@ -1,6 +1,6 @@
-import { getLinkedRecord, removeMagicSchool } from '../util';
-import { isExcludedFromPatching } from '../exclusionUtils';
-import { getPotionMultiplier, getAlchemyEffect } from '../configUtils';
+import { getLinkedRecord, removeMagicSchool } from '../utils';
+import { isExcludedFromPatching } from '../exclusions';
+import { getPotionMultiplier, getAlchemyEffect } from '../config';
 
 export default function alchPatcher(patchFile, locals) {
     const addDurationToDescription = function(mgef) {

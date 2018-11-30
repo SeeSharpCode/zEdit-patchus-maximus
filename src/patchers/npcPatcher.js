@@ -1,5 +1,5 @@
-import { addSpell } from '../util';
-import { isExcludedFromPatching } from '../exclusionUtils';
+import { addSpell } from '../utils';
+import { isExcludedFromPatching } from '../exclusions';
 
 export default function npcPatcher(helpers, locals) {
     const log = message => helpers.logMessage(`(NPC_) ${message}`);

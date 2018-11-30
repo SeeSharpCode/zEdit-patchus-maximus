@@ -1,5 +1,5 @@
 import Recipe from '../model/recipe';
-import { getArmorMaterial, getWeaponMaterial, getRecipeMaterial } from '../configUtils';
+import { getArmorMaterial, getWeaponMaterial, getRecipeMaterial } from '../config';
 
 export default function cobjPatcher(helpers, locals) {
     const log = message => helpers.logMessage(`(COBJ) ${message}`);

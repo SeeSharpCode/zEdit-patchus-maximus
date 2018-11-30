@@ -1,5 +1,5 @@
-import { isExcludedFromStaffCrafting } from "../exclusionUtils";
-import { getLinkedRecord } from "../util";
+import { isExcludedFromStaffCrafting } from '../exclusions';
+import { getLinkedRecord } from '../utils';
 
 export default function bookPatcher(patch) {
     const shouldCreateStaff = function(bookEditorID, spellEditorID) {

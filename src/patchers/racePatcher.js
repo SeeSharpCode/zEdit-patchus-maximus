@@ -1,4 +1,4 @@
-import { addSpell } from '../util';
+import { addSpell } from '../utils';
 
 export default function racePatcher(locals) {
     return {

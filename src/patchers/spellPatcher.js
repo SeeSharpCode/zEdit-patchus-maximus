@@ -1,4 +1,4 @@
-import { removeMagicSchool } from '../util';
+import { removeMagicSchool } from '../utils';
 
 export default function spellPatcher(patchFile, locals) {
     return {
