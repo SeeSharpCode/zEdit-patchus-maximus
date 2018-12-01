@@ -1,0 +1,11 @@
+{
+  "NPC_": {
+    "editorIDs": [
+      "^dunSnaplegSpriggan$",
+      "^EncSprigganSwarm$",
+      "3DNPC",
+      "ARTHLALShip",
+      "Chicken"
+    ]
+  }
+}

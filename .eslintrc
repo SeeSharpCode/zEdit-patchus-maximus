@@ -1,15 +1,19 @@
 {
-    "extends": "airbnb-base",
-    "rules": {
-        "indent": ["error", 4],
-        "func-names": 0,
-        "space-before-function-paren": "off",
-        "arrow-parens": "off",
-        "comma-dangle": "off",
-        "max-len":["warn", {"code": 150}],
-        "no-param-reassign": "off" // TODO make this specific to locals
-    },
-    "globals": {
-        "xelib": true
-    }
+  "extends": "airbnb-base",
+  "rules": {
+    "func-names": 0,
+    "space-before-function-paren": "off",
+    "arrow-parens": "off",
+    "comma-dangle": "off",
+    "max-len": [
+      "warn",
+      {
+        "code": 150
+      }
+    ],
+    "no-param-reassign": "off" // TODO make this specific to locals
+  },
+  "globals": {
+    "xelib": true
+  }
 }

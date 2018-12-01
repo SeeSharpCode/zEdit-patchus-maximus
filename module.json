@@ -6,7 +6,9 @@
   "released": "05/30/2018",
   "updated": "05/30/2018",
   "description": "Patcher for Perkus Maximus.",
-  "requires": ["unifiedPatchingFramework"],
+  "requires": [
+    "unifiedPatchingFramework"
+  ],
   "moduleLoader": "UPF",
   "canHotLoad": true
 }

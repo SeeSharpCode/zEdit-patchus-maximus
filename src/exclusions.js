@@ -1,28 +1,25 @@
-import ingredientExclusions from '../config/alchemy/ingredientExclusions.json';
-import potionExclusions from '../config/alchemy/potionExclusions.json';
-import npcExclusions from '../config/npcExclusions.json';
-import staffCraftingExclusions from '../config/staffCraftingExclusions.json';
+import ingredientExclusions from '../config/exclusions/ingredients.json';
+import potionExclusions from '../config/exclusions/potions.json';
+import npcExclusions from '../config/exclusions/npcs.json';
+import staffCraftingExclusions from '../config/exclusions/staffCrafting.json';
 
-let patchingExclusions = [ingredientExclusions, potionExclusions, npcExclusions];
+const exclusions = {
+  ...ingredientExclusions,
+  ...potionExclusions,
+  ...npcExclusions,
+  ...staffCraftingExclusions
+};
 
-patchingExclusions = patchingExclusions.reduce((result, exclusion) => {
-    result[exclusion.recordSignature] = {
-        editorIDPatterns: exclusion.editorIDs.map(editorID => new RegExp(editorID)),
-        namePatterns: exclusion.names.map(name => new RegExp(name))
-    };
-
-    return result;
+// convert editor IDs and names to regex patterns
+Object.keys(exclusions).forEach(exclusion => {
+  Object.keys(exclusion).forEach(list => {
+    exclusion[list] = exclusion[list].map(item => new RegExp(item));
+  });
 });
 
 export function isExcludedFromPatching(record) {
-    const signature = xelib.Signature(record);
-    const { editorIDPatterns, namePatterns } = patchingExclusions[signature];
-    return (editorIDPatterns && editorIDPatterns.some(p => p.test(xelib.EditorID(record))))
-        || (namePatterns && namePatterns.some(p => p.test(xelib.FullName(record))));
-}
-
-const staffCraftingExclusionPatterns = staffCraftingExclusions.map(e => new RegExp(e));
-
-export function isExcludedFromStaffCrafting(editorID) {
-    return staffCraftingExclusionPatterns.some(p => p.test(editorID));
+  const signature = xelib.Signature(record);
+  const { editorIDs, names } = exclusions[signature];
+  return (editorIDs && editorIDs.some(p => p.test(xelib.EditorID(record))))
+    || (names && names.some(p => p.test(xelib.FullName(record))));
 }
