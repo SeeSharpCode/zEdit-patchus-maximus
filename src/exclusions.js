@@ -17,9 +17,18 @@ Object.keys(exclusions).forEach(exclusion => {
   });
 });
 
-export function isExcludedFromPatching(record) {
-  const signature = xelib.Signature(record);
-  const { editorIDs, names } = exclusions[signature];
+const isExcluded = function(record, exclusion) {
+  const { editorIDs, names } = exclusion;
   return (editorIDs && editorIDs.some(p => p.test(xelib.EditorID(record))))
     || (names && names.some(p => p.test(xelib.FullName(record))));
+};
+
+export function isExcludedFromPatching(record) {
+  const signature = xelib.Signature(record);
+  const exclusion = exclusions[signature];
+  return isExcluded(record, exclusion);
+}
+
+export function isExcludedFromStaffCrafting(record) {
+  return isExcluded(record, exclusions.staffCraftingExclusions);
 }
