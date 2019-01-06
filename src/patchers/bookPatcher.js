@@ -50,8 +50,6 @@ export default function bookPatcher(patch, locals, helpers) {
 
   const createStaffEnchantment = spell => {
     if (!shouldCreateStaffEnchantment(spell)) return null;
-    
-    debugger;
 
     const staffEnchantmentTemplate = locals.ENCH.xMAEmptyStaffEnch;
     const enchantment = xelib.CopyElement(staffEnchantmentTemplate, patch, true);
