@@ -1,12 +1,12 @@
 import { isExcludedFromStaffCrafting } from '../exclusions';
 import { getLinkedRecord } from '../utils';
 
-export default function bookPatcher(patch, helpers) {
+export default function bookPatcher(patch, locals, helpers) {
   const log = message => helpers.logMessage(`(BOOK) ${message}`);
 
   const supportedSpellSchools = ['Alteration', 'Conjuration', 'Destruction', 'Illusion', 'Restoration'];
 
-  const shouldCreateStaffEnchantment = function (spell) {
+  const shouldCreateStaffEnchantment = spell => {
     const castType = xelib.GetValue(spell, 'SPIT - Data\\Cast Type');
     if (castType === 'Constant Effect') {
       log(`skipping staff creation for Constant Effect spell: ${xelib.FullName(spell)}`);
@@ -25,26 +25,48 @@ export default function bookPatcher(patch, helpers) {
       return false;
     }
 
-    return xelib.GetElements(spell, 'Effects').some(effect => {
-      const skillType = xelib.GetValue(effect, 'Magic Effect Data\\DATA - Data\\Magic Skill');
-      return supportedSpellSchools.includes(skillType);
-    });
+    return xelib.GetElements(spell, 'Effects')
+      .map(effect => getLinkedRecord(effect, 'EFID', patch))
+      .some(effect => {
+        const magicSkill = xelib.GetValue(effect, 'Magic Effect Data\\DATA - Data\\Magic Skill');
+        return supportedSpellSchools.includes(magicSkill);
+      });
   };
 
-  const createStaffEnchantment = function (spell) {
-    if (!shouldCreateStaffEnchantment(spell)) return;
+  const copySpellDataToEnchantment = (spell, enchantment) => {
+    const targetType = xelib.GetValue(spell, 'SPIT - Data\\Target Type');
+    xelib.SetValue(enchantment, 'ENIT - Effect Data\\Target Type', targetType);
 
+    const castType = xelib.GetValue(spell, 'SPIT - Data\\Cast Type');
+    xelib.SetValue(enchantment, 'ENIT - Effect Data\\Cast Type', castType);
 
+    const spellName = xelib.FullName(spell);
+    xelib.SetValue(enchantment, 'FULL - Name', `ENCH_${spellName}`);
+
+    const spellBaseCost = xelib.GetValue(spell, 'SPIT - Data\\Base Cost');
+    const baseCost = Math.min(100, Math.max(spellBaseCost, 50));
+    xelib.SetValue(enchantment, 'ENIT - Effect Data\\Enchantment Cost', baseCost);
   };
 
-  const shouldCreateStaff = function (bookEditorID, spellEditorID) {
-    return isExcludedFromStaffCrafting(bookEditorID) || isExcludedFromStaffCrafting(spellEditorID);
+  const createStaffEnchantment = spell => {
+    if (!shouldCreateStaffEnchantment(spell)) return null;
+    
+    debugger;
+
+    const staffEnchantmentTemplate = locals.ENCH.xMAEmptyStaffEnch;
+    const enchantment = xelib.CopyElement(staffEnchantmentTemplate, patch, true);
+    copySpellDataToEnchantment(spell, enchantment);
+
+    return helpers.cacheRecord(enchantment, `PaMa_ENCH_${xelib.FullName(spell)}`);
   };
 
-  const createStaff = function (spell) {
+  const shouldCreateStaff = (bookEditorID, spellEditorID) => {
+    return !isExcludedFromStaffCrafting(bookEditorID) && !isExcludedFromStaffCrafting(spellEditorID);
+  };
+
+  const createStaff = spell => {
     const staffEnchantment = createStaffEnchantment(spell);
-
-  }
+  };
 
   return {
     load: {

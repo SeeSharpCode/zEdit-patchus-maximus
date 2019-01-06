@@ -15,7 +15,7 @@ import ingrPatcher from './src/patchers/ingrPatcher';
 import bookPatcher from './src/patchers/bookPatcher';
 
 const buildReferenceMaps = function (locals) {
-  const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL'];
+  const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL', 'ENCH'];
   signaturesToMap.forEach(sig => {
     const records = xelib.GetRecords(0, sig, false);
     locals[sig] = records.reduce((obj, rec) => {
@@ -79,7 +79,7 @@ registerPatcher({
       // enchPatcher(patch, locals),
       // alchPatcher(patch, locals),
       // ingrPatcher(patch, locals),
-      bookPatcher(patch, helpers)
+      bookPatcher(patch, locals, helpers)
     ]
   })
 });

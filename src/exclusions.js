@@ -11,7 +11,8 @@ const exclusions = {
 };
 
 // convert editor IDs and names to regex patterns
-Object.keys(exclusions).forEach(exclusion => {
+Object.keys(exclusions).forEach(exclusionKey => {
+  const exclusion = exclusions[exclusionKey];
   Object.keys(exclusion).forEach(list => {
     exclusion[list] = exclusion[list].map(item => new RegExp(item));
   });
@@ -19,8 +20,10 @@ Object.keys(exclusions).forEach(exclusion => {
 
 const isExcluded = function(record, exclusion) {
   const { editorIDs, names } = exclusion;
-  return (editorIDs && editorIDs.some(p => p.test(xelib.EditorID(record))))
-    || (names && names.some(p => p.test(xelib.FullName(record))));
+  const editorID = xelib.EditorID(record);
+  const name = xelib.FullName(record);
+  return (editorIDs && editorIDs.some(p => p.test(editorID)))
+    || (names && names.some(p => p.test(name)));
 };
 
 export function isExcludedFromPatching(record) {
@@ -30,5 +33,5 @@ export function isExcludedFromPatching(record) {
 }
 
 export function isExcludedFromStaffCrafting(record) {
-  return isExcluded(record, exclusions.staffCraftingExclusions);
+  return isExcluded(record, exclusions.staffCrafting);
 }
