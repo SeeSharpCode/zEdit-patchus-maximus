@@ -34,18 +34,18 @@ export default function bookPatcher(patch, locals, helpers) {
   };
 
   const copySpellDataToEnchantment = (spell, enchantment) => {
-    const targetType = xelib.GetValue(spell, 'SPIT - Data\\Target Type');
-    xelib.SetValue(enchantment, 'ENIT - Effect Data\\Target Type', targetType);
+    const targetType = xelib.GetValue(spell, 'SPIT\\Target Type');
+    xelib.SetValue(enchantment, 'ENIT\\Target Type', targetType);
 
-    const castType = xelib.GetValue(spell, 'SPIT - Data\\Cast Type');
-    xelib.SetValue(enchantment, 'ENIT - Effect Data\\Cast Type', castType);
+    const castType = xelib.GetValue(spell, 'SPIT\\Cast Type');
+    xelib.SetValue(enchantment, 'ENIT\\Cast Type', castType);
 
     const spellName = xelib.FullName(spell);
-    xelib.SetValue(enchantment, 'FULL - Name', `ENCH_${spellName}`);
+    xelib.SetValue(enchantment, 'FULL', `ENCH_${spellName}`);
 
-    const spellBaseCost = xelib.GetValue(spell, 'SPIT - Data\\Base Cost');
+    const spellBaseCost = xelib.GetValue(spell, 'SPIT\\Base Cost');
     const baseCost = Math.min(100, Math.max(spellBaseCost, 50));
-    xelib.SetValue(enchantment, 'ENIT - Effect Data\\Enchantment Cost', baseCost);
+    xelib.SetValue(enchantment, 'ENIT\\Enchantment Cost', baseCost.toString());
   };
 
   const createStaffEnchantment = spell => {
