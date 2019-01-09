@@ -51,7 +51,8 @@ export default function bookPatcher(patch, locals, helpers) {
   const createStaffEnchantment = spell => {
     if (!shouldCreateStaffEnchantment(spell)) return null;
 
-    const staffEnchantmentTemplate = locals.ENCH.xMAEmptyStaffEnch;
+    const staffPath = `PerkusMaximus_Master.esp\\${locals.ENCH.xMAEmptyStaffEnch}`;
+    const staffEnchantmentTemplate = xelib.GetElement(0, staffPath);
     const enchantment = xelib.CopyElement(staffEnchantmentTemplate, patch, true);
     copySpellDataToEnchantment(spell, enchantment);
 
