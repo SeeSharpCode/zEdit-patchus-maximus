@@ -1,3 +1,7 @@
+export function trimWhitespace(string) {
+  return string.replace(/\s/g, '');
+}
+
 const magicSkillPath = 'Magic Effect Data\\DATA - Data\\Magic Skill';
 
 export function addSpell(record, spellFormID) {

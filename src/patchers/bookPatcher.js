@@ -1,37 +1,11 @@
 import { isExcludedFromStaffCrafting } from '../exclusions';
-import { getLinkedRecord } from '../utils';
+import { getLinkedRecord, trimWhitespace } from '../utils';
 
 export default function bookPatcher(patch, locals, helpers) {
   const log = message => helpers.logMessage(`(BOOK) ${message}`);
 
   const supportedSpellSchools = ['Alteration', 'Conjuration', 'Destruction', 'Illusion', 'Restoration'];
-
-  const shouldCreateStaffEnchantment = spell => {
-    const castType = xelib.GetValue(spell, 'SPIT - Data\\Cast Type');
-    if (castType === 'Constant Effect') {
-      log(`skipping staff creation for Constant Effect spell: ${xelib.FullName(spell)}`);
-      return false;
-    }
-
-    const targetType = xelib.GetValue(spell, 'SPIT - Data\\Target Type');
-    if (targetType === 'Self') {
-      log(`skipping staff creation for self-targeting spell: ${xelib.FullName(spell)}`);
-      return false;
-    }
-
-    const equipType = getLinkedRecord(spell, 'ETYP - Equipment Type', patch);
-    if (xelib.EditorID(equipType) === 'BothHands') {
-      log(`skipping staff creation for dual cast spell: ${xelib.FullName(spell)}`);
-      return false;
-    }
-
-    return xelib.GetElements(spell, 'Effects')
-      .map(effect => getLinkedRecord(effect, 'EFID', patch))
-      .some(effect => {
-        const magicSkill = xelib.GetValue(effect, 'Magic Effect Data\\DATA - Data\\Magic Skill');
-        return supportedSpellSchools.includes(magicSkill);
-      });
-  };
+  const usedSpells = [];
 
   const copySpellDataToEnchantment = (spell, enchantment) => {
     const targetType = xelib.GetValue(spell, 'SPIT\\Target Type');
@@ -40,7 +14,7 @@ export default function bookPatcher(patch, locals, helpers) {
     const castType = xelib.GetValue(spell, 'SPIT\\Cast Type');
     xelib.SetValue(enchantment, 'ENIT\\Cast Type', castType);
 
-    const spellName = xelib.FullName(spell);
+    const spellName = trimWhitespace(xelib.FullName(spell));
     xelib.SetValue(enchantment, 'FULL', `ENCH_${spellName}`);
 
     const spellBaseCost = xelib.GetValue(spell, 'SPIT\\Base Cost');
@@ -49,37 +23,70 @@ export default function bookPatcher(patch, locals, helpers) {
   };
 
   const createStaffEnchantment = spell => {
-    if (!shouldCreateStaffEnchantment(spell)) return null;
-
-    const staffPath = `PerkusMaximus_Master.esp\\${locals.ENCH.xMAEmptyStaffEnch}`;
-    const staffEnchantmentTemplate = xelib.GetElement(0, staffPath);
+    const staffEnchantmentTemplatePath = `PerkusMaximus_Master.esp\\${locals.ENCH.xMAEmptyStaffEnch}`;
+    const staffEnchantmentTemplate = xelib.GetElement(0, staffEnchantmentTemplatePath);
     const enchantment = xelib.CopyElement(staffEnchantmentTemplate, patch, true);
     copySpellDataToEnchantment(spell, enchantment);
 
-    return helpers.cacheRecord(enchantment, `PaMa_ENCH_${xelib.FullName(spell)}`);
-  };
+    const spellEditorID = xelib.EditorID(spell);
+    usedSpells.push(spellEditorID);
 
-  const shouldCreateStaff = (bookEditorID, spellEditorID) => {
-    return !isExcludedFromStaffCrafting(bookEditorID) && !isExcludedFromStaffCrafting(spellEditorID);
+    const enchantmentName = trimWhitespace(xelib.FullName(spell));
+    return helpers.cacheRecord(enchantment, `PaMa_ENCH_${enchantmentName}`);
   };
 
   const createStaff = spell => {
     const staffEnchantment = createStaffEnchantment(spell);
   };
 
+  const isDualCastOnly = spell => {
+    const equipType = getLinkedRecord(spell, 'ETYP - Equipment Type', patch);
+    return xelib.EditorID(equipType) === 'BothHands';
+  };
+
+  const isSupportedSpellSchool = spell => {
+    return xelib.GetElements(spell, 'Effects')
+      .map(effect => {
+        const effectRecord = getLinkedRecord(effect, 'EFID', patch);
+        return xelib.GetValue(effectRecord, 'Magic Effect Data\\DATA - Data\\Magic Skill');
+      })
+      .some(school => supportedSpellSchools.includes(school));
+  };
+
+  const isSupportedSpellType = spell => xelib.GetValue(spell, 'SPIT\\Target Type') !== 'Self'
+      && xelib.GetValue(spell, 'SPIT - Data\\Cast Type') !== 'Constant Effect';
+
+  const spellFilter = spell => {
+    const spellEditorID = xelib.EditorID(spell);
+    return !isExcludedFromStaffCrafting(spellEditorID)
+      && !usedSpells.includes(spellEditorID)
+      && !isDualCastOnly(spell)
+      && isSupportedSpellSchool(spell)
+      && isSupportedSpellType(spell);
+  };
+
+  const bookFilter = book => {
+    if (isExcludedFromStaffCrafting(xelib.EditorID(book))) {
+      return false;
+    }
+
+    const spellFlag = xelib.GetFlag(book, 'DATA - Data\\Flags', 'Teaches Spell');
+    if (!spellFlag) {
+      return false;
+    }
+
+    const spell = getLinkedRecord(book, 'DATA - Data\\Teaches', patch);
+    return spellFilter(spell);
+  };
+
   return {
     load: {
       signature: 'BOOK',
-      filter: record => xelib.GetFlag(record, 'DATA - Data\\Flags', 'Teaches Spell')
+      filter: bookFilter
     },
     patch: record => {
-      const editorID = xelib.EditorID(record);
       const spell = getLinkedRecord(record, 'DATA - Data\\Teaches', patch);
-      const spellEditorID = xelib.EditorID(spell);
-
-      if (shouldCreateStaff(editorID, spellEditorID)) {
-        createStaff(spell);
-      }
+      createStaff(spell);
     }
   };
 }
