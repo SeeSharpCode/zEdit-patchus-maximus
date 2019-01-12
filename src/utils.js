@@ -1,5 +1,5 @@
-export function trimWhitespace(string) {
-  return string.replace(/\s/g, '');
+export function trimNonAlphaCharacters(string) {
+  return string.replace(/[^a-z]/gi, '');
 }
 
 const magicSkillPath = 'Magic Effect Data\\DATA - Data\\Magic Skill';
@@ -22,4 +22,10 @@ export function removeMagicSchool(record, patchFile) {
   mgefRecords.forEach(mgef => {
     xelib.SetValue(mgef, magicSkillPath, 'None');
   });
+}
+
+export function copyEffects(originRecord, destinationRecord) {
+  xelib.RemoveElement(destinationRecord, 'Effects');
+  const destinationEffects = xelib.AddElement(destinationRecord, 'Effects');
+  xelib.GetElements(originRecord, 'Effects').forEach(effect => xelib.CopyElement(effect, destinationEffects));
 }
