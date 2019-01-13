@@ -1,5 +1,5 @@
-import { isExcludedFromStaffCrafting } from '../exclusions';
-import { getLinkedRecord, copyEffects, removeNonAlphaCharacters } from '../utils';
+import { isExcludedFromStaffCrafting, isExcludedFromScrollCrafting } from '../exclusions';
+import { getLinkedRecord, copyEffects } from '../utils';
 import conditionOperators from '../model/conditionOperators';
 import Spell from '../model/spell';
 
@@ -69,9 +69,13 @@ export default function bookPatcher(patchFile, locals, helpers) {
   };
 
   const shouldCreateStaff = (book, spell) => !isExcludedFromStaffCrafting(book)
-      && !isExcludedFromStaffCrafting(spell.record)
-      && !usedStaffSpells.includes(spell.editorID)
-      && spell.isCompatibleWithStaff(patchFile);
+    && !isExcludedFromStaffCrafting(spell.record)
+    && !usedStaffSpells.includes(spell.editorID)
+    && spell.isCompatibleWithStaff(patchFile);
+
+  const shouldCreateScroll = (book, spell) => !isExcludedFromScrollCrafting(book)
+    && !isExcludedFromScrollCrafting(spell.record)
+    && spell.castType !== 'Concentration';
 
   const patchBook = book => {
     const spellRecord = getLinkedRecord(book, 'DATA - Data\\Teaches', patchFile);
@@ -79,6 +83,8 @@ export default function bookPatcher(patchFile, locals, helpers) {
 
     if (shouldCreateStaff(book, spell)) {
       createStaff(book, spell);
+    }
+    if (shouldCreateScroll(book, spell)) {
     }
   };
 
