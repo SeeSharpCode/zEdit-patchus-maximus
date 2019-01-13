@@ -5,6 +5,12 @@
     "space-before-function-paren": "off",
     "arrow-parens": "off",
     "comma-dangle": "off",
+    "no-underscore-dangle": [
+      "warn", 
+      { 
+        "allowAfterThis": true 
+      }
+    ],
     "max-len": [
       "warn",
       {

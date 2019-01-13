@@ -1,3 +1,4 @@
+// TODO extend base record class
 export default class Shout {
   constructor(record) {
     this.editorID = xelib.EditorID(record);

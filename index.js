@@ -57,6 +57,7 @@ registerPatcher({
   requiredFiles: ['PerkusMaximus_Master.esp'],
   execute: (patch, helpers, settings, locals) => ({
     initialize: () => {
+      // TODO remove and replace with conditionOperators
       locals.conditionTypes = {
         EqualTo: '10000000',
         EqualToOr: '10010000'

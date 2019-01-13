@@ -1,4 +1,4 @@
-export function trimNonAlphaCharacters(string) {
+export function removeNonAlphaCharacters(string) {
   return string.replace(/[^a-z]/gi, '');
 }
 

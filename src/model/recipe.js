@@ -1,3 +1,4 @@
+// TODO extend base record class
 export default class Recipe {
   constructor(record) {
     this.record = record;
