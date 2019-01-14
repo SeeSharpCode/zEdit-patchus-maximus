@@ -20,6 +20,34 @@ export default class Spell extends Record {
     return this._castType;
   }
 
+  get castDuration() {
+    if (!this._castDuration) {
+      this._castDuration = xelib.GetValue(this.record, 'SPIT\\Cast Duration');
+    }
+    return this._castDuration;
+  }
+
+  get chargeTime() {
+    if (!this._chargeTime) {
+      this._chargeTime = xelib.GetValue(this.record, 'SPIT\\Charge Time');
+    }
+    return this._chargeTime;
+  }
+
+  get equipType() {
+    if (!this._equipType) {
+      this._equipType = xelib.GetValue(this.record, 'ETYP');
+    }
+    return this._equipType;
+  }
+
+  get type() {
+    if (!this._type) {
+      this._type = xelib.GetValue(this.record, 'SPIT\\Type');
+    }
+    return this._type;
+  }
+
   get targetType() {
     if (!this._targetType) {
       this._targetType = xelib.GetValue(this.record, 'SPIT\\Target Type');
@@ -31,6 +59,13 @@ export default class Spell extends Record {
     return this.targetType === 'Self';
   }
 
+  get effects() {
+    if (!this._effects) {
+      this._effects = xelib.GetElements(this.record, 'Effects');
+    }
+    return this._effects;
+  }
+
   isCompatibleWithStaff(patchFile) {
     return !this.isDualCastOnly(patchFile)
       && this.getSpellSchool(patchFile)
@@ -40,11 +75,10 @@ export default class Spell extends Record {
 
   getSpellSchool(patchFile) {
     const supportedSpellSchools = ['Alteration', 'Conjuration', 'Destruction', 'Illusion', 'Restoration'];
-    return xelib.GetElements(this.record, 'Effects')
-      .map(effect => {
-        const effectRecord = getLinkedRecord(effect, 'EFID', patchFile);
-        return xelib.GetValue(effectRecord, 'Magic Effect Data\\DATA - Data\\Magic Skill');
-      })
+    return this.effects.map(effect => {
+      const effectRecord = getLinkedRecord(effect, 'EFID', patchFile);
+      return xelib.GetValue(effectRecord, 'Magic Effect Data\\DATA - Data\\Magic Skill');
+    })
       .find(school => supportedSpellSchools.includes(school));
   }
 

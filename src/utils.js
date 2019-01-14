@@ -2,10 +2,8 @@ export function removeNonAlphaCharacters(string) {
   return string.replace(/[^a-z]/gi, '');
 }
 
-const magicSkillPath = 'Magic Effect Data\\DATA - Data\\Magic Skill';
-
-export function addSpell(record, spellFormID) {
-  xelib.AddArrayItem(record, 'Actor Effects', '', spellFormID);
+export function getRecord(fileName, formID) {
+  return xelib.GetElement(0, `${fileName}\\${formID}`);
 }
 
 export function getLinkedRecord(element, path, patchFile) {
@@ -14,7 +12,18 @@ export function getLinkedRecord(element, path, patchFile) {
   return xelib.CopyElement(linkedRecordOverride, patchFile, false);
 }
 
+export function copyRecord(record, newEditorID, patchFile, helpers) {
+  const newRecord = xelib.CopyElement(record, patchFile, true);
+  return helpers.cacheRecord(newRecord, newEditorID);
+}
+
+export function addSpell(record, spellFormID) {
+  xelib.AddArrayItem(record, 'Actor Effects', '', spellFormID);
+}
+
 export function removeMagicSchool(record, patchFile) {
+  const magicSkillPath = 'Magic Effect Data\\DATA - Data\\Magic Skill';
+
   const mgefRecords = xelib.GetElements(record, 'Effects')
     .map(effect => getLinkedRecord(effect, 'EFID', patchFile))
     .filter(mgef => xelib.GetValue(mgef, magicSkillPath) !== 'None');

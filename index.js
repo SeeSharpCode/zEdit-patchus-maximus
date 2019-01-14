@@ -55,7 +55,7 @@ registerPatcher({
     }
   },
   requiredFiles: ['PerkusMaximus_Master.esp'],
-  execute: (patch, helpers, settings, locals) => ({
+  execute: (patchFile, helpers, settings, locals) => ({
     initialize: () => {
       // TODO remove and replace with conditionOperators
       locals.conditionTypes = {
@@ -80,7 +80,7 @@ registerPatcher({
       // enchPatcher(patch, locals),
       // alchPatcher(patch, locals),
       // ingrPatcher(patch, locals),
-      bookPatcher(patch, locals, helpers)
+      bookPatcher(patchFile, locals, helpers)
     ]
   })
 });

@@ -1,11 +1,13 @@
 import { isExcludedFromStaffCrafting, isExcludedFromScrollCrafting } from '../exclusions';
-import { getLinkedRecord, copyEffects } from '../utils';
+import { getRecord, getLinkedRecord, copyRecord, copyEffects } from '../utils';
 import conditionOperators from '../model/conditionOperators';
 import Spell from '../model/spell';
 
 export default function bookPatcher(patchFile, locals, helpers) {
   const log = message => helpers.logMessage(`(BOOK) ${message}`);
 
+  const scrollMagicEffects = {};
+  const usedScrollSpells = [];
   const usedStaffSpells = [];
   const staffTemplates = {
     Destruction: 0x000be11f,
@@ -27,28 +29,28 @@ export default function bookPatcher(patchFile, locals, helpers) {
   };
 
   const createStaffEnchantment = spell => {
-    const staffEnchantmentTemplatePath = `PerkusMaximus_Master.esp\\${locals.ENCH.xMAEmptyStaffEnch}`;
-    const staffEnchantmentTemplate = xelib.GetElement(0, staffEnchantmentTemplatePath);
-    const enchantment = xelib.CopyElement(staffEnchantmentTemplate, patchFile, true);
+    const staffEnchantmentTemplate = getRecord('PerkusMaximus_Master.esp', locals.ENCH.xMAEmptyStaffEnch);
+    const enchantment = copyRecord(staffEnchantmentTemplate, `PaMa_ENCH_${spell.cleanedName}`, patchFile, helpers);
     copySpellDataToEnchantment(spell, enchantment);
     usedStaffSpells.push(spell.editorID);
-    return helpers.cacheRecord(enchantment, `PaMa_ENCH_${spell.cleanedName}`);
+    return enchantment;
   };
 
-  const createStaffRecipe = (staff, spell, book) => {
+  const createStaffRecipe = (staff, staffTemplate, spell, book) => {
     const recipe = xelib.AddElement(patchFile, 'Constructible Object\\COBJ');
+    // helpers.cacheRecord will only set the EDID field if it exists
+    xelib.AddElement(recipe, 'EDID');
+    const cachedRecipe = helpers.cacheRecord(recipe, `PaMa_CRAFT_STAFF_${spell.cleanedName}`);
 
-    xelib.AddElementValue(recipe, 'EDID', `PaMa_CRAFT_STAFF_${spell.cleanedName}`);
-    xelib.AddElementValue(recipe, 'BNAM', locals.KYWD.DLC2StaffEnchanter);
-    xelib.AddElementValue(recipe, 'CNAM', xelib.GetHexFormID(staff));
-    xelib.AddElementValue(recipe, 'NAM1', '1');
+    xelib.AddElementValue(cachedRecipe, 'BNAM', locals.KYWD.DLC2StaffEnchanter);
+    xelib.AddElementValue(cachedRecipe, 'CNAM', xelib.GetHexFormID(staff));
+    xelib.AddElementValue(cachedRecipe, 'NAM1', '1');
 
-    xelib.AddCondition(recipe, 'HasPerk', conditionOperators.equalTo, '1', locals.PERK.xMAENCStaffaire);
-    xelib.AddCondition(recipe, 'HasSpell', conditionOperators.equalTo, '1', spell.hexFormID);
+    xelib.AddCondition(cachedRecipe, 'HasPerk', conditionOperators.equalTo, '1', locals.PERK.xMAENCStaffaire);
+    xelib.AddCondition(cachedRecipe, 'HasSpell', conditionOperators.equalTo, '1', spell.hexFormID);
 
-    const staffTemplate = xelib.GetRecord(0, staffTemplates[spell.getSpellSchool(patchFile)]);
-    xelib.AddItem(recipe, xelib.GetHexFormID(staffTemplate), '1');
-    xelib.AddItem(recipe, xelib.GetHexFormID(book), '1');
+    xelib.AddItem(cachedRecipe, xelib.GetHexFormID(staffTemplate), '1');
+    xelib.AddItem(cachedRecipe, xelib.GetHexFormID(book), '1');
   };
 
   const createStaff = (book, spell) => {
@@ -56,16 +58,13 @@ export default function bookPatcher(patchFile, locals, helpers) {
     const staffEnchantmentFormID = xelib.GetHexFormID(staffEnchantment);
 
     const staffTemplate = xelib.GetRecord(0, staffTemplates[spell.getSpellSchool(patchFile)]);
-    const staff = xelib.CopyElement(staffTemplate, patchFile, true);
+    const staff = copyRecord(staffTemplate, `PaMa_STAFF_${spell.cleanedName}`, patchFile, helpers);
 
     xelib.AddElementValue(staff, 'EITM', staffEnchantmentFormID);
     xelib.AddElementValue(staff, 'EAMT', '2500');
     xelib.SetValue(staff, 'FULL', `Staff [${spell.name}]`);
-    const staffEditorID = `PaMa_STAFF_${spell.cleanedName}`;
 
-    const cachedStaff = helpers.cacheRecord(staff, staffEditorID);
-
-    createStaffRecipe(cachedStaff, spell, book);
+    createStaffRecipe(staff, staffTemplate, spell, book);
   };
 
   const shouldCreateStaff = (book, spell) => !isExcludedFromStaffCrafting(book)
@@ -73,8 +72,48 @@ export default function bookPatcher(patchFile, locals, helpers) {
     && !usedStaffSpells.includes(spell.editorID)
     && spell.isCompatibleWithStaff(patchFile);
 
+  const createScrollEffect = (scroll, spellEffect) => {
+    const spellMagicEffect = getLinkedRecord(spellEffect, 'EFID', patchFile);
+    const spellMagicEffectEditorID = xelib.EditorID(spellMagicEffect);
+
+    let scrollMagicEffect = scrollMagicEffects[spellMagicEffectEditorID];
+    if (!scrollMagicEffect) {
+      scrollMagicEffect = copyRecord(spellMagicEffect, `PaMa_SCRO_MGEF_${spellMagicEffectEditorID}`, patchFile, helpers);
+      scrollMagicEffects[spellMagicEffectEditorID] = scrollMagicEffect;
+    }
+    xelib.AddKeyword(scrollMagicEffect, locals.KYWD.xMAENCScrollSpellKW);
+
+    xelib.AddEffect(
+      scroll,
+      xelib.GetHexFormID(scrollMagicEffect),
+      xelib.GetValue(spellEffect, 'EFIT\\Magnitude'),
+      xelib.GetValue(spellEffect, 'EFIT\\Area'),
+      xelib.GetValue(spellEffect, 'EFIT\\Duration')
+    );
+  };
+
+  const copySpellDataToScroll = (spell, scroll) => {
+    xelib.SetValue(scroll, 'SPIT\\Cast Duration', spell.castDuration);
+    xelib.SetValue(scroll, 'SPIT\\Cast Type', spell.castType);
+    xelib.SetValue(scroll, 'SPIT\\Charge Time', spell.chargeTime);
+    xelib.SetValue(scroll, 'SPIT\\Target Type', spell.targetType);
+    xelib.SetValue(scroll, 'ETYP', spell.equipType);
+    xelib.SetValue(scroll, 'SPIT\\Type', spell.type);
+    xelib.SetValue(scroll, 'FULL', `${spell.name} [Scroll]`);
+    xelib.RemoveElement(scroll, 'Effects');
+    spell.effects.forEach(spellEffect => createScrollEffect(scroll, spellEffect));
+  };
+
+  const createScroll = spell => {
+    const scrollTemplate = getRecord('PerkusMaximus_Master.esp', locals.SCRL.xMAScrollEmpty);
+    const scroll = copyRecord(scrollTemplate, `PaMa_SCRO_${spell.cleanedName}${spell.hexFormID}`, patchFile, helpers);
+    copySpellDataToScroll(spell, scroll);
+    usedScrollSpells.push(spell.editorID);
+  };
+
   const shouldCreateScroll = (book, spell) => !isExcludedFromScrollCrafting(book)
     && !isExcludedFromScrollCrafting(spell.record)
+    && !usedScrollSpells.includes(spell.editorID)
     && spell.castType !== 'Concentration';
 
   const patchBook = book => {
@@ -85,6 +124,7 @@ export default function bookPatcher(patchFile, locals, helpers) {
       createStaff(book, spell);
     }
     if (shouldCreateScroll(book, spell)) {
+      createScroll(spell);
     }
   };
 
