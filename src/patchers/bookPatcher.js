@@ -9,12 +9,21 @@ export default function bookPatcher(patchFile, locals, helpers) {
   const scrollMagicEffects = {};
   const usedScrollSpells = [];
   const usedStaffSpells = [];
+
   const staffTemplates = {
     Destruction: 0x000be11f,
     Conjuration: 0x0007e647,
     Alteration: 0x0007e646,
     Illusion: 0x0007a91b,
     Restoration: 0x00051b0c,
+  };
+
+  const spellTierPerks = {
+    0: 'xMAENCBasicScripture',
+    25: 'xMAENCBasicScripture',
+    50: 'xMAENCAdvancedScripture',
+    75: 'xMAENCElaborateScripture',
+    100: 'xMAENCSagesScripture',
   };
 
   const copySpellDataToEnchantment = (spell, enchantment) => {
@@ -98,12 +107,33 @@ export default function bookPatcher(patchFile, locals, helpers) {
     spell.effects.forEach(spellEffect => createScrollEffect(scroll, spellEffect));
   };
 
+  const getSpellSkillLevel = spell => {
+    const skillLevels = spell.effects.map(effect => {
+      const magicEffect = getLinkedRecord(effect, 'EFID', patchFile);
+      return xelib.GetValue(magicEffect, 'Magic Effect Data\\DATA - Data\\Minimum Skill Level');
+    });
+
+    return Math.max(skillLevels);
+  };
+
+  const getScrollCraftingPerk = spell => {
+    const spellSkillLevel = getSpellSkillLevel(spell);
+    const perkEditorID = spellTierPerks[spellSkillLevel];
+    log(`${spell.name} skill level: ${spellSkillLevel}, perk: ${perkEditorID}`);
+    return locals.PERK[perkEditorID];
+  };
+
   const createScrollRecipe = (scroll, spell, spellFormName) => {
+    const requiredPerk = getScrollCraftingPerk(spell);
+    if (!requiredPerk) {
+      return;
+    }
+
     const recipe = createRecipe(`PaMa_CRAFT_SCRO_${spellFormName}`,
       locals.KYWD.xMAENCCraftingScroll, xelib.GetHexFormID(scroll), patchFile, helpers);
 
     // TODO get perk
-    xelib.AddCondition(recipe, 'HasPerk', conditionOperators.equalTo, '1', locals.PERK.xMAENCStaffaire);
+    xelib.AddCondition(recipe, 'HasPerk', conditionOperators.equalTo, '1', requiredPerk);
     xelib.AddCondition(recipe, 'HasSpell', conditionOperators.equalTo, '1', spell.hexFormID);
 
     xelib.AddItem(recipe, locals.MISC.Inkwell01, '1');
