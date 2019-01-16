@@ -1,5 +1,5 @@
 import { isExcludedFromStaffCrafting, isExcludedFromScrollCrafting } from '../exclusions';
-import { getRecord, getLinkedRecord, copyRecord, copyEffects } from '../utils';
+import { getRecord, getLinkedRecord, copyRecord, copyEffects, createRecipe } from '../utils';
 import conditionOperators from '../model/conditionOperators';
 import Spell from '../model/spell';
 
@@ -37,20 +37,14 @@ export default function bookPatcher(patchFile, locals, helpers) {
   };
 
   const createStaffRecipe = (staff, staffTemplate, spell, book) => {
-    const recipe = xelib.AddElement(patchFile, 'Constructible Object\\COBJ');
-    // helpers.cacheRecord will only set the EDID field if it exists
-    xelib.AddElement(recipe, 'EDID');
-    const cachedRecipe = helpers.cacheRecord(recipe, `PaMa_CRAFT_STAFF_${spell.cleanedName}`);
+    const recipe = createRecipe(`PaMa_CRAFT_STAFF_${spell.cleanedName}`, locals.KYWD.DLC2StaffEnchanter,
+      xelib.GetHexFormID(staff), patchFile, helpers);
 
-    xelib.AddElementValue(cachedRecipe, 'BNAM', locals.KYWD.DLC2StaffEnchanter);
-    xelib.AddElementValue(cachedRecipe, 'CNAM', xelib.GetHexFormID(staff));
-    xelib.AddElementValue(cachedRecipe, 'NAM1', '1');
+    xelib.AddCondition(recipe, 'HasPerk', conditionOperators.equalTo, '1', locals.PERK.xMAENCStaffaire);
+    xelib.AddCondition(recipe, 'HasSpell', conditionOperators.equalTo, '1', spell.hexFormID);
 
-    xelib.AddCondition(cachedRecipe, 'HasPerk', conditionOperators.equalTo, '1', locals.PERK.xMAENCStaffaire);
-    xelib.AddCondition(cachedRecipe, 'HasSpell', conditionOperators.equalTo, '1', spell.hexFormID);
-
-    xelib.AddItem(cachedRecipe, xelib.GetHexFormID(staffTemplate), '1');
-    xelib.AddItem(cachedRecipe, xelib.GetHexFormID(book), '1');
+    xelib.AddItem(recipe, xelib.GetHexFormID(staffTemplate), '1');
+    xelib.AddItem(recipe, xelib.GetHexFormID(book), '1');
   };
 
   const createStaff = (book, spell) => {
@@ -104,11 +98,26 @@ export default function bookPatcher(patchFile, locals, helpers) {
     spell.effects.forEach(spellEffect => createScrollEffect(scroll, spellEffect));
   };
 
+  const createScrollRecipe = (scroll, spell, spellFormName) => {
+    const recipe = createRecipe(`PaMa_CRAFT_SCRO_${spellFormName}`,
+      locals.KYWD.xMAENCCraftingScroll, xelib.GetHexFormID(scroll), patchFile, helpers);
+
+    // TODO get perk
+    xelib.AddCondition(recipe, 'HasPerk', conditionOperators.equalTo, '1', locals.PERK.xMAENCStaffaire);
+    xelib.AddCondition(recipe, 'HasSpell', conditionOperators.equalTo, '1', spell.hexFormID);
+
+    xelib.AddItem(recipe, locals.MISC.Inkwell01, '1');
+    xelib.AddItem(recipe, locals.MISC.PaperRoll, '1');
+  };
+
   const createScroll = spell => {
     const scrollTemplate = getRecord('PerkusMaximus_Master.esp', locals.SCRL.xMAScrollEmpty);
-    const scroll = copyRecord(scrollTemplate, `PaMa_SCRO_${spell.cleanedName}${spell.hexFormID}`, patchFile, helpers);
+    const spellFormName = spell.cleanedName + spell.hexFormID;
+    const scroll = copyRecord(scrollTemplate, `PaMa_SCRO_${spellFormName}`, patchFile, helpers);
     copySpellDataToScroll(spell, scroll);
     usedScrollSpells.push(spell.editorID);
+
+    createScrollRecipe(scroll, spell, spellFormName);
   };
 
   const shouldCreateScroll = (book, spell) => !isExcludedFromScrollCrafting(book)

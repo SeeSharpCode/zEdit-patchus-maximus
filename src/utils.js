@@ -17,6 +17,19 @@ export function copyRecord(record, newEditorID, patchFile, helpers) {
   return helpers.cacheRecord(newRecord, newEditorID);
 }
 
+export function createRecipe(editorID, benchKeyword, resultFormID, patchFile, helpers) {
+  const recipe = xelib.AddElement(patchFile, 'Constructible Object\\COBJ');
+  // helpers.cacheRecord will only set the EDID field if it exists
+  xelib.AddElement(recipe, 'EDID');
+  const cachedRecipe = helpers.cacheRecord(recipe, editorID);
+
+  xelib.AddElementValue(cachedRecipe, 'BNAM', benchKeyword);
+  xelib.AddElementValue(cachedRecipe, 'CNAM', resultFormID);
+  xelib.AddElementValue(cachedRecipe, 'NAM1', '1');
+
+  return cachedRecipe;
+}
+
 export function addSpell(record, spellFormID) {
   xelib.AddArrayItem(record, 'Actor Effects', '', spellFormID);
 }
