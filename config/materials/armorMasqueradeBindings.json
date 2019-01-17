@@ -1,0 +1,126 @@
+[
+    {
+        "faction": "BANDIT",
+        "substringArmors": [
+            "Bandit",
+            "Fur Armor",
+            "Fur Bracers",
+            "Fur Kilt",
+            "Fur Helmet",
+            "Fur Shoes",
+            "Fur Pant"
+        ]
+    },
+    {
+        "faction": "CULTIST",
+        "substringArmors": [
+            "Cultist"
+        ]
+    },
+    {
+        "faction": "DAWNGUARD",
+        "substringArmors": [
+            "Dawnguard Armor",
+            "Dawnguard Boots",
+            "Dawnguard Full",
+            "Dawnguard Gauntlets",
+            "Dawnguard Light Armor",
+            "Dawnguard Light Boots",
+            "Dawnguard Light Helmet",
+            "Dawnguard Light Gauntlets"
+        ]
+    },
+    {
+        "faction": "FALMER",
+        "substringArmors": [
+            "Falmer Helmet",
+            "Falmer Armor",
+            "Falmer Boots",
+            "Falmer Bracers",
+            "Falmer Heavy Armor",
+            "Falmer Heavy Boots",
+            "Falmer Heavy Gauntlets",
+            "Falmer Heavy Helm",
+            "Falmer Hardened Armor",
+            "Falmer Hardened Boots",
+            "Falmer Hardened Bracers",
+            "Falmer Hardened Gauntlets",
+            "Falmer Hardened Helm",
+            "Falmer Shaman",
+            "Shellbug Helmet"
+        ]
+    },
+    {
+        "faction": "FORSWORN",
+        "substringArmors": [
+            "Forsworn Boots",
+            "Forsworn Armor",
+            "Forsworn Headdress",
+            "Forsworn Gauntlets",
+            "Armor of the Old Gods",
+            "Helmet of the Old Gods",
+            "Gauntlets of the Old Gods",
+            "Boots of the Old Gods"
+        ]
+    },
+    {
+        "faction": "IMPERIAL",
+        "substringArmors": [
+            "Imperial Light Armor",
+            "Imperial Light Boots",
+            "Imperial Light Bracers",
+            "Imperial Light Helmet",
+            "Imperial Boots",
+            "Imperial Bracers",
+            "Imperial Armor",
+            "Imperial Helmet",
+            "Imperial Crested",
+            "Imperial Studded",
+            "Studded Imperial",
+            "Imperial Tattered",
+            "Imperial Officer's",
+            "Imperial General's",
+            "Penitus",
+            "General",
+            "Legate",
+            "Imperial Outcast"
+        ]
+    },
+    {
+        "faction": "STORMCLOAK",
+        "substringArmors": [
+            "Stormcloak Cuirass",
+            "Stormcloak Helmet",
+            "Stormcloak Officer",
+            "Fur Gauntlets",
+            "Fur Boots",
+            "Fur Guard's",
+            "Eastmarch Guard's",
+            "Reinforced Guard Boots",
+            "Reinforced Guard Gauntlets",
+            "Fitted Guard Boots",
+            "Fitted Guard Gauntlets",
+            "Ulfric's Armor",
+            "Ulfric's Boots",
+            "Ulfric's Bracers",
+            "Gloves of the Pugilist"
+        ]
+    },
+    {
+        "faction": "THALMOR",
+        "substringArmors": [
+            "Thalmor"
+        ]
+    },
+    {
+        "faction": "VAMPIRE",
+        "substringArmors": [
+            "Vampire Armor",
+            "Vampire Boots",
+            "Vampire Gauntlets",
+            "Vampire Hood",
+            "Vampire Royal",
+            "Vampire Lord"
+        ]
+    }
+]

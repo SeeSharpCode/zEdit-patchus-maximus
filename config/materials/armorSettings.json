@@ -1,0 +1,16 @@
+{
+    "armorFactorBody": 3.9,
+    "armorFactorFeet": 1.4,
+    "armorFactorHands": 1.4,
+    "armorFactorHead": 1.9,
+    "armorFactorShield": 2.4,
+    "meltdownOutputBody": 2,
+    "meltdownOutputFeet": 1,
+    "meltdownOutputHands": 1,
+    "meltdownOutputHead": 1,
+    "meltdownOutputShield": 2,
+    "maxProtection": 90.0,
+    "protectionPerArmor": 0.1,
+    "armorRatingPCMax": 1.4,
+    "armorRatingMax": 1.75
+}

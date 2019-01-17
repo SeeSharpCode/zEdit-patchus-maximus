@@ -1,0 +1,9 @@
+{
+    "appendTypeToName": "true",
+    "baseDamageLightWeaponry": 2.0,
+    "baseDamageRangedWeaponry": 0.0,
+    "baseDamageHeavyWeaponry": 0.0,
+    "damageFactorLightWeaponry": 1.0,
+    "damageFactorRangedWeaponry": 1.0,
+    "damageFactorHeavyWeaponry": 1.0
+}

@@ -1,0 +1,232 @@
+[
+    {
+        "name": "common",
+        "nameSubstrings": [
+            "Common"
+        ],
+        "factorArmor": 1,
+        "factorValue": 1,
+        "factorWeight": 1
+    },
+    {
+        "name": "alduin",
+        "nameSubstrings": [
+            "Alduin"
+        ],
+        "factorArmor": 1.1,
+        "factorValue": 1.25,
+        "factorWeight": 1.1
+    },
+    {
+        "name": "old",
+        "nameSubstrings": [
+            "Old",
+            "Primitive"
+        ],
+        "factorArmor": 0.95,
+        "factorValue": 0.95,
+        "factorWeight": 1.05
+    },
+    {
+        "name": "dented",
+        "nameSubstrings": [
+            "Dented"
+        ],
+        "factorArmor": 0.95,
+        "factorValue": 0.9,
+        "factorWeight": 1
+    },
+    {
+        "name": "broken",
+        "nameSubstrings": [
+            "Broken",
+            "Damaged"
+        ],
+        "factorArmor": 0.25,
+        "factorValue": 0.1,
+        "factorWeight": 0.75
+    },
+    {
+        "name": "worn",
+        "nameSubstrings": [
+            "Worn"
+        ],
+        "factorArmor": 0.9,
+        "factorValue": 0.85,
+        "factorWeight": 1
+    },
+    {
+        "name": "raddled",
+        "nameSubstrings": [
+            "Raddled",
+            "Charred"
+        ],
+        "factorArmor": 0.7,
+        "factorValue": 0.7,
+        "factorWeight": 1.1
+    },
+    {
+        "name": "ragged",
+        "nameSubstrings": [
+            "Ragged"
+        ],
+        "factorArmor": 0.6,
+        "factorValue": 0.5,
+        "factorWeight": 1.2
+    },
+    {
+        "name": "thin",
+        "nameSubstrings": [
+            "Thin"
+        ],
+        "factorArmor": 0.9,
+        "factorValue": 0.9,
+        "factorWeight": 0.9
+    },
+    {
+        "name": "quality",
+        "nameSubstrings": [
+            "[Quality]"
+        ],
+        "factorArmor": 1.3,
+        "factorValue": 1.5,
+        "factorWeight": 0.9
+    },
+    {
+        "name": "reforged",
+        "nameSubstrings": [
+            "Reforged",
+            "Heroes",
+            "Fortified"
+        ],
+        "factorArmor": 1.15,
+        "factorValue": 1.1,
+        "factorWeight": 0.8
+    },
+    {
+        "name": "warforged",
+        "nameSubstrings": [
+            "Warforged"
+        ],
+        "factorArmor": 1.3,
+        "factorValue": 2,
+        "factorWeight": 0.7
+    },
+    {
+        "name": "superior",
+        "nameSubstrings": [
+            "Superior"
+        ],
+        "factorArmor": 1.35,
+        "factorValue": 1.15,
+        "factorWeight": 1.1
+    },
+    {
+        "name": "exceptional",
+        "nameSubstrings": [
+            "Exceptional"
+        ],
+        "factorArmor": 1.4,
+        "factorValue": 1.15,
+        "factorWeight": 1.1
+    },
+    {
+        "name": "commander",
+        "nameSubstrings": [
+            "Commander",
+            "General"
+        ],
+        "factorArmor": 1.2,
+        "factorValue": 1.1,
+        "factorWeight": 0.9
+    },
+    {
+        "name": "veteran",
+        "nameSubstrings": [
+            "Power",
+            "Veteran"
+        ],
+        "factorArmor": 1.1,
+        "factorValue": 0.95,
+        "factorWeight": 1
+    },
+    {
+        "name": "thick",
+        "nameSubstrings": [
+            "Armored",
+            "Padded",
+            "Thick",
+            "Midweight"
+        ],
+        "factorArmor": 1.1,
+        "factorValue": 1.1,
+        "factorWeight": 1.1
+    },
+    {
+        "name": "old god",
+        "nameSubstrings": [
+            "Old God"
+        ],
+        "factorArmor": 1.1,
+        "factorValue": 1.1,
+        "factorWeight": 0.9
+    },
+    {
+        "name": "officer",
+        "nameSubstrings": [
+            "Officer",
+            "Perfect"
+        ],
+        "factorArmor": 1.15,
+        "factorValue": 1,
+        "factorWeight": 1
+    },
+    {
+        "name": "lord",
+        "nameSubstrings": [
+            "Lords",
+            "Overlord"
+        ],
+        "factorArmor": 1.15,
+        "factorValue": 1.1,
+        "factorWeight": 0.8
+    },
+    {
+        "name": "fine",
+        "nameSubstrings": [
+            "Improved",
+            "Fine",
+            "Chieften"
+        ],
+        "factorArmor": 1.05,
+        "factorValue": 1.05,
+        "factorWeight": 0.9
+    },
+    {
+        "name": "gilded",
+        "nameSubstrings": [
+            "Gilded"
+        ],
+        "factorArmor": 1.1,
+        "factorValue": 1.05,
+        "factorWeight": 1.05
+    },
+    {
+        "name": "noble",
+        "nameSubstrings": [
+            "Noble"
+        ],
+        "factorArmor": 1.1,
+        "factorValue": 1.05,
+        "factorWeight": 0.85
+    },
+    {
+        "name": "reinforced",
+        "nameSubstrings": [
+            "Reinforced"
+        ],
+        "factorArmor": 1.15,
+        "factorValue": 1.1,
+        "factorWeight": 1.2
+    }
+]

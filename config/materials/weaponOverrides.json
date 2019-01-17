@@ -1,0 +1,15 @@
+{
+    "weapon_override": {
+        "fullName": "Overriden Swordmace of D",
+        "baseWeaponType": "LONGMACE",
+        "damage": 100,
+        "critDamage": 200,
+        "materialMeltdown": "WOOD",
+        "materialTempering": "IRON",
+        "meltdownOutput": 7,
+        "meltdownInput": 1,
+        "reach": 2.5,
+        "speed": 2.2,
+        "stringToAppend": "[Uber]"
+    }
+}
