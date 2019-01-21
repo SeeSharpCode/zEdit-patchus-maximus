@@ -21,11 +21,10 @@ Object.keys(exclusions).forEach(exclusionKey => {
 });
 
 const isExcluded = function(record, exclusion) {
-  const { editorIDs, names } = exclusion;
-  const editorID = xelib.EditorID(record);
-  const name = xelib.FullName(record);
-  return (editorIDs && editorIDs.some(p => p.test(editorID)))
-    || (names && names.some(p => p.test(name)));
+  return Object.keys(exclusion).some(field => {
+    const searchValue = xelib.GetValue(record, field);
+    return exclusion[field].some(pattern => pattern.test(searchValue));
+  });
 };
 
 export function isExcludedFromPatching(record) {
