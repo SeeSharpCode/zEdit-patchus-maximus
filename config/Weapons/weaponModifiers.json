@@ -1,0 +1,396 @@
+[
+    {
+        "name": "common",
+        "nameSubstrings": [
+            "Common"
+        ],
+        "factorDamage": 1,
+        "factorCritDamage": 1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 1
+    },
+    {
+        "name": "zephyr",
+        "nameSubstrings": [
+            "Zephyr",
+            "The Longhammer"
+        ],
+        "factorDamage": 1,
+        "factorCritDamage": 1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.3,
+        "factorValue": 1
+    },
+    {
+        "name": "ancient",
+        "nameSubstrings": [
+            "Ancient"
+        ],
+        "factorDamage": 0.9,
+        "factorCritDamage": 1.1,
+        "factorWeight": 0.95,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.1,
+        "factorValue": 0.75
+    },
+    {
+        "name": "light",
+        "nameSubstrings": [
+            "Light"
+        ],
+        "factorDamage": 0.9,
+        "factorCritDamage": 1.2,
+        "factorWeight": 0.7,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.2,
+        "factorValue": 1.1
+    },
+    {
+        "name": "enhanced",
+        "nameSubstrings": [
+            "Enhanced"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 0.95,
+        "factorReach": 1,
+        "factorAttackSpeed": 0.95,
+        "factorValue": 1.1
+    },
+    {
+        "name": "scoped",
+        "nameSubstrings": [
+            "Scoped"
+        ],
+        "factorDamage": 1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 1.05,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 1
+    },
+    {
+        "name": "hero",
+        "nameSubstrings": [
+            "Hero"
+        ],
+        "factorDamage": 1.2,
+        "factorCritDamage": 1.2,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 0.95,
+        "factorValue": 1.25
+    },
+    {
+        "name": "legendary",
+        "nameSubstrings": [
+            "Legend"
+        ],
+        "factorDamage": 1.25,
+        "factorCritDamage": 1.3,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 0.75,
+        "factorValue": 1.4
+    },
+    {
+        "name": "gilded",
+        "nameSubstrings": [
+            "Gilded"
+        ],
+        "factorDamage": 1,
+        "factorCritDamage": 1,
+        "factorWeight": 1.1,
+        "factorReach": 1,
+        "factorAttackSpeed": 0.95,
+        "factorValue": 1.3
+    },
+    {
+        "name": "fine",
+        "nameSubstrings": [
+            "Fine",
+            "Cyrodiilic",
+            "Eastern"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 0.9,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.1,
+        "factorValue": 1.1
+    },
+    {
+        "name": "magnificent",
+        "nameSubstrings": [
+            "Magnificent"
+        ],
+        "factorDamage": 1.2,
+        "factorCritDamage": 1.2,
+        "factorWeight": 0.8,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.2,
+        "factorValue": 1.3
+    },
+    {
+        "name": "great",
+        "nameSubstrings": [
+            "Mighty",
+            "Great"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 0.8,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.1,
+        "factorValue": 1.2
+    },
+    {
+        "name": "honed",
+        "nameSubstrings": [
+            "Honed"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 0.9,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.1,
+        "factorValue": 1.1
+    },
+    {
+        "name": "supple",
+        "nameSubstrings": [
+            "Supple"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 0.7,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.1,
+        "factorValue": 1.2
+    },
+    {
+        "name": "heavy",
+        "nameSubstrings": [
+            "Heavy"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 0.9,
+        "factorWeight": 1.2,
+        "factorReach": 1,
+        "factorAttackSpeed": 0.8,
+        "factorValue": 0.9
+    },
+    {
+        "name": "Reforged",
+        "nameSubstrings": [
+            "(Masterwork)"
+        ]
+    },
+    {
+        "name": "warforged",
+        "nameSubstrings": [
+            "Warforged"
+        ],
+        "factorDamage": 1.3,
+        "factorCritDamage": 1.3,
+        "factorWeight": 0.6,
+        "factorReach": 1.1,
+        "factorAttackSpeed": 1.2,
+        "factorValue": 2
+    },
+    {
+        "name": "reforged",
+        "nameSubstrings": [
+            "Reforged"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 0.7,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.1,
+        "factorValue": 1.2
+    },
+    {
+        "name": "recurve",
+        "nameSubstrings": [
+            "Recurve"
+        ],
+        "factorDamage": 1.15,
+        "factorCritDamage": 1.15,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 1.1
+    },
+    {
+        "name": "lightweight",
+        "nameSubstrings": [
+            "Lightweight"
+        ],
+        "factorDamage": 1,
+        "factorCritDamage": 1,
+        "factorWeight": 0.9,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.1,
+        "factorValue": 1.1
+    },
+    {
+        "name": "silenced",
+        "nameSubstrings": [
+            "Silenced"
+        ],
+        "factorDamage": 1,
+        "factorCritDamage": 1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 0.85,
+        "factorValue": 1.1
+    },
+    {
+        "name": "arbalest",
+        "nameSubstrings": [
+            "Arbalest"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 1.2,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 1.1
+    },
+    {
+        "name": "refined",
+        "nameSubstrings": [
+            "Refined"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 1.3
+    },
+    {
+        "name": "80",
+        "nameSubstrings": [
+            "(Improved)"
+        ],
+        "factorDamage": 1.25,
+        "factorCritDamage": 1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 0.9,
+        "factorValue": 1
+    },
+    {
+        "name": "120",
+        "nameSubstrings": [
+            "(Legendary)"
+        ],
+        "factorDamage": 1.66,
+        "factorCritDamage": 1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 0.8,
+        "factorValue": 1
+    },
+    {
+        "name": "speed",
+        "nameSubstrings": [
+            "(High Speed)"
+        ],
+        "factorDamage": 0.9,
+        "factorCritDamage": 1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.1,
+        "factorValue": 1
+    },
+    {
+        "name": "tension",
+        "nameSubstrings": [
+            "(High Tension)"
+        ],
+        "factorDamage": 1.25,
+        "factorCritDamage": 1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 0.75,
+        "factorValue": 1
+    },
+    {
+        "name": "used",
+        "nameSubstrings": [
+            "(Used)"
+        ],
+        "factorDamage": 0.9,
+        "factorCritDamage": 1.1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 1
+    },
+    {
+        "name": "worn",
+        "nameSubstrings": [
+            "(Worn)"
+        ],
+        "factorDamage": 0.7,
+        "factorCritDamage": 1.1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 0.7
+    },
+    {
+        "name": "reliable",
+        "nameSubstrings": [
+            "(Reliable)"
+        ],
+        "factorDamage": 1.2,
+        "factorCritDamage": 1.1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 2
+    },
+    {
+        "name": "solid",
+        "nameSubstrings": [
+            "(Solid)"
+        ],
+        "factorDamage": 1.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 1,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 1.5
+    },
+    {
+        "name": "damaged",
+        "nameSubstrings": [
+            "(Damaged)"
+        ],
+        "factorDamage": 0.6,
+        "factorCritDamage": 1.1,
+        "factorWeight": 0.9,
+        "factorReach": 1,
+        "factorAttackSpeed": 1,
+        "factorValue": 0.5
+    },
+    {
+        "name": "broken",
+        "nameSubstrings": [
+            "(Broken)"
+        ],
+        "factorDamage": 0.1,
+        "factorCritDamage": 1.1,
+        "factorWeight": 0.8,
+        "factorReach": 1,
+        "factorAttackSpeed": 1.1,
+        "factorValue": 0.2
+    }
+]
