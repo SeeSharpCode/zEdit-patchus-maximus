@@ -113,7 +113,7 @@ export default function bookPatcher(patchFile, locals, helpers) {
       return xelib.GetValue(magicEffect, 'Magic Effect Data\\DATA - Data\\Minimum Skill Level');
     });
 
-    return Math.max(skillLevels);
+    return Math.max(...skillLevels);
   };
 
   const getScrollCraftingPerk = spell => {
@@ -132,7 +132,6 @@ export default function bookPatcher(patchFile, locals, helpers) {
     const recipe = createRecipe(`PaMa_CRAFT_SCRO_${spellFormName}`,
       locals.KYWD.xMAENCCraftingScroll, xelib.GetHexFormID(scroll), patchFile, helpers);
 
-    // TODO get perk
     xelib.AddCondition(recipe, 'HasPerk', conditionOperators.equalTo, '1', requiredPerk);
     xelib.AddCondition(recipe, 'HasSpell', conditionOperators.equalTo, '1', spell.hexFormID);
 
