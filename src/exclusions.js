@@ -1,15 +1,21 @@
-import ingredientExclusions from '../config/exclusions/ingredients.json';
-import potionExclusions from '../config/exclusions/potions.json';
-import npcExclusions from '../config/exclusions/npcs.json';
-import staffCraftingExclusions from '../config/exclusions/staffCrafting.json';
-import scrollCraftingExclusions from '../config/exclusions/scrollCrafting.json';
+import ingredients from '../config/exclusions/ingredients.json';
+import potions from '../config/exclusions/potions.json';
+import npcs from '../config/exclusions/npcs.json';
+import staffCrafting from '../config/exclusions/staffCrafting.json';
+import scrollCrafting from '../config/exclusions/scrollCrafting.json';
+import spellDistribution from '../config/exclusions/spellDistribution.json';
+import bookDistribution from '../config/exclusions/bookDistribution.json';
+import spellLeveledLists from '../config/exclusions/spellLeveledLists.json';
 
 const exclusions = {
-  ...ingredientExclusions,
-  ...potionExclusions,
-  ...npcExclusions,
-  ...staffCraftingExclusions,
-  ...scrollCraftingExclusions,
+  ...ingredients,
+  ...potions,
+  ...npcs,
+  ...staffCrafting,
+  ...scrollCrafting,
+  ...spellDistribution,
+  ...bookDistribution,
+  ...spellLeveledLists,
 };
 
 // convert editor IDs and names to regex patterns
@@ -39,4 +45,16 @@ export function isExcludedFromStaffCrafting(record) {
 
 export function isExcludedFromScrollCrafting(record) {
   return isExcluded(record, exclusions.scrollCrafting);
+}
+
+export function isExcludedFromSpellDistribution(record) {
+  return isExcluded(record, exclusions.spellDistribution);
+}
+
+export function isExcludedFromBookDistribution(record) {
+  return isExcluded(record, exclusions.bookDistribution);
+}
+
+export function isExcludedFromSpellLeveledLists(record) {
+  return isExcluded(record, exclusions.spellLeveledLists);
 }

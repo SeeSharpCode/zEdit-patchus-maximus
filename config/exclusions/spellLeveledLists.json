@@ -1,0 +1,27 @@
+{
+  "spellLeveledLists": {
+    "EDID": [
+      "^SOT_$",
+      "^CWSoldierImperialGear$",
+      "^CWSoldierSonsGear$",
+      "^GuardGear$",
+      "^GuardGear$",
+      "^PenitusGear$",
+      "^DLC2SpellBook$",
+      "^Quest$",
+      "^Ritual$",
+      "^Draugr$",
+      "^_00$",
+      "^TC_$",
+      "^SV3_$",
+      "^ACX_$",
+      "^WB_$",
+      "^_tw_$",
+      "^_lw_$",
+      "^_an_$",
+      "^MidasSPEntangleHazard$",
+      "^fmrBasicSpells$",
+      "^fmrAdvSpells$"
+    ]
+  }
+}
