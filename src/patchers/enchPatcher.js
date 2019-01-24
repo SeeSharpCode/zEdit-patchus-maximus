@@ -9,10 +9,10 @@ export default function enchPatcher(patchFile, locals) {
         const type = xelib.GetValue(record, 'ENIT - Effect Data\\Enchant Type');
         const castType = xelib.GetValue(record, 'ENIT - Effect Data\\Cast Type');
         return type === 'Ability' || castType === 'Constant Effect';
-      }
+      },
     },
     patch: record => {
       removeMagicSchool(record, patchFile);
-    }
+    },
   };
 }

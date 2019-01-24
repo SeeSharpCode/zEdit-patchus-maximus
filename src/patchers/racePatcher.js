@@ -8,7 +8,7 @@ export default function racePatcher(locals) {
         const editorID = xelib.EditorID(record);
         // TODO use config file
         return !editorID.includes('Manakin');
-      }
+      },
     },
     patch: record => {
       if (locals.useWarrior) {
@@ -21,6 +21,6 @@ export default function racePatcher(locals) {
           addSpell(record, locals.SPEL.xMAWARTHIPassiveArmorLight);
         }
       }
-    }
+    },
   };
 }

@@ -30,6 +30,7 @@ export default function alchPatcher(patchFile, locals) {
     const newCost = alchemyEffect.baseCost;
 
     // TODO only change if new value != old value
+    // Or is that needed? Why not change it anyway?
     xelib.SetFloatValue(effect, 'EFIT - \\Duration', newDuration);
     xelib.SetFloatValue(effect, 'EFIT - \\Magnitude', newMagnitude);
     xelib.SetFloatValue(mgef, 'Magic Effect Data\\DATA - Data\\Base Cost', newCost);
@@ -38,12 +39,13 @@ export default function alchPatcher(patchFile, locals) {
   return {
     load: {
       signature: 'ALCH',
-      filter: record => locals.useThief
+      /* eslint no-unused-vars: off */
+      filter: record => locals.useThief,
     },
     patch: record => {
       removeMagicSchool(record, patchFile);
       if (isExcludedFromPatching(record)) return;
       xelib.GetElements(record, 'Effects').forEach(effect => makePotionEffectGradual(effect, xelib.FullName(record)));
-    }
+    },
   };
 }

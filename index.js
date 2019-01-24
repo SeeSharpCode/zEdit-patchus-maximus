@@ -51,18 +51,12 @@ registerPatcher({
     label: 'Patchus Maximus',
     templateUrl: `${patcherUrl}/partials/settings.html`,
     defaultSettings: {
-      staffCraftingInclusions: ['ACX', 'Unenchanted']
-    }
+      staffCraftingInclusions: ['ACX', 'Unenchanted'],
+    },
   },
   requiredFiles: ['PerkusMaximus_Master.esp'],
   execute: (patchFile, helpers, settings, locals) => ({
     initialize: () => {
-      // TODO remove and replace with conditionOperators
-      locals.conditionTypes = {
-        EqualTo: '10000000',
-        EqualToOr: '10010000'
-      };
-
       buildReferenceMaps(locals);
       detectPerMaModules(helpers, locals);
 
@@ -80,7 +74,7 @@ registerPatcher({
       // enchPatcher(patch, locals),
       // alchPatcher(patch, locals),
       // ingrPatcher(patch, locals),
-      bookPatcher(patchFile, locals, helpers)
-    ]
-  })
+      bookPatcher(patchFile, locals, helpers),
+    ],
+  }),
 });

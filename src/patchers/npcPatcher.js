@@ -68,7 +68,7 @@ export default function npcPatcher(helpers, locals) {
   return {
     load: {
       signature: 'NPC_',
-      filter: npcFilter
+      filter: npcFilter,
     },
     patch: record => {
       patchNpc(record);
@@ -76,6 +76,6 @@ export default function npcPatcher(helpers, locals) {
       if (xelib.GetHexFormID(record) === locals.playerFormID) {
         patchPlayer(record);
       }
-    }
+    },
   };
 }

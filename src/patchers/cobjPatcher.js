@@ -1,5 +1,6 @@
 import Recipe from '../model/recipe';
 import { getArmorMaterial, getWeaponMaterial, getRecipeMaterial } from '../config';
+import conditionOperators from '../model/conditionOperators';
 
 export default function cobjPatcher(helpers, locals) {
   const log = message => helpers.logMessage(`(COBJ) ${message}`);
@@ -35,7 +36,7 @@ export default function cobjPatcher(helpers, locals) {
     const smithingPerkEditorID = getSmithingPerkEditorID(recipe);
     if (!smithingPerkEditorID) return;
     const smithingPerkFormID = locals.PERK[smithingPerkEditorID];
-    xelib.AddCondition(recipe.record, 'HasPerk', locals.conditionTypes.EqualTo, '1', smithingPerkFormID);
+    xelib.AddCondition(recipe.record, 'HasPerk', conditionOperators.EqualTo, '1', smithingPerkFormID);
     log(`added HasPerk (${smithingPerkEditorID}) condition to ${recipe.editorID} recipe`);
   };
 
@@ -53,7 +54,7 @@ export default function cobjPatcher(helpers, locals) {
       log(`disabled staff recipe: ${recipe.editorID}`);
     },
     CraftingSmithingSharpeningWheel: changeRecipeConditions,
-    CraftingSmithingArmorTable: changeRecipeConditions
+    CraftingSmithingArmorTable: changeRecipeConditions,
   };
 
   const cobjFilter = function (record) {
@@ -70,11 +71,11 @@ export default function cobjPatcher(helpers, locals) {
   return {
     load: {
       signature: 'COBJ',
-      filter: cobjFilter
+      filter: cobjFilter,
     },
     patch: record => {
       const recipe = new Recipe(record);
       handleWorkbench[recipe.workbench](recipe);
-    }
+    },
   };
 }

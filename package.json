@@ -8,6 +8,7 @@
   "repository": "https://github.com/SeeSharpCode/zEdit-patchus-maximus",
   "license": "MIT",
   "scripts": {
+    "lint": "node_modules/.bin/eslint index.js src",
     "build": "rollup -c"
   },
   "dependencies": {

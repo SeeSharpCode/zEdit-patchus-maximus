@@ -4,7 +4,7 @@
     "func-names": 0,
     "space-before-function-paren": "off",
     "arrow-parens": "off",
-    "comma-dangle": "off",
+    "object-curly-newline": "off",
     "no-underscore-dangle": [
       "warn", 
       { 

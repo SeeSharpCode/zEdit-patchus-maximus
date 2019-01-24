@@ -10,11 +10,11 @@ export default function globPatcher(helpers, locals) {
         return (locals.useMage && editorID === 'xMAIsPerMaMageRunning')
           || (locals.useWarrior && editorID === 'xMAIsPerMaWarriorRunning')
           || (locals.useThief && editorID === 'xMAIsPerMaThiefRunning');
-      }
+      },
     },
     patch: record => {
       log(`setting ${xelib.EditorID(record)} to true`);
       xelib.SetFloatValue(record, 'FLTV', 1);
-    }
+    },
   };
 }

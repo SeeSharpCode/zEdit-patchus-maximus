@@ -9,10 +9,10 @@ export default function spellPatcher(patchFile, locals) {
         const type = xelib.GetValue(record, 'SPIT - Data\\Type');
         const castType = xelib.GetValue(record, 'SPIT - Data\\Cast Type');
         return type === 'Ability' || castType === 'Constant Effect';
-      }
+      },
     },
     patch: record => {
       removeMagicSchool(record, patchFile);
-    }
+    },
   };
 }

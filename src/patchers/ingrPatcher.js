@@ -27,12 +27,13 @@ export default function ingrPatcher(patchFile, locals) {
   return {
     load: {
       signature: 'INGR',
-      filter: record => locals.useThief
+      /* eslint no-unused-vars: off */
+      filter: record => locals.useThief,
     },
     patch: record => {
       removeMagicSchool(record, patchFile);
       if (isExcludedFromPatching(record)) return;
       xelib.GetElements(record, 'Effects').forEach(effect => makeIngredientEffectGradual(effect, xelib.FullName(record)));
-    }
+    },
   };
 }

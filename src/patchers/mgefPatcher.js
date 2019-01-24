@@ -1,4 +1,5 @@
 import Shout from '../model/shout';
+import conditionOperators from '../model/conditionOperators';
 
 // TODO SkyProc code didn't check for useMage, but it might make sense here
 export default function mgefPatcher(helpers, locals) {
@@ -9,8 +10,8 @@ export default function mgefPatcher(helpers, locals) {
   };
 
   const addDisarmConditions = function (record) {
-    xelib.AddCondition(record, 'WornHasKeyword', locals.conditionTypes.EqualToOr, '0', locals.KYWD.xMAWeapSchoolLightWeaponry);
-    xelib.AddCondition(record, 'HasPerk', locals.conditionTypes.EqualToOr, '0', locals.PERK.xMALIASecureGrip);
+    xelib.AddCondition(record, 'WornHasKeyword', conditionOperators.EqualToOr, '0', locals.KYWD.xMAWeapSchoolLightWeaponry);
+    xelib.AddCondition(record, 'HasPerk', conditionOperators.EqualToOr, '0', locals.PERK.xMALIASecureGrip);
   };
 
   const addShoutExperienceScript = function (shout) {
@@ -37,7 +38,7 @@ export default function mgefPatcher(helpers, locals) {
   return {
     load: {
       signature: 'MGEF',
-      filter: record => isDisarmEffect(record) || xelib.HasKeyword(record, locals.KYWD.MagicShout)
+      filter: record => isDisarmEffect(record) || xelib.HasKeyword(record, locals.KYWD.MagicShout),
     },
     patch: record => {
       const name = xelib.FullName(record);
@@ -52,6 +53,6 @@ export default function mgefPatcher(helpers, locals) {
         addShoutExperienceScript(shout);
         log(`patched shout: ${name}`);
       }
-    }
+    },
   };
 }
