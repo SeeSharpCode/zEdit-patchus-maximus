@@ -3,6 +3,7 @@ export default class Shout {
   constructor(record) {
     this.editorID = xelib.EditorID(record);
     this.record = record;
+    // TODO use getter
     this.archetype = xelib.GetValue(this.record, 'Magic Effect Data\\DATA - Data\\Archtype');
   }
 

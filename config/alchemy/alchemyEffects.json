@@ -1,6 +1,5 @@
-[
-  {
-    "name": "Flare Undead",
+{
+  "Flare Undead": {
     "baseMagnitude": "0",
     "baseDuration": "4",
     "baseCost": "50",
@@ -10,8 +9,7 @@
       "Flare Undead"
     ]
   },
-  {
-    "name": "Corrode Armor",
+  "Corrode Armor": {
     "baseMagnitude": "0",
     "baseDuration": "4",
     "baseCost": "50",
@@ -21,8 +19,7 @@
       "Corrode Armor"
     ]
   },
-  {
-    "name": "Arcane Detachment",
+  "Arcane Detachment": {
     "baseMagnitude": "800",
     "baseDuration": "1",
     "baseCost": "0.1",
@@ -32,8 +29,7 @@
       "Arcane Detachment"
     ]
   },
-  {
-    "name": "Exhaust",
+  "Exhaust": {
     "baseMagnitude": "800",
     "baseDuration": "1",
     "baseCost": "0.1",
@@ -43,8 +39,7 @@
       "Exhaust"
     ]
   },
-  {
-    "name": "Paralysis",
+  "Paralysis": {
     "baseMagnitude": "0",
     "baseDuration": "1",
     "baseCost": "400",
@@ -54,8 +49,7 @@
       "Paralysis"
     ]
   },
-  {
-    "name": "Waterbreathing",
+  "Waterbreathing": {
     "baseMagnitude": "0",
     "baseDuration": "5",
     "baseCost": "37",
@@ -65,8 +59,7 @@
       "Waterbreathing"
     ]
   },
-  {
-    "name": "Fear",
+  "Fear": {
     "baseMagnitude": "1.645",
     "baseDuration": "30",
     "baseCost": "0.8",
@@ -76,8 +69,7 @@
       "Fear"
     ]
   },
-  {
-    "name": "Frenzy",
+  "Frenzy": {
     "baseMagnitude": "1.316",
     "baseDuration": "10",
     "baseCost": "4.5",
@@ -87,8 +79,7 @@
       "Frenzy"
     ]
   },
-  {
-    "name": "Invisibility",
+  "Invisibility": {
     "baseMagnitude": "0",
     "baseDuration": "5",
     "baseCost": "60",
@@ -98,8 +89,7 @@
       "Invisibility"
     ]
   },
-  {
-    "name": "Cure Disease",
+  "Cure Disease": {
     "baseMagnitude": "5",
     "baseDuration": "0",
     "baseCost": "5",
@@ -109,8 +99,7 @@
       "Cure Disease"
     ]
   },
-  {
-    "name": "Cure Poison",
+  "Cure Poison": {
     "baseMagnitude": "100",
     "baseDuration": "0",
     "baseCost": "5",
@@ -120,8 +109,7 @@
       "Cure Poison"
     ]
   },
-  {
-    "name": "Regenerate Health",
+  "Regenerate Health": {
     "baseMagnitude": "13.16",
     "baseDuration": "60",
     "baseCost": "0.18",
@@ -131,8 +119,7 @@
       "Regenerate Health"
     ]
   },
-  {
-    "name": "Regenerate",
+  "Regenerate": {
     "baseMagnitude": "8.772",
     "baseDuration": "60",
     "baseCost": "0.2",
@@ -143,8 +130,7 @@
       "Regenerate Stamina"
     ]
   },
-  {
-    "name": "Resist Fire",
+  "Resist Fire": {
     "baseMagnitude": "4.386",
     "baseDuration": "60",
     "baseCost": "0.5",
@@ -154,8 +140,7 @@
       "Resist Fire"
     ]
   },
-  {
-    "name": "Resist Frost",
+  "Resist Frost": {
     "baseMagnitude": "4.386",
     "baseDuration": "60",
     "baseCost": "0.4",
@@ -165,8 +150,7 @@
       "Resist Frost"
     ]
   },
-  {
-    "name": "Resist Shock",
+  "Resist Shock": {
     "baseMagnitude": "4.386",
     "baseDuration": "60",
     "baseCost": "0.6",
@@ -176,8 +160,7 @@
       "Resist Shock"
     ]
   },
-  {
-    "name": "Resist Magic",
+  "Resist Magic": {
     "baseMagnitude": "2.193",
     "baseDuration": "60",
     "baseCost": "1.2",
@@ -187,8 +170,7 @@
       "Resist Magic"
     ]
   },
-  {
-    "name": "Resist Poison",
+  "Resist Poison": {
     "baseMagnitude": "4.386",
     "baseDuration": "60",
     "baseCost": "0.3",
@@ -198,8 +180,7 @@
       "Resist Poison"
     ]
   },
-  {
-    "name": "Restore Health",
+  "Restore Health": {
     "baseMagnitude": "1.9",
     "baseDuration": "8",
     "baseCost": "6.6",
@@ -209,8 +190,7 @@
       "Restore Health"
     ]
   },
-  {
-    "name": "Restore",
+  "Restore": {
     "baseMagnitude": "2.36",
     "baseDuration": "8",
     "baseCost": "4.6",
@@ -221,8 +201,7 @@
       "Restore Stamina"
     ]
   },
-  {
-    "name": "Fortify Single Skill",
+  "Fortify Single Skill": {
     "baseMagnitude": "4.386",
     "baseDuration": "60",
     "baseCost": "0.5",
@@ -242,8 +221,7 @@
       "Fortify Sneak"
     ]
   },
-  {
-    "name": "Fortify Armor",
+  "Fortify Armor": {
     "baseMagnitude": "2.193",
     "baseDuration": "60",
     "baseCost": "1",
@@ -254,8 +232,7 @@
       "Fortify Heavy Armor"
     ]
   },
-  {
-    "name": "Fortify Double Skill",
+  "Fortify Double Skill": {
     "baseMagnitude": "2.193",
     "baseDuration": "60",
     "baseCost": "1",
@@ -266,8 +243,7 @@
       "Guardian"
     ]
   },
-  {
-    "name": "Fortify Barter",
+  "Fortify Barter": {
     "baseMagnitude": "2.193",
     "baseDuration": "300",
     "baseCost": "0.14",
@@ -277,8 +253,7 @@
       "Fortify Barter"
     ]
   },
-  {
-    "name": "Fortify Persuasion",
+  "Fortify Persuasion": {
     "baseMagnitude": "2.193",
     "baseDuration": "300",
     "baseCost": "0.14",
@@ -288,8 +263,7 @@
       "Fortify Persuasion"
     ]
   },
-  {
-    "name": "Dexterity",
+  "Dexterity": {
     "baseMagnitude": "4.386",
     "baseDuration": "300",
     "baseCost": "0.08",
@@ -299,8 +273,7 @@
       "Dexterity"
     ]
   },
-  {
-    "name": "Fortify Carry Weight",
+  "Fortify Carry Weight": {
     "baseMagnitude": "8.772",
     "baseDuration": "300",
     "baseCost": "0.03",
@@ -310,8 +283,7 @@
       "Fortify Carry Weight"
     ]
   },
-  {
-    "name": "Fortify Health",
+  "Fortify Health": {
     "baseMagnitude": "8.772",
     "baseDuration": "60",
     "baseCost": "0.22",
@@ -321,8 +293,7 @@
       "Fortify Health"
     ]
   },
-  {
-    "name": "Fortify Magicka Stamina",
+  "Fortify Magicka Stamina": {
     "baseMagnitude": "13.158",
     "baseDuration": "60",
     "baseCost": "0.13",
@@ -333,8 +304,7 @@
       "Fortify Stamina"
     ]
   },
-  {
-    "name": "Damage Health",
+  "Damage Health": {
     "baseMagnitude": "1.755",
     "baseDuration": "5",
     "baseCost": "5",
@@ -344,8 +314,7 @@
       "Damage Health"
     ]
   },
-  {
-    "name": "Lingering Damage Health",
+  "Lingering Damage Health": {
     "baseMagnitude": "0.585",
     "baseDuration": "30",
     "baseCost": "5",
@@ -355,8 +324,7 @@
       "Lingering Damage Health"
     ]
   },
-  {
-    "name": "Ravage Health",
+  "Ravage Health": {
     "baseMagnitude": "0.2",
     "baseDuration": "8",
     "baseCost": "100",
@@ -366,8 +334,7 @@
       "Ravage Health"
     ]
   },
-  {
-    "name": "Damage Magicka",
+  "Damage Magicka": {
     "baseMagnitude": "2.632",
     "baseDuration": "5",
     "baseCost": "5",
@@ -377,8 +344,7 @@
       "Damage Magicka"
     ]
   },
-  {
-    "name": "Lingering Damage Magicka",
+  "Lingering Damage Magicka": {
     "baseMagnitude": "0.878",
     "baseDuration": "30",
     "baseCost": "5",
@@ -388,8 +354,7 @@
       "Lingering Damage Magicka"
     ]
   },
-  {
-    "name": "Ravage Magicka",
+  "Ravage Magicka": {
     "baseMagnitude": "1",
     "baseDuration": "10",
     "baseCost": "5",
@@ -399,8 +364,7 @@
       "Ravage Magicka"
     ]
   },
-  {
-    "name": "Damage Magicka Regen",
+  "Damage Magicka Regen": {
     "baseMagnitude": "300",
     "baseDuration": "2",
     "baseCost": "5",
@@ -410,8 +374,7 @@
       "Damage Magicka Regen"
     ]
   },
-  {
-    "name": "Damage Stamina",
+  "Damage Stamina": {
     "baseMagnitude": "2.632",
     "baseDuration": "5",
     "baseCost": "5",
@@ -421,8 +384,7 @@
       "Damage Stamina"
     ]
   },
-  {
-    "name": "Lingering Damage Stamina",
+  "Lingering Damage Stamina": {
     "baseMagnitude": "0.878",
     "baseDuration": "30",
     "baseCost": "5",
@@ -432,8 +394,7 @@
       "Lingering Damage Stamina"
     ]
   },
-  {
-    "name": "Ravage Stamina",
+  "Ravage Stamina": {
     "baseMagnitude": "1",
     "baseDuration": "10",
     "baseCost": "5",
@@ -443,8 +404,7 @@
       "Ravage Stamina"
     ]
   },
-  {
-    "name": "Damage Stamina Regen",
+  "Damage Stamina Regen": {
     "baseMagnitude": "300",
     "baseDuration": "2",
     "baseCost": "5",
@@ -454,8 +414,7 @@
       "Damage Stamina Regen"
     ]
   },
-  {
-    "name": "Slow",
+  "Slow": {
     "baseMagnitude": "50",
     "baseDuration": "3",
     "baseCost": "5",
@@ -465,8 +424,7 @@
       "Slow"
     ]
   },
-  {
-    "name": "Weakness to Fire",
+  "Weakness to Fire": {
     "baseMagnitude": "4.386",
     "baseDuration": "30",
     "baseCost": "0.6",
@@ -476,8 +434,7 @@
       "Weakness to Fire"
     ]
   },
-  {
-    "name": "Weakness to Frost",
+  "Weakness to Frost": {
     "baseMagnitude": "4.386",
     "baseDuration": "30",
     "baseCost": "0.6",
@@ -487,8 +444,7 @@
       "Weakness to Frost"
     ]
   },
-  {
-    "name": "Weakness to Shock",
+  "Weakness to Shock": {
     "baseMagnitude": "4.386",
     "baseDuration": "30",
     "baseCost": "0.7",
@@ -498,8 +454,7 @@
       "Weakness to Shock"
     ]
   },
-  {
-    "name": "Weakness to Magic",
+  "Weakness to Magic": {
     "baseMagnitude": "2.193",
     "baseDuration": "30",
     "baseCost": "2",
@@ -509,8 +464,7 @@
       "Weakness to Magic"
     ]
   },
-  {
-    "name": "Weakness to Poison",
+  "Weakness to Poison": {
     "baseMagnitude": "2.193",
     "baseDuration": "30",
     "baseCost": "0.5",
@@ -520,4 +474,4 @@
       "Weakness to Poison"
     ]
   }
-]
+}

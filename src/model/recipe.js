@@ -1,4 +1,5 @@
 // TODO extend base record class
+// TODO use getters for xelib calls
 export default class Recipe {
   constructor(record) {
     this.record = record;
