@@ -1,14 +1,12 @@
-[
-  {
-    "name": "AdvancedLow",
+{
+  "AdvancedLow": {
     "type": "ADVANCED",
     "damageModifier": 1.2,
     "reachModifier": 0.01,
     "speedModifier": -0.04,
     "nameSubstrings": []
   },
-  {
-    "name": "Advanced",
+  "Advanced": {
     "type": "ADVANCED",
     "damageModifier": 1.25,
     "reachModifier": 0.01,
@@ -22,8 +20,7 @@
       "Sigvatson"
     ]
   },
-  {
-    "name": "AdvancedHigh",
+  "AdvancedHigh": {
     "type": "ADVANCED",
     "damageModifier": 1.3,
     "reachModifier": 0.01,
@@ -35,8 +32,7 @@
       "Nobleman's claymore"
     ]
   },
-  {
-    "name": "Bone",
+  "Bone": {
     "type": "BONEMOLD_HEAVY",
     "damageModifier": 0.9,
     "reachModifier": 0.01,
@@ -45,16 +41,14 @@
       "Bone"
     ]
   },
-  {
-    "name": "BoneHigh",
+  "BoneHigh": {
     "type": "BONEMOLD_HEAVY",
     "damageModifier": 0.95,
     "reachModifier": 0.01,
     "speedModifier": 0.02,
     "nameSubstrings": []
   },
-  {
-    "name": "Mammoth Bone",
+  "Mammoth Bone": {
     "type": "BONEMOLD_HEAVY",
     "damageModifier": 1.2,
     "reachModifier": 0.01,
@@ -63,8 +57,7 @@
       "Mammoth Bone"
     ]
   },
-  {
-    "name": "Mammoth BoneHigh",
+  "Mammoth BoneHigh": {
     "type": "BONEMOLD_HEAVY",
     "damageModifier": 1.5,
     "reachModifier": 0.01,
@@ -76,8 +69,7 @@
       "Mammoth Bone Club (Masterwork)"
     ]
   },
-  {
-    "name": "Bonemold",
+  "Bonemold": {
     "type": "BONEMOLD_HEAVY",
     "damageModifier": 1.05,
     "reachModifier": 0.01,
@@ -86,8 +78,7 @@
       "Bone Mold"
     ]
   },
-  {
-    "name": "BonemoldHigh",
+  "BonemoldHigh": {
     "type": "BONEMOLD_HEAVY",
     "damageModifier": 1.1,
     "reachModifier": 0.01,
@@ -96,11 +87,10 @@
       "Hoth's"
     ]
   },
-  {
-    "name": "BoundLow",
+  "BoundLow": {
     "type": "NONE",
     "damageModifier": 1.284,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.05,
     "nameSubstrings": [
       "Hammer of Justice",
@@ -108,34 +98,30 @@
       "Bow of Shadows"
     ]
   },
-  {
-    "name": "Bound",
+  "Bound": {
     "type": "NONE",
     "damageModifier": 1.334,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.05,
     "nameSubstrings": [
       "Bound"
     ]
   },
-  {
-    "name": "BoundHigh",
+  "BoundHigh": {
     "type": "NONE",
     "damageModifier": 1.384,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.05,
     "nameSubstrings": []
   },
-  {
-    "name": "ChitinLow",
+  "ChitinLow": {
     "type": "CHITIN",
     "damageModifier": 1.2,
     "reachModifier": 0.01,
     "speedModifier": 0.02,
     "nameSubstrings": []
   },
-  {
-    "name": "Chitin",
+  "Chitin": {
     "type": "CHITIN",
     "damageModifier": 1.25,
     "reachModifier": 0.01,
@@ -144,16 +130,14 @@
       "Chitin"
     ]
   },
-  {
-    "name": "ChitinHigh",
+  "ChitinHigh": {
     "type": "CHITIN",
     "damageModifier": 1.3,
     "reachModifier": 0.01,
     "speedModifier": 0.02,
     "nameSubstrings": []
   },
-  {
-    "name": "DaedricLow",
+  "DaedricLow": {
     "type": "DAEDRIC",
     "damageModifier": 1.95,
     "reachModifier": 0.03,
@@ -162,10 +146,9 @@
       "Daedric Rusty"
     ]
   },
-  {
-    "name": "Daedric",
+  "Daedric": {
     "type": "DAEDRIC",
-    "damageModifier": 2.0,
+    "damageModifier": 2,
     "reachModifier": 0.03,
     "speedModifier": -0.06,
     "nameSubstrings": [
@@ -244,8 +227,7 @@
       "Lilith's Evening Star"
     ]
   },
-  {
-    "name": "DaedricHigh",
+  "DaedricHigh": {
     "type": "DAEDRIC",
     "damageModifier": 2.05,
     "reachModifier": 0.03,
@@ -275,8 +257,7 @@
       "Twilight"
     ]
   },
-  {
-    "name": "Dragonscale",
+  "Dragonscale": {
     "type": "DRAGONSCALE",
     "damageModifier": 1.7,
     "reachModifier": 0.04,
@@ -289,8 +270,7 @@
       "Ancient Dragon"
     ]
   },
-  {
-    "name": "DragonscaleHigh",
+  "DragonscaleHigh": {
     "type": "DRAGONSCALE",
     "damageModifier": 1.75,
     "reachModifier": 0.04,
@@ -299,8 +279,7 @@
       "Legendary Dragon"
     ]
   },
-  {
-    "name": "Dragonplate",
+  "Dragonplate": {
     "type": "DRAGONPLATE",
     "damageModifier": 1.9,
     "reachModifier": 0.04,
@@ -317,16 +296,14 @@
       "Uznahgaar"
     ]
   },
-  {
-    "name": "DragonplateHigh",
+  "DragonplateHigh": {
     "type": "DRAGONPLATE",
     "damageModifier": 1.95,
     "reachModifier": 0.04,
     "speedModifier": -0.05,
     "nameSubstrings": []
   },
-  {
-    "name": "Draugr",
+  "Draugr": {
     "type": "DRAUGR",
     "damageModifier": 1.3,
     "reachModifier": -0.1,
@@ -371,8 +348,7 @@
       "Ash Spawn"
     ]
   },
-  {
-    "name": "DraugrHigh",
+  "DraugrHigh": {
     "type": "DRAUGR",
     "damageModifier": 1.35,
     "reachModifier": -0.1,
@@ -385,8 +361,7 @@
       "The Giant Slayer"
     ]
   },
-  {
-    "name": "Draugr Honed",
+  "Draugr Honed": {
     "type": "DRAUGR",
     "damageModifier": 1.4,
     "reachModifier": -0.1,
@@ -409,8 +384,7 @@
       "Bow of the Forgotten Chaos"
     ]
   },
-  {
-    "name": "Draugr HonedHigh",
+  "Draugr HonedHigh": {
     "type": "DRAUGR",
     "damageModifier": 1.45,
     "reachModifier": -0.1,
@@ -422,19 +396,17 @@
       "Drainheart"
     ]
   },
-  {
-    "name": "DwarvenLow",
+  "DwarvenLow": {
     "type": "DWARVEN",
     "damageModifier": 1.05,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.03,
     "nameSubstrings": []
   },
-  {
-    "name": "Dwarven",
+  "Dwarven": {
     "type": "DWARVEN",
     "damageModifier": 1.1,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.03,
     "nameSubstrings": [
       "Dwarven",
@@ -488,11 +460,10 @@
       "Dwemer Tool No.457"
     ]
   },
-  {
-    "name": "DwarvenHigh",
+  "DwarvenHigh": {
     "type": "DWARVEN",
     "damageModifier": 1.15,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.03,
     "nameSubstrings": [
       "Clutterbane",
@@ -506,16 +477,14 @@
       "Blade of the Rourken"
     ]
   },
-  {
-    "name": "EbonyLow",
+  "EbonyLow": {
     "type": "EBONY",
     "damageModifier": 1.65,
     "reachModifier": 0.01,
     "speedModifier": -0.05,
     "nameSubstrings": []
   },
-  {
-    "name": "Ebony",
+  "Ebony": {
     "type": "EBONY",
     "damageModifier": 1.7,
     "reachModifier": 0.01,
@@ -609,8 +578,7 @@
       "Khajiit Yatagan"
     ]
   },
-  {
-    "name": "EbonyHigh",
+  "EbonyHigh": {
     "type": "EBONY",
     "damageModifier": 1.75,
     "reachModifier": 0.01,
@@ -659,19 +627,17 @@
       "Trueflame"
     ]
   },
-  {
-    "name": "ElvenLow",
+  "ElvenLow": {
     "type": "ELVEN",
     "damageModifier": 1.15,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.03,
     "nameSubstrings": []
   },
-  {
-    "name": "Elven",
+  "Elven": {
     "type": "ELVEN",
     "damageModifier": 1.2,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.03,
     "nameSubstrings": [
       "Elven",
@@ -733,11 +699,10 @@
       "Aemer's"
     ]
   },
-  {
-    "name": "ElvenHigh",
+  "ElvenHigh": {
     "type": "ELVEN",
     "damageModifier": 1.25,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.03,
     "nameSubstrings": [
       "Aldmeri",
@@ -755,18 +720,16 @@
       "Recurve Elven Bow"
     ]
   },
-  {
-    "name": "Stormcloak",
+  "Stormcloak": {
     "type": "STEEL",
     "damageModifier": 1.1,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.02,
     "nameSubstrings": [
       "Stormcloak"
     ]
   },
-  {
-    "name": "Imperial",
+  "Imperial": {
     "type": "STEEL",
     "damageModifier": 1.1,
     "reachModifier": 0.01,
@@ -778,28 +741,25 @@
       "Legate"
     ]
   },
-  {
-    "name": "Dawnguard",
+  "Dawnguard": {
     "type": "STEEL",
     "damageModifier": 1.25,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.03,
     "nameSubstrings": [
       "Dawnguard"
     ]
   },
-  {
-    "name": "Dawnguard Rune",
+  "Dawnguard Rune": {
     "type": "STEEL",
     "damageModifier": 1.25,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.03,
     "nameSubstrings": [
       "Dawnguard Rune"
     ]
   },
-  {
-    "name": "Blades",
+  "Blades": {
     "type": "ADVANCED",
     "damageModifier": 1.4,
     "reachModifier": 0.01,
@@ -808,11 +768,10 @@
       "Blades"
     ]
   },
-  {
-    "name": "Skyforge",
+  "Skyforge": {
     "type": "STEEL",
     "damageModifier": 1.4,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.02,
     "nameSubstrings": [
       "Skyforge",
@@ -827,8 +786,7 @@
       "Ygrayne"
     ]
   },
-  {
-    "name": "Nightingale",
+  "Nightingale": {
     "type": "DAEDRIC",
     "damageModifier": 1.9,
     "reachModifier": 0.03,
@@ -837,8 +795,7 @@
       "Nightingale"
     ]
   },
-  {
-    "name": "Falmer",
+  "Falmer": {
     "type": "FALMER",
     "damageModifier": 1.2,
     "reachModifier": -0.08,
@@ -847,32 +804,29 @@
       "Falmer"
     ]
   },
-  {
-    "name": "FalmerHigh",
+  "FalmerHigh": {
     "type": "FALMER",
     "damageModifier": 1.25,
     "reachModifier": -0.08,
-    "speedModifier": 0.0,
+    "speedModifier": 0,
     "nameSubstrings": [
       "Falmer Honed",
       "Honed Falmer"
     ]
   },
-  {
-    "name": "Ancient Falmer",
+  "Ancient Falmer": {
     "type": "ELVEN",
     "damageModifier": 1.6,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.03,
     "nameSubstrings": [
       "Ancient Falmer"
     ]
   },
-  {
-    "name": "Forsworn",
+  "Forsworn": {
     "type": "BONEMOLD_HEAVY",
     "damageModifier": 1.1,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.03,
     "nameSubstrings": [
       "Forsworn",
@@ -880,27 +834,24 @@
       "Sorrow"
     ]
   },
-  {
-    "name": "ForswornHigh",
+  "ForswornHigh": {
     "type": "BONEMOLD_HEAVY",
     "damageModifier": 1.15,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.03,
     "nameSubstrings": [
       "Briarheart",
       "Briarheart Geis"
     ]
   },
-  {
-    "name": "GlassLow",
+  "GlassLow": {
     "type": "GLASS",
     "damageModifier": 1.45,
     "reachModifier": 0.01,
     "speedModifier": 0.03,
     "nameSubstrings": []
   },
-  {
-    "name": "Glass",
+  "Glass": {
     "type": "GLASS",
     "damageModifier": 1.5,
     "reachModifier": 0.01,
@@ -937,8 +888,7 @@
       "Seadog Cutlass"
     ]
   },
-  {
-    "name": "GlassHigh",
+  "GlassHigh": {
     "type": "GLASS",
     "damageModifier": 1.55,
     "reachModifier": 0.05,
@@ -953,10 +903,9 @@
       "Grimsever"
     ]
   },
-  {
-    "name": "Gold",
+  "Gold": {
     "type": "GOLD",
-    "damageModifier": 1.0,
+    "damageModifier": 1,
     "reachModifier": 0.03,
     "speedModifier": 0.04,
     "nameSubstrings": [
@@ -964,8 +913,7 @@
       "Fleur De Lys"
     ]
   },
-  {
-    "name": "GoldHigh",
+  "GoldHigh": {
     "type": "GOLD",
     "damageModifier": 1.05,
     "reachModifier": 0.03,
@@ -974,8 +922,7 @@
       "Aries"
     ]
   },
-  {
-    "name": "HorkerL",
+  "HorkerL": {
     "type": "BONEMOLD_HEAVY",
     "damageModifier": 0.95,
     "reachModifier": 0.02,
@@ -984,22 +931,20 @@
       "Horker"
     ]
   },
-  {
-    "name": "HorkerH",
+  "HorkerH": {
     "type": "BONEMOLD_HEAVY",
-    "damageModifier": 1.0,
+    "damageModifier": 1,
     "reachModifier": 0.02,
     "speedModifier": 0.02,
     "nameSubstrings": [
       "Horker Honed"
     ]
   },
-  {
-    "name": "IronClutter",
+  "IronClutter": {
     "type": "IRON",
     "damageModifier": 0.2,
-    "reachModifier": 0.0,
-    "speedModifier": 0.0,
+    "reachModifier": 0,
+    "speedModifier": 0,
     "nameSubstrings": [
       "Fork",
       "Kni",
@@ -1012,11 +957,10 @@
       "Eyegouger"
     ]
   },
-  {
-    "name": "IronLow",
+  "IronLow": {
     "type": "IRON",
     "damageModifier": 0.85,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.01,
     "nameSubstrings": [
       "Stone",
@@ -1026,11 +970,10 @@
       "Rusty Cyrodiilic Iron"
     ]
   },
-  {
-    "name": "Iron",
+  "Iron": {
     "type": "IRON",
     "damageModifier": 0.9,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.01,
     "nameSubstrings": [
       "Iron",
@@ -1071,11 +1014,10 @@
       "Hunter's Saw"
     ]
   },
-  {
-    "name": "IronHigh",
+  "IronHigh": {
     "type": "IRON",
     "damageModifier": 0.95,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.01,
     "nameSubstrings": [
       "Aegisbane",
@@ -1085,16 +1027,14 @@
       "Fine Cyrodiilic Iron"
     ]
   },
-  {
-    "name": "OrcishLow",
+  "OrcishLow": {
     "type": "ORCISH",
     "damageModifier": 1.25,
     "reachModifier": -0.03,
     "speedModifier": -0.04,
     "nameSubstrings": []
   },
-  {
-    "name": "Orcish",
+  "Orcish": {
     "type": "ORCISH",
     "damageModifier": 1.3,
     "reachModifier": -0.03,
@@ -1120,8 +1060,7 @@
       "Carbon Fiber Compound Bow"
     ]
   },
-  {
-    "name": "OrcishHigh",
+  "OrcishHigh": {
     "type": "ORCISH",
     "damageModifier": 1.35,
     "reachModifier": -0.03,
@@ -1130,11 +1069,10 @@
       "Warchief's Might"
     ]
   },
-  {
-    "name": "None",
+  "None": {
     "type": "NONE",
     "damageModifier": 0.5,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.05,
     "nameSubstrings": [
       "unarmed",
@@ -1153,20 +1091,18 @@
       "Throw Javelins"
     ]
   },
-  {
-    "name": "NoneHigh",
+  "NoneHigh": {
     "type": "NONE",
     "damageModifier": 0.55,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.05,
     "nameSubstrings": []
   },
-  {
-    "name": "Death",
+  "Death": {
     "type": "NONE",
-    "damageModifier": 2.0,
-    "reachModifier": 0.0,
-    "speedModifier": 0.0,
+    "damageModifier": 2,
+    "reachModifier": 0,
+    "speedModifier": 0,
     "nameSubstrings": [
       "Giant Club",
       "Giant Brute",
@@ -1182,16 +1118,14 @@
       "Giant Double Skull"
     ]
   },
-  {
-    "name": "NordLow",
+  "NordLow": {
     "type": "ADVANCED",
     "damageModifier": 1.25,
     "reachModifier": 0.01,
     "speedModifier": 0.02,
     "nameSubstrings": []
   },
-  {
-    "name": "Nord",
+  "Nord": {
     "type": "ADVANCED",
     "damageModifier": 1.3,
     "reachModifier": 0.01,
@@ -1203,8 +1137,7 @@
       "VanNord"
     ]
   },
-  {
-    "name": "NordHigh",
+  "NordHigh": {
     "type": "ADVANCED",
     "damageModifier": 1.35,
     "reachModifier": 0.01,
@@ -1218,10 +1151,9 @@
       "Hrothmund's"
     ]
   },
-  {
-    "name": "Silver",
+  "Silver": {
     "type": "SILVER",
-    "damageModifier": 1.0,
+    "damageModifier": 1,
     "reachModifier": 0.03,
     "speedModifier": 0.04,
     "nameSubstrings": [
@@ -1232,8 +1164,7 @@
       "Luna"
     ]
   },
-  {
-    "name": "SilverHigh",
+  "SilverHigh": {
     "type": "SILVER",
     "damageModifier": 1.05,
     "reachModifier": 0.03,
@@ -1254,10 +1185,9 @@
       "Blessed Blade of Stendarr"
     ]
   },
-  {
-    "name": "RSilver",
+  "RSilver": {
     "type": "REFINED_SILVER",
-    "damageModifier": 1.0,
+    "damageModifier": 1,
     "reachModifier": 0.03,
     "speedModifier": 0.04,
     "nameSubstrings": [
@@ -1268,8 +1198,7 @@
       "Refined Luna II"
     ]
   },
-  {
-    "name": "RSilverHigh",
+  "RSilverHigh": {
     "type": "REFINED_SILVER",
     "damageModifier": 1.05,
     "reachModifier": 0.03,
@@ -1288,16 +1217,14 @@
       "Refined Blessed Blade of Stendarr"
     ]
   },
-  {
-    "name": "StalhrimLow",
+  "StalhrimLow": {
     "type": "STALHRIM",
     "damageModifier": 1.75,
     "reachModifier": 0.02,
     "speedModifier": 0.04,
     "nameSubstrings": []
   },
-  {
-    "name": "Stalhrim",
+  "Stalhrim": {
     "type": "STALHRIM",
     "damageModifier": 1.8,
     "reachModifier": 0.02,
@@ -1313,8 +1240,7 @@
       "Mace of Aevar Stone-Singer"
     ]
   },
-  {
-    "name": "StalhrimHigh",
+  "StalhrimHigh": {
     "type": "STALHRIM",
     "damageModifier": 1.85,
     "reachModifier": 0.02,
@@ -1326,19 +1252,17 @@
       "Furious Iceblade"
     ]
   },
-  {
-    "name": "SteelLow",
+  "SteelLow": {
     "type": "STEEL",
     "damageModifier": 0.95,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.02,
     "nameSubstrings": []
   },
-  {
-    "name": "Steel",
+  "Steel": {
     "type": "STEEL",
-    "damageModifier": 1.0,
-    "reachModifier": 0.0,
+    "damageModifier": 1,
+    "reachModifier": 0,
     "speedModifier": -0.02,
     "nameSubstrings": [
       "Steel",
@@ -1508,11 +1432,10 @@
       "Venus"
     ]
   },
-  {
-    "name": "SteelHigh",
+  "SteelHigh": {
     "type": "STEEL",
     "damageModifier": 1.05,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": -0.02,
     "nameSubstrings": [
       "Angi's Bow",
@@ -1543,11 +1466,10 @@
       "Ancient Akaviri Dha"
     ]
   },
-  {
-    "name": "Wood",
+  "Wood": {
     "type": "WOOD",
     "damageModifier": 0.8,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.01,
     "nameSubstrings": [
       "Wood",
@@ -1567,11 +1489,10 @@
       "Pine Wood"
     ]
   },
-  {
-    "name": "WoodHigh",
+  "WoodHigh": {
     "type": "WOOD",
     "damageModifier": 0.85,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.01,
     "nameSubstrings": [
       "Hunting Bow",
@@ -1581,11 +1502,10 @@
       "Mirk Wood"
     ]
   },
-  {
-    "name": "Oakwood",
+  "Oakwood": {
     "type": "WOOD",
-    "damageModifier": 1.0,
-    "reachModifier": 0.0,
+    "damageModifier": 1,
+    "reachModifier": 0,
     "speedModifier": 0.02,
     "nameSubstrings": [
       "Oakwood",
@@ -1595,11 +1515,10 @@
       "Colovian Composite Bow"
     ]
   },
-  {
-    "name": "Ashwood",
+  "Ashwood": {
     "type": "WOOD",
     "damageModifier": 1.1,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.04,
     "nameSubstrings": [
       "Ashwood",
@@ -1612,22 +1531,20 @@
       "Ash Wood"
     ]
   },
-  {
-    "name": "Steelwood",
+  "Steelwood": {
     "type": "STEEL",
     "damageModifier": 1.1,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.03,
     "nameSubstrings": [
       "Colovian Dark Composite Bow",
       "Ashlander's Bow"
     ]
   },
-  {
-    "name": "Strongwood",
+  "Strongwood": {
     "type": "WOOD",
     "damageModifier": 1.2,
-    "reachModifier": 0.0,
+    "reachModifier": 0,
     "speedModifier": 0.04,
     "nameSubstrings": [
       "Akaviri Wooden",
@@ -1639,4 +1556,4 @@
       "Monarch Wood"
     ]
   }
-]
+}

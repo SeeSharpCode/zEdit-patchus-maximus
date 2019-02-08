@@ -1,6 +1,6 @@
-import ingredients from '../config/exclusions/ingredients.json';
-import potions from '../config/exclusions/potions.json';
-import npcs from '../config/exclusions/npcs.json';
+import INGR from '../config/exclusions/ingredients.json';
+import ALCH from '../config/exclusions/potions.json';
+import NPC_ from '../config/exclusions/npcs.json';
 import staffCrafting from '../config/exclusions/staffCrafting.json';
 import scrollCrafting from '../config/exclusions/scrollCrafting.json';
 import spellDistribution from '../config/exclusions/spellDistribution.json';
@@ -8,21 +8,21 @@ import bookDistribution from '../config/exclusions/bookDistribution.json';
 import spellLeveledLists from '../config/exclusions/spellLeveledLists.json';
 
 const exclusions = {
-  ...ingredients,
-  ...potions,
-  ...npcs,
-  ...staffCrafting,
-  ...scrollCrafting,
-  ...spellDistribution,
-  ...bookDistribution,
-  ...spellLeveledLists,
+  INGR,
+  ALCH,
+  NPC_,
+  staffCrafting,
+  scrollCrafting,
+  spellDistribution,
+  bookDistribution,
+  spellLeveledLists,
 };
 
 // convert editor IDs and names to regex patterns
 Object.keys(exclusions).forEach(exclusionKey => {
   const exclusion = exclusions[exclusionKey];
-  Object.keys(exclusion).forEach(list => {
-    exclusion[list] = exclusion[list].map(item => new RegExp(item));
+  Object.keys(exclusion).forEach(field => {
+    exclusion[field] = exclusion[field].map(item => new RegExp(item));
   });
 });
 
@@ -55,6 +55,6 @@ export function isExcludedFromBookDistribution(record) {
   return isExcluded(record, exclusions.bookDistribution);
 }
 
-export function isExcludedFromSpellLeveledLists(record) {
+export function isExcludedSpellLeveledList(record) {
   return isExcluded(record, exclusions.spellLeveledLists);
 }

@@ -1,6 +1,5 @@
-[
-  {
-    "name": "Tier1",
+{
+  "Tier1": {
     "multiplierMagnitude": "4.25",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -10,8 +9,7 @@
       "Lingering Stamina Poison"
     ]
   },
-  {
-    "name": "Tier2",
+  "Tier2": {
     "multiplierMagnitude": "6.0",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -60,8 +58,7 @@
       "ver"
     ]
   },
-  {
-    "name": "Tier3",
+  "Tier3": {
     "multiplierMagnitude": "7.8",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -73,8 +70,7 @@
       "Draught of Lasting Potency"
     ]
   },
-  {
-    "name": "Tier3.5",
+  "Tier3.5": {
     "multiplierMagnitude": "8.2",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -82,8 +78,7 @@
       "Solution of Lasting Potency"
     ]
   },
-  {
-    "name": "Tier4",
+  "Tier4": {
     "multiplierMagnitude": "9.6",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -95,8 +90,7 @@
       "Persisting"
     ]
   },
-  {
-    "name": "Tier5",
+  "Tier5": {
     "multiplierMagnitude": "11.4",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -108,24 +102,21 @@
       "Unceasing"
     ]
   },
-  {
-    "name": "Tier6",
+  "Tier6": {
     "multiplierMagnitude": "15.96",
     "multiplierDuration": "1.2",
     "nameSubstrings": [
       "Grand Elixir"
     ]
   },
-  {
-    "name": "Tier7",
+  "Tier7": {
     "multiplierMagnitude": "17.00",
     "multiplierDuration": "1.25",
     "nameSubstrings": [
       "Prime Elixir"
     ]
   },
-  {
-    "name": "DamRegen1",
+  "DamRegen1": {
     "multiplierMagnitude": "1.0",
     "multiplierDuration": "3.0",
     "nameSubstrings": [
@@ -133,8 +124,7 @@
       "Weak Vigor Poison"
     ]
   },
-  {
-    "name": "DamRegen2",
+  "DamRegen2": {
     "multiplierMagnitude": "1.0",
     "multiplierDuration": "5.0",
     "nameSubstrings": [
@@ -142,8 +132,7 @@
       "Vigor Poison"
     ]
   },
-  {
-    "name": "DamRegen3",
+  "DamRegen3": {
     "multiplierMagnitude": "1.0",
     "multiplierDuration": "7.0",
     "nameSubstrings": [
@@ -151,8 +140,7 @@
       "Potent Vigor Poison"
     ]
   },
-  {
-    "name": "DamRegen4",
+  "DamRegen4": {
     "multiplierMagnitude": "1.0",
     "multiplierDuration": "9.0",
     "nameSubstrings": [
@@ -160,16 +148,14 @@
       "Malign Vigor Poison"
     ]
   },
-  {
-    "name": "DamRegen5",
+  "DamRegen5": {
     "multiplierMagnitude": "1.0",
     "multiplierDuration": "10.0",
     "nameSubstrings": [
       "Deadly Recovery Poison"
     ]
   },
-  {
-    "name": "MindAffecting1",
+  "MindAffecting1": {
     "multiplierMagnitude": "8.0",
     "multiplierDuration": "0.7",
     "nameSubstrings": [
@@ -177,8 +163,7 @@
       "Weak Frenzy Poison"
     ]
   },
-  {
-    "name": "MindAffecting2",
+  "MindAffecting2": {
     "multiplierMagnitude": "12.2",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -186,8 +171,7 @@
       "Frenzy Poison"
     ]
   },
-  {
-    "name": "MindAffecting3",
+  "MindAffecting3": {
     "multiplierMagnitude": "18.3",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -195,8 +179,7 @@
       "Potent Frenzy Poison"
     ]
   },
-  {
-    "name": "MindAffecting4",
+  "MindAffecting4": {
     "multiplierMagnitude": "24.4",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -204,8 +187,7 @@
       "Virulent Frenzy Poison"
     ]
   },
-  {
-    "name": "MindAffecting5",
+  "MindAffecting5": {
     "multiplierMagnitude": "30.5",
     "multiplierDuration": "1.0",
     "nameSubstrings": [
@@ -213,4 +195,4 @@
       "Deadly Frenzy Poison"
     ]
   }
-]
+}

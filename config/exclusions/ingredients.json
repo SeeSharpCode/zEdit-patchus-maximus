@@ -1,11 +1,9 @@
 {
-  "INGR": {
-    "EDID": [
-      "^HISAnimalBloodLarge$",
-      "^LCSDragonEggBlue$",
-      "^LCSDragonEggGrenn$",
-      "^LCSDragonEggRedd$",
-      "^Volundr"
-    ]
-  }
+  "EDID": [
+    "^HISAnimalBloodLarge$",
+    "^LCSDragonEggBlue$",
+    "^LCSDragonEggGrenn$",
+    "^LCSDragonEggRedd$",
+    "^Volundr"
+  ]
 }

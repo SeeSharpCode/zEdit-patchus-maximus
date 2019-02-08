@@ -1,20 +1,17 @@
-[
-  {
-    "name": "AdvancedLight",
+{
+  "AdvancedLight": {
     "class": "LIGHT",
     "type": "ADVANCED",
     "armorBase": 16,
     "nameSubstrings": []
   },
-  {
-    "name": "Advanced",
+  "Advanced": {
     "class": "HEAVY",
     "type": "ADVANCED",
     "armorBase": 24,
     "nameSubstrings": []
   },
-  {
-    "name": "Bonemold Light",
+  "Bonemold Light": {
     "class": "LIGHT",
     "type": "BONEMOLD_HEAVY",
     "armorBase": 18,
@@ -23,22 +20,19 @@
       "Memory's Crown"
     ]
   },
-  {
-    "name": "Bonemold Medium",
+  "Bonemold Medium": {
     "class": "BOTH",
     "type": "BONEMOLD_HEAVY",
     "armorBase": 25,
     "nameSubstrings": []
   },
-  {
-    "name": "BonemoldLow",
+  "BonemoldLow": {
     "class": "HEAVY",
     "type": "BONEMOLD_HEAVY",
     "armorBase": 32,
     "nameSubstrings": []
   },
-  {
-    "name": "Bonemold",
+  "Bonemold": {
     "class": "HEAVY",
     "type": "BONEMOLD_HEAVY",
     "armorBase": 33,
@@ -48,8 +42,7 @@
       "Trollsbane Heavy"
     ]
   },
-  {
-    "name": "BonemoldHigh",
+  "BonemoldHigh": {
     "class": "HEAVY",
     "type": "BONEMOLD_HEAVY",
     "armorBase": 34,
@@ -57,8 +50,7 @@
       "Improved Bonemold"
     ]
   },
-  {
-    "name": "Chitin Light",
+  "Chitin Light": {
     "class": "LIGHT",
     "type": "CHITIN",
     "armorBase": 25,
@@ -68,8 +60,7 @@
       "Boiled Chitin Light"
     ]
   },
-  {
-    "name": "Chitin",
+  "Chitin": {
     "class": "HEAVY",
     "type": "CHITIN",
     "armorBase": 39,
@@ -79,8 +70,7 @@
       "Chitin Plates"
     ]
   },
-  {
-    "name": "Clothing",
+  "Clothing": {
     "class": "UNDEFINED",
     "type": "NONE",
     "armorBase": 0,
@@ -146,8 +136,7 @@
       "Dragon Priest Robes"
     ]
   },
-  {
-    "name": "Zero_Dwarven",
+  "Zero_Dwarven": {
     "class": "UNDEFINED",
     "type": "DWARVEN",
     "armorBase": 0,
@@ -160,29 +149,25 @@
       "Aetherium Amulet"
     ]
   },
-  {
-    "name": "Zero_Fur",
+  "Zero_Fur": {
     "class": "UNDEFINED",
     "type": "FUR",
     "armorBase": 0,
     "nameSubstrings": []
   },
-  {
-    "name": "Zero_Gold",
+  "Zero_Gold": {
     "class": "UNDEFINED",
     "type": "GOLD",
     "armorBase": 0,
     "nameSubstrings": []
   },
-  {
-    "name": "Zero_Metal",
+  "Zero_Metal": {
     "class": "UNDEFINED",
     "type": "IRON",
     "armorBase": 0,
     "nameSubstrings": []
   },
-  {
-    "name": "PauldronL",
+  "PauldronL": {
     "class": "UNDEFINED",
     "type": "LEATHER",
     "armorBase": 1,
@@ -194,8 +179,7 @@
       "HDT Floral cape"
     ]
   },
-  {
-    "name": "Pauldron",
+  "Pauldron": {
     "class": "UNDEFINED",
     "type": "LEATHER",
     "armorBase": 3,
@@ -204,36 +188,31 @@
       "Investigator's Dustcloak"
     ]
   },
-  {
-    "name": "Zero_Silver",
+  "Zero_Silver": {
     "class": "UNDEFINED",
     "type": "SILVER",
     "armorBase": 0,
     "nameSubstrings": []
   },
-  {
-    "name": "Zero_Daedric",
+  "Zero_Daedric": {
     "class": "UNDEFINED",
     "type": "DAEDRIC",
     "armorBase": 0,
     "nameSubstrings": []
   },
-  {
-    "name": "Zero_Dragonplate",
+  "Zero_Dragonplate": {
     "class": "UNDEFINED",
     "type": "DRAGONPLATE",
     "armorBase": 0,
     "nameSubstrings": []
   },
-  {
-    "name": "Zero_Dragonscale",
+  "Zero_Dragonscale": {
     "class": "UNDEFINED",
     "type": "DRAGONSCALE",
     "armorBase": 0,
     "nameSubstrings": []
   },
-  {
-    "name": "DaedricLight",
+  "DaedricLight": {
     "class": "LIGHT",
     "type": "DAEDRIC",
     "armorBase": 41,
@@ -255,8 +234,7 @@
       "Mystic Elven"
     ]
   },
-  {
-    "name": "DaedricLow",
+  "DaedricLow": {
     "class": "HEAVY",
     "type": "DAEDRIC",
     "armorBase": 59,
@@ -265,8 +243,7 @@
       "Slaughter King Trophy"
     ]
   },
-  {
-    "name": "Daedric",
+  "Daedric": {
     "class": "HEAVY",
     "type": "DAEDRIC",
     "armorBase": 60,
@@ -350,8 +327,7 @@
       "Firelink"
     ]
   },
-  {
-    "name": "DaedricHigh",
+  "DaedricHigh": {
     "class": "HEAVY",
     "type": "DAEDRIC",
     "armorBase": 61,
@@ -360,8 +336,7 @@
       "Powered Magnus"
     ]
   },
-  {
-    "name": "DragonplateLow",
+  "DragonplateLow": {
     "class": "HEAVY",
     "type": "DRAGONPLATE",
     "armorBase": 54,
@@ -371,8 +346,7 @@
       "Scourge Lord"
     ]
   },
-  {
-    "name": "Dragonplate",
+  "Dragonplate": {
     "class": "HEAVY",
     "type": "DRAGONPLATE",
     "armorBase": 55,
@@ -432,8 +406,7 @@
       "Heavy Diamond"
     ]
   },
-  {
-    "name": "DragonplateHigh",
+  "DragonplateHigh": {
     "class": "HEAVY",
     "type": "DRAGONPLATE",
     "armorBase": 56,
@@ -450,8 +423,7 @@
       "Valfar's Armor"
     ]
   },
-  {
-    "name": "Dragonscale_One",
+  "Dragonscale_One": {
     "class": "LIGHT",
     "type": "DRAGONSCALE",
     "armorBase": 2,
@@ -460,8 +432,7 @@
       "Dragonbone Barbarian - Left"
     ]
   },
-  {
-    "name": "DragonscaleLow",
+  "DragonscaleLow": {
     "class": "LIGHT",
     "type": "DRAGONSCALE",
     "armorBase": 39,
@@ -469,8 +440,7 @@
       "Dark Griffin"
     ]
   },
-  {
-    "name": "Dragonscale",
+  "Dragonscale": {
     "class": "LIGHT",
     "type": "DRAGONSCALE",
     "armorBase": 40,
@@ -534,8 +504,7 @@
       "Mask Gator"
     ]
   },
-  {
-    "name": "DragonscaleHigh",
+  "DragonscaleHigh": {
     "class": "LIGHT",
     "type": "DRAGONSCALE",
     "armorBase": 41,
@@ -544,8 +513,7 @@
       "Wild Hunt Hood"
     ]
   },
-  {
-    "name": "DwarvenLight",
+  "DwarvenLight": {
     "class": "LIGHT",
     "type": "DWARVEN",
     "armorBase": 23,
@@ -559,8 +527,7 @@
       "Mask Bronze"
     ]
   },
-  {
-    "name": "DwarvenLow",
+  "DwarvenLow": {
     "class": "HEAVY",
     "type": "DWARVEN",
     "armorBase": 36,
@@ -570,8 +537,7 @@
       "Sehtic Security Pack"
     ]
   },
-  {
-    "name": "Dwarven",
+  "Dwarven": {
     "class": "HEAVY",
     "type": "DWARVEN",
     "armorBase": 37,
@@ -624,8 +590,7 @@
       "Nordic Dwemer"
     ]
   },
-  {
-    "name": "DwarvenHigh",
+  "DwarvenHigh": {
     "class": "HEAVY",
     "type": "DWARVEN",
     "armorBase": 38,
@@ -635,8 +600,7 @@
       "Dwarven Power"
     ]
   },
-  {
-    "name": "EbonyLight",
+  "EbonyLight": {
     "class": "LIGHT",
     "type": "EBONY",
     "armorBase": 32,
@@ -665,8 +629,7 @@
       "Nordic Ebony Light"
     ]
   },
-  {
-    "name": "EbonyLow",
+  "EbonyLow": {
     "class": "HEAVY",
     "type": "EBONY",
     "armorBase": 46,
@@ -687,8 +650,7 @@
       "CrimsonTwilight"
     ]
   },
-  {
-    "name": "Ebony",
+  "Ebony": {
     "class": "HEAVY",
     "type": "EBONY",
     "armorBase": 47,
@@ -786,8 +748,7 @@
       "Nordic Ebony"
     ]
   },
-  {
-    "name": "EbonyHigh",
+  "EbonyHigh": {
     "class": "HEAVY",
     "type": "EBONY",
     "armorBase": 48,
@@ -798,8 +759,7 @@
       "Northguard Ranger"
     ]
   },
-  {
-    "name": "ElvenLow",
+  "ElvenLow": {
     "class": "LIGHT",
     "type": "ELVEN",
     "armorBase": 22,
@@ -819,8 +779,7 @@
       "PotW Trousers"
     ]
   },
-  {
-    "name": "Elven",
+  "Elven": {
     "class": "LIGHT",
     "type": "ELVEN",
     "armorBase": 23,
@@ -890,8 +849,7 @@
       "Nordic Moonstone"
     ]
   },
-  {
-    "name": "ElvenHigh",
+  "ElvenHigh": {
     "class": "LIGHT",
     "type": "ELVEN",
     "armorBase": 24,
@@ -917,8 +875,7 @@
       "Mask Gold"
     ]
   },
-  {
-    "name": "ElvenHeavy",
+  "ElvenHeavy": {
     "class": "HEAVY",
     "type": "ELVEN",
     "armorBase": 37,
@@ -928,8 +885,7 @@
       "Elven Heavy"
     ]
   },
-  {
-    "name": "LightFactionLow",
+  "LightFactionLow": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 15,
@@ -954,8 +910,7 @@
       "Fur Guard's"
     ]
   },
-  {
-    "name": "LightFaction",
+  "LightFaction": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 22,
@@ -1003,8 +958,7 @@
       "Cultist Mask"
     ]
   },
-  {
-    "name": "LightFactionS",
+  "LightFactionS": {
     "class": "LIGHT",
     "type": "STEEL",
     "armorBase": 22,
@@ -1017,8 +971,7 @@
       "Imperial Ward"
     ]
   },
-  {
-    "name": "LightFactionHigh",
+  "LightFactionHigh": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 29,
@@ -1031,8 +984,7 @@
       "Shield of Solitude"
     ]
   },
-  {
-    "name": "Tong",
+  "Tong": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 32,
@@ -1041,8 +993,7 @@
       "Ulfric"
     ]
   },
-  {
-    "name": "HeavyFactionLow",
+  "HeavyFactionLow": {
     "class": "HEAVY",
     "type": "STEEL",
     "armorBase": 31,
@@ -1054,8 +1005,7 @@
       "Liberator"
     ]
   },
-  {
-    "name": "HeavyFaction",
+  "HeavyFaction": {
     "class": "HEAVY",
     "type": "STEEL",
     "armorBase": 38,
@@ -1111,8 +1061,7 @@
       "Helgen Guard's Shield"
     ]
   },
-  {
-    "name": "HeavyFactionHigh",
+  "HeavyFactionHigh": {
     "class": "HEAVY",
     "type": "STEEL",
     "armorBase": 44,
@@ -1127,8 +1076,7 @@
       "God of Warzones"
     ]
   },
-  {
-    "name": "HTong",
+  "HTong": {
     "class": "HEAVY",
     "type": "STEELPLATE",
     "armorBase": 47,
@@ -1136,8 +1084,7 @@
       "Tullius"
     ]
   },
-  {
-    "name": "Falmer",
+  "Falmer": {
     "class": "LIGHT",
     "type": "FALMER",
     "armorBase": 30,
@@ -1147,8 +1094,7 @@
       "Shalk Chitin"
     ]
   },
-  {
-    "name": "Ancient Falmer",
+  "Ancient Falmer": {
     "class": "LIGHT",
     "type": "ELVEN",
     "armorBase": 32,
@@ -1159,8 +1105,7 @@
       "SunBlessed"
     ]
   },
-  {
-    "name": "Falmer Hardened",
+  "Falmer Hardened": {
     "class": "HEAVY",
     "type": "FALMER",
     "armorBase": 37,
@@ -1171,8 +1116,7 @@
       "Falmer Circlet"
     ]
   },
-  {
-    "name": "Falmer Heavy",
+  "Falmer Heavy": {
     "class": "HEAVY",
     "type": "FALMER",
     "armorBase": 51,
@@ -1182,15 +1126,13 @@
       "Monstrous Faceguard"
     ]
   },
-  {
-    "name": "ForswornLow",
+  "ForswornLow": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 24,
     "nameSubstrings": []
   },
-  {
-    "name": "Forsworn",
+  "Forsworn": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 25,
@@ -1199,8 +1141,7 @@
       "Netch Boiled Leather"
     ]
   },
-  {
-    "name": "ForswornHigh",
+  "ForswornHigh": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 26,
@@ -1208,22 +1149,19 @@
       "Old Gods"
     ]
   },
-  {
-    "name": "ForswornHeavy",
+  "ForswornHeavy": {
     "class": "HEAVY",
     "type": "LEATHER",
     "armorBase": 39,
     "nameSubstrings": []
   },
-  {
-    "name": "FurLow",
+  "FurLow": {
     "class": "LIGHT",
     "type": "FUR",
     "armorBase": 9,
     "nameSubstrings": []
   },
-  {
-    "name": "Fur",
+  "Fur": {
     "class": "LIGHT",
     "type": "FUR",
     "armorBase": 10,
@@ -1259,22 +1197,19 @@
       "Shadowmeld"
     ]
   },
-  {
-    "name": "FurHigh",
+  "FurHigh": {
     "class": "LIGHT",
     "type": "FUR",
     "armorBase": 11,
     "nameSubstrings": []
   },
-  {
-    "name": "FurHeavy",
+  "FurHeavy": {
     "class": "HEAVY",
     "type": "FUR",
     "armorBase": 23,
     "nameSubstrings": []
   },
-  {
-    "name": "GlassLow",
+  "GlassLow": {
     "class": "LIGHT",
     "type": "GLASS",
     "armorBase": 31,
@@ -1292,8 +1227,7 @@
       "Tribunal White Light"
     ]
   },
-  {
-    "name": "Glass",
+  "Glass": {
     "class": "LIGHT",
     "type": "GLASS",
     "armorBase": 32,
@@ -1345,8 +1279,7 @@
       "Bosmer Ceremonial"
     ]
   },
-  {
-    "name": "GlassHigh",
+  "GlassHigh": {
     "class": "LIGHT",
     "type": "GLASS",
     "armorBase": 33,
@@ -1360,22 +1293,19 @@
       "Black Hood"
     ]
   },
-  {
-    "name": "GlassHeavy",
+  "GlassHeavy": {
     "class": "HEAVY",
     "type": "GLASS",
     "armorBase": 47,
     "nameSubstrings": []
   },
-  {
-    "name": "GoldLow",
+  "GoldLow": {
     "class": "LIGHT",
     "type": "GOLD",
     "armorBase": 23,
     "nameSubstrings": []
   },
-  {
-    "name": "Gold",
+  "Gold": {
     "class": "LIGHT",
     "type": "GOLD",
     "armorBase": 24,
@@ -1383,15 +1313,13 @@
       "Gold"
     ]
   },
-  {
-    "name": "GoldHigh",
+  "GoldHigh": {
     "class": "LIGHT",
     "type": "GOLD",
     "armorBase": 25,
     "nameSubstrings": []
   },
-  {
-    "name": "GoldHeavy",
+  "GoldHeavy": {
     "class": "HEAVY",
     "type": "GOLD",
     "armorBase": 30,
@@ -1401,8 +1329,7 @@
       "Golden plate"
     ]
   },
-  {
-    "name": "HideLow",
+  "HideLow": {
     "class": "LIGHT",
     "type": "FUR",
     "armorBase": 11,
@@ -1410,8 +1337,7 @@
       "Snowshoes"
     ]
   },
-  {
-    "name": "Hide",
+  "Hide": {
     "class": "LIGHT",
     "type": "FUR",
     "armorBase": 12,
@@ -1469,8 +1395,7 @@
       "Garnet"
     ]
   },
-  {
-    "name": "HideHigh",
+  "HideHigh": {
     "class": "LIGHT",
     "type": "FUR",
     "armorBase": 13,
@@ -1482,8 +1407,7 @@
       "Adros"
     ]
   },
-  {
-    "name": "HideHeavy",
+  "HideHeavy": {
     "class": "HEAVY",
     "type": "FUR",
     "armorBase": 30,
@@ -1491,8 +1415,7 @@
       "Fur Hooded Helmet"
     ]
   },
-  {
-    "name": "HorkerL",
+  "HorkerL": {
     "class": "LIGHT",
     "type": "BONEMOLD_HEAVY",
     "armorBase": 15,
@@ -1500,8 +1423,7 @@
       "Horker Light"
     ]
   },
-  {
-    "name": "HorkerLH",
+  "HorkerLH": {
     "class": "LIGHT",
     "type": "BONEMOLD_HEAVY",
     "armorBase": 20,
@@ -1509,8 +1431,7 @@
       "Horker Honed Light"
     ]
   },
-  {
-    "name": "HorkerH",
+  "HorkerH": {
     "class": "HEAVY",
     "type": "BONEMOLD_HEAVY",
     "armorBase": 24,
@@ -1518,8 +1439,7 @@
       "Horker Heavy"
     ]
   },
-  {
-    "name": "HorkerHH",
+  "HorkerHH": {
     "class": "HEAVY",
     "type": "BONEMOLD_HEAVY",
     "armorBase": 32,
@@ -1527,8 +1447,7 @@
       "Horker Honed Heavy"
     ]
   },
-  {
-    "name": "IronLight",
+  "IronLight": {
     "class": "LIGHT",
     "type": "IRON",
     "armorBase": 14,
@@ -1552,8 +1471,7 @@
       "Ranger Shield"
     ]
   },
-  {
-    "name": "IronLow",
+  "IronLow": {
     "class": "HEAVY",
     "type": "IRON",
     "armorBase": 22,
@@ -1563,8 +1481,7 @@
       "Sophisticated Frock Heavy"
     ]
   },
-  {
-    "name": "Iron",
+  "Iron": {
     "class": "HEAVY",
     "type": "IRON",
     "armorBase": 23,
@@ -1641,8 +1558,7 @@
       "Heavy Garnet"
     ]
   },
-  {
-    "name": "IronHigh",
+  "IronHigh": {
     "class": "HEAVY",
     "type": "IRON",
     "armorBase": 24,
@@ -1661,15 +1577,13 @@
       "Rigmors Cuirass"
     ]
   },
-  {
-    "name": "LeatherLow",
+  "LeatherLow": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 13,
     "nameSubstrings": []
   },
-  {
-    "name": "Leather",
+  "Leather": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 14,
@@ -1804,8 +1718,7 @@
       "Thief"
     ]
   },
-  {
-    "name": "LeatherHigh",
+  "LeatherHigh": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 15,
@@ -1884,8 +1797,7 @@
       "Yharnyam"
     ]
   },
-  {
-    "name": "LeatherHeavy",
+  "LeatherHeavy": {
     "class": "HEAVY",
     "type": "LEATHER",
     "armorBase": 33,
@@ -1898,8 +1810,7 @@
       "Rigmors Boots"
     ]
   },
-  {
-    "name": "None",
+  "None": {
     "class": "UNDEFINED",
     "type": "NONE",
     "armorBase": 5,
@@ -1907,8 +1818,7 @@
       "HORROR MASK"
     ]
   },
-  {
-    "name": "Bound",
+  "Bound": {
     "class": "UNDEFINED",
     "type": "NONE",
     "armorBase": 41,
@@ -1916,8 +1826,7 @@
       "Bound"
     ]
   },
-  {
-    "name": "Ancient NordL",
+  "Ancient NordL": {
     "class": "LIGHT",
     "type": "IRON",
     "armorBase": 14,
@@ -1925,8 +1834,7 @@
       "Ancient Nord Light"
     ]
   },
-  {
-    "name": "Ancient Nord",
+  "Ancient Nord": {
     "class": "HEAVY",
     "type": "IRON",
     "armorBase": 23,
@@ -1934,8 +1842,7 @@
       "Ancient Nord"
     ]
   },
-  {
-    "name": "LNordicLow",
+  "LNordicLow": {
     "class": "LIGHT",
     "type": "NORDIC_HEAVY",
     "armorBase": 26,
@@ -1945,8 +1852,7 @@
       "Nord Mail Shirt"
     ]
   },
-  {
-    "name": "LNordic",
+  "LNordic": {
     "class": "LIGHT",
     "type": "NORDIC_HEAVY",
     "armorBase": 27,
@@ -1956,8 +1862,7 @@
       "Nordic Ranger"
     ]
   },
-  {
-    "name": "LNordicHigh",
+  "LNordicHigh": {
     "class": "LIGHT",
     "type": "NORDIC_HEAVY",
     "armorBase": 28,
@@ -1965,8 +1870,7 @@
       "Buckler of Ysgramor"
     ]
   },
-  {
-    "name": "NordSteel",
+  "NordSteel": {
     "class": "HEAVY",
     "type": "NORDIC_HEAVY",
     "armorBase": 31,
@@ -1975,15 +1879,13 @@
       "Nord Mail Hauberk"
     ]
   },
-  {
-    "name": "HNordicLow",
+  "HNordicLow": {
     "class": "HEAVY",
     "type": "NORDIC_HEAVY",
     "armorBase": 42,
     "nameSubstrings": []
   },
-  {
-    "name": "HNordic",
+  "HNordic": {
     "class": "HEAVY",
     "type": "NORDIC_HEAVY",
     "armorBase": 43,
@@ -2005,8 +1907,7 @@
       "VanNord"
     ]
   },
-  {
-    "name": "HNordicHigh",
+  "HNordicHigh": {
     "class": "HEAVY",
     "type": "NORDIC_HEAVY",
     "armorBase": 44,
@@ -2016,8 +1917,7 @@
       "Steel Nordic"
     ]
   },
-  {
-    "name": "OrcishLight",
+  "OrcishLight": {
     "class": "LIGHT",
     "type": "ORCISH",
     "armorBase": 29,
@@ -2033,15 +1933,13 @@
       "Mask Argon"
     ]
   },
-  {
-    "name": "OrcishLow",
+  "OrcishLow": {
     "class": "HEAVY",
     "type": "ORCISH",
     "armorBase": 43,
     "nameSubstrings": []
   },
-  {
-    "name": "Orcish",
+  "Orcish": {
     "class": "HEAVY",
     "type": "ORCISH",
     "armorBase": 44,
@@ -2104,8 +2002,7 @@
       "Heavy Sapphire"
     ]
   },
-  {
-    "name": "OrcishHigh",
+  "OrcishHigh": {
     "class": "HEAVY",
     "type": "ORCISH",
     "armorBase": 45,
@@ -2114,8 +2011,7 @@
       "Rahgot Circlet"
     ]
   },
-  {
-    "name": "ScaledLow",
+  "ScaledLow": {
     "class": "LIGHT",
     "type": "SCALED",
     "armorBase": 28,
@@ -2127,8 +2023,7 @@
       "Tembtra Thief Trousers"
     ]
   },
-  {
-    "name": "Scaled",
+  "Scaled": {
     "class": "LIGHT",
     "type": "SCALED",
     "armorBase": 29,
@@ -2243,8 +2138,7 @@
       "L4"
     ]
   },
-  {
-    "name": "ScaledHigh",
+  "ScaledHigh": {
     "class": "LIGHT",
     "type": "SCALED",
     "armorBase": 30,
@@ -2257,8 +2151,7 @@
       "Riften Nightwatch"
     ]
   },
-  {
-    "name": "ScaledHeavy",
+  "ScaledHeavy": {
     "class": "HEAVY",
     "type": "SCALED",
     "armorBase": 44,
@@ -2266,8 +2159,7 @@
       "The Argonian Shield"
     ]
   },
-  {
-    "name": "LStalhrimLow",
+  "LStalhrimLow": {
     "class": "LIGHT",
     "type": "STALHRIM_LIGHT",
     "armorBase": 34,
@@ -2275,8 +2167,7 @@
       "Vayan"
     ]
   },
-  {
-    "name": "LStalhrim",
+  "LStalhrim": {
     "class": "LIGHT",
     "type": "STALHRIM_LIGHT",
     "armorBase": 35,
@@ -2291,8 +2182,7 @@
       "Red Stalhrim"
     ]
   },
-  {
-    "name": "LStalhrimHigh",
+  "LStalhrimHigh": {
     "class": "LIGHT",
     "type": "STALHRIM_LIGHT",
     "armorBase": 36,
@@ -2300,15 +2190,13 @@
       "Dukaan"
     ]
   },
-  {
-    "name": "HStalhrimLow",
+  "HStalhrimLow": {
     "class": "HEAVY",
     "type": "STALHRIM_HEAVY",
     "armorBase": 54,
     "nameSubstrings": []
   },
-  {
-    "name": "HStalhrim",
+  "HStalhrim": {
     "class": "HEAVY",
     "type": "STALHRIM_HEAVY",
     "armorBase": 55,
@@ -2323,15 +2211,13 @@
       "Red Stalhrim Heavy"
     ]
   },
-  {
-    "name": "HStalhrimHigh",
+  "HStalhrimHigh": {
     "class": "HEAVY",
     "type": "STALHRIM_HEAVY",
     "armorBase": 56,
     "nameSubstrings": []
   },
-  {
-    "name": "SteelLight",
+  "SteelLight": {
     "class": "LIGHT",
     "type": "STEEL",
     "armorBase": 16,
@@ -2350,8 +2236,7 @@
       "Amethyst"
     ]
   },
-  {
-    "name": "SteelLow",
+  "SteelLow": {
     "class": "HEAVY",
     "type": "STEEL",
     "armorBase": 29,
@@ -2361,8 +2246,7 @@
       "Broken Wolfcry Heavy Shield"
     ]
   },
-  {
-    "name": "Steel",
+  "Steel": {
     "class": "HEAVY",
     "type": "STEEL",
     "armorBase": 30,
@@ -2436,8 +2320,7 @@
       "Heavy Amethyst"
     ]
   },
-  {
-    "name": "SteelHigh",
+  "SteelHigh": {
     "class": "HEAVY",
     "type": "STEEL",
     "armorBase": 31,
@@ -2455,8 +2338,7 @@
       "Nordic Chainmail Gauntlets - Heavy"
     ]
   },
-  {
-    "name": "Steel Heavy",
+  "Steel Heavy": {
     "class": "HEAVY",
     "type": "STEEL",
     "armorBase": 37,
@@ -2467,8 +2349,7 @@
       "The Giant-Slayer's Plate"
     ]
   },
-  {
-    "name": "Steel PlateLight",
+  "Steel PlateLight": {
     "class": "LIGHT",
     "type": "STEELPLATE",
     "armorBase": 26,
@@ -2495,8 +2376,7 @@
       "Sapphire"
     ]
   },
-  {
-    "name": "Steel PlateLow",
+  "Steel PlateLow": {
     "class": "HEAVY",
     "type": "STEELPLATE",
     "armorBase": 40,
@@ -2507,8 +2387,7 @@
       "Broken Wolfcry Heavy"
     ]
   },
-  {
-    "name": "Steel Plate",
+  "Steel Plate": {
     "class": "HEAVY",
     "type": "STEELPLATE",
     "armorBase": 41,
@@ -2568,8 +2447,7 @@
       "Windhelm Steel"
     ]
   },
-  {
-    "name": "Steel PlateHigh",
+  "Steel PlateHigh": {
     "class": "HEAVY",
     "type": "STEELPLATE",
     "armorBase": 42,
@@ -2579,15 +2457,13 @@
       "Wolfcry Heavy"
     ]
   },
-  {
-    "name": "StuddedLow",
+  "StuddedLow": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 17,
     "nameSubstrings": []
   },
-  {
-    "name": "Studded",
+  "Studded": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 18,
@@ -2614,8 +2490,7 @@
       "Elven Sniper"
     ]
   },
-  {
-    "name": "StuddedHigh",
+  "StuddedHigh": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 19,
@@ -2623,8 +2498,7 @@
       "Master Ranger"
     ]
   },
-  {
-    "name": "StuddedHeavy",
+  "StuddedHeavy": {
     "class": "HEAVY",
     "type": "LEATHER",
     "armorBase": 35,
@@ -2638,15 +2512,13 @@
       "Northman"
     ]
   },
-  {
-    "name": "SilverLow",
+  "SilverLow": {
     "class": "LIGHT",
     "type": "SILVER",
     "armorBase": 23,
     "nameSubstrings": []
   },
-  {
-    "name": "Silver",
+  "Silver": {
     "class": "LIGHT",
     "type": "SILVER",
     "armorBase": 24,
@@ -2655,15 +2527,13 @@
       "Silver Spellsword"
     ]
   },
-  {
-    "name": "SilverHigh",
+  "SilverHigh": {
     "class": "LIGHT",
     "type": "SILVER",
     "armorBase": 25,
     "nameSubstrings": []
   },
-  {
-    "name": "SilverHeavy",
+  "SilverHeavy": {
     "class": "HEAVY",
     "type": "SILVER",
     "armorBase": 30,
@@ -2675,8 +2545,7 @@
       "Silver Scale Greaves"
     ]
   },
-  {
-    "name": "Vampire",
+  "Vampire": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 25,
@@ -2687,8 +2556,7 @@
       "Lustmord"
     ]
   },
-  {
-    "name": "Vampire Royal",
+  "Vampire Royal": {
     "class": "LIGHT",
     "type": "LEATHER",
     "armorBase": 30,
@@ -2698,8 +2566,7 @@
       "Vampire Lord"
     ]
   },
-  {
-    "name": "Wood",
+  "Wood": {
     "class": "LIGHT",
     "type": "WOOD",
     "armorBase": 10,
@@ -2708,11 +2575,10 @@
       "Wood"
     ]
   },
-  {
-    "name": "Wood_Metal",
+  "Wood_Metal": {
     "class": "HEAVY",
     "type": "IRON",
     "armorBase": 15,
     "nameSubstrings": []
   }
-]
+}

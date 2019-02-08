@@ -1,11 +1,9 @@
 {
-  "NPC_": {
-    "EDID": [
-      "^dunSnaplegSpriggan$",
-      "^EncSprigganSwarm$",
-      "3DNPC",
-      "ARTHLALShip",
-      "Chicken"
-    ]
-  }
+  "EDID": [
+    "^dunSnaplegSpriggan$",
+    "^EncSprigganSwarm$",
+    "3DNPC",
+    "ARTHLALShip",
+    "Chicken"
+  ]
 }

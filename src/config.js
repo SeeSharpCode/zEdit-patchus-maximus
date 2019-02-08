@@ -5,14 +5,14 @@ import armorMaterials from '../config/materials/armorMaterials.json';
 import weaponMaterials from '../config/materials/weaponMaterials.json';
 import recipeMaterials from '../config/materials/recipeMaterials.json';
 
-const getItemBySubstring = function (list, searchValue) {
+const getItemBySubstring = (config, searchValue) => {
   let result = null;
   let matchLength = 0;
 
-  list.forEach(item => {
-    item.nameSubstrings.forEach(substring => {
+  Object.keys(config).forEach(key => {
+    config[key].nameSubstrings.forEach(substring => {
       if (searchValue.includes(substring) && substring.length > matchLength) {
-        result = item;
+        result = config[key];
         matchLength = substring.length;
       }
     });
