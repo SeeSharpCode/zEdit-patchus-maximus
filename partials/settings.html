@@ -2,9 +2,14 @@
 
 <section>
     <div>
-        <span class="input-label" title="The value specified here will be displayed &#13;in an alert when the patcher initialized.">Example Setting</span>
-        <input type="text" ng-model="foo"/>
+        <h3>Game Settings</h3>
+        <span class="input-label" title="Armor scaling factor.">Armor Scaling</span>
+        <input type="text" ng-model="settings.patchusMaximus.gameSettings.fArmorScalingFactor" />
+        <span class="input-label" title="Max armor rating.">Max Armor Rating</span>
+        <input type="text" ng-model="settings.patchusMaximus.gameSettings.fMaxArmorRating" />
+        <span class="input-label" title="Armor rating max.">Armor Rating Max</span>
+        <input type="text" ng-model="settings.patchusMaximus.gameSettings.fArmorRatingMax" />
+        <span class="input-label" title="Armor Rating max.">Armor Rating PC Max</span>
+        <input type="text" ng-model="settings.patchusMaximus.gameSettings.fArmorRatingPCMax" />
     </div>
-
-    <button class="action-btn" ng-click="saveSettings()">Show message</button>
 </section>

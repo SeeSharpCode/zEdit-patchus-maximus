@@ -3,7 +3,6 @@ import ingredientVariations from '../config/alchemy/ingredientVariations.json';
 import potionMultipliers from '../config/alchemy/potionMultipliers.json';
 import armorMaterials from '../config/materials/armorMaterials.json';
 import weaponMaterials from '../config/materials/weaponMaterials.json';
-import recipeMaterials from '../config/materials/recipeMaterials.json';
 
 const getItemBySubstring = (config, searchValue) => {
   let result = null;
@@ -39,8 +38,4 @@ export function getArmorMaterial(name) {
 
 export function getWeaponMaterial(name) {
   return getItemBySubstring(weaponMaterials, name);
-}
-
-export function getRecipeMaterial(type) {
-  return recipeMaterials[type];
 }

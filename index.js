@@ -13,6 +13,7 @@ import enchPatcher from './src/patchers/enchPatcher';
 import alchPatcher from './src/patchers/alchPatcher';
 import ingrPatcher from './src/patchers/ingrPatcher';
 import bookPatcher from './src/patchers/bookPatcher';
+import settingsController from './src/controllers/settingsController';
 
 const buildReferenceMaps = locals => {
   const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL', 'ENCH', 'SCRL', 'LVLI'];
@@ -51,12 +52,17 @@ registerPatcher({
     label: 'Patchus Maximus',
     templateUrl: `${patcherUrl}/partials/settings.html`,
     defaultSettings: {
-      staffCraftingInclusions: ['ACX', 'Unenchanted'],
+      gameSettings: {
+        fArmorScalingFactor: 0.1,
+        fMaxArmorRating: 90.0,
+        fArmorRatingMax: 1.75,
+        fArmorRatingPCMax: 1.4,
+      },
+      crafting: {
+        disableStaffRecipeExclusions: ['ACX', 'Unenchanted'],
+      },
     },
-    controller: function($scope) {
-      $scope.foo = 'Foo';
-      $scope.saveSettings = () => fh.saveJsonFile('userSettings.json', $scope.settings);
-    },
+    controller: settingsController,
   },
   requiredFiles: ['PerkusMaximus_Master.esp'],
   execute: (patchFile, helpers, settings, locals) => ({
@@ -69,8 +75,8 @@ registerPatcher({
     },
     process: [
       // globPatcher(helpers, locals),
-      // gmstPatcher(helpers, locals),
-      // cobjPatcher(helpers, locals),
+      // gmstPatcher(helpers, locals, settings),
+      cobjPatcher(helpers, locals, settings),
       // mgefPatcher(helpers, locals),
       // npcPatcher(helpers, locals),
       // racePatcher(locals),
@@ -78,7 +84,7 @@ registerPatcher({
       // enchPatcher(patch, locals),
       // alchPatcher(patch, locals),
       // ingrPatcher(patch, locals),
-      bookPatcher(patchFile, locals, helpers),
+      // bookPatcher(patchFile, locals, helpers),
     ],
   }),
 });

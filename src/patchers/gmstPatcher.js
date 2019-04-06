@@ -1,6 +1,5 @@
-import gameSettings from '../../config/gameSettings.json';
-
-export default function gameSettingsPatcher(helpers, locals) {
+export default function gameSettingsPatcher(helpers, locals, settings) {
+  const { gameSettings } = settings;
   return {
     load: {
       signature: 'GMST',
