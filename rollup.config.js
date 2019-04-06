@@ -6,20 +6,20 @@ export default {
   output: {
     file: 'dist/index.js',
     format: 'cjs',
-    strict: false
+    strict: false,
   },
   plugins: [
     json({
       namedExports: false,
-      preferConst: true
+      preferConst: true,
     }),
     copy({
-      "partials": "dist/partials",
-      "config": "dist/config",
-      "module.json": "dist/module.json"
+      partials: 'dist/partials',
+      config: 'dist/config',
+      'module.json': 'dist/module.json',
     }),
     copy({
-      "dist": "../zEdit_Alpha_v0.5.3/modules/patchusMaximus"
-    })
-  ]
-}
+      dist: '../zEdit_Alpha_v0.5.3/modules/patchusMaximus',
+    }),
+  ],
+};

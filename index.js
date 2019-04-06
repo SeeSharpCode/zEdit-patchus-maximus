@@ -14,7 +14,7 @@ import alchPatcher from './src/patchers/alchPatcher';
 import ingrPatcher from './src/patchers/ingrPatcher';
 import bookPatcher from './src/patchers/bookPatcher';
 
-const buildReferenceMaps = function (locals) {
+const buildReferenceMaps = locals => {
   const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL', 'ENCH', 'SCRL', 'LVLI'];
   signaturesToMap.forEach(sig => {
     const records = xelib.GetRecords(0, sig, false);
@@ -26,7 +26,7 @@ const buildReferenceMaps = function (locals) {
   });
 };
 
-const detectPerMaModules = function (helpers, locals) {
+const detectPerMaModules = (helpers, locals) => {
   const perMaFileNamePrefix = 'PerkusMaximus_';
   const perMaModules = ['Mage', 'Warrior', 'Thief'];
 
@@ -52,6 +52,10 @@ registerPatcher({
     templateUrl: `${patcherUrl}/partials/settings.html`,
     defaultSettings: {
       staffCraftingInclusions: ['ACX', 'Unenchanted'],
+    },
+    controller: function($scope) {
+      $scope.foo = 'Foo';
+      $scope.saveSettings = () => fh.saveJsonFile('userSettings.json', $scope.settings);
     },
   },
   requiredFiles: ['PerkusMaximus_Master.esp'],
