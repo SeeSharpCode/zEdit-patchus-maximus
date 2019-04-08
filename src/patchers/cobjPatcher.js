@@ -1,59 +1,59 @@
 import Recipe from '../model/recipe';
 import conditionOperators from '../model/conditionOperators';
-import materials from '../../config/materials.json';
+import recipeMaterials from '../../config/recipeMaterials.json';
+import { getLinkedRecord } from '../utils';
 
-export default function cobjPatcher(helpers, locals, settings) {
+export default function cobjPatcher(patchFile, helpers, locals, settings) {
   const log = message => helpers.logMessage(`(COBJ) ${message}`);
   const skip = (recipe, message) => {
     log(`${message} ${recipe.editorID} will not be patched.`);
   };
 
-  const isTemperRecipe = recipe => recipe.editorID.startsWith('Temper') && xelib.HasElement(recipe.record, 'Items');
+  // We're mostly patching tempering recipes, so we can try to get the
+  // required smithing perk from the corresponding crafting recipe.
+  const getSmithingPerkFromCraftingRecipe = recipe => {
+    const itemName = recipe.editorID.split('Temper')[1];
+    if (!itemName) return null;
 
-  // TODO reconsider. For example, Daedric equipment requires ebony ingots.
-  // Maybe key off of the required perk for the corresponding crafting recipe?
-  // Potential issue: what if the patcher has (or hasn't) changed the conditions on the crafting recipe?
-  const getTemperMaterial = recipe => {
-    const item = xelib.GetElements(recipe.record, 'Items')[0];
-    const materialName = xelib.GetValue(xelib.GetElement(item, 'CNTO'), 'Item');
-    if (!materialName) return null;
-    return Object.keys(materials).find(key => materialName.includes(key));
+    const craftingRecipeEditorID = Object.keys(locals.COBJ).find(editorID => editorID.split('Recipe')[1] === itemName);
+    if (!craftingRecipeEditorID) return null;
+
+    const condition = xelib.GetCondition(locals.COBJ[craftingRecipeEditorID], 'HasPerk');
+    if (!condition) return null;
+    return xelib.EditorID(getLinkedRecord(condition, 'CTDA\\Parameter #1', patchFile));
   };
 
-  const getMaterial = recipe => {
-    // TODO check overrides first
-
-    // Check if the recipe EDID contains the name of the required material.
-    let materialKey = Object.keys(materials).find(key => recipe.editorID.includes(key));
-
-    // Temper recipes typically require a single ingot.
-    if (!materialKey && isTemperRecipe(recipe)) {
-      materialKey = getTemperMaterial(recipe);
-    }
-
-    return materials[materialKey];
+  const getSmithingPerkFromRecipeEditorID = editorID => {
+    const materialKey = Object.keys(recipeMaterials).find(key => editorID.includes(key));
+    return materialKey ? recipeMaterials[materialKey].smithingPerk : null;
   };
 
-  const getSmithingPerkEditorID = recipe => {
-    const material = getMaterial(recipe);
-
-    if (!material) {
-      return skip(recipe, `no material found for ${recipe.outputRecordName}.`);
-    }
-
-    return material.smithingPerk;
+  const getSmithingPerkFromRequiredItem = recipe => {
+    if (!xelib.HasElement(recipe.record, 'Items\\[0]\\CNTO\\Item')) return null;
+    const requiredItem = getLinkedRecord(recipe.record, 'Items\\[0]\\CNTO\\Item', patchFile);
+    const materialKey = Object.keys(recipeMaterials).find(key => xelib.EditorID(requiredItem).includes(key));
+    return materialKey ? recipeMaterials[materialKey].smithingPerk : null;
   };
+
+  const getSmithingPerk = recipe => getSmithingPerkFromRecipeEditorID(recipe.editorID)
+      || getSmithingPerkFromCraftingRecipe(recipe)
+      || getSmithingPerkFromRequiredItem(recipe); // Fallback. Not always reliable, e.g. Daedric recipes use ebony.
 
   const changeRecipeConditions = recipe => {
     if (!locals.useWarrior) return;
     xelib.RemoveElement(recipe.record, 'Conditions');
-    // log(`removed all conditions for ${recipe.editorID}`);
 
-    const smithingPerkEditorID = getSmithingPerkEditorID(recipe);
-    if (!smithingPerkEditorID) return;
+    const smithingPerkEditorID = getSmithingPerk(recipe);
+
+    if (!smithingPerkEditorID) {
+      // TODO only log this if no perk was found, not if no perk is needed
+      log(`No smithing perk requirement found for ${recipe.editorID}.`);
+      return;
+    }
+
     const smithingPerkFormID = locals.PERK[smithingPerkEditorID];
     xelib.AddCondition(recipe.record, 'HasPerk', conditionOperators.equalTo, '1', smithingPerkFormID);
-    // log(`added HasPerk (${smithingPerkEditorID}) condition to ${recipe.editorID} recipe`);
+    log(`${recipe.editorID} required perk set to ${smithingPerkEditorID}.`);
   };
 
   // TODO this doesn't seem to pick up any records

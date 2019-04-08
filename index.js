@@ -16,7 +16,7 @@ import bookPatcher from './src/patchers/bookPatcher';
 import settingsController from './src/controllers/settingsController';
 
 const buildReferenceMaps = locals => {
-  const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL', 'ENCH', 'SCRL', 'LVLI'];
+  const signaturesToMap = ['MISC', 'KYWD', 'PERK', 'GLOB', 'SPEL', 'ENCH', 'SCRL', 'LVLI', 'COBJ'];
   signaturesToMap.forEach(sig => {
     const records = xelib.GetRecords(0, sig, false);
     locals[sig] = records.reduce((obj, rec) => {
@@ -76,7 +76,7 @@ registerPatcher({
     process: [
       // globPatcher(helpers, locals),
       // gmstPatcher(helpers, locals, settings),
-      cobjPatcher(helpers, locals, settings),
+      cobjPatcher(patchFile, helpers, locals, settings),
       // mgefPatcher(helpers, locals),
       // npcPatcher(helpers, locals),
       // racePatcher(locals),

@@ -1,8 +1,8 @@
 import alchemyEffects from '../config/alchemy/alchemyEffects.json';
 import ingredientVariations from '../config/alchemy/ingredientVariations.json';
 import potionMultipliers from '../config/alchemy/potionMultipliers.json';
-import armorMaterials from '../config/materials/armorMaterials.json';
-import weaponMaterials from '../config/materials/weaponMaterials.json';
+import armorMaterials from '../config/armor/armorMaterials.json';
+import weaponMaterials from '../config/weapons/weaponMaterials.json';
 
 const getItemBySubstring = (config, searchValue) => {
   let result = null;
