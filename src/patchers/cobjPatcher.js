@@ -9,51 +9,27 @@ export default function cobjPatcher(patchFile, helpers, locals, settings) {
     log(`${message} ${recipe.editorID} will not be patched.`);
   };
 
-  // We're mostly patching tempering recipes, so we can try to get the
-  // required smithing perk from the corresponding crafting recipe.
-  const getSmithingPerkFromCraftingRecipe = recipe => {
-    const itemName = recipe.editorID.split('Temper')[1];
-    if (!itemName) return null;
-
-    const craftingRecipeEditorID = Object.keys(locals.COBJ).find(editorID => editorID.split('Recipe')[1] === itemName);
-    if (!craftingRecipeEditorID) return null;
-
-    const condition = xelib.GetCondition(locals.COBJ[craftingRecipeEditorID], 'HasPerk');
-    if (!condition) return null;
-    return xelib.EditorID(getLinkedRecord(condition, 'CTDA\\Parameter #1', patchFile));
+  const getSmithingPerk = recipe => {
+    const output = getLinkedRecord(recipe.record, 'CNAM', patchFile);
+    const outputMaterial = helpers.skyrimMaterialService.getMaterial(output);
+    return recipeMaterials[outputMaterial] ? recipeMaterials[outputMaterial].smithingPerk : null;
   };
-
-  const getSmithingPerkFromRecipeEditorID = editorID => {
-    const materialKey = Object.keys(recipeMaterials).find(key => editorID.includes(key));
-    return materialKey ? recipeMaterials[materialKey].smithingPerk : null;
-  };
-
-  const getSmithingPerkFromRequiredItem = recipe => {
-    if (!xelib.HasElement(recipe.record, 'Items\\[0]\\CNTO\\Item')) return null;
-    const requiredItem = getLinkedRecord(recipe.record, 'Items\\[0]\\CNTO\\Item', patchFile);
-    const materialKey = Object.keys(recipeMaterials).find(key => xelib.EditorID(requiredItem).includes(key));
-    return materialKey ? recipeMaterials[materialKey].smithingPerk : null;
-  };
-
-  const getSmithingPerk = recipe => getSmithingPerkFromRecipeEditorID(recipe.editorID)
-      || getSmithingPerkFromCraftingRecipe(recipe)
-      || getSmithingPerkFromRequiredItem(recipe); // Fallback. Not always reliable, e.g. Daedric recipes use ebony.
 
   const changeRecipeConditions = recipe => {
-    if (!locals.useWarrior) return;
-    xelib.RemoveElement(recipe.record, 'Conditions');
-
-    const smithingPerkEditorID = getSmithingPerk(recipe);
-
-    if (!smithingPerkEditorID) {
-      // TODO only log this if no perk was found, not if no perk is needed
-      log(`No smithing perk requirement found for ${recipe.editorID}.`);
+    if (!locals.useWarrior) {
       return;
     }
 
-    const smithingPerkFormID = locals.PERK[smithingPerkEditorID];
+    xelib.RemoveElement(recipe.record, 'Conditions');
+
+    const smithingPerk = getSmithingPerk(recipe);
+
+    if (!smithingPerk) {
+      return;
+    }
+
+    const smithingPerkFormID = locals.PERK[smithingPerk];
     xelib.AddCondition(recipe.record, 'HasPerk', conditionOperators.equalTo, '1', smithingPerkFormID);
-    log(`${recipe.editorID} required perk set to ${smithingPerkEditorID}.`);
   };
 
   // TODO this doesn't seem to pick up any records
@@ -88,6 +64,7 @@ export default function cobjPatcher(patchFile, helpers, locals, settings) {
       filter: cobjFilter,
     },
     patch: record => {
+      // TODO convert the Recipe class into an object
       const recipe = new Recipe(record);
       handleWorkbench[recipe.workbench](recipe);
     },
