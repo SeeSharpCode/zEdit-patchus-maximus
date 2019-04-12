@@ -23,6 +23,12 @@
     "breakdownStation": "CraftingSmelter",
     "temperingInput": "IngotChitin"
   },
+  "FalmerHeavyOriginal": {
+    "smithingPerk": "AdvancedArmors",
+    "breakdownProduct": "IngotChitin",
+    "breakdownStation": "CraftingSmelter",
+    "temperingInput": "IngotChitin"
+  },
   "Orcish": {
     "smithingPerk": "OrcishSmithing",
     "breakdownProduct": "IngotOrichalcum",

@@ -12,4 +12,15 @@
         <span class="input-label" title="Armor Rating max.">Armor Rating PC Max</span>
         <input type="text" ng-model="settings.patchusMaximus.gameSettings.fArmorRatingPCMax" />
     </div>
+    <div>
+        <h3>Armors Without Materials</h3>
+        <table>
+            <tr>
+                <td>Armor</td>
+            </tr>
+            <tr ng-repeat="armor in armorWithoutMaterials">
+                <td>{{ armor }}</td>
+            </tr>
+        </table>
+    </div>
 </section>

@@ -1,6 +1,6 @@
 import Recipe from '../model/recipe';
 import conditionOperators from '../model/conditionOperators';
-import recipeMaterials from '../../config/recipeMaterials.json';
+import materials from '../../config/materials.json';
 import { getLinkedRecord } from '../utils';
 
 export default function cobjPatcher(patchFile, helpers, locals, settings) {
@@ -11,8 +11,14 @@ export default function cobjPatcher(patchFile, helpers, locals, settings) {
 
   const getSmithingPerk = recipe => {
     const output = getLinkedRecord(recipe.record, 'CNAM', patchFile);
-    const outputMaterial = helpers.skyrimMaterialService.getMaterial(output);
-    return recipeMaterials[outputMaterial] ? recipeMaterials[outputMaterial].smithingPerk : null;
+    const outputMaterialName = helpers.skyrimMaterialService.getMaterial(output);
+    const material = materials[outputMaterialName];
+
+    if (!material) {
+      log(`No smithing perk found for ${recipe.editorID} with material ${outputMaterialName}`);
+    }
+
+    return material ? material.smithingPerk : null;
   };
 
   const changeRecipeConditions = recipe => {
