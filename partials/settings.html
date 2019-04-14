@@ -13,13 +13,23 @@
         <input type="text" ng-model="settings.patchusMaximus.gameSettings.fArmorRatingPCMax" />
     </div>
     <div>
-        <h3>Armors Without Materials</h3>
+        <h3>Armors Material Overrides</h3>
+        <!-- TODO update this description when you know what you're doing -->
+        <p>
+            The armors below don't have a material. If you want the armor's rating and smithing to be influenced by a material,
+            select a material in the dropdown.
+        </p>
         <table>
             <tr>
                 <td><strong>Armor</strong></td>
+                <td><strong>Material</strong></td>
             </tr>
             <tr ng-repeat="armor in armorWithoutMaterials">
                 <td><small>{{ armor }}</small></td>
+                <td>
+                    <select ng-model="selectedMaterial" ng-options="material for material in materials">
+                    </select>
+                </td>
             </tr>
         </table>
     </div>
