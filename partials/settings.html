@@ -14,7 +14,6 @@
     </div>
     <div>
         <h3>Armors Material Overrides</h3>
-        <!-- TODO update this description when you know what you're doing -->
         <p>
             The armors below don't have a material. If you want the armor's rating and smithing to be influenced by a material,
             select a material in the dropdown.
@@ -24,13 +23,14 @@
                 <td><strong>Armor</strong></td>
                 <td><strong>Material</strong></td>
             </tr>
-            <tr ng-repeat="armor in armorWithoutMaterials">
-                <td><small>{{ armor }}</small></td>
+            <tr ng-repeat="armor in settings.patchusMaximus.armor.materialOverrides">
+                <td><small>{{ armor.name }}</small></td>
                 <td>
-                    <select ng-model="selectedMaterial" ng-options="material for material in materials">
+                    <select ng-options="material for material in materials" ng-model="armor.material">
                     </select>
                 </td>
             </tr>
         </table>
+        <button class="action-btn" ng-click="showSettings()">Show Settings</button>
     </div>
 </section>

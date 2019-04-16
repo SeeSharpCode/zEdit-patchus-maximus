@@ -5,23 +5,33 @@ import { getLinkedRecord } from '../utils';
 
 export default function cobjPatcher(patchFile, helpers, locals, settings) {
   const log = message => helpers.logMessage(`(COBJ) ${message}`);
-  const skip = (recipe, message) => {
-    log(`${message} ${recipe.editorID} will not be patched.`);
+
+  // TODO guard equipment
+  // TODO Should I keep this? Will it be necessary with the equipment fixes tool?
+  const factionMaterials = {
+    ArmorDarkBrotherhood: 'Leather',
+    ArmorNightingale: 'Leather',
+    DLC1LD_CraftingMaterialAetherium: 'Dwarven',
+  };
+
+  const getMaterial = equipment => {
+    let materialName = helpers.skyrimMaterialService.getMaterial(equipment);
+
+    if (!materialName) {
+      const faction = Object.keys(factionMaterials).find(keyword => xelib.HasKeyword(equipment, keyword));
+      materialName = factionMaterials[faction];
+    }
+
+    return materials[materialName];
   };
 
   const getSmithingPerk = recipe => {
     const output = getLinkedRecord(recipe.record, 'CNAM', patchFile);
-    const outputMaterialName = helpers.skyrimMaterialService.getMaterial(output);
-    const material = materials[outputMaterialName];
-
-    if (!material) {
-      log(`No smithing perk found for ${recipe.editorID} with material ${outputMaterialName}`);
-    }
-
-    return material ? material.smithingPerk : null;
+    const material = getMaterial(output);
+    return material ? material.smithingPerk : log(`${xelib.FullName(output)} (${xelib.EditorID(output)}) doesn't have a material`);
   };
 
-  const changeRecipeConditions = recipe => {
+  const addMaterialPerkRequirement = recipe => {
     if (!locals.useWarrior) {
       return;
     }
@@ -49,8 +59,8 @@ export default function cobjPatcher(patchFile, helpers, locals, settings) {
       xelib.SetUIntValue(recipe.record, 'BNAM', locals.KYWD.ActorTypeNPC);
       log(`disabled staff recipe: ${recipe.editorID}`);
     },
-    CraftingSmithingSharpeningWheel: changeRecipeConditions,
-    CraftingSmithingArmorTable: changeRecipeConditions,
+    CraftingSmithingSharpeningWheel: addMaterialPerkRequirement,
+    CraftingSmithingArmorTable: addMaterialPerkRequirement,
   };
 
   const cobjFilter = function (record) {

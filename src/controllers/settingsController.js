@@ -3,6 +3,8 @@ import materials from '../../config/materials.json';
 export default function($scope, skyrimMaterialService) {
   const FACTION_ARMOR_KEYWORDS = ['ArmorMaterialThievesGuild', 'ArmorDarkBrotherhood', 'ArmorNightingale'];
 
+  const { materialOverrides } = $scope.settings.patchusMaximus.armor;
+
   const isArmor = armorType => armorType !== 'Clothing' && armorType !== 'Jewelry';
   const isDummyArmor = armor => xelib.HasKeyword(armor, 'Dummy');
 
@@ -16,9 +18,9 @@ export default function($scope, skyrimMaterialService) {
   const armorWithoutMaterials = xelib.GetRecords(0, 'ARMO')
     .map(armor => xelib.GetWinningOverride(armor))
     .filter(armor => isArmor(xelib.GetArmorType(armor)) && isPlayable(armor) && !skyrimMaterialService.getMaterial(armor)
-      && !isDummyArmor(armor) && !isFactionArmor(armor))
-    .map(armor => `${xelib.FullName(armor)} (${xelib.EditorID(armor)})`);
+      && !isDummyArmor(armor) && !isFactionArmor(armor) && (!materialOverrides[xelib.FullName(armor)] || !materialOverrides[xelib.FullName(armor)].material))
+    .map(armor => ({ name: xelib.FullName(armor), material: null }));
 
   $scope.materials = Object.keys(materials);
-  $scope.armorWithoutMaterials = [...new Set(armorWithoutMaterials)];
+  $scope.settings.patchusMaximus.armor.materialOverrides = [...materialOverrides, ...armorWithoutMaterials];
 }
