@@ -1,4 +1,3 @@
-import Recipe from '../model/recipe';
 import conditionOperators from '../model/conditionOperators';
 import materials from '../../config/materials.json';
 import { getLinkedRecord } from '../utils';
@@ -6,83 +5,67 @@ import { getLinkedRecord } from '../utils';
 export default function cobjPatcher(patchFile, helpers, locals, settings) {
   const log = message => helpers.logMessage(`(COBJ) ${message}`);
 
-  // TODO guard equipment
-  // TODO Should I keep this? Will it be necessary with the equipment fixes tool?
-  const factionMaterials = {
-    ArmorDarkBrotherhood: 'Leather',
-    ArmorNightingale: 'Leather',
-    DLC1LD_CraftingMaterialAetherium: 'Dwarven',
-  };
-
-  const getMaterial = equipment => {
-    let materialName = helpers.skyrimMaterialService.getMaterial(equipment);
-
-    if (!materialName) {
-      const faction = Object.keys(factionMaterials).find(keyword => xelib.HasKeyword(equipment, keyword));
-      materialName = factionMaterials[faction];
-    }
-
+  const getMaterial = outputRecord => {
+    const materialName = helpers.skyrimMaterialService.getMaterial(outputRecord);
     return materials[materialName];
   };
 
-  const getSmithingPerk = recipe => {
-    const output = getLinkedRecord(recipe.record, 'CNAM', patchFile);
-    const material = getMaterial(output);
-    return material ? material.smithingPerk : log(`${xelib.FullName(output)} (${xelib.EditorID(output)}) doesn't have a material`);
+  const getSmithingPerk = cobj => {
+    const outputRecord = getLinkedRecord(cobj, 'CNAM', patchFile);
+    const material = getMaterial(outputRecord);
+    return material
+      ? locals.PERK[material.smithingPerk]
+      : log(`${xelib.FullName(outputRecord)} doesn't have a material`);
   };
 
-  const addMaterialPerkRequirement = recipe => {
+  const addMaterialPerkRequirement = cobj => {
     if (!locals.useWarrior) {
       return;
     }
 
-    xelib.RemoveElement(recipe.record, 'Conditions');
+    xelib.RemoveElement(cobj, 'Conditions');
 
-    const smithingPerk = getSmithingPerk(recipe);
+    const smithingPerk = getSmithingPerk(cobj);
 
     if (!smithingPerk) {
       return;
     }
 
-    const smithingPerkFormID = locals.PERK[smithingPerk];
-    xelib.AddCondition(recipe.record, 'HasPerk', conditionOperators.equalTo, '1', smithingPerkFormID);
+    xelib.AddCondition(cobj, 'HasPerk', conditionOperators.equalTo, '1', smithingPerk);
   };
 
   // TODO this doesn't seem to pick up any records
-  const shouldDisableStaffRecipe = recipe => locals.useMage
-    && settings.crafting.disableStaffRecipeExclusions.some(exclusion => recipe.outputRecordEditorID.includes(exclusion));
+  const shouldDisableStaffRecipe = cobj => {
+    if (!locals.useMage) {
+      return false;
+    }
+
+    const outputEDID = xelib.GetRefEditorID(cobj, 'CNAM');
+    const { disableStaffRecipeExclusions } = settings.crafting;
+    return disableStaffRecipeExclusions.some(exclusion => outputEDID.includes(exclusion));
+  };
 
   const handleWorkbench = {
-    // TODO confused on what this does
-    DLC2StaffEnchanter: recipe => {
-      if (!shouldDisableStaffRecipe(recipe)) return;
-      xelib.SetUIntValue(recipe.record, 'BNAM', locals.KYWD.ActorTypeNPC);
-      log(`disabled staff recipe: ${recipe.editorID}`);
+    DLC2StaffEnchanter: cobj => {
+      if (!shouldDisableStaffRecipe(cobj)) {
+        return;
+      }
+      xelib.SetUIntValue(cobj, 'BNAM', locals.KYWD.ActorTypeNPC);
+      log(`disabled staff recipe: ${xelib.EditorID(cobj)}`);
     },
     CraftingSmithingSharpeningWheel: addMaterialPerkRequirement,
     CraftingSmithingArmorTable: addMaterialPerkRequirement,
   };
 
-  const cobjFilter = function (record) {
-    const workbench = xelib.GetRefEditorID(record, 'BNAM');
-    if (!Object.keys(handleWorkbench).includes(workbench)) return false;
-    // TODO GetWinningOverride?
-    if (!xelib.GetLinksTo(record, 'CNAM')) {
-      // log(`${xelib.EditorID(record)} has no output and will not be patched.`);
-      return false;
-    }
-    return true;
-  };
+  const getWorkbench = cobj => xelib.GetRefEditorID(cobj, 'BNAM');
 
   return {
     load: {
       signature: 'COBJ',
-      filter: cobjFilter,
+      filter: cobj => Object.keys(handleWorkbench).includes(getWorkbench(cobj)) && xelib.GetLinksTo(cobj, 'CNAM'),
     },
-    patch: record => {
-      // TODO convert the Recipe class into an object
-      const recipe = new Recipe(record);
-      handleWorkbench[recipe.workbench](recipe);
+    patch: cobj => {
+      handleWorkbench[getWorkbench(cobj)](cobj);
     },
   };
 }

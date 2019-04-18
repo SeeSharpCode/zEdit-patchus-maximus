@@ -19,7 +19,7 @@ export default {
       'module.json': 'dist/module.json',
     }),
     copy({
-      dist: '../zEdit_v0.6.1_-_Portable_x64/modules/patchusMaximus',
+      dist: '../zEdit_v0.6.4_-_Portable_x64/modules/patchusMaximus',
     }),
   ],
 };
