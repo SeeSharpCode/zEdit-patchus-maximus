@@ -12,13 +12,13 @@ export default function mgefPatcher(helpers, locals) {
     xelib.AddCondition(mgef, 'HasPerk', conditionOperators.EqualToOr, '0', locals.PERK.xMALIASecureGrip);
   };
 
-  const addShoutExperienceScript = function (shout) {
-    const vmad = xelib.AddElement(shout.record, 'VMAD');
+  const addShoutExperienceScript = mgef => {
+    const vmad = xelib.AddElement(mgef, 'VMAD');
     xelib.SetIntValue(vmad, 'Version', 5);
     xelib.SetIntValue(vmad, 'Object Format', 2);
     xelib.AddElement(vmad, 'Scripts');
 
-    const script = xelib.AddScript(shout.record, 'xMATHIShoutExpScript', 'Local');
+    const script = xelib.AddScript(mgef, 'xMATHIShoutExpScript', 'Local');
 
     const shoutExperienceBaseProperty = xelib.AddScriptProperty(script, 'xMATHIShoutExpBase', 'Object', 'Edited');
     xelib.SetValue(shoutExperienceBaseProperty, 'Value\\Object Union\\Object v2\\FormID', locals.GLOB.xMATHIShoutExpBase);
@@ -48,7 +48,7 @@ export default function mgefPatcher(helpers, locals) {
       if (xelib.HasKeyword(mgef, locals.KYWD.MagicShout)) {
         const shout = new Shout(mgef);
         shout.addKeyword(locals.KYWD);
-        addShoutExperienceScript(shout);
+        addShoutExperienceScript(mgef);
         log(`patched shout: ${name}`);
       }
     },
