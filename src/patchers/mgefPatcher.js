@@ -5,13 +5,11 @@ import conditionOperators from '../model/conditionOperators';
 export default function mgefPatcher(helpers, locals) {
   const log = (message) => helpers.logMessage(`(MGEF) ${message}`);
 
-  const isDisarmEffect = function (record) {
-    return xelib.GetValue(record, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm';
-  };
+  const isDisarmEffect = mgef => xelib.GetValue(mgef, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm';
 
-  const addDisarmConditions = function (record) {
-    xelib.AddCondition(record, 'WornHasKeyword', conditionOperators.EqualToOr, '0', locals.KYWD.xMAWeapSchoolLightWeaponry);
-    xelib.AddCondition(record, 'HasPerk', conditionOperators.EqualToOr, '0', locals.PERK.xMALIASecureGrip);
+  const addDisarmConditions = mgef => {
+    xelib.AddCondition(mgef, 'WornHasKeyword', conditionOperators.EqualToOr, '0', locals.KYWD.xMAWeapSchoolLightWeaponry);
+    xelib.AddCondition(mgef, 'HasPerk', conditionOperators.EqualToOr, '0', locals.PERK.xMALIASecureGrip);
   };
 
   const addShoutExperienceScript = function (shout) {
@@ -38,17 +36,17 @@ export default function mgefPatcher(helpers, locals) {
   return {
     load: {
       signature: 'MGEF',
-      filter: record => isDisarmEffect(record) || xelib.HasKeyword(record, locals.KYWD.MagicShout),
+      filter: mgef => isDisarmEffect(mgef) || xelib.HasKeyword(mgef, locals.KYWD.MagicShout),
     },
-    patch: record => {
-      const name = xelib.FullName(record);
-      if (isDisarmEffect(record)) {
-        xelib.AddKeyword(record, 'xMAMagicDisarm');
-        addDisarmConditions(record, helpers);
+    patch: mgef => {
+      const name = xelib.FullName(mgef);
+      if (isDisarmEffect(mgef)) {
+        xelib.AddKeyword(mgef, 'xMAMagicDisarm');
+        addDisarmConditions(mgef);
         log(`patched disarm effect: ${name}`);
       }
-      if (xelib.HasKeyword(record, locals.KYWD.MagicShout)) {
-        const shout = new Shout(record);
+      if (xelib.HasKeyword(mgef, locals.KYWD.MagicShout)) {
+        const shout = new Shout(mgef);
         shout.addKeyword(locals.KYWD);
         addShoutExperienceScript(shout);
         log(`patched shout: ${name}`);

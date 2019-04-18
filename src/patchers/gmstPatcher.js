@@ -3,16 +3,16 @@ export default function gameSettingsPatcher(helpers, locals, settings) {
   return {
     load: {
       signature: 'GMST',
-      filter: record => {
+      filter: gmst => {
         if (!locals.useWarrior) return false;
-        const editorID = xelib.EditorID(record);
+        const editorID = xelib.EditorID(gmst);
         return Object.keys(gameSettings).includes(editorID);
       },
     },
-    patch: record => {
-      const editorID = xelib.EditorID(record);
+    patch: gmst => {
+      const editorID = xelib.EditorID(gmst);
       const value = gameSettings[editorID];
-      xelib.SetFloatValue(record, 'DATA\\Float', value);
+      xelib.SetFloatValue(gmst, 'DATA\\Float', value);
       helpers.logMessage(`(GMST) set ${editorID} to ${value}`);
     },
   };

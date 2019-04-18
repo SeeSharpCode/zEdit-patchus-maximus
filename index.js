@@ -76,8 +76,8 @@ registerPatcher({
     process: [
       // globPatcher(helpers, locals),
       // gmstPatcher(helpers, locals, settings),
-      cobjPatcher(patchFile, helpers, locals, settings),
-      // mgefPatcher(helpers, locals),
+      // cobjPatcher(patchFile, helpers, locals, settings),
+      mgefPatcher(helpers, locals),
       // npcPatcher(helpers, locals),
       // racePatcher(locals),
       // spellPatcher(patch, locals),
