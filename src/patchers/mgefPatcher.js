@@ -1,8 +1,9 @@
-import Shout from '../model/shout';
 import conditionOperators from '../model/conditionOperators';
 
 // TODO SkyProc code didn't check for useMage, but it might make sense here
 export default function mgefPatcher(helpers, locals) {
+  const HARMFUL_SHOUT_ARCHETYPES = ['Value Modifier', 'Peak Value Modifier', 'Dual Value Modifier'];
+
   const log = (message) => helpers.logMessage(`(MGEF) ${message}`);
 
   const isDisarmEffect = mgef => xelib.GetValue(mgef, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm';
@@ -33,6 +34,20 @@ export default function mgefPatcher(helpers, locals) {
     xelib.SetFloatValue(expFactorProperty, 'Float', 1);
   };
 
+  const addShoutKeyword = mgef => {
+    const archetype = xelib.GetValue(mgef, 'Magic Effect Data\\DATA - Data\\Archtype');
+    const isHarmful = HARMFUL_SHOUT_ARCHETYPES.includes(archetype)
+      && xelib.GetFlag(mgef, 'Magic Effect Data\\DATA - Data\\Flags', 'Detrimental');
+
+    if (isHarmful) {
+      xelib.AddKeyword(mgef, locals.KYWD.xMASPEShoutHarmful);
+    } else if (archetype === 'Summon Creature') {
+      xelib.AddKeyword(mgef, locals.KYWD.xMASPEShoutSummoning);
+    } else {
+      xelib.AddKeyword(mgef, locals.KYWD.xMASPEShoutNonHarmful);
+    }
+  };
+
   return {
     load: {
       signature: 'MGEF',
@@ -46,8 +61,7 @@ export default function mgefPatcher(helpers, locals) {
         log(`patched disarm effect: ${name}`);
       }
       if (xelib.HasKeyword(mgef, locals.KYWD.MagicShout)) {
-        const shout = new Shout(mgef);
-        shout.addKeyword(locals.KYWD);
+        addShoutKeyword(mgef);
         addShoutExperienceScript(mgef);
         log(`patched shout: ${name}`);
       }
