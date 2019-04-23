@@ -1,24 +1,20 @@
 import { addSpell } from '../utils';
 
-export default function racePatcher(locals) {
+export default function racePatcher(locals, settings) {
   return {
     load: {
       signature: 'RACE',
-      filter: record => {
-        const editorID = xelib.EditorID(record);
-        // TODO use config file
-        return !editorID.includes('Manakin');
-      },
+      filter: race => !settings.race.excludedEditorIDs.includes(xelib.EditorID(race)),
     },
-    patch: record => {
+    patch: race => {
       if (locals.useWarrior) {
-        addSpell(record, locals.SPEL.xMAWARMainLogicAbility);
-        addSpell(record, locals.SPEL.xMAWARMainStaminaAbility);
+        addSpell(race, locals.SPEL.xMAWARMainLogicAbility);
+        addSpell(race, locals.SPEL.xMAWARMainStaminaAbility);
 
-        if (locals.useThief && xelib.GetFlag(record, 'DATA - \\Flags', 'Playable')) {
-          addSpell(record, locals.SPEL.xMATHICombatAbility);
-          addSpell(record, locals.SPEL.xMAWARTHIPassiveArmorHeavy);
-          addSpell(record, locals.SPEL.xMAWARTHIPassiveArmorLight);
+        if (locals.useThief && xelib.GetFlag(race, 'DATA - \\Flags', 'Playable')) {
+          addSpell(race, locals.SPEL.xMATHICombatAbility);
+          addSpell(race, locals.SPEL.xMAWARTHIPassiveArmorHeavy);
+          addSpell(race, locals.SPEL.xMAWARTHIPassiveArmorLight);
         }
       }
     },

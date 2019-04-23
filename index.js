@@ -61,7 +61,13 @@ registerPatcher({
         fArmorRatingMax: 1.75,
         fArmorRatingPCMax: 1.4,
       },
-
+      npc: {
+        startingSpells: true,
+        excludedRaceEditorIDs: ['ChickenRace', 'SprigganRace'],
+      },
+      race: {
+        excludedEditorIDs: ['ManakinRace'],
+      },
     },
     controller: settingsController,
   },
@@ -80,7 +86,7 @@ registerPatcher({
       // cobjPatcher(patchFile, helpers, locals, settings),
       // mgefPatcher(helpers, locals),
       // npcPatcher(helpers, locals, settings),
-      // racePatcher(locals),
+      // racePatcher(locals, settings),
       // spellPatcher(patch, locals),
       // enchPatcher(patch, locals),
       // alchPatcher(patch, locals),

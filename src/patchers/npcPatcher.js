@@ -1,5 +1,4 @@
 import { addSpell } from '../utils';
-import { isExcludedFromPatching } from '../exclusions';
 
 export default function npcPatcher(helpers, locals, settings) {
   // TODO log exclusions
@@ -58,7 +57,7 @@ export default function npcPatcher(helpers, locals, settings) {
   return {
     load: {
       signature: 'NPC_',
-      filter: npc => xelib.FullName(npc) && !isExcludedFromPatching(npc),
+      filter: npc => xelib.FullName(npc) && !settings.npc.excludedRaceEditorIDs.includes(xelib.GetRefEditorID(npc, 'RNAM')),
     },
     patch: record => {
       patchNpc(record);

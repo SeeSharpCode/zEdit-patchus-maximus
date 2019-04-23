@@ -12,7 +12,6 @@ import spellLeveledLists from '../config/exclusions/spellLeveledLists.json';
 const exclusions = {
   INGR,
   ALCH,
-  NPC_,
   staffCrafting,
   scrollCrafting,
   spellDistribution,

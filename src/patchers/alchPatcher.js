@@ -39,13 +39,12 @@ export default function alchPatcher(patchFile, locals) {
   return {
     load: {
       signature: 'ALCH',
-      /* eslint no-unused-vars: off */
-      filter: record => locals.useThief,
+      filter: () => locals.useThief,
     },
-    patch: record => {
-      removeMagicSchool(record, patchFile);
-      if (isExcludedFromPatching(record)) return;
-      xelib.GetElements(record, 'Effects').forEach(effect => makePotionEffectGradual(effect, xelib.FullName(record)));
+    patch: alch => {
+      removeMagicSchool(alch, patchFile);
+      if (isExcludedFromPatching(alch)) return;
+      xelib.GetElements(alch, 'Effects').forEach(effect => makePotionEffectGradual(effect, xelib.FullName(alch)));
     },
   };
 }

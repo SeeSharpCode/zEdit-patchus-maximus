@@ -4,10 +4,10 @@ export default function enchPatcher(patchFile, locals) {
   return {
     load: {
       signature: 'ENCH',
-      filter: record => {
+      filter: ench => {
         if (!locals.useMage) return false;
-        const type = xelib.GetValue(record, 'ENIT - Effect Data\\Enchant Type');
-        const castType = xelib.GetValue(record, 'ENIT - Effect Data\\Cast Type');
+        const type = xelib.GetValue(ench, 'ENIT - Effect Data\\Enchant Type');
+        const castType = xelib.GetValue(ench, 'ENIT - Effect Data\\Cast Type');
         return type === 'Ability' || castType === 'Constant Effect';
       },
     },
