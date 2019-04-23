@@ -1,3 +1,5 @@
+// TODO replace all of this with the settings menu
+
 import INGR from '../config/exclusions/ingredients.json';
 import ALCH from '../config/exclusions/potions.json';
 import NPC_ from '../config/exclusions/npcs.json';

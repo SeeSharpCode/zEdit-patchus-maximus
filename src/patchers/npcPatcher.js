@@ -1,74 +1,64 @@
 import { addSpell } from '../utils';
 import { isExcludedFromPatching } from '../exclusions';
 
-export default function npcPatcher(helpers, locals) {
+export default function npcPatcher(helpers, locals, settings) {
+  // TODO log exclusions
   const log = message => helpers.logMessage(`(NPC_) ${message}`);
 
-  const npcFilter = function (record) {
-    const name = xelib.FullName(record);
-    if (!name) {
-      return false;
-    }
-
-    const editorID = xelib.EditorID(record);
-    const isExcluded = isExcludedFromPatching(record);
-    if (isExcluded) log(`excluding ${editorID}`);
-    return !isExcluded;
-  };
-
-  const patchNpc = function patchNpc(record) {
+  const patchNpc = npc => {
     if (locals.useMage) {
-      xelib.AddPerk(record, locals.PERK.xMAMAGPassiveScalingSpells, '1');
-      xelib.AddPerk(record, locals.PERK.xMAMAGPassiveEffects, '1');
-      xelib.AddPerk(record, locals.PERK.AlchemySkillBoosts, '1');
+      xelib.AddPerk(npc, locals.PERK.xMAMAGPassiveScalingSpells, '1');
+      xelib.AddPerk(npc, locals.PERK.xMAMAGPassiveEffects, '1');
+      xelib.AddPerk(npc, locals.PERK.AlchemySkillBoosts, '1');
     }
     if (locals.useThief) {
-      addSpell(record, locals.SPEL.xMATHICombatAbility);
+      addSpell(npc, locals.SPEL.xMATHICombatAbility);
     }
     if (locals.useWarrior) {
-      xelib.AddPerk(record, locals.PERK.xMAHEWScarredPassive, '1');
-      xelib.AddPerk(record, locals.PERK.xMAWARPassiveScalingFistWeapon, '1');
-      addSpell(record, locals.SPEL.xMAWARShieldTypeDetectorAbility);
-      xelib.AddPerk(record, locals.PERK.xMAWARPassiveScalingCriticalDamage, '1');
-      xelib.AddPerk(record, locals.PERK.xMAWARPassiveCrossbowEffects, '1');
+      xelib.AddPerk(npc, locals.PERK.xMAHEWScarredPassive, '1');
+      xelib.AddPerk(npc, locals.PERK.xMAWARPassiveScalingFistWeapon, '1');
+      addSpell(npc, locals.SPEL.xMAWARShieldTypeDetectorAbility);
+      xelib.AddPerk(npc, locals.PERK.xMAWARPassiveScalingCriticalDamage, '1');
+      xelib.AddPerk(npc, locals.PERK.xMAWARPassiveCrossbowEffects, '1');
     }
   };
 
-  const patchPlayer = function (record) {
-    addSpell(record, locals.SPEL.xMAWeaponSpeedFix);
+  const patchPlayer = player => {
+    addSpell(player, locals.SPEL.xMAWeaponSpeedFix);
 
     if (locals.useMage) {
-      xelib.RemoveArrayItem(record, 'Actor Effects', '', locals.SPEL.Flames);
-      xelib.RemoveArrayItem(record, 'Actor Effects', '', locals.SPEL.Healing);
-      addSpell(record, locals.SPEL.xMAMAGMainAbility);
-      xelib.AddPerk(record, locals.PERK.xMAMAGPassiveScalingSpellsScroll, '1');
+      xelib.RemoveArrayItem(player, 'Actor Effects', '', locals.SPEL.Flames);
+      xelib.RemoveArrayItem(player, 'Actor Effects', '', locals.SPEL.Healing);
+      addSpell(player, locals.SPEL.xMAMAGMainAbility);
+      xelib.AddPerk(player, locals.PERK.xMAMAGPassiveScalingSpellsScroll, '1');
 
-      // TODO control starting spells via a setting
-      addSpell(record, locals.SPEL.xMADESFireFlames);
-      addSpell(record, locals.SPEL.xMARESHealRecovery);
+      if (settings.npc.startingSpells) {
+        addSpell(player, locals.SPEL.xMADESFireFlames);
+        addSpell(player, locals.SPEL.xMARESHealRecovery);
+      }
     }
 
     if (locals.useThief) {
-      xelib.AddPerk(record, locals.PERK.xMATHIPassiveLockpickingXP, '1');
-      xelib.AddPerk(record, locals.PERK.xMATHIPassiveSpellSneakScaling, '1');
-      xelib.AddPerk(record, locals.PERK.xMATHIPassiveArmorSneakPenalty, '1');
-      xelib.AddPerk(record, locals.PERK.xMATHIPassiveWeaponSneakScaling, '1');
-      addSpell(record, locals.SPEL.xMATHIMainAbility);
-      addSpell(record, locals.SPEL.xMATHIInitSneakTools);
-      xelib.AddPerk(record, locals.PERK.xMATHIPassiveShoutScaling, '1');
+      xelib.AddPerk(player, locals.PERK.xMATHIPassiveLockpickingXP, '1');
+      xelib.AddPerk(player, locals.PERK.xMATHIPassiveSpellSneakScaling, '1');
+      xelib.AddPerk(player, locals.PERK.xMATHIPassiveArmorSneakPenalty, '1');
+      xelib.AddPerk(player, locals.PERK.xMATHIPassiveWeaponSneakScaling, '1');
+      addSpell(player, locals.SPEL.xMATHIMainAbility);
+      addSpell(player, locals.SPEL.xMATHIInitSneakTools);
+      xelib.AddPerk(player, locals.PERK.xMATHIPassiveShoutScaling, '1');
     }
 
     if (locals.useWarrior) {
-      addSpell(record, locals.SPEL.xMAWARTimedBlockingAbility);
-      xelib.AddPerk(record, locals.PERK.ArcaneBlacksmith, '1');
-      xelib.AddPerk(record, locals.PERK.xMAWARPassiveDualWieldMalus, '1');
+      addSpell(player, locals.SPEL.xMAWARTimedBlockingAbility);
+      xelib.AddPerk(player, locals.PERK.ArcaneBlacksmith, '1');
+      xelib.AddPerk(player, locals.PERK.xMAWARPassiveDualWieldMalus, '1');
     }
   };
 
   return {
     load: {
       signature: 'NPC_',
-      filter: npcFilter,
+      filter: npc => xelib.FullName(npc) && !isExcludedFromPatching(npc),
     },
     patch: record => {
       patchNpc(record);

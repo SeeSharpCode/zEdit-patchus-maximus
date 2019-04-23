@@ -52,15 +52,16 @@ registerPatcher({
     label: 'Patchus Maximus',
     templateUrl: `${patcherUrl}/partials/settings.html`,
     defaultSettings: {
+      crafting: {
+        disableStaffRecipeExclusions: ['ACX', 'Unenchanted'],
+      },
       gameSettings: {
         fArmorScalingFactor: 0.1,
         fMaxArmorRating: 90.0,
         fArmorRatingMax: 1.75,
         fArmorRatingPCMax: 1.4,
       },
-      crafting: {
-        disableStaffRecipeExclusions: ['ACX', 'Unenchanted'],
-      },
+
     },
     controller: settingsController,
   },
@@ -77,8 +78,8 @@ registerPatcher({
       // globPatcher(helpers, locals),
       // gmstPatcher(helpers, locals, settings),
       // cobjPatcher(patchFile, helpers, locals, settings),
-      mgefPatcher(helpers, locals),
-      // npcPatcher(helpers, locals),
+      // mgefPatcher(helpers, locals),
+      // npcPatcher(helpers, locals, settings),
       // racePatcher(locals),
       // spellPatcher(patch, locals),
       // enchPatcher(patch, locals),
