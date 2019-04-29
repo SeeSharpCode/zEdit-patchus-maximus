@@ -52,6 +52,13 @@ registerPatcher({
     label: 'Patchus Maximus',
     templateUrl: `${patcherUrl}/partials/settings.html`,
     defaultSettings: {
+      alchemy: {
+        excludedEffects: ['AlchInvisibillity', 'AlchCurePoison', 'AlchWaterbreathing', 'AlchRestoreMagickaAll',
+          'AlchRestoreHealthAll', 'AlchRestoreStaminaAll', 'AlchParalysis', 'AbGhostPotionEffect', 'dunSleepingTreeSlowAlch',
+          'AlchUnknown', 'DA16TorporMagicEffect', 'MS12WhitePhialEffect', 'FrostbiteVenomFFSelf'],
+        excludedPotionNames: ['Falmer Blood Elixir', 'Ice Wraith Essence', 'Kordir\'s Skooma', 'Soul Husk Extract',
+          'Stallion\'s Potion', 'Lotus Extract', 'Ice Wraith Bane', 'Nightshade Extract'],
+      },
       crafting: {
         disableStaffRecipeExclusions: ['ACX', 'Unenchanted'],
       },
@@ -89,7 +96,7 @@ registerPatcher({
       // racePatcher(locals, settings),
       // spellPatcher(patch, locals),
       // enchPatcher(patch, locals),
-      // alchPatcher(patch, locals),
+      // alchPatcher(patch, locals, settings),
       // ingrPatcher(patch, locals),
       // bookPatcher(patchFile, locals, helpers),
     ],

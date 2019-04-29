@@ -1,8 +1,6 @@
 // TODO replace all of this with the settings menu
 
 import INGR from '../config/exclusions/ingredients.json';
-import ALCH from '../config/exclusions/potions.json';
-import NPC_ from '../config/exclusions/npcs.json';
 import staffCrafting from '../config/exclusions/staffCrafting.json';
 import scrollCrafting from '../config/exclusions/scrollCrafting.json';
 import spellDistribution from '../config/exclusions/spellDistribution.json';
@@ -11,7 +9,6 @@ import spellLeveledLists from '../config/exclusions/spellLeveledLists.json';
 
 const exclusions = {
   INGR,
-  ALCH,
   staffCrafting,
   scrollCrafting,
   spellDistribution,
