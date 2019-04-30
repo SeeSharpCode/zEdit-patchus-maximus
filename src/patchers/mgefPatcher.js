@@ -9,8 +9,8 @@ export default function mgefPatcher(helpers, locals) {
   const isDisarmEffect = mgef => xelib.GetValue(mgef, 'Magic Effect Data\\DATA\\Archtype') === 'Disarm';
 
   const addDisarmConditions = mgef => {
-    xelib.AddCondition(mgef, 'WornHasKeyword', conditionOperators.EqualToOr, '0', locals.KYWD.xMAWeapSchoolLightWeaponry);
-    xelib.AddCondition(mgef, 'HasPerk', conditionOperators.EqualToOr, '0', locals.PERK.xMALIASecureGrip);
+    xelib.AddCondition(mgef, 'WornHasKeyword', conditionOperators.equalToOr, '0', locals.KYWD.xMAWeapSchoolLightWeaponry);
+    xelib.AddCondition(mgef, 'HasPerk', conditionOperators.equalToOr, '0', locals.PERK.xMALIASecureGrip);
   };
 
   const addShoutExperienceScript = mgef => {
