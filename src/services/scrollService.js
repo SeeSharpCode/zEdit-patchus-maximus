@@ -49,7 +49,7 @@ export default (patchFile, locals, helpers) => {
   const getSpellSkillLevel = spell => {
     const skillLevels = spell.effects.map(effect => {
       const magicEffect = getLinkedRecord(effect, 'EFID', patchFile);
-      return xelib.GetValue(magicEffect, 'Magic Effect Data\\DATA - Data\\Minimum Skill Level');
+      return xelib.GetValue(magicEffect, 'Magic Effect Data\\DATA\\Minimum Skill Level');
     });
 
     return Math.max(...skillLevels);

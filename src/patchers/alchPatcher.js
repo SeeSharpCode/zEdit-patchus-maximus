@@ -9,7 +9,7 @@ export default function alchPatcher(patchFile, locals, settings) {
   const addDurationToDescription = function (mgef) {
     const mgefDescription = xelib.GetValue(mgef, 'DNAM - Magic Item Description');
     if (!mgefDescription.includes('<dur>')) {
-      xelib.SetFlag(mgef, 'Magic Effect Data\\DATA - Data\\Flags', 'No Duration', false);
+      xelib.SetFlag(mgef, 'Magic Effect Data\\DATA\\Flags', 'No Duration', false);
       const newDescription = `${mgefDescription} [Duration: <dur> seconds]`;
       xelib.SetValue(mgef, 'DNAM - Magic Item Description', newDescription);
     }
@@ -29,8 +29,8 @@ export default function alchPatcher(patchFile, locals, settings) {
     const newMagnitude = alchemyEffect.baseMagnitude * potionMultiplier.multiplierMagnitude;
     const newCost = alchemyEffect.baseCost;
 
-    xelib.SetFloatValue(effect, 'EFIT - \\Duration', newDuration);
-    xelib.SetFloatValue(effect, 'EFIT - \\Magnitude', newMagnitude);
+    xelib.SetFloatValue(effect, 'EFIT\\Duration', newDuration);
+    xelib.SetFloatValue(effect, 'EFIT\\Magnitude', newMagnitude);
     xelib.SetFloatValue(mgef, 'Magic Effect Data\\DATA - Data\\Base Cost', newCost);
   };
 

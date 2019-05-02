@@ -16,8 +16,8 @@ export default (patchFile, locals, helpers) => {
 
       const leveledListSpells = xelib.GetElements(leveledList, 'Leveled List Entries')
         .map(leveledEntry => getLinkedRecord(leveledEntry, 'LVLO - Base Data\\Reference', patchFile))
-        .filter(entryRecord => xelib.Signature(entryRecord) === 'BOOK' && xelib.GetFlag(entryRecord, 'DATA - Data\\Flags', 'Teaches Spell'))
-        .map(bookEntryRecord => getLinkedRecord(bookEntryRecord, 'DATA - Data\\Teaches', patchFile));
+        .filter(entryRecord => xelib.Signature(entryRecord) === 'BOOK' && xelib.GetFlag(entryRecord, 'DATA\\Flags', 'Teaches Spell'))
+        .map(bookEntryRecord => getLinkedRecord(bookEntryRecord, 'DATA\\Teaches', patchFile));
     });
   };
 };

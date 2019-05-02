@@ -35,9 +35,9 @@ export default function mgefPatcher(helpers, locals) {
   };
 
   const addShoutKeyword = mgef => {
-    const archetype = xelib.GetValue(mgef, 'Magic Effect Data\\DATA - Data\\Archtype');
+    const archetype = xelib.GetValue(mgef, 'Magic Effect Data\\DATA\\Archtype');
     const isHarmful = HARMFUL_SHOUT_ARCHETYPES.includes(archetype)
-      && xelib.GetFlag(mgef, 'Magic Effect Data\\DATA - Data\\Flags', 'Detrimental');
+      && xelib.GetFlag(mgef, 'Magic Effect Data\\DATA\\Flags', 'Detrimental');
 
     if (isHarmful) {
       xelib.AddKeyword(mgef, locals.KYWD.xMASPEShoutHarmful);

@@ -9,7 +9,7 @@ export default function bookPatcher(patchFile, locals, helpers) {
   const scrollService = createScrollService(patchFile, locals, helpers);
 
   const patchBook = book => {
-    const spellRecord = getLinkedRecord(book, 'DATA - Data\\Teaches', patchFile);
+    const spellRecord = getLinkedRecord(book, 'DATA\\Teaches', patchFile);
     const spell = new Spell(spellRecord);
 
     if (staffService.shouldCreateStaff(book, spell)) {
@@ -24,7 +24,7 @@ export default function bookPatcher(patchFile, locals, helpers) {
   return {
     load: {
       signature: 'BOOK',
-      filter: book => xelib.GetFlag(book, 'DATA - Data\\Flags', 'Teaches Spell'),
+      filter: book => xelib.GetFlag(book, 'DATA\\Flags', 'Teaches Spell'),
     },
     patch: patchBook,
   };

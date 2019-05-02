@@ -20,8 +20,8 @@ export default function ingrPatcher(patchFile, locals) {
     }
 
     // TODO only change if new value != old value
-    xelib.SetFloatValue(effect, 'EFIT - \\Duration', newDuration);
-    xelib.SetFloatValue(effect, 'EFIT - \\Magnitude', newMagnitude);
+    xelib.SetFloatValue(effect, 'EFIT\\Duration', newDuration);
+    xelib.SetFloatValue(effect, 'EFIT\\Magnitude', newMagnitude);
   };
 
   return {

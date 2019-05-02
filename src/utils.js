@@ -35,7 +35,7 @@ export function addSpell(record, spellFormID) {
 }
 
 export function removeMagicSchool(record, patchFile) {
-  const magicSkillPath = 'Magic Effect Data\\DATA - Data\\Magic Skill';
+  const magicSkillPath = 'Magic Effect Data\\DATA\\Magic Skill';
 
   const mgefRecords = xelib.GetElements(record, 'Effects')
     .map(effect => getLinkedRecord(effect, 'EFID', patchFile))
